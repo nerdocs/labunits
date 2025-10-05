@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "labunits"
+version = "0.1.0"
+description = "Convert laboratory units between mmol/l und mg/dl based on the molar mass of the unit."
+authors = [
+    { name="Christian Gonzalez", email="office@nerdocs.at" }
+]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+
+[project.urls]
+Homepage = "https://github.com/nerdocs/labunits"
