@@ -15,3 +15,11 @@ requires-python = ">=3.10"
 
 [project.urls]
 Homepage = "https://github.com/nerdocs/labunits"
+
+[dependencies]
+
+
+[dependency-groups]
+test = ["pytest", "ruff"]
+dev = ["beautifulsoup4","build", "thefuzz", "pydantic", "ruff", "black", "build"]
+
