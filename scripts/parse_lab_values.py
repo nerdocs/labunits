@@ -4,6 +4,9 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 from bs4.element import NavigableString
 from pydantic import BaseModel
+from thefuzz import fuzz
+
+FUZZY_MATCH_RATIO = 80
 
 
 class Specimen(BaseModel):
@@ -13,9 +16,9 @@ class Specimen(BaseModel):
     def __str__(self):
         return self.name
 
-    def __repr__(self):
-        return str(self)
 
+# TODO: AnalyteGroups
+# TODO: ranges as separate entities
 
 
 class Analyte(BaseModel):
@@ -60,26 +63,32 @@ def parse_lab_values(
     # open loinc csv file and read it
     loinc_data: dict[str, dict[str, str]] = {}
     with Path.open(loinc_file_path, "r", encoding="utf-8") as file:
-        lines = file.readlines()
+        # parse LOINC data
+        for line_number, line in enumerate(file.readlines()):
+            if line_number == 0:
+                # parse header row
+                header_row = line.strip().split(",")
+                header_row = [header.strip('"') for header in header_row]
+                if header_row[0] != "LOINC_NUM":
+                    raise ValueError("Invalid LOINC CSV file")
+                continue
+            if line.strip():  # skip empty lines
+                fields = line.strip().split(",")
+                fields = [field.strip('"') for field in fields]
+                # if there are more than 5 whitespaces in the text,
+                # we can assume it is verbose text, not an analyte name.
+                if len(fields[1].split(" ")) > 5:
+                    continue
 
-    # parse header row
-    header_row = lines[0].strip().split(",")
-    header_row = [header.strip('"') for header in header_row]
-    if header_row[0] != "LOINC_NUM":
-        raise ValueError("Invalid LOINC CSV file")
-
-    # parse LOINC data
-    for line in lines[1:]:
-        if line.strip():  # skip empty lines
-            fields = line.strip().split(",")
-            fields = [field.strip('"') for field in fields]
-            if len(fields) >= len(header_row):
-                # Create a dictionary with all columns
-                row_data = {}
-                for i, header in enumerate(header_row):
-                    if i < len(fields):
-                        row_data[header] = fields[i]
-                loinc_data[fields[0]] = row_data  # Use LOINC_NUM as key
+                if len(fields) >= len(header_row):
+                    # Create a dictionary with all columns
+                    row_data = {}
+                    for i, header in enumerate(header_row):
+                        if i < len(fields):
+                            # only keep some rows to save memory
+                            if header in ["LOINC_NUM", "COMPONENT"]:
+                                row_data[header] = fields[i]
+                    loinc_data[fields[0]] = row_data  # Use LOINC_NUM as key
 
     with open(html_file_path, "r", encoding="utf-8") as file:
         soup = BeautifulSoup(file, "html.parser")
@@ -177,8 +186,27 @@ def parse_lab_values(
             )
             for loinc_num, data in loinc_data.items():
                 if data["COMPONENT"] == analyte.name:
+                    if analyte.loinc_num:
+                        raise ValueError(
+                            f"Analyte {analyte.name} has already a LOINC number"
+                        )
                     analyte.loinc_num = loinc_num
                     break
+            else:
+                for loinc_num, data in loinc_data.items():
+                    ratio = fuzz.ratio(data["COMPONENT"], analyte.name)
+                    if ratio > FUZZY_MATCH_RATIO:
+                        print(
+                            f" ✅ [Fuzzy match ({ratio}%)] {analyte.name} <> "
+                            f"{data['COMPONENT']}"
+                        )
+                        if analyte.loinc_num:
+                            raise ValueError(
+                                f"Analyte {analyte.name} has already a LOINC number"
+                            )
+                        analyte.loinc_num = loinc_num
+                        break
+
             if not analyte.loinc_num:
                 no_loinc_count += 1
 
