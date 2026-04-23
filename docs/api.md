@@ -17,14 +17,14 @@ that a string is expected to be a LOINC code.
 
 ---
 
-## `to_si_unit(analyte, value) -> float`
+## `to_si_unit(value, analyte) -> float`
 
 Convert a concentration from its traditional unit to its SI unit.
 
 | Parameter | Type                 | Meaning                                              |
 |-----------|----------------------|------------------------------------------------------|
-| `analyte` | `LoincNum \| str`    | LOINC code (preferred), abbreviation, or full name.  |
 | `value`   | `float`              | Concentration in the analyte's traditional unit.     |
+| `analyte` | `LoincNum \| str`    | LOINC code (preferred), abbreviation, or full name.  |
 
 **Returns** `float` — value in the analyte's SI unit.
 `inf`, `-inf` and `nan` pass through unchanged.
@@ -32,22 +32,22 @@ Convert a concentration from its traditional unit to its SI unit.
 **Raises** `ValueError` — if the identifier cannot be resolved.
 
 ```python
->>> to_si_unit("109547-0", 1.0)   # Acetone, 1 mg/dL
+>>> to_si_unit(1.0, "109547-0")   # Acetone, 1 mg/dL
 0.172
->>> to_si_unit("Albumin", 4.0)    # 4 g/dL -> 40 g/L
+>>> to_si_unit(4.0, "Albumin")    # 4 g/dL -> 40 g/L
 40.0
 ```
 
 ---
 
-## `to_traditional_unit(analyte, value) -> float`
+## `to_traditional_unit(value, analyte) -> float`
 
 Convert a concentration from its SI unit to its traditional unit.
 
 | Parameter | Type                 | Meaning                                              |
 |-----------|----------------------|------------------------------------------------------|
-| `analyte` | `LoincNum \| str`    | LOINC code (preferred), abbreviation, or full name.  |
 | `value`   | `float`              | Concentration in the analyte's SI unit.              |
+| `analyte` | `LoincNum \| str`    | LOINC code (preferred), abbreviation, or full name.  |
 
 **Returns** `float` — value in the analyte's traditional unit.
 `inf`, `-inf` and `nan` pass through unchanged.
@@ -55,9 +55,9 @@ Convert a concentration from its SI unit to its traditional unit.
 **Raises** `ValueError` — if the identifier cannot be resolved.
 
 ```python
->>> to_traditional_unit("109547-0", 0.172)   # mmol/L -> mg/dL
+>>> to_traditional_unit(0.172, "109547-0")   # mmol/L -> mg/dL
 1.0
->>> to_traditional_unit("Albumin", 40.0)     # g/L -> g/dL
+>>> to_traditional_unit(40.0, "Albumin")     # g/L -> g/dL
 4.0
 ```
 

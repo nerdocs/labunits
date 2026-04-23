@@ -13,12 +13,12 @@ values between **traditional units** (e.g. `mg/dL`) and **SI units**
 from labunits.converters import to_si_unit, to_traditional_unit, si_unit
 
 # Acetone: 1 mg/dL -> mmol/L
-to_si_unit("109547-0", 1.0)          # 0.172
-to_si_unit("Acetone", 1.0)           # same — lookup by name also works
+to_si_unit(1.0, "109547-0")          # 0.172
+to_si_unit(1.0, "Acetone")           # same — lookup by name also works
 si_unit("Acetone")                   # "mmol/L"
 
 # Round-trip
-to_traditional_unit("109547-0", 0.172)   # 1.0
+to_traditional_unit(0.172, "109547-0")   # 1.0
 ```
 
 ## What this library does — and doesn't do

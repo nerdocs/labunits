@@ -70,42 +70,42 @@ def test_conversion_factor_for_albumin():
 
 def test_to_si_unit_acetone():
     # 1.0 mg/dL * 0.172 == 0.172 mmol/L
-    assert to_si_unit("109547-0", 1.0) == pytest.approx(0.172)
+    assert to_si_unit(1.0, "109547-0") == pytest.approx(0.172)
 
 
 def test_to_si_unit_albumin():
     # 4.0 g/dL * 10 == 40 g/L
-    assert to_si_unit("100158-5", 4.0) == pytest.approx(40.0)
+    assert to_si_unit(4.0, "100158-5") == pytest.approx(40.0)
 
 
 def test_to_traditional_unit_acetone():
     # 0.172 mmol/L / 0.172 == 1.0 mg/dL
-    assert to_traditional_unit("109547-0", 0.172) == pytest.approx(1.0)
+    assert to_traditional_unit(0.172, "109547-0") == pytest.approx(1.0)
 
 
 def test_to_traditional_unit_albumin():
     # 40 g/L / 10 == 4.0 g/dL
-    assert to_traditional_unit("100158-5", 40.0) == pytest.approx(4.0)
+    assert to_traditional_unit(40.0, "100158-5") == pytest.approx(4.0)
 
 
 def test_round_trip_traditional_to_si_to_traditional():
     original = 2.5
-    si = to_si_unit("100158-5", original)
-    back = to_traditional_unit("100158-5", si)
+    si = to_si_unit(original, "100158-5")
+    back = to_traditional_unit(si, "100158-5")
     assert back == pytest.approx(original)
 
 
 def test_zero_value_passes_through():
-    assert to_si_unit("109547-0", 0.0) == 0.0
-    assert to_traditional_unit("109547-0", 0.0) == 0.0
+    assert to_si_unit(0.0, "109547-0") == 0.0
+    assert to_traditional_unit(0.0, "109547-0") == 0.0
 
 
 def test_negative_value_is_converted():
-    assert to_si_unit("100158-5", -3.0) == pytest.approx(-30.0)
+    assert to_si_unit(-3.0, "100158-5") == pytest.approx(-30.0)
 
 
 def test_to_si_unit_returns_float():
-    assert isinstance(to_si_unit("109547-0", 1.0), float)
+    assert isinstance(to_si_unit(1.0, "109547-0"), float)
 
 
 # ---------------------------------------------------------------------------
@@ -114,18 +114,18 @@ def test_to_si_unit_returns_float():
 
 
 def test_positive_infinity_passes_through():
-    assert to_si_unit("109547-0", float("inf")) == float("inf")
-    assert to_traditional_unit("109547-0", float("inf")) == float("inf")
+    assert to_si_unit(float("inf"), "109547-0") == float("inf")
+    assert to_traditional_unit(float("inf"), "109547-0") == float("inf")
 
 
 def test_negative_infinity_passes_through():
-    assert to_si_unit("109547-0", float("-inf")) == float("-inf")
-    assert to_traditional_unit("109547-0", float("-inf")) == float("-inf")
+    assert to_si_unit(float("-inf"), "109547-0") == float("-inf")
+    assert to_traditional_unit(float("-inf"), "109547-0") == float("-inf")
 
 
 def test_nan_passes_through():
     # NaN must propagate, not raise. The current implementation uses
     # ``value in [..., float("nan")]`` which is always False because
     # NaN never compares equal to itself — this test exposes that bug.
-    assert math.isnan(to_si_unit("109547-0", float("nan")))
-    assert math.isnan(to_traditional_unit("109547-0", float("nan")))
+    assert math.isnan(to_si_unit(float("nan"), "109547-0"))
+    assert math.isnan(to_traditional_unit(float("nan"), "109547-0"))

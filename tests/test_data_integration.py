@@ -77,5 +77,5 @@ def test_acetone_round_trip_against_real_data(real_data):
     assert si_unit("109547-0") == "mmol/L"
     assert traditional_unit("109547-0") == "mg/dL"
     assert conversion_factor("109547-0") == pytest.approx(0.172)
-    assert to_si_unit("109547-0", 1.0) == pytest.approx(0.172)
-    assert to_traditional_unit("109547-0", 0.172) == pytest.approx(1.0)
+    assert to_si_unit(1.0, "109547-0") == pytest.approx(0.172)
+    assert to_traditional_unit(0.172, "109547-0") == pytest.approx(1.0)

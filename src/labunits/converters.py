@@ -82,12 +82,12 @@ def conversion_factor(analyte: LoincNum | str) -> float:
     return float(_load_data()[loinc]["conversion_factor"])
 
 
-def to_si_unit(analyte: LoincNum | str, value: float) -> float:
+def to_si_unit(value: float, analyte: LoincNum | str) -> float:
     """Convert a concentration from its traditional unit to its SI unit.
 
     Args:
-        analyte: LOINC code (preferred), abbreviation, or full name.
         value: Concentration in the analyte's traditional unit.
+        analyte: LOINC code (preferred), abbreviation, or full name.
 
     Returns:
         The value expressed in the analyte's SI unit. ``inf``/``-inf``/``nan``
@@ -101,12 +101,12 @@ def to_si_unit(analyte: LoincNum | str, value: float) -> float:
     return value * factor
 
 
-def to_traditional_unit(analyte: LoincNum | str, value: float) -> float:
+def to_traditional_unit(value: float, analyte: LoincNum | str) -> float:
     """Convert a concentration from its SI unit to its traditional unit.
 
     Args:
-        analyte: LOINC code (preferred), abbreviation, or full name.
         value: Concentration in the analyte's SI unit.
+        analyte: LOINC code (preferred), abbreviation, or full name.
 
     Returns:
         The value expressed in the analyte's traditional unit.

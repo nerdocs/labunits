@@ -23,16 +23,17 @@ uv add labunits
 from labunits.converters import to_si_unit, to_traditional_unit
 
 # Serum glucose reported as 90 mg/dL -> mmol/L
-si_value = to_si_unit("Glucose", 90.0)
+si_value = to_si_unit(90.0, "Glucose")
 
 # And back
-trad_value = to_traditional_unit("Glucose", si_value)
+trad_value = to_traditional_unit(si_value, "Glucose")
 ```
 
 ## Identifying an analyte
 
-Every public function accepts the same first argument and resolves it
-through the same lookup chain:
+Every public function accepts an analyte identifier (as the first
+argument for lookup helpers, or as the second argument for the
+conversion functions) and resolves it through the same lookup chain:
 
 1. **LOINC code** — preferred, unambiguous. Example: `"109547-0"`.
 2. **Full analyte name** — case-insensitive. Example: `"Acetone"`,
@@ -62,6 +63,6 @@ limit") through a conversion pipeline without special-casing them.
 import math
 from labunits.converters import to_si_unit
 
-to_si_unit("Acetone", float("inf"))       # inf
-math.isnan(to_si_unit("Acetone", float("nan")))  # True
+to_si_unit(float("inf"), "Acetone")       # inf
+math.isnan(to_si_unit(float("nan"), "Acetone"))  # True
 ```
