@@ -4,7 +4,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 from bs4.element import NavigableString
 from thefuzz import fuzz
-from scripts.models import Specimen, AnalyteRange, Analyte
+from models import Specimen, AnalyteRange, Analyte
 
 FUZZY_MATCH_RATIO = 80
 
@@ -16,6 +16,18 @@ FUZZY_MATCH_RATIO = 80
 specimens: dict[str, Specimen] = {}  # id, Specimen
 no_loinc_count = 0
 analyte_count = 0
+
+# Collected parsing problems, rendered as a structured report at the end of
+# the run. Each bucket holds items of a stable shape so the report loop can
+# stay dumb.
+issues: dict[str, list] = {
+    "skipped_see_references": [],       # list[str]  (raw cell text)
+    "missing_loinc": [],                # list[str]  (analyte name)
+    "fuzzy_matches": [],                # list[tuple[str, str, int, str]]
+    "missing_factors": [],              # list[str]  (analyte name)
+    "unparseable_factors": [],          # list[tuple[str, str]]
+    "unparseable_ranges": [],           # list[tuple[str, str]]
+}
 
 
 def parse_conversion_factor(raw: str) -> float | None:
@@ -31,7 +43,8 @@ def parse_conversion_factor(raw: str) -> float | None:
     try:
         return float(s)
     except ValueError:
-        print(f"⚠️ Could not parse conversion factor {raw!r}, storing as None.")
+        # Caller is responsible for surfacing this via the issue tracker,
+        # because only the caller knows which analyte the raw value belongs to.
         return None
 
 
@@ -61,10 +74,7 @@ def parse_interval(range_str: str) -> AnalyteRange:
             lower_limit = float(range_str.strip(">"))
             upper_limit = None
     except ValueError:
-        print(
-            f"⚠️ Could not convert range '{range_str}' into proper values, saving as "
-            f"text."
-        )
+        # Caller is responsible for surfacing this via the issue tracker.
         return AnalyteRange(text=range_str)
     return AnalyteRange(lower_limit=lower_limit, upper_limit=upper_limit)
 
@@ -75,7 +85,7 @@ def parse_lab_values(
     """Parse Clinical Laboratory Reference Values HTML file."""
     analytes = []
     group_name = ""
-    global specimens, no_loinc_count, analyte_count
+    global specimens, no_loinc_count, analyte_count, issues
 
     # ------ CSV LOINC file ------
     # open loinc csv file and read it
@@ -127,7 +137,7 @@ def parse_lab_values(
             # Skip lines with (see...) references
             content = cell0.get_text()
             if re.match(r".*\(.*[sS]ee .*\)", str(content)):
-                print(f"Skipping '{content}'")
+                issues["skipped_see_references"].append(str(content).strip())
                 continue
 
             # Find all sup elements and process them
@@ -192,15 +202,31 @@ def parse_lab_values(
                     analyte_specimens.append(specimens[specimen_id])
             if not analyte_specimens:
                 raise ValueError(f"No specimens found for analyte: '{full_name}'")
+            traditional_range_raw = cells[2].get_text().strip()
+            si_range_raw = cells[5].get_text().strip()
+            raw_factor = cells[4].get_text()
+
+            traditional_range = parse_interval(traditional_range_raw)
+            si_range = parse_interval(si_range_raw)
+            factor = parse_conversion_factor(raw_factor)
+
+            if factor is None:
+                if raw_factor.strip():
+                    issues["unparseable_factors"].append((full_name, raw_factor.strip()))
+                else:
+                    issues["missing_factors"].append(full_name)
+            if traditional_range.text:
+                issues["unparseable_ranges"].append((full_name, traditional_range_raw))
+            if si_range.text:
+                issues["unparseable_ranges"].append((full_name, si_range_raw))
+
             analyte = Analyte(
                 name=full_name,
                 specimen=analyte_specimens,
-                traditional_reference_interval=parse_interval(
-                    cells[2].get_text().strip()
-                ),
+                traditional_reference_interval=traditional_range,
                 traditional_units=cells[3].get_text().strip(),
-                conversion_factor=parse_conversion_factor(cells[4].get_text()),
-                si_reference_interval=parse_interval(cells[5].get_text().strip()),
+                conversion_factor=factor,
+                si_reference_interval=si_range,
                 si_units=cells[6].get_text().strip(),
                 reference_range_is_age_dependent=reference_range_is_age_dependent,
             )
@@ -216,19 +242,19 @@ def parse_lab_values(
                 for loinc_num, data in loinc_data.items():
                     ratio = fuzz.ratio(data["COMPONENT"], analyte.name)
                     if ratio > FUZZY_MATCH_RATIO:
-                        print(
-                            f" ✅ [Fuzzy match ({ratio}%)] {analyte.name} <> "
-                            f"{data['COMPONENT']}"
-                        )
                         if analyte.loinc_num:
                             raise ValueError(
                                 f"Analyte {analyte.name} has already a LOINC number"
                             )
                         analyte.loinc_num = loinc_num
+                        issues["fuzzy_matches"].append(
+                            (analyte.name, data["COMPONENT"], ratio, loinc_num)
+                        )
                         break
 
             if not analyte.loinc_num:
                 no_loinc_count += 1
+                issues["missing_loinc"].append(analyte.name)
 
             analytes.append(analyte)
 
@@ -253,23 +279,59 @@ if __name__ == "__main__":
             ensure_ascii=False,
         )
 
-    # Print first few analytes
-    for i, analyte in enumerate(analytes[:10]):
-        print(f"{i+1}. {analyte.name}")
-        print(f"   Specimen: {analyte.specimen}")
-        print(
-            f"   Traditional: {analyte.traditional_reference_interval} {analyte.traditional_units}"
-        )
-        print(f"   Reference interval: {analyte.si_reference_interval}")
-        print(f"   Conversion factor: {analyte.conversion_factor}")
-        print(f"   SI: {analyte.si_units}")
-        print(f"   Loinc number: {analyte.loinc_num}")
-        print()
+    # ------------------------------------------------------------------
+    # Problem report — anything a human may want to investigate / fix
+    # ------------------------------------------------------------------
+    def _print_section(title: str, items: list, render) -> None:
+        if not items:
+            return
+        print(f"\n{title} ({len(items)}):")
+        for item in items:
+            print(f"  {render(item)}")
 
-    print(f"{analyte_count} analytes found.")
-    print(f"{no_loinc_count} analytes have no loinc numbers.")
     print()
+    print("=" * 72)
+    print("PROBLEM REPORT")
+    print("=" * 72)
 
-    print("Specimens:")
-    for id, sp in specimens.items():
-        print(f"{id:20}{sp.name}")
+    _print_section(
+        "Rows skipped via '(see …)' cross-reference",
+        issues["skipped_see_references"],
+        lambda s: f"- {s}",
+    )
+    _print_section(
+        "Analytes with no LOINC match (dropped from analytes.json)",
+        issues["missing_loinc"],
+        lambda s: f"- {s}",
+    )
+    _print_section(
+        "Fuzzy LOINC matches — verify manually",
+        sorted(issues["fuzzy_matches"], key=lambda t: t[2]),  # lowest score first
+        lambda t: f"[{t[2]}%] {t[0]!r}  ->  {t[3]} ({t[1]!r})",
+    )
+    _print_section(
+        "Analytes without numeric conversion factor "
+        "(shipped as null — callers get a clear ValueError)",
+        issues["missing_factors"],
+        lambda s: f"- {s}",
+    )
+    _print_section(
+        "Unparseable conversion-factor cells",
+        issues["unparseable_factors"],
+        lambda t: f"- {t[0]}: {t[1]!r}",
+    )
+    _print_section(
+        "Unparseable reference-range cells (stored as .text)",
+        issues["unparseable_ranges"],
+        lambda t: f"- {t[0]}: {t[1]!r}",
+    )
+
+    print()
+    print("=" * 72)
+    print(
+        f"Summary: {analyte_count} analytes parsed, "
+        f"{analyte_count - no_loinc_count} with LOINC, "
+        f"{no_loinc_count} without."
+    )
+    print(f"Specimens: {len(specimens)}")
+    print("=" * 72)
