@@ -1,1 +1,11 @@
-site_name: LabUnits
+site_name: labunits
+site_description: Convert laboratory analyte values between traditional and SI units, keyed by LOINC.
+repo_url: https://github.com/nerdocs/labunits
+
+nav:
+  - Overview: index.md
+  - Getting started: getting-started.md
+  - API reference: api.md
+  - Data model: data.md
+  - Data pipeline: pipeline.md
+  - Design decisions: design.md

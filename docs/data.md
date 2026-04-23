@@ -1,0 +1,89 @@
+# Data model
+
+The library ships a single data file: `src/labunits/data/analytes.json`.
+It is loaded lazily on first use, cached in a module-level dict, and
+never written to.
+
+## Top-level shape
+
+```json
+{
+  "<loinc-num>": { ...analyte entry... },
+  "<loinc-num>": { ...analyte entry... }
+}
+```
+
+The key is the LOINC number as a string (e.g. `"109547-0"`). LOINC codes
+are the canonical identifier throughout the library — names and
+abbreviations are only resolution conveniences.
+
+## Analyte entry
+
+Example (Acetone):
+
+```json
+"109547-0": {
+  "loinc_num": "109547-0",
+  "name": "Acetone",
+  "specimen": ["serum", "plasma"],
+  "traditional_units": "mg/dL",
+  "conversion_factor": "0.172",
+  "si_units": "mmol/L",
+  "traditional_reference_interval": {
+    "lower_limit": null,
+    "upper_limit": 2.0,
+    "text": ""
+  },
+  "si_reference_interval": {
+    "lower_limit": null,
+    "upper_limit": 0.34,
+    "text": ""
+  },
+  "reference_range_is_age_dependent": false
+}
+```
+
+### Fields
+
+| Field                                | Type                       | Notes                                                                            |
+|--------------------------------------|----------------------------|----------------------------------------------------------------------------------|
+| `loinc_num`                          | `str`                      | Duplicate of the outer key; kept for round-trippable records.                    |
+| `name`                               | `str`                      | Full analyte name as found in the AccessMedicine reference table.                |
+| `specimen`                           | `list[str]`                | Specimen IDs — e.g. `serum`, `plasma`, `red_blood_cells`.                        |
+| `traditional_units`                  | `str`                      | e.g. `mg/dL`, `g/dL`, `U/L`.                                                     |
+| `si_units`                           | `str`                      | e.g. `mmol/L`, `g/L`, `μKat/L`.                                                  |
+| `conversion_factor`                  | `str` (numeric)            | Stored as a string; the library parses it with `float(...)`.                     |
+| `traditional_reference_interval`     | `{lower_limit, upper_limit, text}` | `lower_limit`/`upper_limit` may be `null`; `text` holds the raw string when unparseable. |
+| `si_reference_interval`              | same as above              | —                                                                                |
+| `reference_range_is_age_dependent`   | `bool`                     | Informational only; the library does not apply age rules.                        |
+
+### Why is `conversion_factor` a string?
+
+Because the upstream source occasionally uses non-numeric tokens or
+composite expressions that the pipeline may carry through verbatim
+during development. Storing as string preserves the exact upstream
+representation; the runtime library parses it on demand.
+
+## What's *not* in the data
+
+- **No abbreviations** (yet). The API accepts abbreviations as a lookup
+  alias, but the current data set has none. The `_resolve_analyte_identifier`
+  code path is ready for them.
+- **No age/sex-stratified ranges.** Only a flag tells you that the
+  reference range varies by age; the actual strata are not encoded.
+- **No units grammar.** Units are opaque strings — the library never
+  parses them.
+- **No uncertainty or precision metadata.**
+
+## Loading behaviour
+
+- `_load_data()` reads the file exactly once and caches it in the
+  module-level `_analytes_data` dict.
+- Tests can replace that cache via `monkeypatch.setattr` — see
+  `tests/conftest.py` for the pattern.
+
+## Editing the data
+
+**Do not hand-edit `analytes.json`.** It is a build artefact of the
+[data pipeline](pipeline.md). Edits get overwritten the next time the
+pipeline runs.
