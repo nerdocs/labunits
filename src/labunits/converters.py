@@ -3,6 +3,9 @@ import math
 from pathlib import Path
 
 _analytes_data: dict[str, dict] = {}
+_name_index: dict[str, str] = {}
+_abbrev_index: dict[str, str] = {}
+_indexed_for: int | None = None
 
 type LoincNum = str
 
@@ -12,7 +15,7 @@ def _load_data() -> dict:
 
     The JSON file (``data/analytes.json``) is keyed by LOINC number; each entry
     holds ``name``, ``specimen``, ``traditional_units``, ``si_units``,
-    ``conversion_factor`` and reference intervals.
+    ``conversion_factor`` (numeric or ``null``) and reference intervals.
 
     Returns:
         dict: Mapping ``{loinc_num: {...}}``. Cached after the first call.
@@ -28,36 +31,61 @@ def _load_data() -> dict:
     return _analytes_data
 
 
+def _ensure_indexes() -> dict:
+    """Return the analyte data, rebuilding name/abbreviation indexes if stale.
+
+    The indexes are derived caches; they are rebuilt whenever the underlying
+    ``_analytes_data`` object changes (so tests can swap the cache and have
+    the indexes follow automatically).
+    """
+    global _indexed_for, _name_index, _abbrev_index
+    data = _load_data()
+    if _indexed_for != id(data):
+        _name_index = {
+            entry["name"].lower(): loinc
+            for loinc, entry in data.items()
+            if entry.get("name")
+        }
+        _abbrev_index = {
+            entry["abbreviation"].lower(): loinc
+            for loinc, entry in data.items()
+            if entry.get("abbreviation")
+        }
+        _indexed_for = id(data)
+    return data
+
+
 def _resolve_analyte_identifier(identifier: str) -> LoincNum:
     """Resolve a LOINC code, abbreviation or full name to a LOINC code.
 
     Lookup order:
         1. Exact LOINC match.
-        2. Case-insensitive match against ``abbreviation`` or ``name``.
-
-    Note:
-        The shipped ``analytes.json`` does not (yet) contain ``abbreviation``
-        fields, so abbreviation lookup is effectively a no-op today. It is
-        kept because it is part of the public API contract and will start
-        working once abbreviations are added to the data pipeline.
+        2. Case-insensitive match against ``name``.
+        3. Case-insensitive match against ``abbreviation`` (reserved — the
+           shipped ``analytes.json`` does not carry abbreviations yet).
 
     Raises:
         ValueError: if the identifier cannot be resolved.
     """
-    data = _load_data()
-
+    data = _ensure_indexes()
     if identifier in data:
         return identifier
 
     needle = identifier.lower()
-    for loinc, info in data.items():
-        if (
-            info.get("abbreviation", "").lower() == needle
-            or info.get("name", "").lower() == needle
-        ):
-            return loinc
+    if needle in _name_index:
+        return _name_index[needle]
+    if needle in _abbrev_index:
+        return _abbrev_index[needle]
 
     raise ValueError(f"Unknown analyte identifier: {identifier}")
+
+
+def _require_factor(loinc: LoincNum) -> float:
+    """Return the numeric conversion factor for ``loinc`` or raise ValueError."""
+    factor = _load_data()[loinc].get("conversion_factor")
+    if factor is None:
+        raise ValueError(f"No conversion factor available for {loinc}")
+    return float(factor)
 
 
 def si_unit(analyte: LoincNum | str) -> str:
@@ -77,9 +105,12 @@ def conversion_factor(analyte: LoincNum | str) -> float:
 
     ``si_value = traditional_value * factor`` — so multiply to go traditional→SI
     and divide to go SI→traditional.
+
+    Raises:
+        ValueError: if the analyte has no numeric factor (e.g. dimensionless
+            upstream entries such as Hemoglobin A2).
     """
-    loinc = _resolve_analyte_identifier(analyte)
-    return float(_load_data()[loinc]["conversion_factor"])
+    return _require_factor(_resolve_analyte_identifier(analyte))
 
 
 def to_si_unit(value: float, analyte: LoincNum | str) -> float:
@@ -92,10 +123,11 @@ def to_si_unit(value: float, analyte: LoincNum | str) -> float:
     Returns:
         The value expressed in the analyte's SI unit. ``inf``/``-inf``/``nan``
         are propagated unchanged.
-    """
-    loinc = _resolve_analyte_identifier(analyte)
-    factor = float(_load_data()[loinc]["conversion_factor"])
 
+    Raises:
+        ValueError: if the analyte is unknown or has no numeric factor.
+    """
+    factor = _require_factor(_resolve_analyte_identifier(analyte))
     if math.isinf(value) or math.isnan(value):
         return value
     return value * factor
@@ -111,10 +143,11 @@ def to_traditional_unit(value: float, analyte: LoincNum | str) -> float:
     Returns:
         The value expressed in the analyte's traditional unit.
         ``inf``/``-inf``/``nan`` are propagated unchanged.
-    """
-    loinc = _resolve_analyte_identifier(analyte)
-    factor = float(_load_data()[loinc]["conversion_factor"])
 
+    Raises:
+        ValueError: if the analyte is unknown or has no numeric factor.
+    """
+    factor = _require_factor(_resolve_analyte_identifier(analyte))
     if math.isinf(value) or math.isnan(value):
         return value
     return value / factor

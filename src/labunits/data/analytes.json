@@ -12,7 +12,7 @@
       "upper_limit": 2.0,
       "text": ""
     },
-    "conversion_factor": "0.172",
+    "conversion_factor": 0.172,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -33,7 +33,7 @@
       "upper_limit": 10.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "U/L",
     "si_reference_interval": {
       "lower_limit": 5.0,
@@ -54,7 +54,7 @@
       "upper_limit": 25.0,
       "text": ""
     },
-    "conversion_factor": "0.017",
+    "conversion_factor": 0.017,
     "si_units": "μKat/L",
     "si_reference_interval": {
       "lower_limit": 0.2,
@@ -75,7 +75,7 @@
       "upper_limit": 5.0,
       "text": ""
     },
-    "conversion_factor": "10",
+    "conversion_factor": 10.0,
     "si_units": "g/L",
     "si_reference_interval": {
       "lower_limit": 35.0,
@@ -96,7 +96,7 @@
       "upper_limit": 2.8,
       "text": ""
     },
-    "conversion_factor": "0.017",
+    "conversion_factor": 0.017,
     "si_units": "μKat/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -117,7 +117,7 @@
       "upper_limit": 7.5,
       "text": ""
     },
-    "conversion_factor": "0.017",
+    "conversion_factor": 0.017,
     "si_units": "μKat/L",
     "si_reference_interval": {
       "lower_limit": 0.02,
@@ -138,7 +138,7 @@
       "upper_limit": 30.0,
       "text": ""
     },
-    "conversion_factor": "0.0277",
+    "conversion_factor": 0.0277,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 0.19,
@@ -159,7 +159,7 @@
       "upper_limit": 20.0,
       "text": ""
     },
-    "conversion_factor": "2.77",
+    "conversion_factor": 2.77,
     "si_units": "nmol/day",
     "si_reference_interval": {
       "lower_limit": 8.0,
@@ -180,7 +180,7 @@
       "upper_limit": 120.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "U/L",
     "si_reference_interval": {
       "lower_limit": 50.0,
@@ -201,7 +201,7 @@
       "upper_limit": 120.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "g/L",
     "si_reference_interval": {
       "lower_limit": 0.5,
@@ -222,7 +222,7 @@
       "upper_limit": 300.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "g/L",
     "si_reference_interval": {
       "lower_limit": 1.3,
@@ -244,7 +244,7 @@
       "upper_limit": 6.0,
       "text": ""
     },
-    "conversion_factor": "37.06",
+    "conversion_factor": 37.06,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 0.0,
@@ -265,7 +265,7 @@
       "upper_limit": 130.0,
       "text": ""
     },
-    "conversion_factor": "0.017",
+    "conversion_factor": 0.017,
     "si_units": "μKat/L",
     "si_reference_interval": {
       "lower_limit": 0.46,
@@ -286,7 +286,7 @@
       "upper_limit": 205.0,
       "text": ""
     },
-    "conversion_factor": "0.0349",
+    "conversion_factor": 0.0349,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 2.6,
@@ -307,7 +307,7 @@
       "upper_limit": 25.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "ng/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -328,7 +328,7 @@
       "upper_limit": 60.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "ng/L",
     "si_reference_interval": {
       "lower_limit": 10.0,
@@ -349,7 +349,7 @@
       "upper_limit": 52.0,
       "text": ""
     },
-    "conversion_factor": "0.017",
+    "conversion_factor": 0.017,
     "si_units": "μKat/L",
     "si_reference_interval": {
       "lower_limit": 0.14,
@@ -370,7 +370,7 @@
       "upper_limit": 30.0,
       "text": ""
     },
-    "conversion_factor": "10",
+    "conversion_factor": 10.0,
     "si_units": "mg/L",
     "si_reference_interval": {
       "lower_limit": 210.0,
@@ -391,7 +391,7 @@
       "upper_limit": 151.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "g/L",
     "si_reference_interval": {
       "lower_limit": 0.8,
@@ -413,7 +413,7 @@
       "upper_limit": 123.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "g/L",
     "si_reference_interval": {
       "lower_limit": 0.5,
@@ -434,7 +434,7 @@
       "upper_limit": 2.4,
       "text": ""
     },
-    "conversion_factor": "57.4",
+    "conversion_factor": 57.4,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 21.0,
@@ -455,7 +455,7 @@
       "upper_limit": 0.91,
       "text": ""
     },
-    "conversion_factor": "75.7",
+    "conversion_factor": 75.7,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 30.0,
@@ -476,7 +476,7 @@
       "upper_limit": 48.0,
       "text": ""
     },
-    "conversion_factor": "0.017",
+    "conversion_factor": 0.017,
     "si_units": "μKat/L",
     "si_reference_interval": {
       "lower_limit": 0.34,
@@ -497,7 +497,7 @@
       "upper_limit": 77.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "ng/L",
     "si_reference_interval": {
       "lower_limit": 20.0,
@@ -518,7 +518,7 @@
       "upper_limit": 28.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 21.0,
@@ -539,7 +539,7 @@
       "upper_limit": 1.2,
       "text": ""
     },
-    "conversion_factor": "17.1",
+    "conversion_factor": 17.1,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 2.0,
@@ -561,7 +561,7 @@
       "upper_limit": 500.0,
       "text": ""
     },
-    "conversion_factor": "0.0041",
+    "conversion_factor": 0.0041,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 0.82,
@@ -582,7 +582,7 @@
       "upper_limit": 12.0,
       "text": ""
     },
-    "conversion_factor": "4.785",
+    "conversion_factor": 4.785,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 4.8,
@@ -604,7 +604,7 @@
       "upper_limit": 19.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "ng/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -625,7 +625,7 @@
       "upper_limit": 5.08,
       "text": ""
     },
-    "conversion_factor": "0.25",
+    "conversion_factor": 0.25,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 1.15,
@@ -646,7 +646,7 @@
       "upper_limit": 10.2,
       "text": ""
     },
-    "conversion_factor": "0.25",
+    "conversion_factor": 0.25,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 2.05,
@@ -669,7 +669,7 @@
       "upper_limit": 28.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 22.0,
@@ -690,7 +690,7 @@
       "upper_limit": 85.0,
       "text": ""
     },
-    "conversion_factor": "0.0186",
+    "conversion_factor": 0.0186,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 0.2,
@@ -711,7 +711,7 @@
       "upper_limit": 40.0,
       "text": ""
     },
-    "conversion_factor": "10",
+    "conversion_factor": 10.0,
     "si_units": "mg/L",
     "si_reference_interval": {
       "lower_limit": 200.0,
@@ -732,7 +732,7 @@
       "upper_limit": 132.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 118.0,
@@ -753,7 +753,7 @@
       "upper_limit": 28.0,
       "text": ""
     },
-    "conversion_factor": "19.2",
+    "conversion_factor": 19.2,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 13.4,
@@ -774,7 +774,7 @@
       "upper_limit": 3.0,
       "text": ""
     },
-    "conversion_factor": "52.05",
+    "conversion_factor": 52.05,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 60.0,
@@ -795,7 +795,7 @@
       "upper_limit": 2.4,
       "text": ""
     },
-    "conversion_factor": "57.1",
+    "conversion_factor": 57.1,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 20.0,
@@ -816,7 +816,7 @@
       "upper_limit": 140.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "Fraction of 1.0",
     "si_reference_interval": {
       "lower_limit": 0.6,
@@ -837,7 +837,7 @@
       "upper_limit": 200.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "Fraction of 1.0",
     "si_reference_interval": {
       "lower_limit": 0.5,
@@ -858,7 +858,7 @@
       "upper_limit": 1.0,
       "text": ""
     },
-    "conversion_factor": "16.97",
+    "conversion_factor": 16.97,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -879,7 +879,7 @@
       "upper_limit": 140.0,
       "text": ""
     },
-    "conversion_factor": "0.1574",
+    "conversion_factor": 0.1574,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 11.0,
@@ -900,7 +900,7 @@
       "upper_limit": 200.0,
       "text": ""
     },
-    "conversion_factor": "1.527",
+    "conversion_factor": 1.527,
     "si_units": "nmol/day",
     "si_reference_interval": {
       "lower_limit": null,
@@ -921,7 +921,7 @@
       "upper_limit": 100.0,
       "text": ""
     },
-    "conversion_factor": "2.76",
+    "conversion_factor": 2.76,
     "si_units": "nmol/day",
     "si_reference_interval": {
       "lower_limit": 80.0,
@@ -942,7 +942,7 @@
       "upper_limit": 3.5,
       "text": ""
     },
-    "conversion_factor": "0.333",
+    "conversion_factor": 0.333,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 0.17,
@@ -963,7 +963,7 @@
       "upper_limit": 200.0,
       "text": ""
     },
-    "conversion_factor": "0.017",
+    "conversion_factor": 0.017,
     "si_units": "μKat/L",
     "si_reference_interval": {
       "lower_limit": 0.85,
@@ -984,7 +984,7 @@
       "upper_limit": 2.0,
       "text": ""
     },
-    "conversion_factor": "8.84",
+    "conversion_factor": 8.84,
     "si_units": "mmol/day",
     "si_reference_interval": {
       "lower_limit": 8.8,
@@ -1005,7 +1005,7 @@
       "upper_limit": 1.4,
       "text": ""
     },
-    "conversion_factor": "83.3",
+    "conversion_factor": 83.3,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 33.0,
@@ -1026,7 +1026,7 @@
       "upper_limit": 36.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "IU/L",
     "si_reference_interval": {
       "lower_limit": 5.0,
@@ -1047,7 +1047,7 @@
       "upper_limit": 20.0,
       "text": ""
     },
-    "conversion_factor": "3.67",
+    "conversion_factor": 3.67,
     "si_units": "pmol/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -1069,7 +1069,7 @@
       "upper_limit": 100.0,
       "text": ""
     },
-    "conversion_factor": "7.08",
+    "conversion_factor": 7.08,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 283.0,
@@ -1090,7 +1090,7 @@
       "upper_limit": 15.0,
       "text": ""
     },
-    "conversion_factor": "1.04",
+    "conversion_factor": 1.04,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 3.0,
@@ -1111,7 +1111,7 @@
       "upper_limit": 25.0,
       "text": ""
     },
-    "conversion_factor": "0.0354",
+    "conversion_factor": 0.0354,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 0.28,
@@ -1133,7 +1133,7 @@
       "upper_limit": 60.0,
       "text": ""
     },
-    "conversion_factor": "4.20",
+    "conversion_factor": 4.2,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 126.0,
@@ -1154,7 +1154,7 @@
       "upper_limit": 200.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "μg/L",
     "si_reference_interval": {
       "lower_limit": 15.0,
@@ -1175,7 +1175,7 @@
       "upper_limit": 400.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "g/L",
     "si_reference_interval": {
       "lower_limit": 1.5,
@@ -1196,7 +1196,7 @@
       "upper_limit": 2.7,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 1.5,
@@ -1218,7 +1218,7 @@
       "upper_limit": 20.0,
       "text": ""
     },
-    "conversion_factor": "5.84",
+    "conversion_factor": 5.84,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 12.0,
@@ -1239,7 +1239,7 @@
       "upper_limit": 100.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "ng/L",
     "si_reference_interval": {
       "lower_limit": 20.0,
@@ -1260,7 +1260,7 @@
       "upper_limit": 80.0,
       "text": ""
     },
-    "conversion_factor": "0.05551",
+    "conversion_factor": 0.05551,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 2.8,
@@ -1281,7 +1281,7 @@
       "upper_limit": 14.0,
       "text": ""
     },
-    "conversion_factor": "0.0645",
+    "conversion_factor": 0.0645,
     "si_units": "U/mol of Hb",
     "si_reference_interval": {
       "lower_limit": 0.65,
@@ -1302,7 +1302,7 @@
       "upper_limit": 10.2,
       "text": ""
     },
-    "conversion_factor": "68.42",
+    "conversion_factor": 68.42,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 420.0,
@@ -1323,7 +1323,7 @@
       "upper_limit": 4.2,
       "text": ""
     },
-    "conversion_factor": "133.3",
+    "conversion_factor": 133.3,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 120.0,
@@ -1344,7 +1344,7 @@
       "upper_limit": null,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "Fraction of total Hb",
     "si_reference_interval": {
       "lower_limit": 6.5,
@@ -1365,7 +1365,7 @@
       "upper_limit": 180.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "g/L",
     "si_reference_interval": {
       "lower_limit": 0.4,
@@ -1386,7 +1386,7 @@
       "upper_limit": 3.5,
       "text": ""
     },
-    "conversion_factor": "",
+    "conversion_factor": null,
     "si_units": "Fraction of 1.0",
     "si_reference_interval": {
       "lower_limit": 2.0,
@@ -1407,7 +1407,7 @@
       "upper_limit": 1.7,
       "text": ""
     },
-    "conversion_factor": "64.5",
+    "conversion_factor": 64.5,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 32.0,
@@ -1428,7 +1428,7 @@
       "upper_limit": 199.0,
       "text": ""
     },
-    "conversion_factor": "0.03",
+    "conversion_factor": 0.03,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 0.8,
@@ -1449,7 +1449,7 @@
       "upper_limit": 0.55,
       "text": ""
     },
-    "conversion_factor": "76.3",
+    "conversion_factor": 76.3,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -1470,7 +1470,7 @@
       "upper_limit": 20.0,
       "text": ""
     },
-    "conversion_factor": "6.945",
+    "conversion_factor": 6.945,
     "si_units": "pmol/L",
     "si_reference_interval": {
       "lower_limit": 34.7,
@@ -1491,7 +1491,7 @@
       "upper_limit": 3.6,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "ng/L",
     "si_reference_interval": {
       "lower_limit": 1.0,
@@ -1512,7 +1512,7 @@
       "upper_limit": 450.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "μg/L",
     "si_reference_interval": {
       "lower_limit": 130.0,
@@ -1533,7 +1533,7 @@
       "upper_limit": 400.0,
       "text": ""
     },
-    "conversion_factor": "0.179",
+    "conversion_factor": 0.179,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 44.8,
@@ -1554,7 +1554,7 @@
       "upper_limit": 1.3,
       "text": ""
     },
-    "conversion_factor": "76.24",
+    "conversion_factor": 76.24,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 40.0,
@@ -1575,7 +1575,7 @@
       "upper_limit": 200.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "U/L",
     "si_reference_interval": {
       "lower_limit": 50.0,
@@ -1596,7 +1596,7 @@
       "upper_limit": 25.0,
       "text": ""
     },
-    "conversion_factor": "0.0483",
+    "conversion_factor": 0.0483,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -1617,7 +1617,7 @@
       "upper_limit": 2.3,
       "text": ""
     },
-    "conversion_factor": "76.3",
+    "conversion_factor": 76.3,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 75.0,
@@ -1638,7 +1638,7 @@
       "upper_limit": 3.5,
       "text": ""
     },
-    "conversion_factor": "68.5",
+    "conversion_factor": 68.5,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 80.0,
@@ -1659,7 +1659,7 @@
       "upper_limit": 2.1,
       "text": ""
     },
-    "conversion_factor": "0.5",
+    "conversion_factor": 0.5,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 0.65,
@@ -1680,7 +1680,7 @@
       "upper_limit": 12.0,
       "text": ""
     },
-    "conversion_factor": "18.2",
+    "conversion_factor": 18.2,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 182.0,
@@ -1701,7 +1701,7 @@
       "upper_limit": 59.0,
       "text": ""
     },
-    "conversion_factor": "4.99",
+    "conversion_factor": 4.99,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 3.0,
@@ -1723,7 +1723,7 @@
       "upper_limit": 1.5,
       "text": ""
     },
-    "conversion_factor": "0.0312",
+    "conversion_factor": 0.0312,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -1744,7 +1744,7 @@
       "upper_limit": 1.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "Fraction of total Hb",
     "si_reference_interval": {
       "lower_limit": null,
@@ -1765,7 +1765,7 @@
       "upper_limit": 0.6,
       "text": ""
     },
-    "conversion_factor": "67.1",
+    "conversion_factor": 67.1,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 6.0,
@@ -1786,7 +1786,7 @@
       "upper_limit": 2.0,
       "text": ""
     },
-    "conversion_factor": "85",
+    "conversion_factor": 85.0,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -1807,7 +1807,7 @@
       "upper_limit": 28.0,
       "text": ""
     },
-    "conversion_factor": "17",
+    "conversion_factor": 17.0,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 17.0,
@@ -1828,7 +1828,7 @@
       "upper_limit": 80.0,
       "text": ""
     },
-    "conversion_factor": "5.91",
+    "conversion_factor": 5.91,
     "si_units": "nmol/day",
     "si_reference_interval": {
       "lower_limit": 89.0,
@@ -1849,7 +1849,7 @@
       "upper_limit": 1.4,
       "text": ""
     },
-    "conversion_factor": "75.8",
+    "conversion_factor": 75.8,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 30.0,
@@ -1870,7 +1870,7 @@
       "upper_limit": 900.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "mmol/kg H2O",
     "si_reference_interval": {
       "lower_limit": 250.0,
@@ -1891,7 +1891,7 @@
       "upper_limit": 13.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "μg/L",
     "si_reference_interval": {
       "lower_limit": 3.0,
@@ -1912,7 +1912,7 @@
       "upper_limit": 2.4,
       "text": ""
     },
-    "conversion_factor": "11.4",
+    "conversion_factor": 11.4,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 11.0,
@@ -1933,7 +1933,7 @@
       "upper_limit": 100.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "μg/L",
     "si_reference_interval": {
       "lower_limit": 28.0,
@@ -1954,7 +1954,7 @@
       "upper_limit": 1.5,
       "text": ""
     },
-    "conversion_factor": "60.5",
+    "conversion_factor": 60.5,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 35.0,
@@ -1975,7 +1975,7 @@
       "upper_limit": 120.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "Fraction of 1.0",
     "si_reference_interval": {
       "lower_limit": 0.8,
@@ -1996,7 +1996,7 @@
       "upper_limit": 15.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "kIU/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -2017,7 +2017,7 @@
       "upper_limit": null,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "nmol/(s L)",
     "si_reference_interval": {
       "lower_limit": 7.0,
@@ -2038,7 +2038,7 @@
       "upper_limit": 5.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 3.5,
@@ -2059,7 +2059,7 @@
       "upper_limit": 2.5,
       "text": ""
     },
-    "conversion_factor": "2.97",
+    "conversion_factor": 2.97,
     "si_units": "μmol/day",
     "si_reference_interval": {
       "lower_limit": null,
@@ -2080,7 +2080,7 @@
       "upper_limit": 3.9,
       "text": ""
     },
-    "conversion_factor": "86.9",
+    "conversion_factor": 86.9,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 104.0,
@@ -2101,7 +2101,7 @@
       "upper_limit": 140.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "Fraction of 1.0",
     "si_reference_interval": {
       "lower_limit": 0.7,
@@ -2122,7 +2122,7 @@
       "upper_limit": 50.0,
       "text": ""
     },
-    "conversion_factor": "0.0177",
+    "conversion_factor": 0.0177,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 0.27,
@@ -2143,7 +2143,7 @@
       "upper_limit": 30.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "kIU/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -2164,7 +2164,7 @@
       "upper_limit": 234.0,
       "text": ""
     },
-    "conversion_factor": "0.0127",
+    "conversion_factor": 0.0127,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 0.74,
@@ -2185,7 +2185,7 @@
       "upper_limit": 2.0,
       "text": ""
     },
-    "conversion_factor": "95.2",
+    "conversion_factor": 95.2,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 65.0,
@@ -2206,7 +2206,7 @@
       "upper_limit": 1.5,
       "text": ""
     },
-    "conversion_factor": "34.7",
+    "conversion_factor": 34.7,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 17.4,
@@ -2227,7 +2227,7 @@
       "upper_limit": 20.0,
       "text": ""
     },
-    "conversion_factor": "1.1",
+    "conversion_factor": 1.1,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 4.0,
@@ -2248,7 +2248,7 @@
       "upper_limit": 142.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 136.0,
@@ -2269,7 +2269,7 @@
       "upper_limit": 25.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "ng/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -2290,7 +2290,7 @@
       "upper_limit": 240.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "ng/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -2311,7 +2311,7 @@
       "upper_limit": 1.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "Fraction of total Hb",
     "si_reference_interval": {
       "lower_limit": null,
@@ -2332,7 +2332,7 @@
       "upper_limit": 20.0,
       "text": ""
     },
-    "conversion_factor": "1.24",
+    "conversion_factor": 1.24,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": 4.0,
@@ -2353,7 +2353,7 @@
       "upper_limit": 2.1,
       "text": ""
     },
-    "conversion_factor": "80",
+    "conversion_factor": 80.0,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 24.0,
@@ -2375,7 +2375,7 @@
       "upper_limit": 85.0,
       "text": ""
     },
-    "conversion_factor": "0.0347",
+    "conversion_factor": 0.0347,
     "si_units": "nmol/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -2396,7 +2396,7 @@
       "upper_limit": 2.5,
       "text": ""
     },
-    "conversion_factor": "84",
+    "conversion_factor": 84.0,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 75.0,
@@ -2417,7 +2417,7 @@
       "upper_limit": 42.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "μg/L",
     "si_reference_interval": {
       "lower_limit": 3.0,
@@ -2439,7 +2439,7 @@
       "upper_limit": 20.0,
       "text": ""
     },
-    "conversion_factor": "2.95",
+    "conversion_factor": 2.95,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 15.0,
@@ -2461,7 +2461,7 @@
       "upper_limit": 190.0,
       "text": ""
     },
-    "conversion_factor": "0.01129",
+    "conversion_factor": 0.01129,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 0.11,
@@ -2482,7 +2482,7 @@
       "upper_limit": 480.0,
       "text": ""
     },
-    "conversion_factor": "0.0154",
+    "conversion_factor": 0.0154,
     "si_units": "pmol/L",
     "si_reference_interval": {
       "lower_limit": 4.0,
@@ -2503,7 +2503,7 @@
       "upper_limit": 35.0,
       "text": ""
     },
-    "conversion_factor": "0.01",
+    "conversion_factor": 0.01,
     "si_units": "Fraction of 1.0",
     "si_reference_interval": {
       "lower_limit": 0.25,
@@ -2524,7 +2524,7 @@
       "upper_limit": 0.1,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "μg/L",
     "si_reference_interval": {
       "lower_limit": 0.0,
@@ -2545,7 +2545,7 @@
       "upper_limit": 1.5,
       "text": ""
     },
-    "conversion_factor": "48.97",
+    "conversion_factor": 48.97,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 25.0,
@@ -2566,7 +2566,7 @@
       "upper_limit": 1.6,
       "text": ""
     },
-    "conversion_factor": "55.19",
+    "conversion_factor": 55.19,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 20.0,
@@ -2587,7 +2587,7 @@
       "upper_limit": 23.0,
       "text": ""
     },
-    "conversion_factor": "0.0357",
+    "conversion_factor": 0.0357,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 2.9,
@@ -2608,7 +2608,7 @@
       "upper_limit": 2.5,
       "text": ""
     },
-    "conversion_factor": "1.693",
+    "conversion_factor": 1.693,
     "si_units": "μmol/day",
     "si_reference_interval": {
       "lower_limit": 0.1,
@@ -2629,7 +2629,7 @@
       "upper_limit": 3.7,
       "text": ""
     },
-    "conversion_factor": "85.5",
+    "conversion_factor": 85.5,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 145.0,
@@ -2650,7 +2650,7 @@
       "upper_limit": 50.0,
       "text": ""
     },
-    "conversion_factor": "1",
+    "conversion_factor": 1.0,
     "si_units": "ng/L",
     "si_reference_interval": {
       "lower_limit": null,
@@ -2671,7 +2671,7 @@
       "upper_limit": 150.0,
       "text": ""
     },
-    "conversion_factor": "0.153",
+    "conversion_factor": 0.153,
     "si_units": "μmol/L",
     "si_reference_interval": {
       "lower_limit": 7.7,

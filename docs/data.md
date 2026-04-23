@@ -27,7 +27,7 @@ Example (Acetone):
   "name": "Acetone",
   "specimen": ["serum", "plasma"],
   "traditional_units": "mg/dL",
-  "conversion_factor": "0.172",
+  "conversion_factor": 0.172,
   "si_units": "mmol/L",
   "traditional_reference_interval": {
     "lower_limit": null,
@@ -52,17 +52,20 @@ Example (Acetone):
 | `specimen`                           | `list[str]`                | Specimen IDs — e.g. `serum`, `plasma`, `red_blood_cells`.                        |
 | `traditional_units`                  | `str`                      | e.g. `mg/dL`, `g/dL`, `U/L`.                                                     |
 | `si_units`                           | `str`                      | e.g. `mmol/L`, `g/L`, `μKat/L`.                                                  |
-| `conversion_factor`                  | `str` (numeric)            | Stored as a string; the library parses it with `float(...)`.                     |
+| `conversion_factor`                  | `float \| null`            | Numeric; `null` if the upstream source publishes no factor (dimensionless).      |
 | `traditional_reference_interval`     | `{lower_limit, upper_limit, text}` | `lower_limit`/`upper_limit` may be `null`; `text` holds the raw string when unparseable. |
 | `si_reference_interval`              | same as above              | —                                                                                |
 | `reference_range_is_age_dependent`   | `bool`                     | Informational only; the library does not apply age rules.                        |
 
-### Why is `conversion_factor` a string?
+### `conversion_factor` can be `null`
 
-Because the upstream source occasionally uses non-numeric tokens or
-composite expressions that the pipeline may carry through verbatim
-during development. Storing as string preserves the exact upstream
-representation; the runtime library parses it on demand.
+Most analytes publish a numeric traditional↔SI factor. A small number of
+upstream entries are genuinely dimensionless (e.g. Hemoglobin A2 —
+`% total Hb` ↔ `Fraction of 1.0`) and ship without a factor; in that
+case the field is `null`. The runtime still exposes `name`, `specimen`
+and both unit strings for those entries — only the conversion functions
+(`to_si_unit`, `to_traditional_unit`, `conversion_factor`) raise
+`ValueError("No conversion factor available for ...")`.
 
 ## What's *not* in the data
 
@@ -79,7 +82,12 @@ representation; the runtime library parses it on demand.
 
 - `_load_data()` reads the file exactly once and caches it in the
   module-level `_analytes_data` dict.
-- Tests can replace that cache via `monkeypatch.setattr` — see
+- On first lookup, `_ensure_indexes()` builds two derived dicts —
+  `_name_index` (name → LOINC) and `_abbrev_index` (abbreviation →
+  LOINC) — so that name-based lookups are **O(1)** instead of O(n).
+  The indexes are rebuilt automatically when the data dict is
+  replaced (detected via `id()`), which keeps tests straightforward.
+- Tests can replace the data cache via `monkeypatch.setattr` — see
   `tests/conftest.py` for the pattern.
 
 ## Editing the data

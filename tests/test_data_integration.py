@@ -46,29 +46,26 @@ def test_shipped_entries_have_required_keys(real_data):
 # conversion factor — typically when the units are dimensionless or
 # percentage-based and no factor is published. Track them explicitly
 # so genuine regressions stand out.
-KNOWN_NON_NUMERIC_FACTORS = {"27345-8"}  # Hemoglobin A2 (% total Hb <-> fraction)
+KNOWN_MISSING_FACTORS = {"27345-8"}  # Hemoglobin A2 (% total Hb <-> fraction)
 
 
-def test_shipped_conversion_factors_are_numeric_when_present(real_data):
-    bad = set()
-    for loinc, entry in real_data.items():
-        factor = entry["conversion_factor"]
-        if factor == "":
-            continue
-        try:
-            float(factor)
-        except (TypeError, ValueError):
-            bad.add(loinc)
-    assert bad == set(), f"Non-numeric conversion factors: {bad}"
+def test_shipped_conversion_factors_are_numeric_or_null(real_data):
+    bad = {
+        loinc: entry["conversion_factor"]
+        for loinc, entry in real_data.items()
+        if entry["conversion_factor"] is not None
+        and not isinstance(entry["conversion_factor"], (int, float))
+    }
+    assert bad == {}, f"Non-numeric conversion factors: {bad}"
 
 
-def test_known_non_numeric_factor_entries_are_still_in_data(real_data):
+def test_known_missing_factor_entries_are_still_in_data(real_data):
     # Documents the upstream gap so it's visible. If the source data
     # gets fixed and a factor is added, this test will fail and prompt
-    # us to drop the entry from KNOWN_NON_NUMERIC_FACTORS.
-    for loinc in KNOWN_NON_NUMERIC_FACTORS:
+    # us to drop the entry from KNOWN_MISSING_FACTORS.
+    for loinc in KNOWN_MISSING_FACTORS:
         assert loinc in real_data
-        assert real_data[loinc]["conversion_factor"] == ""
+        assert real_data[loinc]["conversion_factor"] is None
 
 
 def test_acetone_round_trip_against_real_data(real_data):

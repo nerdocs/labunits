@@ -27,7 +27,7 @@ class Analyte(BaseModel):
     specimen: list[Specimen]
     traditional_reference_interval: AnalyteRange
     traditional_units: str
-    conversion_factor: str
+    conversion_factor: Optional[float] = None
     si_reference_interval: AnalyteRange
     si_units: str
     reference_range_is_age_dependent: bool = False

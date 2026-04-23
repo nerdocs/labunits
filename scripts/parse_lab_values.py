@@ -18,6 +18,23 @@ no_loinc_count = 0
 analyte_count = 0
 
 
+def parse_conversion_factor(raw: str) -> float | None:
+    """Parse the conversion-factor cell into a numeric factor.
+
+    Returns ``None`` when the cell is blank or cannot be parsed as a number —
+    some AccessMedicine rows (e.g. % <-> fraction) intentionally ship
+    without a numeric factor.
+    """
+    s = (raw or "").strip()
+    if not s:
+        return None
+    try:
+        return float(s)
+    except ValueError:
+        print(f"⚠️ Could not parse conversion factor {raw!r}, storing as None.")
+        return None
+
+
 def parse_interval(range_str: str) -> AnalyteRange:
     """Parses a string representing an interval and returns an AnalyteRange.
 
@@ -182,7 +199,7 @@ def parse_lab_values(
                     cells[2].get_text().strip()
                 ),
                 traditional_units=cells[3].get_text().strip(),
-                conversion_factor=cells[4].get_text().strip(),
+                conversion_factor=parse_conversion_factor(cells[4].get_text()),
                 si_reference_interval=parse_interval(cells[5].get_text().strip()),
                 si_units=cells[6].get_text().strip(),
                 reference_range_is_age_dependent=reference_range_is_age_dependent,
