@@ -3,47 +3,14 @@ import re
 from pathlib import Path
 from bs4 import BeautifulSoup
 from bs4.element import NavigableString
-from pydantic import BaseModel
 from thefuzz import fuzz
+from scripts.models import Specimen, AnalyteRange, Analyte
 
 FUZZY_MATCH_RATIO = 80
 
 
-class Specimen(BaseModel):
-    id: str
-    name: str
-
-    def __str__(self):
-        return self.name
-
-
 # TODO: AnalyteGroups
 # TODO: ranges as separate entities
-
-
-class Analyte(BaseModel):
-    name: str
-    specimen: list[Specimen]
-    traditional_reference_interval: str
-    traditional_units: str
-    conversion_factor: str
-    si_reference_interval: str
-    si_units: str
-    reference_range_is_age_dependent: bool = False
-    loinc_num: str = ""
-
-    def to_json(self):
-        return {
-            "name": self.name,
-            "specimen": [specimen.id for specimen in self.specimen],
-            "traditional_reference_interval": self.traditional_reference_interval,
-            "traditional_units": self.traditional_units,
-            "conversion_factor": self.conversion_factor,
-            "si_reference_interval": self.si_reference_interval,
-            "si_units": self.si_units,
-            "reference_range_is_age_dependent": self.reference_range_is_age_dependent,
-            "loinc_num": self.loinc_num,
-        }
 
 
 specimens: dict[str, Specimen] = {}  # id, Specimen
@@ -51,12 +18,46 @@ no_loinc_count = 0
 analyte_count = 0
 
 
+def parse_interval(range_str: str) -> AnalyteRange:
+    """Parses a string representing an interval and returns an AnalyteRange.
+
+    The given range string can contain a "from - to" interval, or a "less than" or
+    "greater than" expression:
+    - 40-90
+    - <3.45
+    - >200
+
+    If it cant be determined, it returns an AnalyteRange with a string representation.
+    """
+    # parse lower and upper limits
+    lower_limit = None
+    upper_limit = None
+    try:
+        if "-" in range_str:
+            lower_limit, upper_limit = range_str.split("-")
+            lower_limit = float(lower_limit.strip())
+            upper_limit = float(upper_limit.strip())
+        elif "<" in range_str:
+            upper_limit = float(range_str.strip("<"))
+            lower_limit = None
+        elif ">" in range_str:
+            lower_limit = float(range_str.strip(">"))
+            upper_limit = None
+    except ValueError:
+        print(
+            f"⚠️ Could not convert range '{range_str}' into proper values, saving as "
+            f"text."
+        )
+        return AnalyteRange(text=range_str)
+    return AnalyteRange(lower_limit=lower_limit, upper_limit=upper_limit)
+
+
 def parse_lab_values(
     loinc_file_path: str | Path, html_file_path: str | Path
 ) -> list[Analyte]:
     """Parse Clinical Laboratory Reference Values HTML file."""
     analytes = []
-    current_header = ""
+    group_name = ""
     global specimens, no_loinc_count, analyte_count
 
     # ------ CSV LOINC file ------
@@ -140,14 +141,14 @@ def parse_lab_values(
             name = cell0.get_text().rstrip()
 
             if len(cells) < 7 or cells[1].get_text() == "":
-                current_header = name
-                print(f"Found new header for next analytes: '{current_header}'")
+                group_name = name
+                print(f"Found new group for next analytes: '{group_name}'")
                 continue
             # Check if this is a subtype (starts with spaces)
-            if name.startswith(" ") or name.startswith("\t"):
+            if name.startswith(" ") or name.startswith(" ") or name.startswith("\t"):
                 # This is a subtype, prepend with current header
                 subtype_name = name.strip()
-                full_name = f"{current_header}, {subtype_name}"
+                full_name = f"{group_name}, {subtype_name}"
             else:
                 full_name = name
 
@@ -177,10 +178,12 @@ def parse_lab_values(
             analyte = Analyte(
                 name=full_name,
                 specimen=analyte_specimens,
-                traditional_reference_interval=cells[2].get_text().strip(),
+                traditional_reference_interval=parse_interval(
+                    cells[2].get_text().strip()
+                ),
                 traditional_units=cells[3].get_text().strip(),
                 conversion_factor=cells[4].get_text().strip(),
-                si_reference_interval=cells[5].get_text().strip(),
+                si_reference_interval=parse_interval(cells[5].get_text().strip()),
                 si_units=cells[6].get_text().strip(),
                 reference_range_is_age_dependent=reference_range_is_age_dependent,
             )
@@ -226,8 +229,12 @@ if __name__ == "__main__":
 
     target_path = current_path.parent / "src" / "labunits" / "data"
     with Path.open(target_path / "analytes.json", "w", encoding="utf-8") as file:
-        # use pydantic to serialize the list of Analyte objects to JSON
-        json.dump([analyte.to_json() for analyte in analytes], file, indent=2)
+        json.dump(
+            {a.loinc_num: a.to_json() for a in analytes if a.loinc_num},
+            file,
+            indent=2,
+            ensure_ascii=False,
+        )
 
     # Print first few analytes
     for i, analyte in enumerate(analytes[:10]):

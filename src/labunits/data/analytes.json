@@ -1,0 +1,2683 @@
+{
+  "109547-0": {
+    "loinc_num": "109547-0",
+    "name": "Acetone",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 2.0,
+      "text": ""
+    },
+    "conversion_factor": "0.172",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 0.34,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "1708-7": {
+    "loinc_num": "1708-7",
+    "name": "Acetylcholinesterase",
+    "specimen": [
+      "red_blood_cells"
+    ],
+    "traditional_units": "U/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 5.0,
+      "upper_limit": 10.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "U/L",
+    "si_reference_interval": {
+      "lower_limit": 5.0,
+      "upper_limit": 10.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "1722-8": {
+    "loinc_num": "1722-8",
+    "name": "Adenosine deaminase",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "U/L",
+    "traditional_reference_interval": {
+      "lower_limit": 11.5,
+      "upper_limit": 25.0,
+      "text": ""
+    },
+    "conversion_factor": "0.017",
+    "si_units": "μKat/L",
+    "si_reference_interval": {
+      "lower_limit": 0.2,
+      "upper_limit": 0.43,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "100158-5": {
+    "loinc_num": "100158-5",
+    "name": "Albumin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "g/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 3.5,
+      "upper_limit": 5.0,
+      "text": ""
+    },
+    "conversion_factor": "10",
+    "si_units": "g/L",
+    "si_reference_interval": {
+      "lower_limit": 35.0,
+      "upper_limit": 50.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "1760-8": {
+    "loinc_num": "1760-8",
+    "name": "Alcohol dehydrogenase",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "U/L",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 2.8,
+      "text": ""
+    },
+    "conversion_factor": "0.017",
+    "si_units": "μKat/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 0.05,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "11036-1": {
+    "loinc_num": "11036-1",
+    "name": "Aldolase",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "U/L",
+    "traditional_reference_interval": {
+      "lower_limit": 1.0,
+      "upper_limit": 7.5,
+      "text": ""
+    },
+    "conversion_factor": "0.017",
+    "si_units": "μKat/L",
+    "si_reference_interval": {
+      "lower_limit": 0.02,
+      "upper_limit": 0.13,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "15012-8": {
+    "loinc_num": "15012-8",
+    "name": "Aldosterone (upright)",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "ng/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 7.0,
+      "upper_limit": 30.0,
+      "text": ""
+    },
+    "conversion_factor": "0.0277",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 0.19,
+      "upper_limit": 0.83,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "110770-5": {
+    "loinc_num": "110770-5",
+    "name": "Aldosterone",
+    "specimen": [
+      "urine_24_h"
+    ],
+    "traditional_units": "μg/24 h",
+    "traditional_reference_interval": {
+      "lower_limit": 3.0,
+      "upper_limit": 20.0,
+      "text": ""
+    },
+    "conversion_factor": "2.77",
+    "si_units": "nmol/day",
+    "si_reference_interval": {
+      "lower_limit": 8.0,
+      "upper_limit": 55.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "109532-2": {
+    "loinc_num": "109532-2",
+    "name": "Alkaline phosphatase",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "U/L",
+    "traditional_reference_interval": {
+      "lower_limit": 50.0,
+      "upper_limit": 120.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "U/L",
+    "si_reference_interval": {
+      "lower_limit": 50.0,
+      "upper_limit": 120.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "100744-2": {
+    "loinc_num": "100744-2",
+    "name": "α1-Acid glycoprotein",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 50.0,
+      "upper_limit": 120.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "g/L",
+    "si_reference_interval": {
+      "lower_limit": 0.5,
+      "upper_limit": 1.2,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "1835-8": {
+    "loinc_num": "1835-8",
+    "name": "α2-Macroglobulin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 130.0,
+      "upper_limit": 300.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "g/L",
+    "si_reference_interval": {
+      "lower_limit": 1.3,
+      "upper_limit": 3.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "111257-2": {
+    "loinc_num": "111257-2",
+    "name": "Aluminum",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 6.0,
+      "text": ""
+    },
+    "conversion_factor": "37.06",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 0.0,
+      "upper_limit": 222.4,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "111464-4": {
+    "loinc_num": "111464-4",
+    "name": "Amylase",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "U/L",
+    "traditional_reference_interval": {
+      "lower_limit": 27.0,
+      "upper_limit": 130.0,
+      "text": ""
+    },
+    "conversion_factor": "0.017",
+    "si_units": "μKat/L",
+    "si_reference_interval": {
+      "lower_limit": 0.46,
+      "upper_limit": 2.21,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "107493-9": {
+    "loinc_num": "107493-9",
+    "name": "Androstenedione, male",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 75.0,
+      "upper_limit": 205.0,
+      "text": ""
+    },
+    "conversion_factor": "0.0349",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 2.6,
+      "upper_limit": 7.2,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "15031-8": {
+    "loinc_num": "15031-8",
+    "name": "Angiotensin I",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "pg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 25.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "ng/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 25.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "15032-6": {
+    "loinc_num": "15032-6",
+    "name": "Angiotensin II",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "pg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 10.0,
+      "upper_limit": 60.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "ng/L",
+    "si_reference_interval": {
+      "lower_limit": 10.0,
+      "upper_limit": 60.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "12480-0": {
+    "loinc_num": "12480-0",
+    "name": "Angiotensin-converting enzyme (ACE)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "U/L",
+    "traditional_reference_interval": {
+      "lower_limit": 8.0,
+      "upper_limit": 52.0,
+      "text": ""
+    },
+    "conversion_factor": "0.017",
+    "si_units": "μKat/L",
+    "si_reference_interval": {
+      "lower_limit": 0.14,
+      "upper_limit": 0.88,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "109855-7": {
+    "loinc_num": "109855-7",
+    "name": "Antithrombin III",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 21.0,
+      "upper_limit": 30.0,
+      "text": ""
+    },
+    "conversion_factor": "10",
+    "si_units": "mg/L",
+    "si_reference_interval": {
+      "lower_limit": 210.0,
+      "upper_limit": 300.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "1883-8": {
+    "loinc_num": "1883-8",
+    "name": "Apolipoprotein A, Male",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 80.0,
+      "upper_limit": 151.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "g/L",
+    "si_reference_interval": {
+      "lower_limit": 0.8,
+      "upper_limit": 1.5,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "1884-6": {
+    "loinc_num": "1884-6",
+    "name": "Apolipoprotein B, Male",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 50.0,
+      "upper_limit": 123.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "g/L",
+    "si_reference_interval": {
+      "lower_limit": 0.5,
+      "upper_limit": 1.2,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "13387-6": {
+    "loinc_num": "13387-6",
+    "name": "Arginine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.37,
+      "upper_limit": 2.4,
+      "text": ""
+    },
+    "conversion_factor": "57.4",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 21.0,
+      "upper_limit": 138.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "13388-4": {
+    "loinc_num": "13388-4",
+    "name": "Asparagine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.4,
+      "upper_limit": 0.91,
+      "text": ""
+    },
+    "conversion_factor": "75.7",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 30.0,
+      "upper_limit": 69.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "110764-8": {
+    "loinc_num": "110764-8",
+    "name": "Aspartate aminotransferase (AST, SGOT)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "U/L",
+    "traditional_reference_interval": {
+      "lower_limit": 20.0,
+      "upper_limit": 48.0,
+      "text": ""
+    },
+    "conversion_factor": "0.017",
+    "si_units": "μKat/L",
+    "si_reference_interval": {
+      "lower_limit": 0.34,
+      "upper_limit": 0.82,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "11208-6": {
+    "loinc_num": "11208-6",
+    "name": "Atrial natriuretic hormone",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "pg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 20.0,
+      "upper_limit": 77.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "ng/L",
+    "si_reference_interval": {
+      "lower_limit": 20.0,
+      "upper_limit": 77.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "110408-2": {
+    "loinc_num": "110408-2",
+    "name": "Bicarbonate",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mEq/L",
+    "traditional_reference_interval": {
+      "lower_limit": 21.0,
+      "upper_limit": 28.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 21.0,
+      "upper_limit": 28.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "74434-2": {
+    "loinc_num": "74434-2",
+    "name": "Bilirubin, Total",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.3,
+      "upper_limit": 1.2,
+      "text": ""
+    },
+    "conversion_factor": "17.1",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 2.0,
+      "upper_limit": 18.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "1980-2": {
+    "loinc_num": "1980-2",
+    "name": "Biotin",
+    "specimen": [
+      "whole_blood",
+      "serum"
+    ],
+    "traditional_units": "pg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 200.0,
+      "upper_limit": 500.0,
+      "text": ""
+    },
+    "conversion_factor": "0.0041",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 0.82,
+      "upper_limit": 2.05,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "109064-6": {
+    "loinc_num": "109064-6",
+    "name": "Bismuth",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "μg/L",
+    "traditional_reference_interval": {
+      "lower_limit": 1.0,
+      "upper_limit": 12.0,
+      "text": ""
+    },
+    "conversion_factor": "4.785",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 4.8,
+      "upper_limit": 57.4,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "15035-9": {
+    "loinc_num": "15035-9",
+    "name": "Calcitonin",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "pg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 19.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "ng/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 19.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "109564-5": {
+    "loinc_num": "109564-5",
+    "name": "Calcium, ionized",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 4.6,
+      "upper_limit": 5.08,
+      "text": ""
+    },
+    "conversion_factor": "0.25",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 1.15,
+      "upper_limit": 1.27,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "86915-6": {
+    "loinc_num": "86915-6",
+    "name": "Calcium, total",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 8.2,
+      "upper_limit": 10.2,
+      "text": ""
+    },
+    "conversion_factor": "0.25",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 2.05,
+      "upper_limit": 2.55,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "11211-0": {
+    "loinc_num": "11211-0",
+    "name": "Carbon dioxide",
+    "specimen": [
+      "serum",
+      "plasma",
+      "venous_blood"
+    ],
+    "traditional_units": "mEq/L",
+    "traditional_reference_interval": {
+      "lower_limit": 22.0,
+      "upper_limit": 28.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 22.0,
+      "upper_limit": 28.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "14642-3": {
+    "loinc_num": "14642-3",
+    "name": "β-Carotene",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "μg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 10.0,
+      "upper_limit": 85.0,
+      "text": ""
+    },
+    "conversion_factor": "0.0186",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 0.2,
+      "upper_limit": 1.6,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "102090-8": {
+    "loinc_num": "102090-8",
+    "name": "Ceruloplasmin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 20.0,
+      "upper_limit": 40.0,
+      "text": ""
+    },
+    "conversion_factor": "10",
+    "si_units": "mg/L",
+    "si_reference_interval": {
+      "lower_limit": 200.0,
+      "upper_limit": 400.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "100745-9": {
+    "loinc_num": "100745-9",
+    "name": "Chloride",
+    "specimen": [
+      "csf"
+    ],
+    "traditional_units": "mEq/L",
+    "traditional_reference_interval": {
+      "lower_limit": 118.0,
+      "upper_limit": 132.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 118.0,
+      "upper_limit": 132.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "111396-8": {
+    "loinc_num": "111396-8",
+    "name": "Chromium",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "μg/L",
+    "traditional_reference_interval": {
+      "lower_limit": 0.7,
+      "upper_limit": 28.0,
+      "text": ""
+    },
+    "conversion_factor": "19.2",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 13.4,
+      "upper_limit": 538.6,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "10567-6": {
+    "loinc_num": "10567-6",
+    "name": "Citrate",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 1.2,
+      "upper_limit": 3.0,
+      "text": ""
+    },
+    "conversion_factor": "52.05",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 60.0,
+      "upper_limit": 160.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "13392-6": {
+    "loinc_num": "13392-6",
+    "name": "Citrulline",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.4,
+      "upper_limit": 2.4,
+      "text": ""
+    },
+    "conversion_factor": "57.1",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 20.0,
+      "upper_limit": 135.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "10520-5": {
+    "loinc_num": "10520-5",
+    "name": "Coagulation factor XII",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "%",
+    "traditional_reference_interval": {
+      "lower_limit": 60.0,
+      "upper_limit": 140.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "Fraction of 1.0",
+    "si_reference_interval": {
+      "lower_limit": 0.6,
+      "upper_limit": 1.4,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "21001-3": {
+    "loinc_num": "21001-3",
+    "name": "Coagulation factor VIII",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "%",
+    "traditional_reference_interval": {
+      "lower_limit": 50.0,
+      "upper_limit": 200.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "Fraction of 1.0",
+    "si_reference_interval": {
+      "lower_limit": 0.5,
+      "upper_limit": 2.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "111165-7": {
+    "loinc_num": "111165-7",
+    "name": "Cobalt",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "μg/L",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 1.0,
+      "text": ""
+    },
+    "conversion_factor": "16.97",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 17.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "109635-3": {
+    "loinc_num": "109635-3",
+    "name": "Copper",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "μg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 70.0,
+      "upper_limit": 140.0,
+      "text": ""
+    },
+    "conversion_factor": "0.1574",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 11.0,
+      "upper_limit": 22.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "11212-8": {
+    "loinc_num": "11212-8",
+    "name": "Coproporphyrin",
+    "specimen": [
+      "urine"
+    ],
+    "traditional_units": "μg/24 h",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 200.0,
+      "text": ""
+    },
+    "conversion_factor": "1.527",
+    "si_units": "nmol/day",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 300.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "11040-3": {
+    "loinc_num": "11040-3",
+    "name": "Cortisol, free",
+    "specimen": [
+      "urine"
+    ],
+    "traditional_units": "μg/24 h",
+    "traditional_reference_interval": {
+      "lower_limit": 30.0,
+      "upper_limit": 100.0,
+      "text": ""
+    },
+    "conversion_factor": "2.76",
+    "si_units": "nmol/day",
+    "si_reference_interval": {
+      "lower_limit": 80.0,
+      "upper_limit": 280.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "109075-2": {
+    "loinc_num": "109075-2",
+    "name": "C-peptide",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.5,
+      "upper_limit": 3.5,
+      "text": ""
+    },
+    "conversion_factor": "0.333",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 0.17,
+      "upper_limit": 1.17,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "16688-4": {
+    "loinc_num": "16688-4",
+    "name": "Creatine kinase (CK)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "U/L",
+    "traditional_reference_interval": {
+      "lower_limit": 50.0,
+      "upper_limit": 200.0,
+      "text": ""
+    },
+    "conversion_factor": "0.017",
+    "si_units": "μKat/L",
+    "si_reference_interval": {
+      "lower_limit": 0.85,
+      "upper_limit": 3.4,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "101475-2": {
+    "loinc_num": "101475-2",
+    "name": "Creatinine",
+    "specimen": [
+      "urine"
+    ],
+    "traditional_units": "g/24 h",
+    "traditional_reference_interval": {
+      "lower_limit": 1.0,
+      "upper_limit": 2.0,
+      "text": ""
+    },
+    "conversion_factor": "8.84",
+    "si_units": "mmol/day",
+    "si_reference_interval": {
+      "lower_limit": 8.8,
+      "upper_limit": 17.7,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "111405-7": {
+    "loinc_num": "111405-7",
+    "name": "Cystine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.4,
+      "upper_limit": 1.4,
+      "text": ""
+    },
+    "conversion_factor": "83.3",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 33.0,
+      "upper_limit": 117.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "108713-9": {
+    "loinc_num": "108713-9",
+    "name": "Erythropoietin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mU/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 5.0,
+      "upper_limit": 36.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "IU/L",
+    "si_reference_interval": {
+      "lower_limit": 5.0,
+      "upper_limit": 36.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "110449-6": {
+    "loinc_num": "110449-6",
+    "name": "Estradiol (unconjugated), male",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "pg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 20.0,
+      "text": ""
+    },
+    "conversion_factor": "3.67",
+    "si_units": "pmol/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 184.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "14720-7": {
+    "loinc_num": "14720-7",
+    "name": "Ethosuximide",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "μg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 40.0,
+      "upper_limit": 100.0,
+      "text": ""
+    },
+    "conversion_factor": "7.08",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 283.0,
+      "upper_limit": 708.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "50544-6": {
+    "loinc_num": "50544-6",
+    "name": "Everolimus",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "ng/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 3.0,
+      "upper_limit": 15.0,
+      "text": ""
+    },
+    "conversion_factor": "1.04",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 3.0,
+      "upper_limit": 16.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "15066-4": {
+    "loinc_num": "15066-4",
+    "name": "Fatty acids (nonesterified)",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 8.0,
+      "upper_limit": 25.0,
+      "text": ""
+    },
+    "conversion_factor": "0.0354",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 0.28,
+      "upper_limit": 0.89,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "32600-9": {
+    "loinc_num": "32600-9",
+    "name": "Felbamate",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "μg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 30.0,
+      "upper_limit": 60.0,
+      "text": ""
+    },
+    "conversion_factor": "4.20",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 126.0,
+      "upper_limit": 252.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "110280-5": {
+    "loinc_num": "110280-5",
+    "name": "Ferritin",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 15.0,
+      "upper_limit": 200.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "μg/L",
+    "si_reference_interval": {
+      "lower_limit": 15.0,
+      "upper_limit": 200.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "110888-5": {
+    "loinc_num": "110888-5",
+    "name": "Fibrinogen",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 150.0,
+      "upper_limit": 400.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "g/L",
+    "si_reference_interval": {
+      "lower_limit": 1.5,
+      "upper_limit": 4.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "15069-8": {
+    "loinc_num": "15069-8",
+    "name": "Fructosamine",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mmol/L",
+    "traditional_reference_interval": {
+      "lower_limit": 1.5,
+      "upper_limit": 2.7,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 1.5,
+      "upper_limit": 2.7,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "103668-0": {
+    "loinc_num": "103668-0",
+    "name": "Gabapentin",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "μg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 2.0,
+      "upper_limit": 20.0,
+      "text": ""
+    },
+    "conversion_factor": "5.84",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 12.0,
+      "upper_limit": 117.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "108701-4": {
+    "loinc_num": "108701-4",
+    "name": "Glucagon",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "pg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 20.0,
+      "upper_limit": 100.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "ng/L",
+    "si_reference_interval": {
+      "lower_limit": 20.0,
+      "upper_limit": 100.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "100746-7": {
+    "loinc_num": "100746-7",
+    "name": "Glucose",
+    "specimen": [
+      "csf"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 50.0,
+      "upper_limit": 80.0,
+      "text": ""
+    },
+    "conversion_factor": "0.05551",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 2.8,
+      "upper_limit": 4.4,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "110934-7": {
+    "loinc_num": "110934-7",
+    "name": "Glucose-6-phosphate dehydrogenase",
+    "specimen": [
+      "red_blood_cells"
+    ],
+    "traditional_units": "U/g of Hb",
+    "traditional_reference_interval": {
+      "lower_limit": 10.0,
+      "upper_limit": 14.0,
+      "text": ""
+    },
+    "conversion_factor": "0.0645",
+    "si_units": "U/mol of Hb",
+    "si_reference_interval": {
+      "lower_limit": 0.65,
+      "upper_limit": 0.9,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "13396-7": {
+    "loinc_num": "13396-7",
+    "name": "Glutamine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 6.1,
+      "upper_limit": 10.2,
+      "text": ""
+    },
+    "conversion_factor": "68.42",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 420.0,
+      "upper_limit": 700.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "13397-5": {
+    "loinc_num": "13397-5",
+    "name": "Glycine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.9,
+      "upper_limit": 4.2,
+      "text": ""
+    },
+    "conversion_factor": "133.3",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 120.0,
+      "upper_limit": 560.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "19806-9": {
+    "loinc_num": "19806-9",
+    "name": "Diagnosis",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "% of total Hb",
+    "traditional_reference_interval": {
+      "lower_limit": 6.5,
+      "upper_limit": null,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "Fraction of total Hb",
+    "si_reference_interval": {
+      "lower_limit": 6.5,
+      "upper_limit": null,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "110648-3": {
+    "loinc_num": "110648-3",
+    "name": "Haptoglobin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 40.0,
+      "upper_limit": 180.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "g/L",
+    "si_reference_interval": {
+      "lower_limit": 0.4,
+      "upper_limit": 1.8,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "27345-8": {
+    "loinc_num": "27345-8",
+    "name": "Hemoglobin A2",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "% total Hb",
+    "traditional_reference_interval": {
+      "lower_limit": 2.0,
+      "upper_limit": 3.5,
+      "text": ""
+    },
+    "conversion_factor": "",
+    "si_units": "Fraction of 1.0",
+    "si_reference_interval": {
+      "lower_limit": 2.0,
+      "upper_limit": 3.5,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "13398-3": {
+    "loinc_num": "13398-3",
+    "name": "Histidine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.5,
+      "upper_limit": 1.7,
+      "text": ""
+    },
+    "conversion_factor": "64.5",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 32.0,
+      "upper_limit": 110.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "101174-1": {
+    "loinc_num": "101174-1",
+    "name": "17α-Hydroxyprogesterone, male",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 27.0,
+      "upper_limit": 199.0,
+      "text": ""
+    },
+    "conversion_factor": "0.03",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 0.8,
+      "upper_limit": 6.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "108721-2": {
+    "loinc_num": "108721-2",
+    "name": "Hydroxyproline",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 0.55,
+      "text": ""
+    },
+    "conversion_factor": "76.3",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 42.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "106158-9": {
+    "loinc_num": "106158-9",
+    "name": "Insulin",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "μU/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 5.0,
+      "upper_limit": 20.0,
+      "text": ""
+    },
+    "conversion_factor": "6.945",
+    "si_units": "pmol/L",
+    "si_reference_interval": {
+      "lower_limit": 34.7,
+      "upper_limit": 138.9,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "104688-7": {
+    "loinc_num": "104688-7",
+    "name": "Males",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "pg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 1.0,
+      "upper_limit": 3.6,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "ng/L",
+    "si_reference_interval": {
+      "lower_limit": 1.0,
+      "upper_limit": 3.6,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "25528-1": {
+    "loinc_num": "25528-1",
+    "name": "Insulin-like growth factor",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 130.0,
+      "upper_limit": 450.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "μg/L",
+    "si_reference_interval": {
+      "lower_limit": 130.0,
+      "upper_limit": 450.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "108738-6": {
+    "loinc_num": "108738-6",
+    "name": "Iron-binding capacity",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "μg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 250.0,
+      "upper_limit": 400.0,
+      "text": ""
+    },
+    "conversion_factor": "0.179",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 44.8,
+      "upper_limit": 71.6,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "13402-3": {
+    "loinc_num": "13402-3",
+    "name": "Isoleucine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.5,
+      "upper_limit": 1.3,
+      "text": ""
+    },
+    "conversion_factor": "76.24",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 40.0,
+      "upper_limit": 100.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "108610-7": {
+    "loinc_num": "108610-7",
+    "name": "Lactate dehydrogenase (LDH)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "U/L",
+    "traditional_reference_interval": {
+      "lower_limit": 50.0,
+      "upper_limit": 200.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "U/L",
+    "si_reference_interval": {
+      "lower_limit": 50.0,
+      "upper_limit": 200.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "10368-9": {
+    "loinc_num": "10368-9",
+    "name": "Lead",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "μg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 25.0,
+      "text": ""
+    },
+    "conversion_factor": "0.0483",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 1.21,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "13403-1": {
+    "loinc_num": "13403-1",
+    "name": "Leucine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 1.0,
+      "upper_limit": 2.3,
+      "text": ""
+    },
+    "conversion_factor": "76.3",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 75.0,
+      "upper_limit": 175.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "13375-1": {
+    "loinc_num": "13375-1",
+    "name": "Lysine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 1.2,
+      "upper_limit": 3.5,
+      "text": ""
+    },
+    "conversion_factor": "68.5",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 80.0,
+      "upper_limit": 240.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "10880-3": {
+    "loinc_num": "10880-3",
+    "name": "Magnesium",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mEq/L",
+    "traditional_reference_interval": {
+      "lower_limit": 1.3,
+      "upper_limit": 2.1,
+      "text": ""
+    },
+    "conversion_factor": "0.5",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 0.65,
+      "upper_limit": 1.05,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "111129-3": {
+    "loinc_num": "111129-3",
+    "name": "Manganese",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "μg/L",
+    "traditional_reference_interval": {
+      "lower_limit": 10.0,
+      "upper_limit": 12.0,
+      "text": ""
+    },
+    "conversion_factor": "18.2",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 182.0,
+      "upper_limit": 218.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "109629-6": {
+    "loinc_num": "109629-6",
+    "name": "Mercury",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "μg/L",
+    "traditional_reference_interval": {
+      "lower_limit": 0.6,
+      "upper_limit": 59.0,
+      "text": ""
+    },
+    "conversion_factor": "4.99",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 3.0,
+      "upper_limit": 294.4,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "109658-5": {
+    "loinc_num": "109658-5",
+    "name": "Methanol",
+    "specimen": [
+      "whole_blood",
+      "serum"
+    ],
+    "traditional_units": "mg/L",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 1.5,
+      "text": ""
+    },
+    "conversion_factor": "0.0312",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 0.05,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "109592-6": {
+    "loinc_num": "109592-6",
+    "name": "Methemoglobin",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "% of total Hb",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 1.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "Fraction of total Hb",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 0.01,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "13376-9": {
+    "loinc_num": "13376-9",
+    "name": "Methionine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.1,
+      "upper_limit": 0.6,
+      "text": ""
+    },
+    "conversion_factor": "67.1",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 6.0,
+      "upper_limit": 40.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "10873-8": {
+    "loinc_num": "10873-8",
+    "name": "β2-Microglobulin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "μg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 2.0,
+      "text": ""
+    },
+    "conversion_factor": "85",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 170.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "111409-9": {
+    "loinc_num": "111409-9",
+    "name": "Nickel",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "μg/L",
+    "traditional_reference_interval": {
+      "lower_limit": 1.0,
+      "upper_limit": 28.0,
+      "text": ""
+    },
+    "conversion_factor": "17",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 17.0,
+      "upper_limit": 476.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "111145-9": {
+    "loinc_num": "111145-9",
+    "name": "Norepinephrine",
+    "specimen": [
+      "urine"
+    ],
+    "traditional_units": "μg/24 h",
+    "traditional_reference_interval": {
+      "lower_limit": 15.0,
+      "upper_limit": 80.0,
+      "text": ""
+    },
+    "conversion_factor": "5.91",
+    "si_units": "nmol/day",
+    "si_reference_interval": {
+      "lower_limit": 89.0,
+      "upper_limit": 473.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "13379-3": {
+    "loinc_num": "13379-3",
+    "name": "Ornithine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.4,
+      "upper_limit": 1.4,
+      "text": ""
+    },
+    "conversion_factor": "75.8",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 30.0,
+      "upper_limit": 106.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "85382-0": {
+    "loinc_num": "85382-0",
+    "name": "Osmolality",
+    "specimen": [
+      "urine"
+    ],
+    "traditional_units": "mOsm/kg H2O",
+    "traditional_reference_interval": {
+      "lower_limit": 250.0,
+      "upper_limit": 900.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "mmol/kg H2O",
+    "si_reference_interval": {
+      "lower_limit": 250.0,
+      "upper_limit": 900.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "108805-3": {
+    "loinc_num": "108805-3",
+    "name": "Osteocalcin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 3.0,
+      "upper_limit": 13.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "μg/L",
+    "si_reference_interval": {
+      "lower_limit": 3.0,
+      "upper_limit": 13.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "111445-3": {
+    "loinc_num": "111445-3",
+    "name": "Oxalate",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/L",
+    "traditional_reference_interval": {
+      "lower_limit": 1.0,
+      "upper_limit": 2.4,
+      "text": ""
+    },
+    "conversion_factor": "11.4",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 11.0,
+      "upper_limit": 27.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "2736-7": {
+    "loinc_num": "2736-7",
+    "name": "Pepsinogen I",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 28.0,
+      "upper_limit": 100.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "μg/L",
+    "si_reference_interval": {
+      "lower_limit": 28.0,
+      "upper_limit": 100.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "109502-5": {
+    "loinc_num": "109502-5",
+    "name": "Phenylalanine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.6,
+      "upper_limit": 1.5,
+      "text": ""
+    },
+    "conversion_factor": "60.5",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 35.0,
+      "upper_limit": 90.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "5970-9": {
+    "loinc_num": "5970-9",
+    "name": "Plasminogen",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "%",
+    "traditional_reference_interval": {
+      "lower_limit": 80.0,
+      "upper_limit": 120.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "Fraction of 1.0",
+    "si_reference_interval": {
+      "lower_limit": 0.8,
+      "upper_limit": 1.2,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "17466-4": {
+    "loinc_num": "17466-4",
+    "name": "Plasminogen activator inhibitor",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "IU/mL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 15.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "kIU/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 15.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "12810-8": {
+    "loinc_num": "12810-8",
+    "name": "Porphobilinogen deaminase",
+    "specimen": [
+      "red_blood_cells"
+    ],
+    "traditional_units": "nmol/s/L",
+    "traditional_reference_interval": {
+      "lower_limit": 7.0,
+      "upper_limit": null,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "nmol/(s L)",
+    "si_reference_interval": {
+      "lower_limit": 7.0,
+      "upper_limit": null,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "108797-2": {
+    "loinc_num": "108797-2",
+    "name": "Potassium",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mEq/L",
+    "traditional_reference_interval": {
+      "lower_limit": 3.5,
+      "upper_limit": 5.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 3.5,
+      "upper_limit": 5.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "110592-3": {
+    "loinc_num": "110592-3",
+    "name": "Pregnanetriol",
+    "specimen": [
+      "urine"
+    ],
+    "traditional_units": "mg/24 h",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 2.5,
+      "text": ""
+    },
+    "conversion_factor": "2.97",
+    "si_units": "μmol/day",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 7.5,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "13412-2": {
+    "loinc_num": "13412-2",
+    "name": "Proline",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 1.2,
+      "upper_limit": 3.9,
+      "text": ""
+    },
+    "conversion_factor": "86.9",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 104.0,
+      "upper_limit": 340.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "4671-4": {
+    "loinc_num": "4671-4",
+    "name": "Protein C",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "%",
+    "traditional_reference_interval": {
+      "lower_limit": 70.0,
+      "upper_limit": 140.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "Fraction of 1.0",
+    "si_reference_interval": {
+      "lower_limit": 0.7,
+      "upper_limit": 1.4,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "110344-9": {
+    "loinc_num": "110344-9",
+    "name": "Protoporphyrin",
+    "specimen": [
+      "red_blood_cells"
+    ],
+    "traditional_units": "μg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 15.0,
+      "upper_limit": 50.0,
+      "text": ""
+    },
+    "conversion_factor": "0.0177",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 0.27,
+      "upper_limit": 0.89,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "105081-4": {
+    "loinc_num": "105081-4",
+    "name": "Rheumatoid factor",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "IU/mL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 30.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "kIU/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 30.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "111095-6": {
+    "loinc_num": "111095-6",
+    "name": "Selenium",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "μg/L",
+    "traditional_reference_interval": {
+      "lower_limit": 58.0,
+      "upper_limit": 234.0,
+      "text": ""
+    },
+    "conversion_factor": "0.0127",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 0.74,
+      "upper_limit": 2.97,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "13414-8": {
+    "loinc_num": "13414-8",
+    "name": "Serine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.7,
+      "upper_limit": 2.0,
+      "text": ""
+    },
+    "conversion_factor": "95.2",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 65.0,
+      "upper_limit": 193.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "13967-5": {
+    "loinc_num": "13967-5",
+    "name": "Sex hormone-binding globulin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "μg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.5,
+      "upper_limit": 1.5,
+      "text": ""
+    },
+    "conversion_factor": "34.7",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 17.4,
+      "upper_limit": 52.1,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "29247-4": {
+    "loinc_num": "29247-4",
+    "name": "Sirolimus",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "ng/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 4.0,
+      "upper_limit": 20.0,
+      "text": ""
+    },
+    "conversion_factor": "1.1",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 4.0,
+      "upper_limit": 22.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "111263-0": {
+    "loinc_num": "111263-0",
+    "name": "Sodium",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mEq/L",
+    "traditional_reference_interval": {
+      "lower_limit": 136.0,
+      "upper_limit": 142.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 136.0,
+      "upper_limit": 142.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "109614-8": {
+    "loinc_num": "109614-8",
+    "name": "Somatostatin",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "pg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 25.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "ng/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 25.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "2971-0": {
+    "loinc_num": "2971-0",
+    "name": "Substance P",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "pg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 240.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "ng/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 240.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "4683-9": {
+    "loinc_num": "4683-9",
+    "name": "Sulfhemoglobin",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "% of total Hb",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 1.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "Fraction of total Hb",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 0.01,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "110878-6": {
+    "loinc_num": "110878-6",
+    "name": "Tacrolimus",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "ng/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 3.0,
+      "upper_limit": 20.0,
+      "text": ""
+    },
+    "conversion_factor": "1.24",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": 4.0,
+      "upper_limit": 25.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "13415-5": {
+    "loinc_num": "13415-5",
+    "name": "Taurine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.3,
+      "upper_limit": 2.1,
+      "text": ""
+    },
+    "conversion_factor": "80",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 24.0,
+      "upper_limit": 168.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "103227-5": {
+    "loinc_num": "103227-5",
+    "name": "Testosterone, female",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ng/dL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 85.0,
+      "text": ""
+    },
+    "conversion_factor": "0.0347",
+    "si_units": "nmol/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": null,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "13416-3": {
+    "loinc_num": "13416-3",
+    "name": "Threonine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.9,
+      "upper_limit": 2.5,
+      "text": ""
+    },
+    "conversion_factor": "84",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 75.0,
+      "upper_limit": 210.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "100796-2": {
+    "loinc_num": "100796-2",
+    "name": "Thyroglobulin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 3.0,
+      "upper_limit": 42.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "μg/L",
+    "si_reference_interval": {
+      "lower_limit": 3.0,
+      "upper_limit": 42.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "17713-9": {
+    "loinc_num": "17713-9",
+    "name": "Topiramate",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "μg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 5.0,
+      "upper_limit": 20.0,
+      "text": ""
+    },
+    "conversion_factor": "2.95",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 15.0,
+      "upper_limit": 59.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "108346-8": {
+    "loinc_num": "108346-8",
+    "name": "Triglycerides",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 10.0,
+      "upper_limit": 190.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01129",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 0.11,
+      "upper_limit": 2.15,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "111063-4": {
+    "loinc_num": "111063-4",
+    "name": "Triiodothyronine, free (FT3)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "pg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 260.0,
+      "upper_limit": 480.0,
+      "text": ""
+    },
+    "conversion_factor": "0.0154",
+    "si_units": "pmol/L",
+    "si_reference_interval": {
+      "lower_limit": 4.0,
+      "upper_limit": 7.4,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "3050-2": {
+    "loinc_num": "3050-2",
+    "name": "Triiodothyronine, resin uptake",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "%",
+    "traditional_reference_interval": {
+      "lower_limit": 25.0,
+      "upper_limit": 35.0,
+      "text": ""
+    },
+    "conversion_factor": "0.01",
+    "si_units": "Fraction of 1.0",
+    "si_reference_interval": {
+      "lower_limit": 0.25,
+      "upper_limit": 0.35,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "101915-7": {
+    "loinc_num": "101915-7",
+    "name": "Troponin T (cardiac)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.0,
+      "upper_limit": 0.1,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "μg/L",
+    "si_reference_interval": {
+      "lower_limit": 0.0,
+      "upper_limit": 0.1,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "13418-9": {
+    "loinc_num": "13418-9",
+    "name": "Tryptophan",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.5,
+      "upper_limit": 1.5,
+      "text": ""
+    },
+    "conversion_factor": "48.97",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 25.0,
+      "upper_limit": 73.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "101539-5": {
+    "loinc_num": "101539-5",
+    "name": "Tyrosine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 0.4,
+      "upper_limit": 1.6,
+      "text": ""
+    },
+    "conversion_factor": "55.19",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 20.0,
+      "upper_limit": 90.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "108689-1": {
+    "loinc_num": "108689-1",
+    "name": "Urea nitrogen (BUN)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 8.0,
+      "upper_limit": 23.0,
+      "text": ""
+    },
+    "conversion_factor": "0.0357",
+    "si_units": "mmol/L",
+    "si_reference_interval": {
+      "lower_limit": 2.9,
+      "upper_limit": 8.2,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "108002-7": {
+    "loinc_num": "108002-7",
+    "name": "Urobilinogen",
+    "specimen": [
+      "urine"
+    ],
+    "traditional_units": "mg/24 h",
+    "traditional_reference_interval": {
+      "lower_limit": 0.05,
+      "upper_limit": 2.5,
+      "text": ""
+    },
+    "conversion_factor": "1.693",
+    "si_units": "μmol/day",
+    "si_reference_interval": {
+      "lower_limit": 0.1,
+      "upper_limit": 4.2,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "13419-7": {
+    "loinc_num": "13419-7",
+    "name": "Valine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 1.7,
+      "upper_limit": 3.7,
+      "text": ""
+    },
+    "conversion_factor": "85.5",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 145.0,
+      "upper_limit": 315.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "108687-5": {
+    "loinc_num": "108687-5",
+    "name": "Vasoactive intestinal polypeptide",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "pg/mL",
+    "traditional_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 50.0,
+      "text": ""
+    },
+    "conversion_factor": "1",
+    "si_units": "ng/L",
+    "si_reference_interval": {
+      "lower_limit": null,
+      "upper_limit": 50.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  },
+  "10633-6": {
+    "loinc_num": "10633-6",
+    "name": "Zinc",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "μg/dL",
+    "traditional_reference_interval": {
+      "lower_limit": 50.0,
+      "upper_limit": 150.0,
+      "text": ""
+    },
+    "conversion_factor": "0.153",
+    "si_units": "μmol/L",
+    "si_reference_interval": {
+      "lower_limit": 7.7,
+      "upper_limit": 23.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": false
+  }
+}
