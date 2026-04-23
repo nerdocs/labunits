@@ -100,10 +100,27 @@ issues: dict[str, list] = {
     "missing_loinc": [],                # list[str]  (analyte name)
     "ambiguous_exact_matches": [],      # list[tuple[str, list[str]]]
     "fuzzy_matches": [],                # list[tuple[str, str, int, str]]
+    "pinned_matches": [],               # list[tuple[str, str]]   (analyte, loinc)
+    "pinned_no_match": [],              # list[str]               (analyte)
     "missing_factors": [],              # list[str]  (analyte name)
     "unparseable_factors": [],          # list[tuple[str, str]]
     "unparseable_ranges": [],           # list[tuple[str, str]]
 }
+
+
+def _load_manual_mapping(path: Path) -> dict[str, str | None]:
+    """Load analyte-name -> LOINC overrides from ``manual_loinc_mapping.json``.
+
+    Keys starting with ``_`` are ignored, so the file can carry inline
+    documentation (``_comment``) without polluting the mapping. Missing file
+    returns an empty mapping rather than raising; the pipeline should still
+    run before anyone has written the first override.
+    """
+    if not path.exists():
+        return {}
+    with path.open("r", encoding="utf-8") as fh:
+        raw = json.load(fh)
+    return {k: v for k, v in raw.items() if not k.startswith("_")}
 
 
 def parse_conversion_factor(raw: str) -> float | None:
@@ -156,12 +173,20 @@ def parse_interval(range_str: str) -> AnalyteRange:
 
 
 def parse_lab_values(
-    loinc_file_path: str | Path, html_file_path: str | Path
+    loinc_file_path: str | Path,
+    html_file_path: str | Path,
+    manual_mapping: dict[str, str | None] | None = None,
 ) -> list[Analyte]:
-    """Parse Clinical Laboratory Reference Values HTML file."""
+    """Parse Clinical Laboratory Reference Values HTML file.
+
+    ``manual_mapping`` lets callers pin specific analyte names to a LOINC
+    (string) or to "no match, don't try" (None). Entries there always win
+    over the exact and fuzzy matchers below.
+    """
     analytes = []
     group_name = ""
     global specimens, no_loinc_count, analyte_count, issues
+    manual_mapping = manual_mapping or {}
 
     # ------ CSV LOINC file ------
     # open loinc csv file and read it
@@ -319,12 +344,41 @@ def parse_lab_values(
                 reference_range_is_age_dependent=reference_range_is_age_dependent,
             )
             # ---- LOINC matching ----
+            # Step 0: manual override. If the operator has pinned this
+            # analyte in manual_loinc_mapping.json, obey it unconditionally
+            # (either a forced LOINC, or a deliberate "no match").
+            # A specimen-qualified key ``name@specimen`` wins over the bare
+            # ``name`` — needed when the same analyte name appears in the
+            # source with different specimens (e.g. Osmolality in serum vs urine).
             # Step 1: normalized exact match (O(1)).
             # Step 2: fuzzy match over all LOINC components, but only among
             # candidates that pass the structural guards. We collect ALL
             # qualifying candidates and take the highest-scoring one, instead
             # of the old "first-over-threshold-wins" which lumped coagulation
             # factors V/VI/VII/IX/X/XI/XII all onto the same LOINC.
+            specimen_id = analyte_specimens[0].id if analyte_specimens else ""
+            mapping_key = None
+            if f"{analyte.name}@{specimen_id}" in manual_mapping:
+                mapping_key = f"{analyte.name}@{specimen_id}"
+            elif analyte.name in manual_mapping:
+                mapping_key = analyte.name
+            if mapping_key is not None:
+                pinned = manual_mapping[mapping_key]
+                if pinned is None:
+                    issues["pinned_no_match"].append(mapping_key)
+                else:
+                    analyte.loinc_num = pinned
+                    issues["pinned_matches"].append((mapping_key, pinned))
+                    if pinned not in loinc_data:
+                        print(
+                            f"⚠️  Manual mapping pins {analyte.name!r} to "
+                            f"{pinned}, which is not in the LOINC CSV."
+                        )
+                analytes.append(analyte)
+                if not analyte.loinc_num:
+                    no_loinc_count += 1
+                continue
+
             analyte_norm = _normalize_name(analyte.name)
 
             if analyte_norm in loinc_by_norm:
@@ -372,9 +426,13 @@ if __name__ == "__main__":
     # Example usage
     # get current path
     current_path = Path(__file__).parent.resolve()
+    manual_mapping = _load_manual_mapping(
+        current_path / "manual_loinc_mapping.json"
+    )
     analytes = parse_lab_values(
         current_path / "Loinc.csv",
         current_path / "Clinical Laboratory Reference Values.html",
+        manual_mapping=manual_mapping,
     )
 
     target_path = current_path.parent / "src" / "labunits" / "data"
@@ -404,6 +462,17 @@ if __name__ == "__main__":
     _print_section(
         "Rows skipped via '(see …)' cross-reference",
         issues["skipped_see_references"],
+        lambda s: f"- {s}",
+    )
+    _print_section(
+        "Manually pinned LOINCs (from manual_loinc_mapping.json)",
+        issues["pinned_matches"],
+        lambda t: f"- {t[0]}  ->  {t[1]}",
+    )
+    _print_section(
+        "Manually unpinned — no LOINC on purpose "
+        "(from manual_loinc_mapping.json)",
+        issues["pinned_no_match"],
         lambda s: f"- {s}",
     )
     _print_section(

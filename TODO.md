@@ -1,12 +1,5 @@
 ## Datenqualität
 
-* [x] **Hemoglobin A2 (LOINC 27345-8) hat keinen Konversionsfaktor.**
-      Gelöst: der Faktor ist jetzt `null` in der JSON, und `to_si_unit` /
-      `to_traditional_unit` / `conversion_factor` werfen einen sprechenden
-      `ValueError("No conversion factor available for 27345-8")`.
-      `si_unit` / `traditional_unit` funktionieren weiterhin.
-      Integrationstest `KNOWN_MISSING_FACTORS` dokumentiert den Upstream-Gap.
-
 * [ ] **333 von 474 geparsten Analyten bekommen keine LOINC-Zuordnung**
       (Fuzzy-Match-Threshold = 80 in `scripts/parse_lab_values.py`).
       Sie werden bei der JSON-Erzeugung über `if a.loinc_num` herausgefiltert,

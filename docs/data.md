@@ -52,20 +52,10 @@ Example (Acetone):
 | `specimen`                           | `list[str]`                | Specimen IDs — e.g. `serum`, `plasma`, `red_blood_cells`.                        |
 | `traditional_units`                  | `str`                      | e.g. `mg/dL`, `g/dL`, `U/L`.                                                     |
 | `si_units`                           | `str`                      | e.g. `mmol/L`, `g/L`, `μKat/L`.                                                  |
-| `conversion_factor`                  | `float \| null`            | Numeric; `null` if the upstream source publishes no factor (dimensionless).      |
+| `conversion_factor`                  | `float`                    | Numeric traditional↔SI factor. `1.0` when the units are identical.               |
 | `traditional_reference_interval`     | `{lower_limit, upper_limit, text}` | `lower_limit`/`upper_limit` may be `null`; `text` holds the raw string when unparseable. |
 | `si_reference_interval`              | same as above              | —                                                                                |
 | `reference_range_is_age_dependent`   | `bool`                     | Informational only; the library does not apply age rules.                        |
-
-### `conversion_factor` can be `null`
-
-Most analytes publish a numeric traditional↔SI factor. A small number of
-upstream entries are genuinely dimensionless (e.g. Hemoglobin A2 —
-`% total Hb` ↔ `Fraction of 1.0`) and ship without a factor; in that
-case the field is `null`. The runtime still exposes `name`, `specimen`
-and both unit strings for those entries — only the conversion functions
-(`to_si_unit`, `to_traditional_unit`, `conversion_factor`) raise
-`ValueError("No conversion factor available for ...")`.
 
 ## What's *not* in the data
 

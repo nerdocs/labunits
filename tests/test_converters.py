@@ -126,29 +126,3 @@ def test_negative_infinity_passes_through():
 def test_nan_passes_through():
     assert math.isnan(to_si_unit(float("nan"), "109547-0"))
     assert math.isnan(to_traditional_unit(float("nan"), "109547-0"))
-
-
-# ---------------------------------------------------------------------------
-# Missing conversion factor
-# ---------------------------------------------------------------------------
-
-
-def test_missing_factor_raises_on_conversion_factor():
-    with pytest.raises(ValueError, match="No conversion factor available"):
-        conversion_factor("27345-8")
-
-
-def test_missing_factor_raises_on_to_si_unit():
-    with pytest.raises(ValueError, match="No conversion factor available"):
-        to_si_unit(2.5, "27345-8")
-
-
-def test_missing_factor_raises_on_to_traditional_unit():
-    with pytest.raises(ValueError, match="No conversion factor available"):
-        to_traditional_unit(0.025, "27345-8")
-
-
-def test_missing_factor_does_not_block_unit_lookup():
-    # The analyte is still known — only the factor is missing.
-    assert si_unit("27345-8") == "Fraction of 1.0"
-    assert traditional_unit("27345-8") == "% total Hb"

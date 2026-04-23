@@ -15,7 +15,7 @@ def _load_data() -> dict:
 
     The JSON file (``data/analytes.json``) is keyed by LOINC number; each entry
     holds ``name``, ``specimen``, ``traditional_units``, ``si_units``,
-    ``conversion_factor`` (numeric or ``null``) and reference intervals.
+    ``conversion_factor`` and reference intervals.
 
     Returns:
         dict: Mapping ``{loinc_num: {...}}``. Cached after the first call.
@@ -80,14 +80,6 @@ def _resolve_analyte_identifier(identifier: str) -> LoincNum:
     raise ValueError(f"Unknown analyte identifier: {identifier}")
 
 
-def _require_factor(loinc: LoincNum) -> float:
-    """Return the numeric conversion factor for ``loinc`` or raise ValueError."""
-    factor = _load_data()[loinc].get("conversion_factor")
-    if factor is None:
-        raise ValueError(f"No conversion factor available for {loinc}")
-    return float(factor)
-
-
 def si_unit(analyte: LoincNum | str) -> str:
     """Return the SI unit string for the given analyte (e.g. ``"mmol/L"``)."""
     loinc = _resolve_analyte_identifier(analyte)
@@ -105,12 +97,9 @@ def conversion_factor(analyte: LoincNum | str) -> float:
 
     ``si_value = traditional_value * factor`` — so multiply to go traditional→SI
     and divide to go SI→traditional.
-
-    Raises:
-        ValueError: if the analyte has no numeric factor (e.g. dimensionless
-            upstream entries such as Hemoglobin A2).
     """
-    return _require_factor(_resolve_analyte_identifier(analyte))
+    loinc = _resolve_analyte_identifier(analyte)
+    return float(_load_data()[loinc]["conversion_factor"])
 
 
 def to_si_unit(value: float, analyte: LoincNum | str) -> float:
@@ -123,11 +112,8 @@ def to_si_unit(value: float, analyte: LoincNum | str) -> float:
     Returns:
         The value expressed in the analyte's SI unit. ``inf``/``-inf``/``nan``
         are propagated unchanged.
-
-    Raises:
-        ValueError: if the analyte is unknown or has no numeric factor.
     """
-    factor = _require_factor(_resolve_analyte_identifier(analyte))
+    factor = conversion_factor(analyte)
     if math.isinf(value) or math.isnan(value):
         return value
     return value * factor
@@ -143,11 +129,8 @@ def to_traditional_unit(value: float, analyte: LoincNum | str) -> float:
     Returns:
         The value expressed in the analyte's traditional unit.
         ``inf``/``-inf``/``nan`` are propagated unchanged.
-
-    Raises:
-        ValueError: if the analyte is unknown or has no numeric factor.
     """
-    factor = _require_factor(_resolve_analyte_identifier(analyte))
+    factor = conversion_factor(analyte)
     if math.isinf(value) or math.isnan(value):
         return value
     return value / factor

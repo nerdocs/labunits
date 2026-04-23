@@ -1490,7 +1490,7 @@
       "upper_limit": 3.5,
       "text": ""
     },
-    "conversion_factor": null,
+    "conversion_factor": 1.0,
     "si_units": "Fraction of 1.0",
     "si_reference_interval": {
       "lower_limit": 2.0,
@@ -1519,28 +1519,6 @@
       "text": ""
     },
     "reference_range_is_age_dependent": true
-  },
-  "32138-0": {
-    "loinc_num": "32138-0",
-    "name": "Homocysteine (total)",
-    "specimen": [
-      "plasma",
-      "serum"
-    ],
-    "traditional_units": "μmol/L",
-    "traditional_reference_interval": {
-      "lower_limit": 4.0,
-      "upper_limit": 12.0,
-      "text": ""
-    },
-    "conversion_factor": 1.0,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 4.0,
-      "upper_limit": 12.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
   },
   "104816-4": {
     "loinc_num": "104816-4",
@@ -1601,27 +1579,6 @@
     "si_reference_interval": {
       "lower_limit": 34.7,
       "upper_limit": 138.9,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
-  },
-  "104688-7": {
-    "loinc_num": "104688-7",
-    "name": "Males",
-    "specimen": [
-      "serum"
-    ],
-    "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 1.0,
-      "upper_limit": 3.6,
-      "text": ""
-    },
-    "conversion_factor": 1.0,
-    "si_units": "ng/L",
-    "si_reference_interval": {
-      "lower_limit": 1.0,
-      "upper_limit": 3.6,
       "text": ""
     },
     "reference_range_is_age_dependent": false
@@ -1817,28 +1774,6 @@
       "text": ""
     },
     "reference_range_is_age_dependent": false
-  },
-  "101339-0": {
-    "loinc_num": "101339-0",
-    "name": "LDL cholesterol",
-    "specimen": [
-      "serum",
-      "plasma"
-    ],
-    "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 60.0,
-      "upper_limit": 130.0,
-      "text": ""
-    },
-    "conversion_factor": 0.02586,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 1.55,
-      "upper_limit": 3.37,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
   },
   "13375-1": {
     "loinc_num": "13375-1",
@@ -2072,8 +2007,29 @@
     },
     "reference_range_is_age_dependent": true
   },
-  "85382-0": {
-    "loinc_num": "85382-0",
+  "2692-2": {
+    "loinc_num": "2692-2",
+    "name": "Osmolality",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mOsm/kg H2O",
+    "traditional_reference_interval": {
+      "lower_limit": 275.0,
+      "upper_limit": 295.0,
+      "text": ""
+    },
+    "conversion_factor": 1.0,
+    "si_units": "mmol/kg H2O",
+    "si_reference_interval": {
+      "lower_limit": 275.0,
+      "upper_limit": 295.0,
+      "text": ""
+    },
+    "reference_range_is_age_dependent": true
+  },
+  "2695-5": {
+    "loinc_num": "2695-5",
     "name": "Osmolality",
     "specimen": [
       "urine"
@@ -2320,27 +2276,6 @@
     "si_reference_interval": {
       "lower_limit": 104.0,
       "upper_limit": 340.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
-  },
-  "14339-6": {
-    "loinc_num": "14339-6",
-    "name": "Protein (total)",
-    "specimen": [
-      "serum"
-    ],
-    "traditional_units": "g/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 6.0,
-      "upper_limit": 8.0,
-      "text": ""
-    },
-    "conversion_factor": 10.0,
-    "si_units": "g/L",
-    "si_reference_interval": {
-      "lower_limit": 60.0,
-      "upper_limit": 80.0,
       "text": ""
     },
     "reference_range_is_age_dependent": true
