@@ -1,16 +1,51 @@
 {
-  "_comment": "Corrections for rows that are wrong in the AccessMedicine source itself. Key = analyte name as produced by parse_lab_values; 'set' = fields of the Analyte model to overwrite; 'why' = the evidence. Applied before the factor consistency check, so a correction must make the row consistent with its own reference intervals.",
-
+  "_comment": "Corrections for rows that are wrong in the AccessMedicine source itself. Key = analyte name as produced by parse_lab_values; 'set' = fields of the Analyte model to overwrite (intervals as {lower_limit, upper_limit}); 'why' = the evidence. Applied before the factor consistency check, so a correction must make the row consistent with its own reference intervals.",
   "Urea nitrogen (BUN)": {
-    "set": {"conversion_factor": 0.357},
+    "set": {
+      "conversion_factor": 0.357
+    },
     "why": "Source prints 0.0357, but its own intervals (8-23 mg/dL = 2.9-8.2 mmol/L) and the molar mass of urea nitrogen (2 x 14.007 g/mol -> 10/28.014 = 0.357) give 0.357."
   },
   "Lamotrigine": {
-    "set": {"traditional_units": "μg/mL"},
+    "set": {
+      "traditional_units": "μg/mL"
+    },
     "why": "Source prints μg/dL, but factor 3.91 = 1000/256.1 g/mol converts μg/mL to μmol/L, and 2.5-15 μg/mL is the therapeutic range."
   },
   "Glucose-6-phosphate dehydrogenase": {
-    "set": {"si_units": "MU/mol Hb"},
+    "set": {
+      "si_units": "MU/mol Hb"
+    },
     "why": "Source prints U/mol Hb with factor 0.0645, but 1 U/g Hb x 64500 g/mol = 64500 U/mol Hb = 0.0645 MU/mol Hb."
+  },
+  "Whole blood": {
+    "set": {
+      "name": "Glycated hemoglobin (HbA1c)",
+      "conversion_factor": 0.01,
+      "si_reference_interval": {
+        "lower_limit": 0.04,
+        "upper_limit": 0.056
+      }
+    },
+    "why": "The HbA1c row of the source carries its specimen ('Whole blood') as name because the group header is not indented. Factor 1 for '% of total Hb' -> 'Fraction of total Hb' is wrong: 4-5.6 % is 0.04-0.056 as a fraction, so the factor is 0.01 (as the source itself uses for methemoglobin)."
+  },
+  "Hemoglobin A2": {
+    "set": {
+      "conversion_factor": 0.01,
+      "si_reference_interval": {
+        "lower_limit": 0.02,
+        "upper_limit": 0.035
+      }
+    },
+    "why": "Factor 1 for '% total Hb' -> 'Fraction of 1.0' is wrong: 2.0-3.5 % is 0.020-0.035 as a fraction, so the factor is 0.01."
+  },
+  "Hemoglobin F (fetal hemoglobin in adult)": {
+    "set": {
+      "si_reference_interval": {
+        "lower_limit": null,
+        "upper_limit": 0.02
+      }
+    },
+    "why": "Source prints the SI interval as '<2' although the unit is 'Fraction of total Hb' and the factor 0.01 is correct: <2 % is <0.02."
   }
 }

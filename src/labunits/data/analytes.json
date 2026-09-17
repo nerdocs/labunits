@@ -671,6 +671,16 @@
     "conversion_factor": 133.3,
     "si_units": "μmol/L"
   },
+  "4548-4": {
+    "loinc_num": "4548-4",
+    "name": "Glycated hemoglobin (HbA1c)",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "% of total Hb",
+    "conversion_factor": 0.01,
+    "si_units": "Fraction of total Hb"
+  },
   "4542-7": {
     "loinc_num": "4542-7",
     "name": "Haptoglobin",
@@ -680,6 +690,26 @@
     "traditional_units": "mg/dL",
     "conversion_factor": 0.01,
     "si_units": "g/L"
+  },
+  "4551-8": {
+    "loinc_num": "4551-8",
+    "name": "Hemoglobin A2",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "% total Hb",
+    "conversion_factor": 0.01,
+    "si_units": "Fraction of 1.0"
+  },
+  "4576-5": {
+    "loinc_num": "4576-5",
+    "name": "Hemoglobin F (fetal hemoglobin in adult)",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "Fraction of 1.0"
   },
   "2420-8": {
     "loinc_num": "2420-8",
@@ -864,6 +894,16 @@
     "traditional_units": "g/dL",
     "conversion_factor": 155.0,
     "si_units": "μmol/L"
+  },
+  "2614-6": {
+    "loinc_num": "2614-6",
+    "name": "Methemoglobin",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "% of total Hb",
+    "conversion_factor": 0.01,
+    "si_units": "Fraction of total Hb"
   },
   "2622-9": {
     "loinc_num": "2622-9",
@@ -1134,6 +1174,16 @@
     "traditional_units": "pg/mL",
     "conversion_factor": 1.0,
     "si_units": "ng/L"
+  },
+  "4685-4": {
+    "loinc_num": "4685-4",
+    "name": "Sulfhemoglobin",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "% of total Hb",
+    "conversion_factor": 0.01,
+    "si_units": "Fraction of total Hb"
   },
   "11253-2": {
     "loinc_num": "11253-2",

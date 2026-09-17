@@ -43,6 +43,25 @@ Example (Acetone):
 | `si_units`                           | `str`                      | e.g. `mmol/L`, `g/L`, `μKat/L`.                                                  |
 | `conversion_factor`                  | `float`                    | Numeric traditional↔SI factor. `1.0` when the units are identical.               |
 
+## Notes on individual codes
+
+A few assignments deserve a word, because the obvious code is not the
+one shipped:
+
+- **Acetylcholinesterase → `2099-0`** (*Cholinesterase in Red Blood
+  Cells*). LOINC has no separate "acetylcholinesterase" term for
+  erythrocytes; the RBC cholinesterase term *is* the true (acetyl-)
+  cholinesterase assay, as opposed to serum pseudocholinesterase.
+- **Lactate dehydrogenase → `14805-6`** (method *pyruvate → lactate*).
+  The methodless serum term `2532-0` is marked *DISCOURAGED* by LOINC;
+  among the method-specific terms, LOINC's own usage ranking picks
+  `14805-6`. The factor (U/L → µkat/L) is identical for every method.
+- **Hemoglobin fractions** (HbA1c `4548-4`, HbA2 `4551-8`, HbF `4576-5`,
+  methemoglobin `2614-6`, sulfhemoglobin `4685-4`) are pinned manually:
+  their LOINC components are named `X/Hemoglobin.total`, which the fuzzy
+  matcher rejects. The source's factor `1` for `%` → `Fraction` is
+  corrected to `0.01` (see `scripts/source_corrections.json`).
+
 ## What's *not* in the data
 
 - **No abbreviations** (yet). The API accepts abbreviations as a lookup
@@ -67,6 +86,8 @@ Example (Acetone):
   replaced (detected via `id()`), which keeps tests straightforward.
 - Tests can replace the data cache via `monkeypatch.setattr` — see
   `tests/conftest.py` for the pattern.
+- Consumers enumerate the data via `analytes()` (see [API](api.md));
+  `_load_data()` and the JSON file are internal.
 
 ## Editing the data
 

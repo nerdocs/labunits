@@ -32,7 +32,8 @@ code. `scripts/parse_lab_values.py` does this in stages:
    keeps serum magnesium from landing on a stool-magnesium term.
 2. **Manual pin** from `scripts/manual_loinc_mapping.json` — wins
    unconditionally, but a pin that fails the eligibility filters is
-   listed in the problem report.
+   listed in the problem report. Keys are `Name`, `Name@specimen` or
+   `Name@specimen@unit`; the most specific one wins.
 3. **Exact match** of the normalized name against the LOINC `COMPONENT`
    column. Several eligible hits are ranked by LOINC's own
    `COMMON_TEST_RANK`, so the commonly used term wins over method-specific

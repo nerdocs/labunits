@@ -448,8 +448,11 @@ def parse_lab_values(
             )
             if full_name in corrections:
                 for field, value in corrections[full_name].items():
+                    if field.endswith("_reference_interval"):
+                        value = AnalyteRange(**value)
                     setattr(analyte, field, value)
                 factor = analyte.conversion_factor
+                si_range = analyte.si_reference_interval
                 issues["corrected_rows"].append((full_name, corrections[full_name]))
             # ---- LOINC matching ----
             # A LOINC term is *eligible* for this row only if its SYSTEM
@@ -478,15 +481,20 @@ def parse_lab_values(
             # Step 0: manual override. If the operator has pinned this
             # analyte in manual_loinc_mapping.json, obey it unconditionally
             # (either a forced LOINC, or a deliberate "no match").
-            # A specimen-qualified key ``name@specimen`` wins over the bare
-            # ``name`` — needed when the same analyte name appears in the
-            # source with different specimens (e.g. Osmolality in serum vs urine).
+            # The most specific key wins: ``name@specimen@unit`` (same name
+            # and specimen, different unit — Methemoglobin in g/dL vs %),
+            # then ``name@specimen`` (Osmolality in serum vs urine), then
+            # the bare ``name``.
             specimen_id = analyte_specimens[0].id
             mapping_key = None
-            if f"{analyte.name}@{specimen_id}" in manual_mapping:
-                mapping_key = f"{analyte.name}@{specimen_id}"
-            elif analyte.name in manual_mapping:
-                mapping_key = analyte.name
+            for key in (
+                f"{analyte.name}@{specimen_id}@{analyte.traditional_units}",
+                f"{analyte.name}@{specimen_id}",
+                analyte.name,
+            ):
+                if key in manual_mapping:
+                    mapping_key = key
+                    break
             analyte_norm = _normalize_name(analyte.name)
             exact_hits = [
                 n for n in loinc_by_norm.get(analyte_norm, []) if eligible(n) is None

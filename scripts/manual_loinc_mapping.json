@@ -1,5 +1,5 @@
 {
-  "_comment": "Manual overrides for analytes whose LOINC assignment the automatic exact/fuzzy matcher gets wrong. Key = analyte name as produced by parse_lab_values (i.e. exactly what appears in the 'missing_loinc' / 'fuzzy_matches' sections of the problem report). Value = a LOINC_NUM string to force that match, or null to state 'this analyte has no LOINC, do not try to match it'. Entries here always win over exact and fuzzy matching, but a pinned LOINC that fails the eligibility filters (specimen/property/scale) is listed in the problem report. Use 'Name@specimen' (e.g. 'Osmolality@serum') to pin different LOINCs for the same name in different specimens; it beats the bare 'Name' key.",
+  "_comment": "Manual overrides for analytes whose LOINC assignment the automatic exact/fuzzy matcher gets wrong. Key = analyte name as produced by parse_lab_values (i.e. exactly what appears in the 'missing_loinc' / 'fuzzy_matches' sections of the problem report). Value = a LOINC_NUM string to force that match, or null to state 'this analyte has no LOINC, do not try to match it'. Entries here always win over exact and fuzzy matching, but a pinned LOINC that fails the eligibility filters (specimen/property/scale) is listed in the problem report. Use 'Name@specimen' (e.g. 'Osmolality@serum') to pin different LOINCs for the same name in different specimens, or 'Name@specimen@unit' (e.g. 'Methemoglobin@whole_blood@% of total Hb') when only the unit differs; the most specific key wins. Names are matched AFTER source_corrections.json has been applied.",
   "Males": null,
   "Homocysteine (total)": null,
   "LDL cholesterol": null,
@@ -15,5 +15,11 @@
   "Coagulation factor XII": "3232-6",
   "Protein C": "27818-4",
   "Porphobilinogen deaminase": "2812-6",
-  "Troponin T (cardiac)": "6598-7"
+  "Troponin T (cardiac)": "6598-7",
+  "Glycated hemoglobin (HbA1c)": "4548-4",
+  "Diagnosis": null,
+  "Hemoglobin A2": "4551-8",
+  "Hemoglobin F (fetal hemoglobin in adult)": "4576-5",
+  "Methemoglobin@whole_blood@% of total Hb": "2614-6",
+  "Sulfhemoglobin": "4685-4"
 }
