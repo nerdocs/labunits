@@ -9,6 +9,7 @@ from labunits.converters import (
     si_unit,
     traditional_unit,
     conversion_factor,
+    analytes,
 )
 ```
 
@@ -106,6 +107,35 @@ traditional_value = si_value / factor
 0.172
 >>> conversion_factor("Albumin")
 10.0
+```
+
+---
+
+## `analytes() -> list[Analyte]`
+
+Return every shipped analyte as an `Analyte` record. This is the
+supported way to enumerate the data set — to build a picker, check
+coverage, or export a mapping — without touching `analytes.json`.
+
+`Analyte` is a frozen dataclass:
+
+| Field                | Type              | Example                |
+|----------------------|-------------------|------------------------|
+| `loinc_num`          | `LoincNum`        | `"5568-1"`             |
+| `name`               | `str`             | `"Acetone"`            |
+| `specimen`           | `tuple[str, ...]` | `("serum", "plasma")`  |
+| `traditional_unit`   | `str`             | `"mg/dL"`              |
+| `si_unit`            | `str`             | `"mmol/L"`             |
+| `conversion_factor`  | `float`           | `0.172`                |
+
+There are deliberately **no reference intervals** on the record — see
+[Design decisions](design.md#no-reference-intervals).
+
+```python
+>>> for a in analytes():
+...     print(a.loinc_num, a.name, a.traditional_unit, "->", a.si_unit)
+5568-1 Acetone mg/dL -> mmol/L
+...
 ```
 
 ---

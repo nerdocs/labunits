@@ -27,6 +27,23 @@ library is a lookup table, not a units library. If an analyte is
 reported in a unit not covered by its pair, `labunits` cannot help —
 that's by design.
 
+## No reference intervals
+
+The upstream table prints a reference interval next to every factor,
+and consumers occasionally ask for it. `labunits` does **not** ship it,
+on purpose:
+
+- Reference intervals are method- and laboratory-specific; a textbook
+  value is the wrong thing to compare a real result against.
+- Shipping them would turn a unit converter into something that invites
+  clinical interpretation ("is this value abnormal?") — exactly the
+  feature set that makes software a medical device. See
+  [Intended use](index.md#intended-use).
+
+The pipeline still parses the intervals, but only to cross-check the
+factors (`docs/pipeline.md`). Consumers that need reference intervals
+should take them from their own laboratory's data.
+
 ## Lazy, cached data load
 
 The JSON file is several hundred kilobytes. We load it:

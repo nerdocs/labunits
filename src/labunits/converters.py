@@ -1,5 +1,6 @@
 import json
 import math
+from dataclasses import dataclass
 from pathlib import Path
 from typing import TypeAlias
 
@@ -9,6 +10,18 @@ _abbrev_index: dict[str, str] = {}
 _indexed_for: int | None = None
 
 LoincNum: TypeAlias = str
+
+
+@dataclass(frozen=True)
+class Analyte:
+    """One shipped analyte record, as returned by :func:`analytes`."""
+
+    loinc_num: LoincNum
+    name: str
+    specimen: tuple[str, ...]
+    traditional_unit: str
+    si_unit: str
+    conversion_factor: float
 
 
 def _load_data() -> dict:
@@ -79,6 +92,26 @@ def _resolve_analyte_identifier(identifier: str) -> LoincNum:
         return _abbrev_index[needle]
 
     raise ValueError(f"Unknown analyte identifier: {identifier}")
+
+
+def analytes() -> list[Analyte]:
+    """Return every shipped analyte as an :class:`Analyte` record.
+
+    This is the supported way to enumerate the data set (e.g. to build a
+    picker or to check coverage) without touching ``analytes.json``
+    directly. Order follows the data file.
+    """
+    return [
+        Analyte(
+            loinc_num=loinc,
+            name=entry["name"],
+            specimen=tuple(entry["specimen"]),
+            traditional_unit=entry["traditional_units"],
+            si_unit=entry["si_units"],
+            conversion_factor=float(entry["conversion_factor"]),
+        )
+        for loinc, entry in _load_data().items()
+    ]
 
 
 def si_unit(analyte: LoincNum | str) -> str:

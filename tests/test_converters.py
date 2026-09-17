@@ -10,6 +10,8 @@ import math
 import pytest
 
 from labunits.converters import (
+    Analyte,
+    analytes,
     conversion_factor,
     si_unit,
     to_si_unit,
@@ -126,3 +128,17 @@ def test_negative_infinity_passes_through():
 def test_nan_passes_through():
     assert math.isnan(to_si_unit(float("nan"), "5568-1"))
     assert math.isnan(to_traditional_unit(float("nan"), "5568-1"))
+
+
+def test_analytes_enumerates_fixture():
+    records = analytes()
+    assert [r.loinc_num for r in records] == ["5568-1", "1751-7"]
+    acetone = records[0]
+    assert acetone == Analyte(
+        loinc_num="5568-1",
+        name="Acetone",
+        specimen=("serum", "plasma"),
+        traditional_unit="mg/dL",
+        si_unit="mmol/L",
+        conversion_factor=0.172,
+    )

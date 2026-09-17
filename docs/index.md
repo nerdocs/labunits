@@ -27,8 +27,9 @@ to_traditional_unit(0.172, "5568-1")   # 1.0
 | ------------------------------------------------------ | ----------------------------------------- |
 | Convert a numeric value between traditional and SI    | Interpret free-text lab reports          |
 | Look up units and conversion factor by LOINC/name     | Fetch LOINC data at runtime               |
+| Enumerate all shipped analytes via `analytes()`      | Ship reference intervals (see [Design](design.md#no-reference-intervals)) |
 | Ship with a curated analyte table (see [Data](data.md))| Validate physiological plausibility       |
-| Return `inf`/`-inf`/`nan` unchanged                   | Provide reference intervals or flag values |
+| Return `inf`/`-inf`/`nan` unchanged                   | Flag or interpret values                  |
 
 All data is shipped inside the package; `labunits` makes **no network and
 no filesystem I/O** beyond a single one-time read of the bundled

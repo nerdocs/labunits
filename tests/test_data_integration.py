@@ -11,6 +11,7 @@ import pytest
 
 from labunits import converters
 from labunits.converters import (
+    analytes,
     conversion_factor,
     si_unit,
     to_si_unit,
@@ -59,3 +60,9 @@ def test_acetone_round_trip_against_real_data(real_data):
     assert conversion_factor("5568-1") == pytest.approx(0.172)
     assert to_si_unit(1.0, "5568-1") == pytest.approx(0.172)
     assert to_traditional_unit(0.172, "5568-1") == pytest.approx(1.0)
+
+
+def test_analytes_matches_shipped_data(real_data):
+    records = analytes()
+    assert len(records) == len(real_data)
+    assert all(conversion_factor(r.loinc_num) == r.conversion_factor for r in records)
