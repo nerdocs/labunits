@@ -43,5 +43,5 @@ The `scripts/` package depends on `beautifulsoup4`, `thefuzz`, and `pydantic` â€
 ## Conventions
 
 - Public API functions live directly in `converters.py` â€” re-exports from `__init__.py` are not currently set up; importers use `from labunits.converters import ...`.
-- The type alias `LoincNum = str` (PEP 695 `type` statement) signals "this string is expected to be a LOINC code." Keep using it for clarity at boundaries.
+- The type alias `LoincNum = str` (`typing.TypeAlias`) signals "this string is expected to be a LOINC code." Keep using it for clarity at boundaries.
 - `inf`/`-inf`/`nan` values pass through `to_si_unit` / `to_traditional_unit` unchanged.

@@ -1,13 +1,14 @@
 import json
 import math
 from pathlib import Path
+from typing import TypeAlias
 
 _analytes_data: dict[str, dict] = {}
 _name_index: dict[str, str] = {}
 _abbrev_index: dict[str, str] = {}
 _indexed_for: int | None = None
 
-type LoincNum = str
+LoincNum: TypeAlias = str
 
 
 def _load_data() -> dict:
