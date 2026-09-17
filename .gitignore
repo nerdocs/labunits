@@ -205,3 +205,7 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+# Upstream data for the offline pipeline — licensed content, download locally (see scripts/README.md)
+scripts/Loinc.csv
+scripts/loinc_part.csv
+scripts/Clinical Laboratory Reference Values.html

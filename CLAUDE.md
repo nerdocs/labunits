@@ -32,7 +32,9 @@ The repo has two cleanly separated halves:
 This is a one-shot pipeline that produces `src/labunits/data/analytes.json` from two upstream sources:
 
 - `scripts/Clinical Laboratory Reference Values.html` — scraped from AccessMedicine (see `scripts/README.md` for source/date).
-- `scripts/Loinc.csv` (+ `loinc_part.csv`) — the LOINC reference table.
+- `scripts/Loinc.csv` — the LOINC reference table.
+
+Both are licensed third-party content and **not tracked in git** (gitignored); `scripts/README.md` says where to get them.
 
 `scripts/parse_lab_values.py` parses the HTML table with BeautifulSoup, then matches each analyte name against the LOINC `COMPONENT` column — manual pin (`manual_loinc_mapping.json`), then exact match, then `thefuzz` fuzzy ratio (threshold `FUZZY_MATCH_RATIO = 80`). Only active quantitative result terms whose `SYSTEM` fits the specimen and whose `PROPERTY` fits the unit are eligible; ties are broken by `COMMON_TEST_RANK`. Two different rows on one LOINC abort the run; factors are cross-checked against the source's own reference intervals. Known source errors are overridden via `scripts/source_corrections.json`. Pydantic models live in `scripts/models.py` (`Analyte`, `AnalyteRange`, `Specimen`).
 

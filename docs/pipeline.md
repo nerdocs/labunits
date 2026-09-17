@@ -14,8 +14,8 @@ This page explains how the pipeline works, so that you can rebuild
 | `scripts/Clinical Laboratory Reference Values.html`     | Scraped HTML table from AccessMedicine (units, factors, reference ranges). |
 | `scripts/Loinc.csv`                                     | Upstream LOINC reference table — source of LOINC numbers.    |
 
-See `scripts/README.md` for the provenance of the AccessMedicine file
-and its download date.
+Both files are licensed third-party content and are **not** part of the
+repository; `scripts/README.md` says where to download them.
 
 ## Matching strategy
 
