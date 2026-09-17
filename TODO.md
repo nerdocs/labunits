@@ -35,3 +35,20 @@
 
 * [ ] **~30 Einträge haben `conversion_factor == 1.0`** (traditionelle Einheit == SI-Einheit). Korrekt,
       aber reines Unit-Lookup ohne Umrechnungs-Mehrwert.
+
+---
+
+## Erledigt
+
+* [x] **Öffentliche Iteration über alle Analyte** — `analytes()` in `converters.py`, liefert `Analyte`-Records
+      (LOINC, Name, Specimen, Einheiten, Faktor); siehe `docs/api.md`.
+* [x] **SI-Referenzintervall für Konsumenten** — Entscheidung: bleibt draußen (MDR); Konsumenten beziehen
+      Referenzwerte aus ihrer eigenen, laborspezifischen Quelle. Begründung in `docs/design.md`.
+* [x] **LOINC-Zuordnung ohne Specimen/Property/Scale** — Matcher filtert jetzt nach `SYSTEM`, `PROPERTY`,
+      `SCALE_TYP`, `CLASS`, `STATUS`; Tie-Break über `COMMON_TEST_RANK`.
+* [x] **Stille Kollisionen beim Schreiben von `analytes.json`** — Pipeline bricht bei zwei verschiedenen Zeilen
+      auf einem LOINC ab.
+* [x] **Kein Audit-Trail für Fuzzy-Matches** — Problem-Report listet Fuzzy-Treffer mit Score, Pins, Korrekturen
+      und Faktor-Inkonsistenzen.
+* [x] **Referenzintervalle in der Auslieferung** — entfernt; Zweckbestimmung in README/docs.
+* [x] **`Loinc.csv` / AccessMedicine-HTML im Repo** — aus Tracking und History entfernt, gitignored.
