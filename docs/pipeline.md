@@ -45,6 +45,14 @@ code. `scripts/parse_lab_values.py` does this in stages:
 Analytes without a match are not written to the output; they are listed
 in the problem report as candidates for manual review.
 
+## Source corrections
+
+`scripts/source_corrections.json` overrides individual fields of rows
+that are wrong in the AccessMedicine table itself (a factor off by 10×,
+a unit typo). Every entry documents its evidence in `why`. Corrections
+are applied before the consistency check below, so a correction must make
+the row agree with its own reference intervals.
+
 ## Safety checks
 
 - **Factor consistency.** The source prints every reference interval in

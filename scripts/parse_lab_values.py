@@ -185,6 +185,7 @@ issues: dict[str, list] = {
     "unparseable_factors": [],          # list[tuple[str, str]]
     "unparseable_ranges": [],           # list[tuple[str, str]]
     "inconsistent_factors": [],         # list[tuple[str, str, float, str]]
+    "corrected_rows": [],               # list[tuple[str, dict]]  (analyte, fields)
 }
 
 
@@ -201,6 +202,19 @@ def _load_manual_mapping(path: Path) -> dict[str, str | None]:
     with path.open("r", encoding="utf-8") as fh:
         raw = json.load(fh)
     return {k: v for k, v in raw.items() if not k.startswith("_")}
+
+
+def _load_source_corrections(path: Path) -> dict[str, dict]:
+    """Load per-analyte field overrides from ``source_corrections.json``.
+
+    Same conventions as :func:`_load_manual_mapping`: ``_``-prefixed keys
+    are documentation, a missing file means "no corrections".
+    """
+    if not path.exists():
+        return {}
+    with path.open("r", encoding="utf-8") as fh:
+        raw = json.load(fh)
+    return {k: v["set"] for k, v in raw.items() if not k.startswith("_")}
 
 
 def parse_conversion_factor(raw: str) -> float | None:
@@ -290,17 +304,24 @@ def parse_lab_values(
     loinc_file_path: str | Path,
     html_file_path: str | Path,
     manual_mapping: dict[str, str | None] | None = None,
+    corrections: dict[str, dict] | None = None,
 ) -> list[Analyte]:
     """Parse Clinical Laboratory Reference Values HTML file.
 
     ``manual_mapping`` lets callers pin specific analyte names to a LOINC
     (string) or to "no match, don't try" (None). Entries there always win
     over the exact and fuzzy matchers below.
+
+    ``corrections`` maps analyte names to ``Analyte`` field overrides for
+    rows that are wrong in the source itself (see
+    ``source_corrections.json``). They are applied before the factor
+    consistency check.
     """
     analytes = []
     group_name = ""
     global specimens, no_loinc_count, analyte_count, issues
     manual_mapping = manual_mapping or {}
+    corrections = corrections or {}
 
     loinc_data = _load_loinc(loinc_file_path)
 
@@ -429,6 +450,11 @@ def parse_lab_values(
                 si_units=cells[6].get_text().strip(),
                 reference_range_is_age_dependent=reference_range_is_age_dependent,
             )
+            if full_name in corrections:
+                for field, value in corrections[full_name].items():
+                    setattr(analyte, field, value)
+                factor = analyte.conversion_factor
+                issues["corrected_rows"].append((full_name, corrections[full_name]))
             # ---- LOINC matching ----
             # A LOINC term is *eligible* for this row only if its SYSTEM
             # matches one of the row's specimens and its PROPERTY can carry
@@ -564,10 +590,14 @@ if __name__ == "__main__":
     manual_mapping = _load_manual_mapping(
         current_path / "manual_loinc_mapping.json"
     )
+    corrections = _load_source_corrections(
+        current_path / "source_corrections.json"
+    )
     analytes = parse_lab_values(
         current_path / "Loinc.csv",
         current_path / "Clinical Laboratory Reference Values.html",
         manual_mapping=manual_mapping,
+        corrections=corrections,
     )
 
     # ------------------------------------------------------------------
@@ -640,6 +670,11 @@ if __name__ == "__main__":
         "Unparseable reference-range cells",
         issues["unparseable_ranges"],
         lambda t: f"- {t[0]}: {t[1]!r}",
+    )
+    _print_section(
+        "Rows corrected via source_corrections.json",
+        issues["corrected_rows"],
+        lambda t: f"- {t[0]}: {t[1]}",
     )
     _print_section(
         "FACTOR INCONSISTENT with the source's own reference intervals — fix before shipping",

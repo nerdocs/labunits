@@ -1347,7 +1347,7 @@
       "text": ""
     },
     "conversion_factor": 0.0645,
-    "si_units": "U/mol of Hb",
+    "si_units": "MU/mol Hb",
     "si_reference_interval": {
       "lower_limit": 0.65,
       "upper_limit": 0.9,
@@ -1572,7 +1572,7 @@
       "serum",
       "plasma"
     ],
-    "traditional_units": "μg/dL",
+    "traditional_units": "μg/mL",
     "traditional_reference_interval": {
       "lower_limit": 2.5,
       "upper_limit": 15.0,
@@ -2591,7 +2591,7 @@
       "upper_limit": 23.0,
       "text": ""
     },
-    "conversion_factor": 0.0357,
+    "conversion_factor": 0.357,
     "si_units": "mmol/L",
     "si_reference_interval": {
       "lower_limit": 2.9,
