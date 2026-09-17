@@ -13,7 +13,7 @@ from labunits import converters
 
 SAMPLE_ANALYTES = {
     # Acetone: 1 mg/dL == 0.172 mmol/L
-    "109547-0": {
+    "5568-1": {
         "name": "Acetone",
         "specimen": ["serum", "plasma"],
         "traditional_units": "mg/dL",
@@ -30,10 +30,10 @@ SAMPLE_ANALYTES = {
             "text": "",
         },
         "reference_range_is_age_dependent": False,
-        "loinc_num": "109547-0",
+        "loinc_num": "5568-1",
     },
     # Albumin: 1 g/dL == 10 g/L
-    "100158-5": {
+    "1751-7": {
         "name": "Albumin",
         "specimen": ["serum"],
         "traditional_units": "g/dL",
@@ -50,7 +50,7 @@ SAMPLE_ANALYTES = {
             "text": "",
         },
         "reference_range_is_age_dependent": True,
-        "loinc_num": "100158-5",
+        "loinc_num": "1751-7",
     },
 }
 

@@ -13,7 +13,6 @@ This page explains how the pipeline works, so that you can rebuild
 |---------------------------------------------------------|--------------------------------------------------------------|
 | `scripts/Clinical Laboratory Reference Values.html`     | Scraped HTML table from AccessMedicine (units, factors, reference ranges). |
 | `scripts/Loinc.csv`                                     | Upstream LOINC reference table — source of LOINC numbers.    |
-| `scripts/loinc_part.csv`                                | LOINC "part" file; supplements component lookups.            |
 
 See `scripts/README.md` for the provenance of the AccessMedicine file
 and its download date.
@@ -21,16 +20,41 @@ and its download date.
 ## Matching strategy
 
 For each row of the HTML table the pipeline needs to assign a LOINC
-code. `scripts/parse_lab_values.py` does this in two stages:
+code. `scripts/parse_lab_values.py` does this in stages:
 
-1. **Exact match** against the LOINC `COMPONENT` column.
-2. If no exact hit: **fuzzy match** via
-   [`thefuzz`](https://github.com/seatgeek/thefuzz) with a threshold of
-   `FUZZY_MATCH_RATIO = 80`.
+0. **LOINC pre-filter.** Only *active*, *quantitative* (`SCALE_TYP = Qn`)
+   result terms are loaded; order-entry terms (`CLASS = LABORDERS.*`),
+   ordinal/nominal and deprecated terms are dropped once, up front.
+1. **Eligibility per row.** A term is eligible only if its `SYSTEM`
+   matches one of the row's specimens (`_SPECIMEN_SYSTEMS`) and its
+   `PROPERTY` can carry the row's traditional unit (`_UNIT_PROPERTIES`,
+   e.g. `mg/dL` → `MCnc`, `mEq/L` → `SCnc`, `U/L` → `CCnc`). This is what
+   keeps serum magnesium from landing on a stool-magnesium term.
+2. **Manual pin** from `scripts/manual_loinc_mapping.json` — wins
+   unconditionally, but a pin that fails the eligibility filters is
+   listed in the problem report.
+3. **Exact match** of the normalized name against the LOINC `COMPONENT`
+   column. Several eligible hits are ranked by LOINC's own
+   `COMMON_TEST_RANK`, so the commonly used term wins over method-specific
+   variants.
+4. **Fuzzy match** via [`thefuzz`](https://github.com/seatgeek/thefuzz)
+   with a threshold of `FUZZY_MATCH_RATIO = 80`, guarded by structural
+   checks (roman numerals, digits, meaning-flipping qualifiers such as
+   `free`, `total`, `Ag`).
 
-Analytes that match below the threshold are written into the output
-with an empty `loinc_num` and a warning on stdout — they are candidates
-for manual review.
+Analytes without a match are not written to the output; they are listed
+in the problem report as candidates for manual review.
+
+## Safety checks
+
+- **Factor consistency.** The source prints every reference interval in
+  both unit systems, so `traditional × factor` must reproduce the SI
+  interval up to printed rounding. Violations are reported under
+  *FACTOR INCONSISTENT* and must be resolved before shipping — this is
+  how source errors (e.g. a factor off by 10×) surface.
+- **No silent overwrite.** Two *different* rows resolving to the same
+  LOINC abort the run. Verbatim repeats (the source lists the amino
+  acids twice) are collapsed.
 
 ## Output
 

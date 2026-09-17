@@ -13,7 +13,7 @@ never written to.
 }
 ```
 
-The key is the LOINC number as a string (e.g. `"109547-0"`). LOINC codes
+The key is the LOINC number as a string (e.g. `"5568-1"`). LOINC codes
 are the canonical identifier throughout the library — names and
 abbreviations are only resolution conveniences.
 
@@ -22,8 +22,8 @@ abbreviations are only resolution conveniences.
 Example (Acetone):
 
 ```json
-"109547-0": {
-  "loinc_num": "109547-0",
+"5568-1": {
+  "loinc_num": "5568-1",
   "name": "Acetone",
   "specimen": ["serum", "plasma"],
   "traditional_units": "mg/dL",

@@ -52,10 +52,10 @@ def test_shipped_conversion_factors_are_numeric(real_data):
 
 
 def test_acetone_round_trip_against_real_data(real_data):
-    # Acetone (LOINC 109547-0): 1 mg/dL -> 0.172 mmol/L
-    assert "109547-0" in real_data
-    assert si_unit("109547-0") == "mmol/L"
-    assert traditional_unit("109547-0") == "mg/dL"
-    assert conversion_factor("109547-0") == pytest.approx(0.172)
-    assert to_si_unit(1.0, "109547-0") == pytest.approx(0.172)
-    assert to_traditional_unit(0.172, "109547-0") == pytest.approx(1.0)
+    # Acetone (LOINC 5568-1): 1 mg/dL -> 0.172 mmol/L
+    assert "5568-1" in real_data
+    assert si_unit("5568-1") == "mmol/L"
+    assert traditional_unit("5568-1") == "mg/dL"
+    assert conversion_factor("5568-1") == pytest.approx(0.172)
+    assert to_si_unit(1.0, "5568-1") == pytest.approx(0.172)
+    assert to_traditional_unit(0.172, "5568-1") == pytest.approx(1.0)

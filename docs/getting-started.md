@@ -35,7 +35,7 @@ Every public function accepts an analyte identifier (as the first
 argument for lookup helpers, or as the second argument for the
 conversion functions) and resolves it through the same lookup chain:
 
-1. **LOINC code** — preferred, unambiguous. Example: `"109547-0"`.
+1. **LOINC code** — preferred, unambiguous. Example: `"5568-1"`.
 2. **Full analyte name** — case-insensitive. Example: `"Acetone"`,
    `"acetone"`, `"ACETONE"`.
 3. **Abbreviation** — reserved for future use; the current shipped data

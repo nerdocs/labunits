@@ -24,11 +24,11 @@ from labunits.converters import (
 
 
 def test_si_unit_by_loinc():
-    assert si_unit("109547-0") == "mmol/L"
+    assert si_unit("5568-1") == "mmol/L"
 
 
 def test_traditional_unit_by_loinc():
-    assert traditional_unit("109547-0") == "mg/dL"
+    assert traditional_unit("5568-1") == "mg/dL"
 
 
 def test_lookup_by_exact_name():
@@ -54,13 +54,13 @@ def test_unknown_identifier_raises_value_error():
 
 
 def test_conversion_factor_returns_float():
-    factor = conversion_factor("109547-0")
+    factor = conversion_factor("5568-1")
     assert isinstance(factor, float)
     assert factor == pytest.approx(0.172)
 
 
 def test_conversion_factor_for_albumin():
-    assert conversion_factor("100158-5") == pytest.approx(10.0)
+    assert conversion_factor("1751-7") == pytest.approx(10.0)
 
 
 # ---------------------------------------------------------------------------
@@ -70,42 +70,42 @@ def test_conversion_factor_for_albumin():
 
 def test_to_si_unit_acetone():
     # 1.0 mg/dL * 0.172 == 0.172 mmol/L
-    assert to_si_unit(1.0, "109547-0") == pytest.approx(0.172)
+    assert to_si_unit(1.0, "5568-1") == pytest.approx(0.172)
 
 
 def test_to_si_unit_albumin():
     # 4.0 g/dL * 10 == 40 g/L
-    assert to_si_unit(4.0, "100158-5") == pytest.approx(40.0)
+    assert to_si_unit(4.0, "1751-7") == pytest.approx(40.0)
 
 
 def test_to_traditional_unit_acetone():
     # 0.172 mmol/L / 0.172 == 1.0 mg/dL
-    assert to_traditional_unit(0.172, "109547-0") == pytest.approx(1.0)
+    assert to_traditional_unit(0.172, "5568-1") == pytest.approx(1.0)
 
 
 def test_to_traditional_unit_albumin():
     # 40 g/L / 10 == 4.0 g/dL
-    assert to_traditional_unit(40.0, "100158-5") == pytest.approx(4.0)
+    assert to_traditional_unit(40.0, "1751-7") == pytest.approx(4.0)
 
 
 def test_round_trip_traditional_to_si_to_traditional():
     original = 2.5
-    si = to_si_unit(original, "100158-5")
-    back = to_traditional_unit(si, "100158-5")
+    si = to_si_unit(original, "1751-7")
+    back = to_traditional_unit(si, "1751-7")
     assert back == pytest.approx(original)
 
 
 def test_zero_value_passes_through():
-    assert to_si_unit(0.0, "109547-0") == 0.0
-    assert to_traditional_unit(0.0, "109547-0") == 0.0
+    assert to_si_unit(0.0, "5568-1") == 0.0
+    assert to_traditional_unit(0.0, "5568-1") == 0.0
 
 
 def test_negative_value_is_converted():
-    assert to_si_unit(-3.0, "100158-5") == pytest.approx(-30.0)
+    assert to_si_unit(-3.0, "1751-7") == pytest.approx(-30.0)
 
 
 def test_to_si_unit_returns_float():
-    assert isinstance(to_si_unit(1.0, "109547-0"), float)
+    assert isinstance(to_si_unit(1.0, "5568-1"), float)
 
 
 # ---------------------------------------------------------------------------
@@ -114,15 +114,15 @@ def test_to_si_unit_returns_float():
 
 
 def test_positive_infinity_passes_through():
-    assert to_si_unit(float("inf"), "109547-0") == float("inf")
-    assert to_traditional_unit(float("inf"), "109547-0") == float("inf")
+    assert to_si_unit(float("inf"), "5568-1") == float("inf")
+    assert to_traditional_unit(float("inf"), "5568-1") == float("inf")
 
 
 def test_negative_infinity_passes_through():
-    assert to_si_unit(float("-inf"), "109547-0") == float("-inf")
-    assert to_traditional_unit(float("-inf"), "109547-0") == float("-inf")
+    assert to_si_unit(float("-inf"), "5568-1") == float("-inf")
+    assert to_traditional_unit(float("-inf"), "5568-1") == float("-inf")
 
 
 def test_nan_passes_through():
-    assert math.isnan(to_si_unit(float("nan"), "109547-0"))
-    assert math.isnan(to_traditional_unit(float("nan"), "109547-0"))
+    assert math.isnan(to_si_unit(float("nan"), "5568-1"))
+    assert math.isnan(to_traditional_unit(float("nan"), "5568-1"))

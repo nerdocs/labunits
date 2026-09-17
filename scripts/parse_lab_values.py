@@ -1,3 +1,4 @@
+import csv
 import json
 import re
 import unicodedata
@@ -26,12 +27,45 @@ _ROMAN_TOKENS = {
 }
 
 # Qualifiers that flip the meaning of an analyte; e.g. "testosterone, free"
-# must never match "testosterone" alone or "testosterone, total".
+# must never match "testosterone" alone or "testosterone, total", and an
+# antigen ("Ag") or antibody ("Ab") term is not the analyte itself.
 _QUALIFIER_TOKENS = {
     "male", "female", "free", "total", "ionized", "cardiac", "peak", "trough",
     "therapeutic", "toxic", "upright", "supine", "unconjugated", "conjugated",
-    "fasting", "postprandial",
+    "fasting", "postprandial", "ag", "ab",
 }
+
+# Specimen id (as produced by this parser) -> LOINC SYSTEM values that
+# describe the same material. A LOINC whose SYSTEM is not in the union of
+# the analyte's specimens is never a valid match, no matter how well the
+# COMPONENT name fits ("Magnesium" in stool is not serum magnesium).
+_SPECIMEN_SYSTEMS = {
+    "serum": {"Ser", "Ser/Plas", "Ser/Plas/Bld"},
+    "plasma": {"Plas", "Ser/Plas", "Ser/Plas/Bld", "PPP"},
+    "whole_blood": {"Bld", "Ser/Plas/Bld"},
+    "venous_blood": {"BldV", "Bld"},
+    "arterial_blood": {"BldA", "Bld"},
+    "red_blood_cells": {"RBC"},
+    "urine": {"Urine"},
+    "urine_24_h": {"Urine"},
+    "csf": {"CSF"},
+    "stool": {"Stool"},
+}
+
+# Traditional unit -> LOINC PROPERTY values that can carry such a unit.
+# Mass per volume is MCnc, moles per volume SCnc, enzyme activity CCnc, …
+# Unknown units yield ``None`` (= no property filter) and are reported.
+_UNIT_PROPERTIES: list[tuple[re.Pattern, set[str]]] = [
+    (re.compile(r"^(m|μ|n|p)?(mol|Eq)/(L|dL|mL)$"), {"SCnc"}),
+    (re.compile(r"^(m|μ|n|p)?g/(L|dL|mL)$"), {"MCnc"}),
+    (re.compile(r"^(m|μ)?g/24 h$"), {"MRat"}),
+    (re.compile(r"^(m|μ|n)?(mol|Eq)/24 h$"), {"SRat"}),
+    (re.compile(r"^U/(L|mL)$"), {"CCnc"}),
+    (re.compile(r"^(m|μ)?I?U/(L|mL)$"), {"ACnc", "CCnc"}),
+    (re.compile(r"^%"), {"MFr", "NFr", "VFr", "SFr", "RelTime", "RelCCnc", "RelACnc", "RelMCnc"}),
+    (re.compile(r"^mOsm/kg"), {"Osmol"}),
+    (re.compile(r"^U/g of Hb$"), {"CCnt"}),
+]
 
 
 def _normalize_name(name: str) -> str:
@@ -84,8 +118,51 @@ def _structural_match(a_norm: str, b_norm: str) -> bool:
     return True
 
 
+def _properties_for_unit(unit: str) -> set[str] | None:
+    """Return the LOINC PROPERTY values compatible with a traditional unit."""
+    for pattern, props in _UNIT_PROPERTIES:
+        if pattern.match(unit):
+            return props
+    return None
+
+
+def _rank_key(row: dict[str, str]) -> tuple:
+    """Sort key preferring commonly used, method-agnostic LOINC terms.
+
+    ``COMMON_TEST_RANK`` is LOINC's own usage ranking (1 = most common,
+    0 = unranked). Among equally ranked terms a term without METHOD_TYP is
+    the generic one and wins.
+    """
+    rank = int(row["COMMON_TEST_RANK"] or 0)
+    return (rank == 0, rank, row["METHOD_TYP"] != "", row["LOINC_NUM"])
+
+
+def _load_loinc(path: str | Path) -> dict[str, dict[str, str]]:
+    """Load the LOINC table, keeping only quantitative, active result terms.
+
+    Order-entry terms (``LABORDERS.*``), ordinal/nominal terms and
+    deprecated terms can never be the right key for a numeric conversion,
+    so they are dropped here once instead of being filtered per analyte.
+    """
+    keep = (
+        "LOINC_NUM", "COMPONENT", "PROPERTY", "SYSTEM", "METHOD_TYP",
+        "COMMON_TEST_RANK",
+    )
+    loinc: dict[str, dict[str, str]] = {}
+    with Path(path).open("r", encoding="utf-8", newline="") as fh:
+        reader = csv.DictReader(fh)
+        if reader.fieldnames is None or reader.fieldnames[0] != "LOINC_NUM":
+            raise ValueError("Invalid LOINC CSV file")
+        for row in reader:
+            if row["SCALE_TYP"] != "Qn" or row["STATUS"] != "ACTIVE":
+                continue
+            if row["CLASS"].startswith("LABORDERS"):
+                continue
+            loinc[row["LOINC_NUM"]] = {k: row[k] for k in keep}
+    return loinc
+
+
 # TODO: AnalyteGroups
-# TODO: ranges as separate entities
 
 
 specimens: dict[str, Specimen] = {}  # id, Specimen
@@ -98,13 +175,16 @@ analyte_count = 0
 issues: dict[str, list] = {
     "skipped_see_references": [],       # list[str]  (raw cell text)
     "missing_loinc": [],                # list[str]  (analyte name)
-    "ambiguous_exact_matches": [],      # list[tuple[str, list[str]]]
+    "ambiguous_exact_matches": [],      # list[tuple[str, str, list[str]]]
     "fuzzy_matches": [],                # list[tuple[str, str, int, str]]
     "pinned_matches": [],               # list[tuple[str, str]]   (analyte, loinc)
     "pinned_no_match": [],              # list[str]               (analyte)
+    "pinned_ineligible": [],            # list[tuple[str, str, str]] (analyte, loinc, why)
+    "unknown_units": [],                # list[tuple[str, str]]   (analyte, unit)
     "missing_factors": [],              # list[str]  (analyte name)
     "unparseable_factors": [],          # list[tuple[str, str]]
     "unparseable_ranges": [],           # list[tuple[str, str]]
+    "inconsistent_factors": [],         # list[tuple[str, str, float, str]]
 }
 
 
@@ -172,6 +252,40 @@ def parse_interval(range_str: str) -> AnalyteRange:
     return AnalyteRange(lower_limit=lower_limit, upper_limit=upper_limit)
 
 
+def check_factor_consistency(
+    name: str,
+    traditional: AnalyteRange,
+    si: AnalyteRange,
+    si_raw: str,
+    factor: float,
+) -> None:
+    """Cross-check the factor against the two reference intervals of the row.
+
+    The source prints the same interval in both unit systems, so
+    ``traditional * factor`` must reproduce the SI interval up to the
+    rounding of the printed SI numbers (half a unit of the last printed
+    decimal, or 5 %, whichever is larger). A violation almost always means
+    the factor or a unit in the source row is wrong (e.g. BUN 0.0357 instead
+    of 0.357). Findings go to ``issues["inconsistent_factors"]``.
+    """
+    decimals = [
+        len(n.split(".")[1]) if "." in n else 0
+        for n in re.findall(r"\d+(?:\.\d+)?", si_raw)
+    ]
+    rounding = 0.5 * 10 ** -min(decimals) if decimals else 0.0
+    for trad_limit, si_limit in (
+        (traditional.lower_limit, si.lower_limit),
+        (traditional.upper_limit, si.upper_limit),
+    ):
+        if trad_limit is None or si_limit is None:
+            continue
+        expected = trad_limit * factor
+        if abs(expected - si_limit) > max(rounding, 0.05 * abs(si_limit)):
+            issues["inconsistent_factors"].append(
+                (name, f"{trad_limit:g} * {factor:g} = {expected:.4g}", si_limit, si_raw)
+            )
+
+
 def parse_lab_values(
     loinc_file_path: str | Path,
     html_file_path: str | Path,
@@ -188,36 +302,7 @@ def parse_lab_values(
     global specimens, no_loinc_count, analyte_count, issues
     manual_mapping = manual_mapping or {}
 
-    # ------ CSV LOINC file ------
-    # open loinc csv file and read it
-    loinc_data: dict[str, dict[str, str]] = {}
-    with Path.open(loinc_file_path, "r", encoding="utf-8") as file:
-        # parse LOINC data
-        for line_number, line in enumerate(file.readlines()):
-            if line_number == 0:
-                # parse header row
-                header_row = line.strip().split(",")
-                header_row = [header.strip('"') for header in header_row]
-                if header_row[0] != "LOINC_NUM":
-                    raise ValueError("Invalid LOINC CSV file")
-                continue
-            if line.strip():  # skip empty lines
-                fields = line.strip().split(",")
-                fields = [field.strip('"') for field in fields]
-                # if there are more than 5 whitespaces in the text,
-                # we can assume it is verbose text, not an analyte name.
-                if len(fields[1].split(" ")) > 5:
-                    continue
-
-                if len(fields) >= len(header_row):
-                    # Create a dictionary with all columns
-                    row_data = {}
-                    for i, header in enumerate(header_row):
-                        if i < len(fields):
-                            # only keep some rows to save memory
-                            if header in ["LOINC_NUM", "COMPONENT"]:
-                                row_data[header] = fields[i]
-                    loinc_data[fields[0]] = row_data  # Use LOINC_NUM as key
+    loinc_data = _load_loinc(loinc_file_path)
 
     # Pre-compute the normalized form of every LOINC COMPONENT once, so the
     # per-analyte match below can do both an O(1) exact lookup and a single
@@ -284,8 +369,9 @@ def parse_lab_values(
                 group_name = name
                 print(f"Found new group for next analytes: '{group_name}'")
                 continue
-            # Check if this is a subtype (starts with spaces)
-            if name.startswith(" ") or name.startswith(" ") or name.startswith("\t"):
+            # Check if this is a subtype (indented with any kind of whitespace,
+            # the source uses U+00A0 no-break spaces)
+            if name[:1].isspace():
                 # This is a subtype, prepend with current header
                 subtype_name = name.strip()
                 full_name = f"{group_name}, {subtype_name}"
@@ -344,24 +430,45 @@ def parse_lab_values(
                 reference_range_is_age_dependent=reference_range_is_age_dependent,
             )
             # ---- LOINC matching ----
+            # A LOINC term is *eligible* for this row only if its SYSTEM
+            # matches one of the row's specimens and its PROPERTY can carry
+            # the row's traditional unit. Scale/status/class were already
+            # filtered in _load_loinc. Among eligible terms with the same
+            # component name, LOINC's own COMMON_TEST_RANK decides.
+            allowed_systems: set[str] = set()
+            for s in analyte_specimens:
+                allowed_systems |= _SPECIMEN_SYSTEMS.get(s.id, set())
+            allowed_props = _properties_for_unit(analyte.traditional_units)
+            if allowed_props is None:
+                issues["unknown_units"].append((full_name, analyte.traditional_units))
+
+            def eligible(loinc_num: str) -> str | None:
+                """Return a reason string if the term is NOT eligible."""
+                row = loinc_data.get(loinc_num)
+                if row is None:
+                    return "not a quantitative, active result term"
+                if row["SYSTEM"] not in allowed_systems:
+                    return f"SYSTEM {row['SYSTEM']!r} does not fit specimen"
+                if allowed_props is not None and row["PROPERTY"] not in allowed_props:
+                    return f"PROPERTY {row['PROPERTY']!r} does not fit unit"
+                return None
+
             # Step 0: manual override. If the operator has pinned this
             # analyte in manual_loinc_mapping.json, obey it unconditionally
             # (either a forced LOINC, or a deliberate "no match").
             # A specimen-qualified key ``name@specimen`` wins over the bare
             # ``name`` — needed when the same analyte name appears in the
             # source with different specimens (e.g. Osmolality in serum vs urine).
-            # Step 1: normalized exact match (O(1)).
-            # Step 2: fuzzy match over all LOINC components, but only among
-            # candidates that pass the structural guards. We collect ALL
-            # qualifying candidates and take the highest-scoring one, instead
-            # of the old "first-over-threshold-wins" which lumped coagulation
-            # factors V/VI/VII/IX/X/XI/XII all onto the same LOINC.
-            specimen_id = analyte_specimens[0].id if analyte_specimens else ""
+            specimen_id = analyte_specimens[0].id
             mapping_key = None
             if f"{analyte.name}@{specimen_id}" in manual_mapping:
                 mapping_key = f"{analyte.name}@{specimen_id}"
             elif analyte.name in manual_mapping:
                 mapping_key = analyte.name
+            analyte_norm = _normalize_name(analyte.name)
+            exact_hits = [
+                n for n in loinc_by_norm.get(analyte_norm, []) if eligible(n) is None
+            ]
             if mapping_key is not None:
                 pinned = manual_mapping[mapping_key]
                 if pinned is None:
@@ -369,31 +476,22 @@ def parse_lab_values(
                 else:
                     analyte.loinc_num = pinned
                     issues["pinned_matches"].append((mapping_key, pinned))
-                    if pinned not in loinc_data:
-                        print(
-                            f"⚠️  Manual mapping pins {analyte.name!r} to "
-                            f"{pinned}, which is not in the LOINC CSV."
-                        )
-                analytes.append(analyte)
-                if not analyte.loinc_num:
-                    no_loinc_count += 1
-                continue
-
-            analyte_norm = _normalize_name(analyte.name)
-
-            if analyte_norm in loinc_by_norm:
-                exact_hits = loinc_by_norm[analyte_norm]
-                # LOINC frequently has multiple components with the same name
-                # but different specimen/method (e.g. 58 "Sodium" entries).
-                # Keep the legacy behaviour — take the first in file order —
-                # but log the ambiguity so a reviewer can pick the right one
-                # by hand (ideally by also consulting SYSTEM/METHOD_TYP).
+                    why = eligible(pinned)
+                    if why:
+                        issues["pinned_ineligible"].append((mapping_key, pinned, why))
+            elif exact_hits:
+                # Step 1: normalized exact match (O(1)).
+                exact_hits.sort(key=lambda n: _rank_key(loinc_data[n]))
                 analyte.loinc_num = exact_hits[0]
                 if len(exact_hits) > 1:
                     issues["ambiguous_exact_matches"].append(
-                        (analyte.name, exact_hits)
+                        (analyte.name, exact_hits[0], exact_hits[1:])
                     )
             else:
+                # Step 2: fuzzy match over all eligible LOINC components, but
+                # only among candidates that pass the structural guards. We
+                # collect ALL qualifying candidates and take the
+                # highest-scoring one.
                 best: tuple[int, str, str] | None = None  # (ratio, loinc, component)
                 for loinc_num, data in loinc_data.items():
                     cand_norm = loinc_norm_by_num.get(loinc_num)
@@ -404,7 +502,13 @@ def parse_lab_values(
                         continue
                     if not _structural_match(analyte_norm, cand_norm):
                         continue
-                    if best is None or ratio > best[0]:
+                    if eligible(loinc_num) is not None:
+                        continue
+                    if (
+                        best is None
+                        or ratio > best[0]
+                        or (ratio == best[0] and _rank_key(data) < _rank_key(loinc_data[best[1]]))
+                    ):
                         best = (ratio, loinc_num, data["COMPONENT"])
                 if best:
                     ratio, loinc_num, component = best
@@ -416,10 +520,41 @@ def parse_lab_values(
             if not analyte.loinc_num:
                 no_loinc_count += 1
                 issues["missing_loinc"].append(analyte.name)
+            elif factor is not None:
+                # Only rows that will ship are worth a human's attention.
+                check_factor_consistency(
+                    full_name, traditional_range, si_range, si_range_raw, factor
+                )
 
             analytes.append(analyte)
 
     return analytes
+
+
+def build_output(analytes: list[Analyte]) -> dict[str, dict]:
+    """Key the analytes by LOINC, refusing to let two rows share one key.
+
+    A silent "last one wins" here once replaced serum creatinine (×88.4)
+    with urine creatinine (×8.84). Two *different* rows on the same LOINC
+    always mean a matching bug or a missing manual pin, so this is fatal on
+    purpose; verbatim repeats (the source lists the amino acids twice) are
+    collapsed.
+    """
+    out: dict[str, dict] = {}
+    for a in analytes:
+        if not a.loinc_num:
+            continue
+        entry = a.to_json()
+        if a.loinc_num in out:
+            if out[a.loinc_num] == entry:
+                continue  # the source lists some rows twice, verbatim
+            raise ValueError(
+                f"LOINC {a.loinc_num} assigned twice: "
+                f"{out[a.loinc_num]['name']!r} ({out[a.loinc_num]['traditional_units']}) "
+                f"and {a.name!r} ({a.traditional_units})"
+            )
+        out[a.loinc_num] = entry
+    return out
 
 
 if __name__ == "__main__":
@@ -434,15 +569,6 @@ if __name__ == "__main__":
         current_path / "Clinical Laboratory Reference Values.html",
         manual_mapping=manual_mapping,
     )
-
-    target_path = current_path.parent / "src" / "labunits" / "data"
-    with Path.open(target_path / "analytes.json", "w", encoding="utf-8") as file:
-        json.dump(
-            {a.loinc_num: a.to_json() for a in analytes if a.loinc_num},
-            file,
-            indent=2,
-            ensure_ascii=False,
-        )
 
     # ------------------------------------------------------------------
     # Problem report — anything a human may want to investigate / fix
@@ -476,14 +602,19 @@ if __name__ == "__main__":
         lambda s: f"- {s}",
     )
     _print_section(
+        "Pinned LOINCs that fail the eligibility filters — verify",
+        issues["pinned_ineligible"],
+        lambda t: f"- {t[0]}  ->  {t[1]}: {t[2]}",
+    )
+    _print_section(
         "Analytes with no LOINC match (dropped from analytes.json)",
         issues["missing_loinc"],
         lambda s: f"- {s}",
     )
     _print_section(
-        "Ambiguous exact matches — multiple LOINCs share the normalized name",
+        "Ambiguous exact matches — chosen by COMMON_TEST_RANK, alternatives listed",
         issues["ambiguous_exact_matches"],
-        lambda t: f"- {t[0]}: {', '.join(t[1])}",
+        lambda t: f"- {t[0]}: {t[1]}  (also: {', '.join(t[2])})",
     )
     _print_section(
         "Fuzzy LOINC matches — verify manually",
@@ -491,8 +622,12 @@ if __name__ == "__main__":
         lambda t: f"[{t[2]}%] {t[0]!r}  ->  {t[3]} ({t[1]!r})",
     )
     _print_section(
-        "Analytes without numeric conversion factor "
-        "(shipped as null — callers get a clear ValueError)",
+        "Traditional units without a PROPERTY mapping (no property filter applied)",
+        issues["unknown_units"],
+        lambda t: f"- {t[0]}: {t[1]!r}",
+    )
+    _print_section(
+        "Analytes without numeric conversion factor (dropped from analytes.json)",
         issues["missing_factors"],
         lambda s: f"- {s}",
     )
@@ -502,17 +637,27 @@ if __name__ == "__main__":
         lambda t: f"- {t[0]}: {t[1]!r}",
     )
     _print_section(
-        "Unparseable reference-range cells (stored as .text)",
+        "Unparseable reference-range cells",
         issues["unparseable_ranges"],
         lambda t: f"- {t[0]}: {t[1]!r}",
     )
+    _print_section(
+        "FACTOR INCONSISTENT with the source's own reference intervals — fix before shipping",
+        issues["inconsistent_factors"],
+        lambda t: f"- {t[0]}: {t[1]}, but SI interval says {t[2]:g} ({t[3]!r})",
+    )
+
+    output = build_output(analytes)
+    target_path = current_path.parent / "src" / "labunits" / "data"
+    with Path.open(target_path / "analytes.json", "w", encoding="utf-8") as file:
+        json.dump(output, file, indent=2, ensure_ascii=False)
 
     print()
     print("=" * 72)
     print(
         f"Summary: {analyte_count} analytes parsed, "
         f"{analyte_count - no_loinc_count} with LOINC, "
-        f"{no_loinc_count} without."
+        f"{no_loinc_count} without, {len(output)} written."
     )
     print(f"Specimens: {len(specimens)}")
     print("=" * 72)

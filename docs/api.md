@@ -32,7 +32,7 @@ Convert a concentration from its traditional unit to its SI unit.
 **Raises** `ValueError` — if the identifier cannot be resolved.
 
 ```python
->>> to_si_unit(1.0, "109547-0")   # Acetone, 1 mg/dL
+>>> to_si_unit(1.0, "5568-1")   # Acetone, 1 mg/dL
 0.172
 >>> to_si_unit(4.0, "Albumin")    # 4 g/dL -> 40 g/L
 40.0
@@ -55,7 +55,7 @@ Convert a concentration from its SI unit to its traditional unit.
 **Raises** `ValueError` — if the identifier cannot be resolved.
 
 ```python
->>> to_traditional_unit(0.172, "109547-0")   # mmol/L -> mg/dL
+>>> to_traditional_unit(0.172, "5568-1")   # mmol/L -> mg/dL
 1.0
 >>> to_traditional_unit(40.0, "Albumin")     # g/L -> g/dL
 4.0
@@ -70,7 +70,7 @@ Return the SI unit string for the given analyte.
 ```python
 >>> si_unit("Acetone")
 'mmol/L'
->>> si_unit("100158-5")   # Albumin
+>>> si_unit("1751-7")   # Albumin
 'g/L'
 ```
 
@@ -83,7 +83,7 @@ Return the traditional unit string for the given analyte.
 ```python
 >>> traditional_unit("Acetone")
 'mg/dL'
->>> traditional_unit("100158-5")
+>>> traditional_unit("1751-7")
 'g/dL'
 ```
 
