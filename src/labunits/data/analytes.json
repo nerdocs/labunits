@@ -7,19 +7,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 2.0,
-      "text": ""
-    },
     "conversion_factor": 0.172,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 0.34,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "mmol/L"
   },
   "2099-0": {
     "loinc_num": "2099-0",
@@ -28,19 +17,8 @@
       "red_blood_cells"
     ],
     "traditional_units": "U/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 5.0,
-      "upper_limit": 10.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "U/L",
-    "si_reference_interval": {
-      "lower_limit": 5.0,
-      "upper_limit": 10.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "U/L"
   },
   "47826-3": {
     "loinc_num": "47826-3",
@@ -49,19 +27,8 @@
       "serum"
     ],
     "traditional_units": "U/L",
-    "traditional_reference_interval": {
-      "lower_limit": 11.5,
-      "upper_limit": 25.0,
-      "text": ""
-    },
     "conversion_factor": 0.017,
-    "si_units": "μKat/L",
-    "si_reference_interval": {
-      "lower_limit": 0.2,
-      "upper_limit": 0.43,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μKat/L"
   },
   "1742-6": {
     "loinc_num": "1742-6",
@@ -70,19 +37,8 @@
       "serum"
     ],
     "traditional_units": "U/L",
-    "traditional_reference_interval": {
-      "lower_limit": 10.0,
-      "upper_limit": 40.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "U/L",
-    "si_reference_interval": {
-      "lower_limit": 10.0,
-      "upper_limit": 40.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "U/L"
   },
   "1751-7": {
     "loinc_num": "1751-7",
@@ -91,19 +47,8 @@
       "serum"
     ],
     "traditional_units": "g/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 3.5,
-      "upper_limit": 5.0,
-      "text": ""
-    },
     "conversion_factor": 10.0,
-    "si_units": "g/L",
-    "si_reference_interval": {
-      "lower_limit": 35.0,
-      "upper_limit": 50.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "g/L"
   },
   "1760-8": {
     "loinc_num": "1760-8",
@@ -112,19 +57,8 @@
       "serum"
     ],
     "traditional_units": "U/L",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 2.8,
-      "text": ""
-    },
     "conversion_factor": 0.017,
-    "si_units": "μKat/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 0.05,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μKat/L"
   },
   "1761-6": {
     "loinc_num": "1761-6",
@@ -133,19 +67,8 @@
       "serum"
     ],
     "traditional_units": "U/L",
-    "traditional_reference_interval": {
-      "lower_limit": 1.0,
-      "upper_limit": 7.5,
-      "text": ""
-    },
     "conversion_factor": 0.017,
-    "si_units": "μKat/L",
-    "si_reference_interval": {
-      "lower_limit": 0.02,
-      "upper_limit": 0.13,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μKat/L"
   },
   "1768-1": {
     "loinc_num": "1768-1",
@@ -154,19 +77,8 @@
       "plasma"
     ],
     "traditional_units": "ng/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 7.0,
-      "upper_limit": 30.0,
-      "text": ""
-    },
     "conversion_factor": 0.0277,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 0.19,
-      "upper_limit": 0.83,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "nmol/L"
   },
   "1765-7": {
     "loinc_num": "1765-7",
@@ -175,19 +87,8 @@
       "urine_24_h"
     ],
     "traditional_units": "μg/24 h",
-    "traditional_reference_interval": {
-      "lower_limit": 3.0,
-      "upper_limit": 20.0,
-      "text": ""
-    },
     "conversion_factor": 2.77,
-    "si_units": "nmol/day",
-    "si_reference_interval": {
-      "lower_limit": 8.0,
-      "upper_limit": 55.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/day"
   },
   "6768-6": {
     "loinc_num": "6768-6",
@@ -196,19 +97,8 @@
       "serum"
     ],
     "traditional_units": "U/L",
-    "traditional_reference_interval": {
-      "lower_limit": 50.0,
-      "upper_limit": 120.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "U/L",
-    "si_reference_interval": {
-      "lower_limit": 50.0,
-      "upper_limit": 120.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "U/L"
   },
   "2685-6": {
     "loinc_num": "2685-6",
@@ -217,19 +107,8 @@
       "serum"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 50.0,
-      "upper_limit": 120.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "g/L",
-    "si_reference_interval": {
-      "lower_limit": 0.5,
-      "upper_limit": 1.2,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "g/L"
   },
   "1835-8": {
     "loinc_num": "1835-8",
@@ -238,19 +117,8 @@
       "serum"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 130.0,
-      "upper_limit": 300.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "g/L",
-    "si_reference_interval": {
-      "lower_limit": 1.3,
-      "upper_limit": 3.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "g/L"
   },
   "5574-9": {
     "loinc_num": "5574-9",
@@ -260,19 +128,8 @@
       "plasma"
     ],
     "traditional_units": "ng/mL",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 6.0,
-      "text": ""
-    },
     "conversion_factor": 37.06,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 0.0,
-      "upper_limit": 222.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "2200-4": {
     "loinc_num": "2200-4",
@@ -281,19 +138,8 @@
       "urine"
     ],
     "traditional_units": "mg/24 h",
-    "traditional_reference_interval": {
-      "lower_limit": 1.0,
-      "upper_limit": 7.0,
-      "text": ""
-    },
     "conversion_factor": 7.626,
-    "si_units": "μmol/day",
-    "si_reference_interval": {
-      "lower_limit": 8.0,
-      "upper_limit": 53.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/day"
   },
   "1798-8": {
     "loinc_num": "1798-8",
@@ -302,19 +148,8 @@
       "serum"
     ],
     "traditional_units": "U/L",
-    "traditional_reference_interval": {
-      "lower_limit": 27.0,
-      "upper_limit": 130.0,
-      "text": ""
-    },
     "conversion_factor": 0.017,
-    "si_units": "μKat/L",
-    "si_reference_interval": {
-      "lower_limit": 0.46,
-      "upper_limit": 2.21,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μKat/L"
   },
   "1858-0": {
     "loinc_num": "1858-0",
@@ -323,19 +158,8 @@
       "plasma"
     ],
     "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 25.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "ng/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 25.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "ng/L"
   },
   "1860-6": {
     "loinc_num": "1860-6",
@@ -344,19 +168,8 @@
       "plasma"
     ],
     "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 10.0,
-      "upper_limit": 60.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "ng/L",
-    "si_reference_interval": {
-      "lower_limit": 10.0,
-      "upper_limit": 60.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "ng/L"
   },
   "2742-5": {
     "loinc_num": "2742-5",
@@ -365,19 +178,8 @@
       "serum"
     ],
     "traditional_units": "U/L",
-    "traditional_reference_interval": {
-      "lower_limit": 8.0,
-      "upper_limit": 52.0,
-      "text": ""
-    },
     "conversion_factor": 0.017,
-    "si_units": "μKat/L",
-    "si_reference_interval": {
-      "lower_limit": 0.14,
-      "upper_limit": 0.88,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μKat/L"
   },
   "1825-9": {
     "loinc_num": "1825-9",
@@ -386,19 +188,8 @@
       "serum"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 80.0,
-      "upper_limit": 200.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "g/L",
-    "si_reference_interval": {
-      "lower_limit": 0.8,
-      "upper_limit": 2.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "g/L"
   },
   "5583-0": {
     "loinc_num": "5583-0",
@@ -407,19 +198,8 @@
       "whole_blood"
     ],
     "traditional_units": "μg/L",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 23.0,
-      "text": ""
-    },
     "conversion_factor": 0.0133,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 0.31,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "1920-8": {
     "loinc_num": "1920-8",
@@ -428,19 +208,8 @@
       "serum"
     ],
     "traditional_units": "U/L",
-    "traditional_reference_interval": {
-      "lower_limit": 20.0,
-      "upper_limit": 48.0,
-      "text": ""
-    },
     "conversion_factor": 0.017,
-    "si_units": "μKat/L",
-    "si_reference_interval": {
-      "lower_limit": 0.34,
-      "upper_limit": 0.82,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μKat/L"
   },
   "11208-6": {
     "loinc_num": "11208-6",
@@ -449,19 +218,8 @@
       "plasma"
     ],
     "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 20.0,
-      "upper_limit": 77.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "ng/L",
-    "si_reference_interval": {
-      "lower_limit": 20.0,
-      "upper_limit": 77.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "ng/L"
   },
   "1963-8": {
     "loinc_num": "1963-8",
@@ -470,19 +228,8 @@
       "plasma"
     ],
     "traditional_units": "mEq/L",
-    "traditional_reference_interval": {
-      "lower_limit": 21.0,
-      "upper_limit": 28.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 21.0,
-      "upper_limit": 28.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "mmol/L"
   },
   "1980-2": {
     "loinc_num": "1980-2",
@@ -492,19 +239,8 @@
       "serum"
     ],
     "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 200.0,
-      "upper_limit": 500.0,
-      "text": ""
-    },
     "conversion_factor": 0.0041,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 0.82,
-      "upper_limit": 2.05,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "8161-2": {
     "loinc_num": "8161-2",
@@ -513,19 +249,8 @@
       "whole_blood"
     ],
     "traditional_units": "μg/L",
-    "traditional_reference_interval": {
-      "lower_limit": 1.0,
-      "upper_limit": 12.0,
-      "text": ""
-    },
     "conversion_factor": 4.785,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 4.8,
-      "upper_limit": 57.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "1992-7": {
     "loinc_num": "1992-7",
@@ -535,19 +260,8 @@
       "plasma"
     ],
     "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 19.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "ng/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 19.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "ng/L"
   },
   "17864-0": {
     "loinc_num": "17864-0",
@@ -556,19 +270,8 @@
       "serum"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 4.6,
-      "upper_limit": 5.08,
-      "text": ""
-    },
     "conversion_factor": 0.25,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 1.15,
-      "upper_limit": 1.27,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "mmol/L"
   },
   "2028-9": {
     "loinc_num": "2028-9",
@@ -579,19 +282,8 @@
       "venous_blood"
     ],
     "traditional_units": "mEq/L",
-    "traditional_reference_interval": {
-      "lower_limit": 22.0,
-      "upper_limit": 28.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 22.0,
-      "upper_limit": 28.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "mmol/L"
   },
   "2064-4": {
     "loinc_num": "2064-4",
@@ -600,19 +292,8 @@
       "serum"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 20.0,
-      "upper_limit": 40.0,
-      "text": ""
-    },
     "conversion_factor": 10.0,
-    "si_units": "mg/L",
-    "si_reference_interval": {
-      "lower_limit": 200.0,
-      "upper_limit": 400.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "mg/L"
   },
   "2075-0": {
     "loinc_num": "2075-0",
@@ -622,19 +303,8 @@
       "plasma"
     ],
     "traditional_units": "mEq/L",
-    "traditional_reference_interval": {
-      "lower_limit": 96.0,
-      "upper_limit": 106.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 96.0,
-      "upper_limit": 106.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "mmol/L"
   },
   "2070-1": {
     "loinc_num": "2070-1",
@@ -643,19 +313,8 @@
       "csf"
     ],
     "traditional_units": "mEq/L",
-    "traditional_reference_interval": {
-      "lower_limit": 118.0,
-      "upper_limit": 132.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 118.0,
-      "upper_limit": 132.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "mmol/L"
   },
   "5619-2": {
     "loinc_num": "5619-2",
@@ -664,19 +323,8 @@
       "whole_blood"
     ],
     "traditional_units": "μg/L",
-    "traditional_reference_interval": {
-      "lower_limit": 0.7,
-      "upper_limit": 28.0,
-      "text": ""
-    },
     "conversion_factor": 19.2,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 13.4,
-      "upper_limit": 538.6,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "2127-9": {
     "loinc_num": "2127-9",
@@ -685,19 +333,8 @@
       "serum"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 1.2,
-      "upper_limit": 3.0,
-      "text": ""
-    },
     "conversion_factor": 52.05,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 60.0,
-      "upper_limit": 160.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "3193-0": {
     "loinc_num": "3193-0",
@@ -706,19 +343,8 @@
       "plasma"
     ],
     "traditional_units": "%",
-    "traditional_reference_interval": {
-      "lower_limit": 60.0,
-      "upper_limit": 140.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "Fraction of 1.0",
-    "si_reference_interval": {
-      "lower_limit": 0.6,
-      "upper_limit": 1.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "Fraction of 1.0"
   },
   "3198-9": {
     "loinc_num": "3198-9",
@@ -727,19 +353,8 @@
       "plasma"
     ],
     "traditional_units": "%",
-    "traditional_reference_interval": {
-      "lower_limit": 60.0,
-      "upper_limit": 140.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "Fraction of 1.0",
-    "si_reference_interval": {
-      "lower_limit": 0.6,
-      "upper_limit": 1.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "Fraction of 1.0"
   },
   "3209-4": {
     "loinc_num": "3209-4",
@@ -748,19 +363,8 @@
       "plasma"
     ],
     "traditional_units": "%",
-    "traditional_reference_interval": {
-      "lower_limit": 50.0,
-      "upper_limit": 200.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "Fraction of 1.0",
-    "si_reference_interval": {
-      "lower_limit": 0.5,
-      "upper_limit": 2.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "Fraction of 1.0"
   },
   "3187-2": {
     "loinc_num": "3187-2",
@@ -769,19 +373,8 @@
       "plasma"
     ],
     "traditional_units": "%",
-    "traditional_reference_interval": {
-      "lower_limit": 60.0,
-      "upper_limit": 140.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "Fraction of 1.0",
-    "si_reference_interval": {
-      "lower_limit": 0.6,
-      "upper_limit": 1.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "Fraction of 1.0"
   },
   "3218-5": {
     "loinc_num": "3218-5",
@@ -790,19 +383,8 @@
       "plasma"
     ],
     "traditional_units": "%",
-    "traditional_reference_interval": {
-      "lower_limit": 60.0,
-      "upper_limit": 140.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "Fraction of 1.0",
-    "si_reference_interval": {
-      "lower_limit": 0.6,
-      "upper_limit": 1.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "Fraction of 1.0"
   },
   "3226-8": {
     "loinc_num": "3226-8",
@@ -811,19 +393,8 @@
       "plasma"
     ],
     "traditional_units": "%",
-    "traditional_reference_interval": {
-      "lower_limit": 60.0,
-      "upper_limit": 140.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "Fraction of 1.0",
-    "si_reference_interval": {
-      "lower_limit": 0.6,
-      "upper_limit": 1.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "Fraction of 1.0"
   },
   "3232-6": {
     "loinc_num": "3232-6",
@@ -832,19 +403,8 @@
       "plasma"
     ],
     "traditional_units": "%",
-    "traditional_reference_interval": {
-      "lower_limit": 60.0,
-      "upper_limit": 140.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "Fraction of 1.0",
-    "si_reference_interval": {
-      "lower_limit": 0.6,
-      "upper_limit": 1.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "Fraction of 1.0"
   },
   "5627-5": {
     "loinc_num": "5627-5",
@@ -853,19 +413,8 @@
       "serum"
     ],
     "traditional_units": "μg/L",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 1.0,
-      "text": ""
-    },
     "conversion_factor": 16.97,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 17.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "5631-7": {
     "loinc_num": "5631-7",
@@ -874,19 +423,8 @@
       "serum"
     ],
     "traditional_units": "μg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 70.0,
-      "upper_limit": 140.0,
-      "text": ""
-    },
     "conversion_factor": 0.1574,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 11.0,
-      "upper_limit": 22.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "2137-8": {
     "loinc_num": "2137-8",
@@ -895,19 +433,8 @@
       "urine"
     ],
     "traditional_units": "μg/24 h",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 200.0,
-      "text": ""
-    },
     "conversion_factor": 1.527,
-    "si_units": "nmol/day",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 300.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/day"
   },
   "2147-7": {
     "loinc_num": "2147-7",
@@ -916,19 +443,8 @@
       "urine"
     ],
     "traditional_units": "μg/24 h",
-    "traditional_reference_interval": {
-      "lower_limit": 30.0,
-      "upper_limit": 100.0,
-      "text": ""
-    },
     "conversion_factor": 2.76,
-    "si_units": "nmol/day",
-    "si_reference_interval": {
-      "lower_limit": 80.0,
-      "upper_limit": 280.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "nmol/day"
   },
   "1986-9": {
     "loinc_num": "1986-9",
@@ -937,19 +453,8 @@
       "serum"
     ],
     "traditional_units": "ng/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.5,
-      "upper_limit": 3.5,
-      "text": ""
-    },
     "conversion_factor": 0.333,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 0.17,
-      "upper_limit": 1.17,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "2157-6": {
     "loinc_num": "2157-6",
@@ -958,19 +463,8 @@
       "serum"
     ],
     "traditional_units": "U/L",
-    "traditional_reference_interval": {
-      "lower_limit": 50.0,
-      "upper_limit": 200.0,
-      "text": ""
-    },
     "conversion_factor": 0.017,
-    "si_units": "μKat/L",
-    "si_reference_interval": {
-      "lower_limit": 0.85,
-      "upper_limit": 3.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μKat/L"
   },
   "2160-0": {
     "loinc_num": "2160-0",
@@ -980,19 +474,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.6,
-      "upper_limit": 1.2,
-      "text": ""
-    },
     "conversion_factor": 88.4,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 53.0,
-      "upper_limit": 106.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "2162-6": {
     "loinc_num": "2162-6",
@@ -1001,19 +484,8 @@
       "urine"
     ],
     "traditional_units": "g/24 h",
-    "traditional_reference_interval": {
-      "lower_limit": 1.0,
-      "upper_limit": 2.0,
-      "text": ""
-    },
     "conversion_factor": 8.84,
-    "si_units": "mmol/day",
-    "si_reference_interval": {
-      "lower_limit": 8.8,
-      "upper_limit": 17.7,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "mmol/day"
   },
   "2177-4": {
     "loinc_num": "2177-4",
@@ -1022,19 +494,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.4,
-      "upper_limit": 1.4,
-      "text": ""
-    },
     "conversion_factor": 83.3,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 33.0,
-      "upper_limit": 117.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "1465-4": {
     "loinc_num": "1465-4",
@@ -1043,19 +504,8 @@
       "plasma"
     ],
     "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 50.0,
-      "text": ""
-    },
     "conversion_factor": 5.46,
-    "si_units": "pmol/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 273.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "pmol/L"
   },
   "2232-7": {
     "loinc_num": "2232-7",
@@ -1064,19 +514,8 @@
       "urine"
     ],
     "traditional_units": "μg/24 h",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 20.0,
-      "text": ""
-    },
     "conversion_factor": 5.46,
-    "si_units": "nmol/day",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 109.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "nmol/day"
   },
   "15061-5": {
     "loinc_num": "15061-5",
@@ -1085,19 +524,8 @@
       "serum"
     ],
     "traditional_units": "mU/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 5.0,
-      "upper_limit": 36.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "IU/L",
-    "si_reference_interval": {
-      "lower_limit": 5.0,
-      "upper_limit": 36.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "IU/L"
   },
   "3616-0": {
     "loinc_num": "3616-0",
@@ -1107,19 +535,8 @@
       "serum"
     ],
     "traditional_units": "μg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 40.0,
-      "upper_limit": 100.0,
-      "text": ""
-    },
     "conversion_factor": 7.08,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 283.0,
-      "upper_limit": 708.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "50544-6": {
     "loinc_num": "50544-6",
@@ -1128,19 +545,8 @@
       "whole_blood"
     ],
     "traditional_units": "ng/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 3.0,
-      "upper_limit": 15.0,
-      "text": ""
-    },
     "conversion_factor": 1.04,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 3.0,
-      "upper_limit": 16.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "1769-9": {
     "loinc_num": "1769-9",
@@ -1149,19 +555,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 8.0,
-      "upper_limit": 25.0,
-      "text": ""
-    },
     "conversion_factor": 0.0354,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 0.28,
-      "upper_limit": 0.89,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "mmol/L"
   },
   "6899-9": {
     "loinc_num": "6899-9",
@@ -1171,19 +566,8 @@
       "plasma"
     ],
     "traditional_units": "μg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 30.0,
-      "upper_limit": 60.0,
-      "text": ""
-    },
     "conversion_factor": 4.2,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 126.0,
-      "upper_limit": 252.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "2276-4": {
     "loinc_num": "2276-4",
@@ -1192,19 +576,8 @@
       "plasma"
     ],
     "traditional_units": "ng/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 15.0,
-      "upper_limit": 200.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "μg/L",
-    "si_reference_interval": {
-      "lower_limit": 15.0,
-      "upper_limit": 200.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μg/L"
   },
   "3255-7": {
     "loinc_num": "3255-7",
@@ -1213,19 +586,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 150.0,
-      "upper_limit": 400.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "g/L",
-    "si_reference_interval": {
-      "lower_limit": 1.5,
-      "upper_limit": 4.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "g/L"
   },
   "15069-8": {
     "loinc_num": "15069-8",
@@ -1234,19 +596,8 @@
       "serum"
     ],
     "traditional_units": "mmol/L",
-    "traditional_reference_interval": {
-      "lower_limit": 1.5,
-      "upper_limit": 2.7,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 1.5,
-      "upper_limit": 2.7,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "mmol/L"
   },
   "9738-6": {
     "loinc_num": "9738-6",
@@ -1256,19 +607,8 @@
       "plasma"
     ],
     "traditional_units": "μg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 2.0,
-      "upper_limit": 20.0,
-      "text": ""
-    },
     "conversion_factor": 5.84,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 12.0,
-      "upper_limit": 117.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "2338-2": {
     "loinc_num": "2338-2",
@@ -1277,19 +617,8 @@
       "plasma"
     ],
     "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 20.0,
-      "upper_limit": 100.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "ng/L",
-    "si_reference_interval": {
-      "lower_limit": 20.0,
-      "upper_limit": 100.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "ng/L"
   },
   "2345-7": {
     "loinc_num": "2345-7",
@@ -1299,19 +628,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 70.0,
-      "upper_limit": 110.0,
-      "text": ""
-    },
     "conversion_factor": 0.05551,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 3.9,
-      "upper_limit": 6.1,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "mmol/L"
   },
   "2342-4": {
     "loinc_num": "2342-4",
@@ -1320,19 +638,8 @@
       "csf"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 50.0,
-      "upper_limit": 80.0,
-      "text": ""
-    },
     "conversion_factor": 0.05551,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 2.8,
-      "upper_limit": 4.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "mmol/L"
   },
   "32546-4": {
     "loinc_num": "32546-4",
@@ -1341,19 +648,8 @@
       "red_blood_cells"
     ],
     "traditional_units": "U/g of Hb",
-    "traditional_reference_interval": {
-      "lower_limit": 10.0,
-      "upper_limit": 14.0,
-      "text": ""
-    },
     "conversion_factor": 0.0645,
-    "si_units": "MU/mol Hb",
-    "si_reference_interval": {
-      "lower_limit": 0.65,
-      "upper_limit": 0.9,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "MU/mol Hb"
   },
   "2372-1": {
     "loinc_num": "2372-1",
@@ -1362,19 +658,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 6.1,
-      "upper_limit": 10.2,
-      "text": ""
-    },
     "conversion_factor": 68.42,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 420.0,
-      "upper_limit": 700.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "2391-1": {
     "loinc_num": "2391-1",
@@ -1383,19 +668,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.9,
-      "upper_limit": 4.2,
-      "text": ""
-    },
     "conversion_factor": 133.3,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 120.0,
-      "upper_limit": 560.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "4542-7": {
     "loinc_num": "4542-7",
@@ -1404,19 +678,8 @@
       "serum"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 40.0,
-      "upper_limit": 180.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "g/L",
-    "si_reference_interval": {
-      "lower_limit": 0.4,
-      "upper_limit": 1.8,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "g/L"
   },
   "2420-8": {
     "loinc_num": "2420-8",
@@ -1425,19 +688,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.5,
-      "upper_limit": 1.7,
-      "text": ""
-    },
     "conversion_factor": 64.5,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 32.0,
-      "upper_limit": 110.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "29512-1": {
     "loinc_num": "29512-1",
@@ -1446,19 +698,8 @@
       "serum"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.21,
-      "upper_limit": 2.81,
-      "text": ""
-    },
     "conversion_factor": 96.05,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 20.0,
-      "upper_limit": 270.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "2446-3": {
     "loinc_num": "2446-3",
@@ -1467,19 +708,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 0.55,
-      "text": ""
-    },
     "conversion_factor": 76.3,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 42.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "20448-7": {
     "loinc_num": "20448-7",
@@ -1488,19 +718,8 @@
       "plasma"
     ],
     "traditional_units": "μU/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 5.0,
-      "upper_limit": 20.0,
-      "text": ""
-    },
     "conversion_factor": 6.945,
-    "si_units": "pmol/L",
-    "si_reference_interval": {
-      "lower_limit": 34.7,
-      "upper_limit": 138.9,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "pmol/L"
   },
   "2500-7": {
     "loinc_num": "2500-7",
@@ -1509,19 +728,8 @@
       "serum"
     ],
     "traditional_units": "μg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 250.0,
-      "upper_limit": 400.0,
-      "text": ""
-    },
     "conversion_factor": 0.179,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 44.8,
-      "upper_limit": 71.6,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "2508-0": {
     "loinc_num": "2508-0",
@@ -1530,19 +738,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.5,
-      "upper_limit": 1.3,
-      "text": ""
-    },
     "conversion_factor": 76.24,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 40.0,
-      "upper_limit": 100.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "14805-6": {
     "loinc_num": "14805-6",
@@ -1551,19 +748,8 @@
       "serum"
     ],
     "traditional_units": "U/L",
-    "traditional_reference_interval": {
-      "lower_limit": 50.0,
-      "upper_limit": 200.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "U/L",
-    "si_reference_interval": {
-      "lower_limit": 50.0,
-      "upper_limit": 200.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "U/L"
   },
   "6948-4": {
     "loinc_num": "6948-4",
@@ -1573,19 +759,8 @@
       "plasma"
     ],
     "traditional_units": "μg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 2.5,
-      "upper_limit": 15.0,
-      "text": ""
-    },
     "conversion_factor": 3.91,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 10.0,
-      "upper_limit": 59.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "2560-1": {
     "loinc_num": "2560-1",
@@ -1594,19 +769,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 1.0,
-      "upper_limit": 2.3,
-      "text": ""
-    },
     "conversion_factor": 76.3,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 75.0,
-      "upper_limit": 175.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "30471-7": {
     "loinc_num": "30471-7",
@@ -1616,19 +780,8 @@
       "plasma"
     ],
     "traditional_units": "μg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 12.0,
-      "upper_limit": 46.0,
-      "text": ""
-    },
     "conversion_factor": 5.88,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 71.0,
-      "upper_limit": 270.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "2573-4": {
     "loinc_num": "2573-4",
@@ -1638,19 +791,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 10.0,
-      "upper_limit": 30.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "g/L",
-    "si_reference_interval": {
-      "lower_limit": 0.1,
-      "upper_limit": 0.3,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "g/L"
   },
   "2585-8": {
     "loinc_num": "2585-8",
@@ -1659,19 +801,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 1.2,
-      "upper_limit": 3.5,
-      "text": ""
-    },
     "conversion_factor": 68.5,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 80.0,
-      "upper_limit": 240.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "19123-9": {
     "loinc_num": "19123-9",
@@ -1680,19 +811,8 @@
       "serum"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 1.5,
-      "upper_limit": 2.5,
-      "text": ""
-    },
     "conversion_factor": 0.4114,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 0.62,
-      "upper_limit": 1.03,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "mmol/L"
   },
   "2601-3": {
     "loinc_num": "2601-3",
@@ -1701,19 +821,8 @@
       "serum"
     ],
     "traditional_units": "mEq/L",
-    "traditional_reference_interval": {
-      "lower_limit": 1.3,
-      "upper_limit": 2.1,
-      "text": ""
-    },
     "conversion_factor": 0.5,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 0.65,
-      "upper_limit": 1.05,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "mmol/L"
   },
   "5681-2": {
     "loinc_num": "5681-2",
@@ -1722,19 +831,8 @@
       "whole_blood"
     ],
     "traditional_units": "μg/L",
-    "traditional_reference_interval": {
-      "lower_limit": 10.0,
-      "upper_limit": 12.0,
-      "text": ""
-    },
     "conversion_factor": 18.2,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 182.0,
-      "upper_limit": 218.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "5685-3": {
     "loinc_num": "5685-3",
@@ -1743,19 +841,8 @@
       "whole_blood"
     ],
     "traditional_units": "μg/L",
-    "traditional_reference_interval": {
-      "lower_limit": 0.6,
-      "upper_limit": 59.0,
-      "text": ""
-    },
     "conversion_factor": 4.99,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 3.0,
-      "upper_limit": 294.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "5693-7": {
     "loinc_num": "5693-7",
@@ -1765,19 +852,8 @@
       "serum"
     ],
     "traditional_units": "mg/L",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 1.5,
-      "text": ""
-    },
     "conversion_factor": 0.0312,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 0.05,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "mmol/L"
   },
   "15082-1": {
     "loinc_num": "15082-1",
@@ -1786,19 +862,8 @@
       "whole_blood"
     ],
     "traditional_units": "g/dL",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 0.24,
-      "text": ""
-    },
     "conversion_factor": 155.0,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 37.2,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "2622-9": {
     "loinc_num": "2622-9",
@@ -1807,19 +872,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.1,
-      "upper_limit": 0.6,
-      "text": ""
-    },
     "conversion_factor": 67.1,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 6.0,
-      "upper_limit": 40.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "1952-1": {
     "loinc_num": "1952-1",
@@ -1828,19 +882,8 @@
       "serum"
     ],
     "traditional_units": "μg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 2.0,
-      "text": ""
-    },
     "conversion_factor": 85.0,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 170.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "5700-0": {
     "loinc_num": "5700-0",
@@ -1849,19 +892,8 @@
       "whole_blood"
     ],
     "traditional_units": "μg/L",
-    "traditional_reference_interval": {
-      "lower_limit": 1.0,
-      "upper_limit": 28.0,
-      "text": ""
-    },
     "conversion_factor": 17.0,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 17.0,
-      "upper_limit": 476.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "2666-6": {
     "loinc_num": "2666-6",
@@ -1870,19 +902,8 @@
       "plasma"
     ],
     "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 110.0,
-      "upper_limit": 410.0,
-      "text": ""
-    },
     "conversion_factor": 5.91,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 650.0,
-      "upper_limit": 2423.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "nmol/L"
   },
   "2668-2": {
     "loinc_num": "2668-2",
@@ -1891,19 +912,8 @@
       "urine"
     ],
     "traditional_units": "μg/24 h",
-    "traditional_reference_interval": {
-      "lower_limit": 15.0,
-      "upper_limit": 80.0,
-      "text": ""
-    },
     "conversion_factor": 5.91,
-    "si_units": "nmol/day",
-    "si_reference_interval": {
-      "lower_limit": 89.0,
-      "upper_limit": 473.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "nmol/day"
   },
   "2679-9": {
     "loinc_num": "2679-9",
@@ -1912,19 +922,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.4,
-      "upper_limit": 1.4,
-      "text": ""
-    },
     "conversion_factor": 75.8,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 30.0,
-      "upper_limit": 106.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "2692-2": {
     "loinc_num": "2692-2",
@@ -1933,19 +932,8 @@
       "serum"
     ],
     "traditional_units": "mOsm/kg H2O",
-    "traditional_reference_interval": {
-      "lower_limit": 275.0,
-      "upper_limit": 295.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "mmol/kg H2O",
-    "si_reference_interval": {
-      "lower_limit": 275.0,
-      "upper_limit": 295.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "mmol/kg H2O"
   },
   "2695-5": {
     "loinc_num": "2695-5",
@@ -1954,19 +942,8 @@
       "urine"
     ],
     "traditional_units": "mOsm/kg H2O",
-    "traditional_reference_interval": {
-      "lower_limit": 250.0,
-      "upper_limit": 900.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "mmol/kg H2O",
-    "si_reference_interval": {
-      "lower_limit": 250.0,
-      "upper_limit": 900.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "mmol/kg H2O"
   },
   "2697-1": {
     "loinc_num": "2697-1",
@@ -1975,19 +952,8 @@
       "serum"
     ],
     "traditional_units": "ng/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 3.0,
-      "upper_limit": 13.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "μg/L",
-    "si_reference_interval": {
-      "lower_limit": 3.0,
-      "upper_limit": 13.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μg/L"
   },
   "2699-7": {
     "loinc_num": "2699-7",
@@ -1996,19 +962,8 @@
       "serum"
     ],
     "traditional_units": "mg/L",
-    "traditional_reference_interval": {
-      "lower_limit": 1.0,
-      "upper_limit": 2.4,
-      "text": ""
-    },
     "conversion_factor": 11.4,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 11.0,
-      "upper_limit": 27.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "2736-7": {
     "loinc_num": "2736-7",
@@ -2017,19 +972,8 @@
       "serum"
     ],
     "traditional_units": "ng/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 28.0,
-      "upper_limit": 100.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "μg/L",
-    "si_reference_interval": {
-      "lower_limit": 28.0,
-      "upper_limit": 100.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μg/L"
   },
   "2765-6": {
     "loinc_num": "2765-6",
@@ -2038,19 +982,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.6,
-      "upper_limit": 1.5,
-      "text": ""
-    },
     "conversion_factor": 60.5,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 35.0,
-      "upper_limit": 90.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "17837-6": {
     "loinc_num": "17837-6",
@@ -2059,19 +992,8 @@
       "serum"
     ],
     "traditional_units": "U/L",
-    "traditional_reference_interval": {
-      "lower_limit": 1.5,
-      "upper_limit": 4.5,
-      "text": ""
-    },
     "conversion_factor": 0.017,
-    "si_units": "μKat/L",
-    "si_reference_interval": {
-      "lower_limit": 0.03,
-      "upper_limit": 0.08,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μKat/L"
   },
   "2812-6": {
     "loinc_num": "2812-6",
@@ -2080,19 +1002,8 @@
       "red_blood_cells"
     ],
     "traditional_units": "nmol/s/L",
-    "traditional_reference_interval": {
-      "lower_limit": 7.0,
-      "upper_limit": null,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "nmol/(s L)",
-    "si_reference_interval": {
-      "lower_limit": 7.0,
-      "upper_limit": null,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/(s L)"
   },
   "2823-3": {
     "loinc_num": "2823-3",
@@ -2101,19 +1012,8 @@
       "plasma"
     ],
     "traditional_units": "mEq/L",
-    "traditional_reference_interval": {
-      "lower_limit": 3.5,
-      "upper_limit": 5.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 3.5,
-      "upper_limit": 5.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "mmol/L"
   },
   "2836-5": {
     "loinc_num": "2836-5",
@@ -2122,19 +1022,8 @@
       "urine"
     ],
     "traditional_units": "mg/24 h",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 2.5,
-      "text": ""
-    },
     "conversion_factor": 2.97,
-    "si_units": "μmol/day",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 7.5,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/day"
   },
   "2845-6": {
     "loinc_num": "2845-6",
@@ -2143,19 +1032,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 1.2,
-      "upper_limit": 3.9,
-      "text": ""
-    },
     "conversion_factor": 86.9,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 104.0,
-      "upper_limit": 340.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "27818-4": {
     "loinc_num": "27818-4",
@@ -2164,19 +1042,8 @@
       "plasma"
     ],
     "traditional_units": "%",
-    "traditional_reference_interval": {
-      "lower_limit": 70.0,
-      "upper_limit": 140.0,
-      "text": ""
-    },
     "conversion_factor": 0.01,
-    "si_units": "Fraction of 1.0",
-    "si_reference_interval": {
-      "lower_limit": 0.7,
-      "upper_limit": 1.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "Fraction of 1.0"
   },
   "2898-5": {
     "loinc_num": "2898-5",
@@ -2185,19 +1052,8 @@
       "red_blood_cells"
     ],
     "traditional_units": "μg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 15.0,
-      "upper_limit": 50.0,
-      "text": ""
-    },
     "conversion_factor": 0.0177,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 0.27,
-      "upper_limit": 0.89,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "11572-5": {
     "loinc_num": "11572-5",
@@ -2206,19 +1062,8 @@
       "serum"
     ],
     "traditional_units": "IU/mL",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 30.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "kIU/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 30.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "kIU/L"
   },
   "5722-4": {
     "loinc_num": "5722-4",
@@ -2227,19 +1072,8 @@
       "whole_blood"
     ],
     "traditional_units": "μg/L",
-    "traditional_reference_interval": {
-      "lower_limit": 58.0,
-      "upper_limit": 234.0,
-      "text": ""
-    },
     "conversion_factor": 0.0127,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 0.74,
-      "upper_limit": 2.97,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "2936-3": {
     "loinc_num": "2936-3",
@@ -2248,19 +1082,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.7,
-      "upper_limit": 2.0,
-      "text": ""
-    },
     "conversion_factor": 95.2,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 65.0,
-      "upper_limit": 193.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "2942-1": {
     "loinc_num": "2942-1",
@@ -2269,19 +1092,8 @@
       "serum"
     ],
     "traditional_units": "μg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.5,
-      "upper_limit": 1.5,
-      "text": ""
-    },
     "conversion_factor": 34.7,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 17.4,
-      "upper_limit": 52.1,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "nmol/L"
   },
   "29247-4": {
     "loinc_num": "29247-4",
@@ -2290,19 +1102,8 @@
       "whole_blood"
     ],
     "traditional_units": "ng/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 4.0,
-      "upper_limit": 20.0,
-      "text": ""
-    },
     "conversion_factor": 1.1,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 4.0,
-      "upper_limit": 22.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "2951-2": {
     "loinc_num": "2951-2",
@@ -2311,19 +1112,8 @@
       "plasma"
     ],
     "traditional_units": "mEq/L",
-    "traditional_reference_interval": {
-      "lower_limit": 136.0,
-      "upper_limit": 142.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 136.0,
-      "upper_limit": 142.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "mmol/L"
   },
   "2961-1": {
     "loinc_num": "2961-1",
@@ -2332,19 +1122,8 @@
       "plasma"
     ],
     "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 25.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "ng/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 25.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "ng/L"
   },
   "2971-0": {
     "loinc_num": "2971-0",
@@ -2353,19 +1132,8 @@
       "plasma"
     ],
     "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 240.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "ng/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 240.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "ng/L"
   },
   "11253-2": {
     "loinc_num": "11253-2",
@@ -2374,19 +1142,8 @@
       "whole_blood"
     ],
     "traditional_units": "ng/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 3.0,
-      "upper_limit": 20.0,
-      "text": ""
-    },
     "conversion_factor": 1.24,
-    "si_units": "nmol/L",
-    "si_reference_interval": {
-      "lower_limit": 4.0,
-      "upper_limit": 25.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "nmol/L"
   },
   "2981-9": {
     "loinc_num": "2981-9",
@@ -2395,19 +1152,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.3,
-      "upper_limit": 2.1,
-      "text": ""
-    },
     "conversion_factor": 80.0,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 24.0,
-      "upper_limit": 168.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "3008-0": {
     "loinc_num": "3008-0",
@@ -2416,19 +1162,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.9,
-      "upper_limit": 2.5,
-      "text": ""
-    },
     "conversion_factor": 84.0,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 75.0,
-      "upper_limit": 210.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "3013-0": {
     "loinc_num": "3013-0",
@@ -2437,19 +1172,8 @@
       "serum"
     ],
     "traditional_units": "ng/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 3.0,
-      "upper_limit": 42.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "μg/L",
-    "si_reference_interval": {
-      "lower_limit": 3.0,
-      "upper_limit": 42.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μg/L"
   },
   "17713-9": {
     "loinc_num": "17713-9",
@@ -2459,19 +1183,8 @@
       "plasma"
     ],
     "traditional_units": "μg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 5.0,
-      "upper_limit": 20.0,
-      "text": ""
-    },
     "conversion_factor": 2.95,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 15.0,
-      "upper_limit": 59.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   },
   "2571-8": {
     "loinc_num": "2571-8",
@@ -2481,19 +1194,8 @@
       "serum"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 10.0,
-      "upper_limit": 190.0,
-      "text": ""
-    },
     "conversion_factor": 0.01129,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 0.11,
-      "upper_limit": 2.15,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "mmol/L"
   },
   "10839-9": {
     "loinc_num": "10839-9",
@@ -2502,19 +1204,8 @@
       "serum"
     ],
     "traditional_units": "ng/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.0,
-      "upper_limit": 0.4,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "μg/L",
-    "si_reference_interval": {
-      "lower_limit": 0.0,
-      "upper_limit": 0.4,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μg/L"
   },
   "6598-7": {
     "loinc_num": "6598-7",
@@ -2523,19 +1214,8 @@
       "serum"
     ],
     "traditional_units": "ng/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.0,
-      "upper_limit": 0.1,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "μg/L",
-    "si_reference_interval": {
-      "lower_limit": 0.0,
-      "upper_limit": 0.1,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μg/L"
   },
   "3070-0": {
     "loinc_num": "3070-0",
@@ -2544,19 +1224,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.5,
-      "upper_limit": 1.5,
-      "text": ""
-    },
     "conversion_factor": 48.97,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 25.0,
-      "upper_limit": 73.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "3079-1": {
     "loinc_num": "3079-1",
@@ -2565,19 +1234,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 0.4,
-      "upper_limit": 1.6,
-      "text": ""
-    },
     "conversion_factor": 55.19,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 20.0,
-      "upper_limit": 90.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "3094-0": {
     "loinc_num": "3094-0",
@@ -2586,19 +1244,8 @@
       "serum"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 8.0,
-      "upper_limit": 23.0,
-      "text": ""
-    },
     "conversion_factor": 0.357,
-    "si_units": "mmol/L",
-    "si_reference_interval": {
-      "lower_limit": 2.9,
-      "upper_limit": 8.2,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "mmol/L"
   },
   "3108-8": {
     "loinc_num": "3108-8",
@@ -2607,19 +1254,8 @@
       "urine"
     ],
     "traditional_units": "mg/24 h",
-    "traditional_reference_interval": {
-      "lower_limit": 0.05,
-      "upper_limit": 2.5,
-      "text": ""
-    },
     "conversion_factor": 1.693,
-    "si_units": "μmol/day",
-    "si_reference_interval": {
-      "lower_limit": 0.1,
-      "upper_limit": 4.2,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/day"
   },
   "3118-7": {
     "loinc_num": "3118-7",
@@ -2628,19 +1264,8 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 1.7,
-      "upper_limit": 3.7,
-      "text": ""
-    },
     "conversion_factor": 85.5,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 145.0,
-      "upper_limit": 315.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": true
+    "si_units": "μmol/L"
   },
   "3125-2": {
     "loinc_num": "3125-2",
@@ -2649,19 +1274,8 @@
       "plasma"
     ],
     "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 50.0,
-      "text": ""
-    },
     "conversion_factor": 1.0,
-    "si_units": "ng/L",
-    "si_reference_interval": {
-      "lower_limit": null,
-      "upper_limit": 50.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "ng/L"
   },
   "62290-2": {
     "loinc_num": "62290-2",
@@ -2671,19 +1285,8 @@
       "serum"
     ],
     "traditional_units": "pg/mL",
-    "traditional_reference_interval": {
-      "lower_limit": 16.0,
-      "upper_limit": 65.0,
-      "text": ""
-    },
     "conversion_factor": 2.6,
-    "si_units": "pmol/L",
-    "si_reference_interval": {
-      "lower_limit": 42.0,
-      "upper_limit": 169.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "pmol/L"
   },
   "5763-8": {
     "loinc_num": "5763-8",
@@ -2692,18 +1295,7 @@
       "serum"
     ],
     "traditional_units": "μg/dL",
-    "traditional_reference_interval": {
-      "lower_limit": 50.0,
-      "upper_limit": 150.0,
-      "text": ""
-    },
     "conversion_factor": 0.153,
-    "si_units": "μmol/L",
-    "si_reference_interval": {
-      "lower_limit": 7.7,
-      "upper_limit": 23.0,
-      "text": ""
-    },
-    "reference_range_is_age_dependent": false
+    "si_units": "μmol/L"
   }
 }

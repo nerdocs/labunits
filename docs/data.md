@@ -28,18 +28,7 @@ Example (Acetone):
   "specimen": ["serum", "plasma"],
   "traditional_units": "mg/dL",
   "conversion_factor": 0.172,
-  "si_units": "mmol/L",
-  "traditional_reference_interval": {
-    "lower_limit": null,
-    "upper_limit": 2.0,
-    "text": ""
-  },
-  "si_reference_interval": {
-    "lower_limit": null,
-    "upper_limit": 0.34,
-    "text": ""
-  },
-  "reference_range_is_age_dependent": false
+  "si_units": "mmol/L"
 }
 ```
 
@@ -53,17 +42,16 @@ Example (Acetone):
 | `traditional_units`                  | `str`                      | e.g. `mg/dL`, `g/dL`, `U/L`.                                                     |
 | `si_units`                           | `str`                      | e.g. `mmol/L`, `g/L`, `μKat/L`.                                                  |
 | `conversion_factor`                  | `float`                    | Numeric traditional↔SI factor. `1.0` when the units are identical.               |
-| `traditional_reference_interval`     | `{lower_limit, upper_limit, text}` | `lower_limit`/`upper_limit` may be `null`; `text` holds the raw string when unparseable. |
-| `si_reference_interval`              | same as above              | —                                                                                |
-| `reference_range_is_age_dependent`   | `bool`                     | Informational only; the library does not apply age rules.                        |
 
 ## What's *not* in the data
 
 - **No abbreviations** (yet). The API accepts abbreviations as a lookup
   alias, but the current data set has none. The `_resolve_analyte_identifier`
   code path is ready for them.
-- **No age/sex-stratified ranges.** Only a flag tells you that the
-  reference range varies by age; the actual strata are not encoded.
+- **No reference intervals, no flags, no interpretation** — by design.
+  The pipeline reads the source's reference intervals only to cross-check
+  the conversion factors; they are never shipped. `labunits` converts
+  units, nothing more (see [Intended use](index.md#intended-use)).
 - **No units grammar.** Units are opaque strings — the library never
   parses them.
 - **No uncertainty or precision metadata.**

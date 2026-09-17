@@ -25,7 +25,7 @@ The repo has two cleanly separated halves:
 - `converters.py` exposes the public API: `to_si_unit()`, `to_traditional_unit()`, `si_unit()`, `traditional_unit()`, `conversion_factor()`.
 - All functions accept a LOINC code (preferred), an abbreviation, or a full analyte name; `_resolve_analyte_identifier()` normalizes any of these to a LOINC code before lookup.
 - The data source is `src/labunits/data/analytes.json`, lazily loaded once into a module-level `_analytes_data` cache via `_load_data()`. The JSON is shipped with the package; the library does no network or filesystem I/O beyond this single read.
-- `analytes.json` is keyed by LOINC number; each entry stores `name`, `specimen`, `traditional_units`, `si_units`, `conversion_factor`, and reference intervals.
+- `analytes.json` is keyed by LOINC number; each entry stores `name`, `specimen`, `traditional_units`, `si_units` and `conversion_factor`. **No reference intervals, no interpretation** — labunits is a unit converter, not a medical device; never add features that flag or interpret values.
 
 ### 2. `scripts/` — the offline data-generation pipeline (NOT runtime)
 

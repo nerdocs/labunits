@@ -351,7 +351,6 @@ def parse_lab_values(
         for row in rows[1:]:
             cells = row.find_all(["td", "th"])
 
-            reference_range_is_age_dependent = False
             cell0 = cells[0]
             # Skip lines with (see...) references
             content = cell0.get_text()
@@ -362,8 +361,6 @@ def parse_lab_values(
             # Find all sup elements and process them
             for sup in cell0.find_all("sup"):
                 sup_content = sup.get_text().strip()
-                if sup_content == "b":
-                    reference_range_is_age_dependent = True
                 if sup_content in ["a", "b", "a,b"]:
                     # next_sibling = sup.find_next_sibling()
                     # Remove the sup element and any immediately following comma
@@ -448,7 +445,6 @@ def parse_lab_values(
                 conversion_factor=factor,
                 si_reference_interval=si_range,
                 si_units=cells[6].get_text().strip(),
-                reference_range_is_age_dependent=reference_range_is_age_dependent,
             )
             if full_name in corrections:
                 for field, value in corrections[full_name].items():

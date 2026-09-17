@@ -15,8 +15,8 @@ def _load_data() -> dict:
     """Load the shipped analyte table into the module-level cache.
 
     The JSON file (``data/analytes.json``) is keyed by LOINC number; each entry
-    holds ``name``, ``specimen``, ``traditional_units``, ``si_units``,
-    ``conversion_factor`` and reference intervals.
+    holds ``name``, ``specimen``, ``traditional_units``, ``si_units`` and
+    ``conversion_factor``.
 
     Returns:
         dict: Mapping ``{loinc_num: {...}}``. Cached after the first call.

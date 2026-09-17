@@ -19,17 +19,6 @@ SAMPLE_ANALYTES = {
         "traditional_units": "mg/dL",
         "conversion_factor": 0.172,
         "si_units": "mmol/L",
-        "traditional_reference_interval": {
-            "lower_limit": None,
-            "upper_limit": 2.0,
-            "text": "",
-        },
-        "si_reference_interval": {
-            "lower_limit": None,
-            "upper_limit": 0.34,
-            "text": "",
-        },
-        "reference_range_is_age_dependent": False,
         "loinc_num": "5568-1",
     },
     # Albumin: 1 g/dL == 10 g/L
@@ -39,17 +28,6 @@ SAMPLE_ANALYTES = {
         "traditional_units": "g/dL",
         "conversion_factor": 10.0,
         "si_units": "g/L",
-        "traditional_reference_interval": {
-            "lower_limit": 3.5,
-            "upper_limit": 5.0,
-            "text": "",
-        },
-        "si_reference_interval": {
-            "lower_limit": 35.0,
-            "upper_limit": 50.0,
-            "text": "",
-        },
-        "reference_range_is_age_dependent": True,
         "loinc_num": "1751-7",
     },
 }

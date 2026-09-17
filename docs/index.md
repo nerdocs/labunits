@@ -28,11 +28,24 @@ to_traditional_unit(0.172, "5568-1")   # 1.0
 | Convert a numeric value between traditional and SI    | Interpret free-text lab reports          |
 | Look up units and conversion factor by LOINC/name     | Fetch LOINC data at runtime               |
 | Ship with a curated analyte table (see [Data](data.md))| Validate physiological plausibility       |
-| Return `inf`/`-inf`/`nan` unchanged                   | Handle age- or sex-specific reference ranges |
+| Return `inf`/`-inf`/`nan` unchanged                   | Provide reference intervals or flag values |
 
 All data is shipped inside the package; `labunits` makes **no network and
 no filesystem I/O** beyond a single one-time read of the bundled
 `analytes.json`.
+
+## Intended use
+
+`labunits` is a general-purpose unit conversion library: a lookup table of
+unit pairs and conversion factors keyed by LOINC, plus one multiplication.
+
+- It is **not a medical device** and has not been clinically validated.
+- It does **not** provide reference intervals, flag abnormal values or
+  interpret results, and it is not intended for diagnosis, monitoring,
+  treatment decisions or any other medical purpose.
+- Verify unit pairs and factors against your own laboratory's data before
+  relying on them. The shipped table is derived from a published reference
+  and may contain errors.
 
 ## Documentation
 
