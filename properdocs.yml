@@ -9,3 +9,4 @@ nav:
   - Data model: data.md
   - Data pipeline: pipeline.md
   - Design decisions: design.md
+  - Releasing: releasing.md

@@ -16,6 +16,9 @@ requires-python = ">=3.10"
 [project.urls]
 Homepage = "https://github.com/nerdocs/labunits"
 
+[tool.setuptools.package-data]
+labunits = ["data/*.json"]
+
 [dependency-groups]
 test = ["pytest", "ruff"]
 dev = [
