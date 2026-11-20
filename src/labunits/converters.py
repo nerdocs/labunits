@@ -8,7 +8,7 @@ _analytes_data: dict[str, dict] = {}
 _si_loinc_index: dict[str, list[str]] = {}
 _name_index: dict[str, list[str]] = {}
 _abbrev_index: dict[str, str] = {}
-_indexed_for: int | None = None
+_indexed_for: dict | None = None
 
 LoincNum: TypeAlias = str
 
@@ -58,11 +58,12 @@ def _ensure_indexes() -> dict:
 
     The indexes are derived caches; they are rebuilt whenever the underlying
     ``_analytes_data`` object changes (so tests can swap the cache and have
-    the indexes follow automatically).
+    the indexes follow automatically). The data object itself is remembered,
+    not its ``id()``: an address can be reused once an object is freed.
     """
     global _indexed_for, _si_loinc_index, _name_index, _abbrev_index
     data = _load_data()
-    if _indexed_for != id(data):
+    if _indexed_for is not data:
         # SI-side LOINC -> keys of the records it is the SI side of (other
         # than itself).
         _si_loinc_index = {}
@@ -79,7 +80,7 @@ def _ensure_indexes() -> dict:
             for loinc, entry in data.items()
             if entry.get("abbreviation")
         }
-        _indexed_for = id(data)
+        _indexed_for = data
     return data
 
 

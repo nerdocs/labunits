@@ -119,7 +119,7 @@ one shipped:
   LOINCs carrying it) and `_abbrev_index` (abbreviation → LOINC) — so
   that lookups are **O(1)** instead of O(n).
   The indexes are rebuilt automatically when the data dict is
-  replaced (detected via `id()`), which keeps tests straightforward.
+  replaced (detected by object identity), which keeps tests straightforward.
 - Tests can replace the data cache via `monkeypatch.setattr` — see
   `tests/conftest.py` for the pattern.
 - Consumers enumerate the data via `analytes()` (see [API](api.md));
