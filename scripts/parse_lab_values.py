@@ -293,35 +293,40 @@ def parse_conversion_factor(raw: str) -> float | None:
         return None
 
 
+_NUMBER = r"\d+(?:\.\d+)?"
+_INTERVAL_PATTERNS: list[tuple[re.Pattern, tuple[int | None, int | None]]] = [
+    # pattern, (group of the lower limit, group of the upper limit)
+    (re.compile(rf"({_NUMBER})\s*-\s*({_NUMBER})"), (1, 2)),
+    (re.compile(rf"[<≤]\s*({_NUMBER})"), (None, 1)),
+    (re.compile(rf"[>≥]\s*({_NUMBER})"), (1, None)),
+    (re.compile(rf"({_NUMBER})"), (1, 1)),
+]
+
+
 def parse_interval(range_str: str) -> AnalyteRange:
     """Parses a string representing an interval and returns an AnalyteRange.
 
-    The given range string can contain a "from - to" interval, or a "less than" or
-    "greater than" expression:
+    The given range string can contain a "from - to" interval, a "less than"
+    or "greater than" expression, or a single value:
     - 40-90
-    - <3.45
-    - >200
+    - <3.45, ≤3.45
+    - >200, ≥200
+    - 56 (lower and upper limit are both 56)
 
-    If it cant be determined, it returns an AnalyteRange with a string representation.
+    Anything else comes back as an AnalyteRange carrying the raw string in
+    ``text`` and no limits, so the caller can report it — a cell is never
+    dropped silently.
     """
-    # parse lower and upper limits
-    lower_limit = None
-    upper_limit = None
-    try:
-        if "-" in range_str:
-            lower_limit, upper_limit = range_str.split("-")
-            lower_limit = float(lower_limit.strip())
-            upper_limit = float(upper_limit.strip())
-        elif "<" in range_str:
-            upper_limit = float(range_str.strip("<"))
-            lower_limit = None
-        elif ">" in range_str:
-            lower_limit = float(range_str.strip(">"))
-            upper_limit = None
-    except ValueError:
-        # Caller is responsible for surfacing this via the issue tracker.
-        return AnalyteRange(text=range_str)
-    return AnalyteRange(lower_limit=lower_limit, upper_limit=upper_limit)
+    cell = range_str.strip()
+    for pattern, (lower, upper) in _INTERVAL_PATTERNS:
+        match = pattern.fullmatch(cell)
+        if match:
+            return AnalyteRange(
+                lower_limit=float(match.group(lower)) if lower else None,
+                upper_limit=float(match.group(upper)) if upper else None,
+            )
+    # Caller is responsible for surfacing this via the issue tracker.
+    return AnalyteRange(text=range_str)
 
 
 def check_factor_consistency(
