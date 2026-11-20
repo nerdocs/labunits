@@ -61,7 +61,8 @@ it is `14682-9`. Each entry therefore carries both:
 The API resolves either code to the same record. A code that is itself a
 key always means that record: magnesium ships as `19123-9` (mg/dL ↔
 mmol/L) and as `2601-3` (meq/L ↔ mmol/L); `2601-3` is also the SI side of
-the first, but resolves to the second.
+the first, but resolves to the second. `factor()` and `convert()` take
+the units into account and reach both.
 
 ## Units are UCUM codes
 
@@ -114,7 +115,7 @@ one shipped:
 - `_load_data()` reads the file exactly once and caches it in the
   module-level `_analytes_data` dict.
 - On first lookup, `_ensure_indexes()` builds three derived dicts —
-  `_si_loinc_index` (SI-side LOINC → key), `_name_index` (name → all
+  `_si_loinc_index` (SI-side LOINC → keys), `_name_index` (name → all
   LOINCs carrying it) and `_abbrev_index` (abbreviation → LOINC) — so
   that lookups are **O(1)** instead of O(n).
   The indexes are rebuilt automatically when the data dict is

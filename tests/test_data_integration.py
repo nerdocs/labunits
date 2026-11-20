@@ -13,6 +13,7 @@ from labunits import converters
 from labunits.converters import (
     analytes,
     conversion_factor,
+    convert,
     si_unit,
     to_si_unit,
     to_traditional_unit,
@@ -85,6 +86,9 @@ def test_creatinine_resolves_by_both_loincs(real_data):
     assert conversion_factor("14682-9") == pytest.approx(88.4)
     with pytest.raises(ValueError, match="2160-0.*2162-6"):
         conversion_factor("Creatinine")
+    # Whatever unit a result arrives in, by either code.
+    assert convert(106.08, "14682-9", "umol/L", "mg/dL") == pytest.approx(1.2)
+    assert convert(1.2, "2160-0", "mg/dL", "mg/dL") == 1.2
 
 
 def test_analytes_matches_shipped_data(real_data):

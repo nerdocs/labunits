@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import TypeAlias
 
 _analytes_data: dict[str, dict] = {}
-_si_loinc_index: dict[str, str] = {}
+_si_loinc_index: dict[str, list[str]] = {}
 _name_index: dict[str, list[str]] = {}
 _abbrev_index: dict[str, str] = {}
 _indexed_for: int | None = None
@@ -63,13 +63,13 @@ def _ensure_indexes() -> dict:
     global _indexed_for, _si_loinc_index, _name_index, _abbrev_index
     data = _load_data()
     if _indexed_for != id(data):
-        # An SI-side LOINC is only an alias: a code that is itself a key
-        # always means that record.
-        _si_loinc_index = {
-            entry["si_loinc_num"]: loinc
-            for loinc, entry in data.items()
-            if entry.get("si_loinc_num") and entry["si_loinc_num"] not in data
-        }
+        # SI-side LOINC -> keys of the records it is the SI side of (other
+        # than itself).
+        _si_loinc_index = {}
+        for loinc, entry in data.items():
+            si_loinc = entry.get("si_loinc_num")
+            if si_loinc and si_loinc != loinc:
+                _si_loinc_index.setdefault(si_loinc, []).append(loinc)
         _name_index = {}
         for loinc, entry in data.items():
             if entry.get("name"):
@@ -92,7 +92,8 @@ def _resolve_analyte_identifier(identifier: str) -> LoincNum:
     Lookup order:
         1. Exact LOINC match (the record's key).
         2. LOINC of the SI-unit side (``si_loinc_num``), e.g. ``14682-9``
-           for serum creatinine in µmol/L.
+           for serum creatinine in µmol/L. A code that is itself a key
+           always means that record (step 1).
         3. Case-insensitive match against ``name``.
         4. Case-insensitive match against ``abbreviation`` (reserved — the
            shipped ``analytes.json`` does not carry abbreviations yet).
@@ -106,7 +107,7 @@ def _resolve_analyte_identifier(identifier: str) -> LoincNum:
     if identifier in data:
         return identifier
     if identifier in _si_loinc_index:
-        return _si_loinc_index[identifier]
+        return _si_loinc_index[identifier][0]
 
     needle = identifier.lower()
     matches = _name_index.get(needle, [])
@@ -204,3 +205,76 @@ def to_traditional_unit(value: float, analyte: LoincNum | str) -> float:
     if math.isinf(value) or math.isnan(value):
         return value
     return value / factor
+
+
+def _unit_factor(
+    analyte: LoincNum | str, from_unit: str, to_unit: str
+) -> tuple[float, bool]:
+    """Find the factor for a unit pair; return ``(factor, divide)``.
+
+    ``divide`` tells whether the value has to be divided by the factor
+    (SI -> traditional) instead of multiplied. A LOINC code may belong to
+    two records — magnesium ``2601-3`` is the meq/L record and the SI side
+    of the mg/dL record — so every record the code belongs to is tried and
+    the units decide.
+    """
+    data = _ensure_indexes()
+    loinc = _resolve_analyte_identifier(analyte)
+    candidates = [loinc] + [
+        other for other in _si_loinc_index.get(analyte, []) if other != loinc
+    ]
+    for candidate in candidates:
+        entry = data[candidate]
+        traditional, si = entry["traditional_units"], entry["si_units"]
+        if from_unit == to_unit and from_unit in (traditional, si):
+            return 1.0, False
+        if (from_unit, to_unit) == (traditional, si):
+            return float(entry["conversion_factor"]), False
+        if (from_unit, to_unit) == (si, traditional):
+            return float(entry["conversion_factor"]), True
+    known = "; ".join(
+        f"{data[c]['traditional_units']} <-> {data[c]['si_units']}" for c in candidates
+    )
+    raise ValueError(
+        f"Cannot convert {analyte} from {from_unit} to {to_unit}; known units: {known}"
+    )
+
+
+def factor(analyte: LoincNum | str, from_unit: str, to_unit: str) -> float:
+    """Return the factor that converts a value from one unit to another.
+
+    ``value_in_to_unit = value_in_from_unit * factor``. Unlike
+    :func:`conversion_factor`, the direction follows from the units, so
+    the caller need not know which side is the traditional one.
+
+    Args:
+        analyte: LOINC code (of either unit side), abbreviation, or full name.
+        from_unit: UCUM code of the unit the value is in.
+        to_unit: UCUM code of the unit wanted.
+
+    Returns:
+        ``1.0`` if both units are the same unit of the analyte, the
+        conversion factor for traditional -> SI, its reciprocal for
+        SI -> traditional.
+
+    Raises:
+        ValueError: if the analyte is unknown, or if the units are not the
+            analyte's unit pair; the message names the known units. Units
+            are compared as exact UCUM strings.
+    """
+    value, divide = _unit_factor(analyte, from_unit, to_unit)
+    return 1 / value if divide else value
+
+
+def convert(
+    value: float, analyte: LoincNum | str, from_unit: str, to_unit: str
+) -> float:
+    """Convert a value of an analyte from one of its units to the other.
+
+    Same arguments and errors as :func:`factor`. ``inf``/``-inf``/``nan``
+    are propagated unchanged.
+    """
+    unit_factor, divide = _unit_factor(analyte, from_unit, to_unit)
+    if math.isinf(value) or math.isnan(value):
+        return value
+    return value / unit_factor if divide else value * unit_factor

@@ -9,6 +9,8 @@ from labunits.converters import (
     si_unit,
     traditional_unit,
     conversion_factor,
+    factor,
+    convert,
     analytes,
 )
 ```
@@ -119,6 +121,71 @@ traditional_value = si_value / factor
 10.0
 ```
 
+### Computing in `Decimal`
+
+The factor is a `float` and prints exactly as it is stored, so the
+loss-free way into `Decimal` is through `str`:
+
+```python
+>>> Decimal(str(conversion_factor("2160-0")))
+Decimal('88.4')
+>>> Decimal(conversion_factor("2160-0"))     # binary approximation — avoid
+Decimal('88.400000000000005684341886080801486968994140625')
+```
+
+The conversion functions themselves compute in `float`; passing a
+`Decimal` value raises `TypeError`. Fetch the factor as above (or via
+[`factor()`](#factoranalyte-from_unit-to_unit-float)) and multiply in
+`Decimal` yourself.
+
+---
+
+## `factor(analyte, from_unit, to_unit) -> float`
+
+Return the factor for a pair of units, given as UCUM codes:
+`value_in_to_unit = value_in_from_unit * factor`. The direction follows
+from the units, so you never have to know which side is the traditional
+one — useful when results arrive in whatever unit the laboratory used.
+
+| Units                              | Result                         |
+|------------------------------------|--------------------------------|
+| traditional → SI                   | `conversion_factor(analyte)`   |
+| SI → traditional                   | `1 / conversion_factor(analyte)` |
+| the same unit of the analyte twice | `1.0`                          |
+| anything else                      | `ValueError` naming the known units |
+
+```python
+>>> factor("2160-0", "mg/dL", "umol/L")     # Creatinine
+88.4
+>>> factor("14682-9", "umol/L", "mg/dL")    # same record, SI-side LOINC
+0.011312217194570135
+>>> factor("2160-0", "mg/dL", "mg/dL")
+1.0
+>>> factor("2160-0", "g/L", "umol/L")
+ValueError: Cannot convert 2160-0 from g/L to umol/L; known units: mg/dL <-> umol/L
+```
+
+Units are compared as exact strings — there is no UCUM algebra. Use the
+spellings returned by `traditional_unit()` / `si_unit()` (per-day rates
+are `/(24.h)`, not `/d`).
+
+Where one LOINC code belongs to two records, the units decide: magnesium
+`2601-3` converts `meq/L` ↔ `mmol/L` as well as `mg/dL` ↔ `mmol/L`.
+
+---
+
+## `convert(value, analyte, from_unit, to_unit) -> float`
+
+Convert a value between the analyte's two units; arguments and errors as
+for `factor()`. `inf`, `-inf` and `nan` pass through unchanged.
+
+```python
+>>> convert(1.2, "2160-0", "mg/dL", "umol/L")
+106.08
+>>> convert(106.08, "14682-9", "umol/L", "mg/dL")
+1.2
+```
+
 ---
 
 ## `analytes() -> list[Analyte]`
@@ -162,6 +229,7 @@ There are deliberately **no reference intervals** on the record — see
 | Situation                          | Behaviour                                       |
 |------------------------------------|-------------------------------------------------|
 | Unknown identifier                 | `ValueError("Unknown analyte identifier: ...")` |
+| Units that are not the analyte's pair (`factor`, `convert`) | `ValueError("Cannot convert ...")`, naming the known units |
 | Name matching several records      | `ValueError("Ambiguous analyte name: ...")`, listing the candidate LOINC codes |
 | `value` is `nan` / `±inf`          | Returned unchanged                              |
 | `value` is any other float         | Converted                                       |

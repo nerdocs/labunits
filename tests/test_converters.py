@@ -13,6 +13,8 @@ from labunits.converters import (
     Analyte,
     analytes,
     conversion_factor,
+    convert,
+    factor,
     si_unit,
     to_si_unit,
     to_traditional_unit,
@@ -161,3 +163,61 @@ def test_analytes_enumerates_fixture():
         si_unit="mmol/L",
         conversion_factor=0.172,
     )
+
+
+# ---------------------------------------------------------------------------
+# factor / convert (direction given by units)
+# ---------------------------------------------------------------------------
+
+
+def test_factor_traditional_to_si():
+    assert factor("5568-1", "mg/dL", "mmol/L") == pytest.approx(0.172)
+
+
+def test_factor_si_to_traditional_is_reciprocal():
+    assert factor("5568-1", "mmol/L", "mg/dL") == pytest.approx(1 / 0.172)
+
+
+def test_factor_accepts_si_loinc():
+    assert factor("14582-1", "mg/dL", "mmol/L") == pytest.approx(0.172)
+
+
+def test_factor_same_unit_is_one():
+    assert factor("5568-1", "mg/dL", "mg/dL") == 1.0
+    assert factor("5568-1", "mmol/L", "mmol/L") == 1.0
+
+
+def test_factor_foreign_unit_raises_naming_known_units():
+    with pytest.raises(ValueError, match="known units: mg/dL <-> mmol/L"):
+        factor("5568-1", "g/L", "mmol/L")
+    with pytest.raises(ValueError, match="Cannot convert"):
+        factor("5568-1", "g/L", "g/L")
+
+
+def test_factor_unknown_analyte_raises():
+    with pytest.raises(ValueError, match="Unknown analyte identifier"):
+        factor("nope", "mg/dL", "mmol/L")
+
+
+def test_factor_units_pick_the_record_of_a_shared_loinc():
+    # 2601-3 is the meq/L record, and the SI side of the mg/dL record.
+    assert factor("2601-3", "meq/L", "mmol/L") == pytest.approx(0.5)
+    assert factor("2601-3", "mg/dL", "mmol/L") == pytest.approx(0.4114)
+    assert factor("2601-3", "mmol/L", "mg/dL") == pytest.approx(1 / 0.4114)
+
+
+def test_convert_both_directions():
+    assert convert(4.0, "1751-7", "g/dL", "g/L") == pytest.approx(40.0)
+    assert convert(40.0, "1751-7", "g/L", "g/dL") == pytest.approx(4.0)
+    assert convert(4.0, "1751-7", "g/dL", "g/dL") == 4.0
+
+
+def test_convert_matches_dedicated_functions():
+    assert convert(0.172, "5568-1", "mmol/L", "mg/dL") == to_traditional_unit(
+        0.172, "5568-1"
+    )
+
+
+def test_convert_passes_special_floats_through():
+    assert convert(float("inf"), "5568-1", "mg/dL", "mmol/L") == float("inf")
+    assert math.isnan(convert(float("nan"), "5568-1", "mmol/L", "mg/dL"))

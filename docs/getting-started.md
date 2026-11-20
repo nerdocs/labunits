@@ -64,6 +64,14 @@ Whichever identifier you pass, the direction of a conversion is set by
 the function, never by the code: `to_si_unit()` always expects a value in
 the traditional unit, `to_traditional_unit()` a value in the SI unit.
 
+If you don't know which side a value is on, name the units instead:
+
+```python
+from labunits.converters import convert
+
+convert(106.08, "14682-9", "umol/L", "mg/dL")   # 1.2
+```
+
 ## Units
 
 `si_unit()` and `traditional_unit()` return [UCUM](https://ucum.org)
