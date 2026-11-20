@@ -165,6 +165,14 @@ def test_analytes_enumerates_fixture():
     )
 
 
+def test_analytes_reuses_records_but_not_the_list():
+    first = analytes()
+    first.clear()  # a caller may do whatever it likes with its list
+    second = analytes()
+    assert len(second) == 4
+    assert all(a is b for a, b in zip(second, analytes()))
+
+
 # ---------------------------------------------------------------------------
 # factor / convert (direction given by units)
 # ---------------------------------------------------------------------------

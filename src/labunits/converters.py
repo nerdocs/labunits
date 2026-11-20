@@ -8,6 +8,7 @@ _analytes_data: dict[str, dict] = {}
 _si_loinc_index: dict[str, list[str]] = {}
 _name_index: dict[str, list[str]] = {}
 _abbrev_index: dict[str, str] = {}
+_records: tuple["Analyte", ...] = ()
 _indexed_for: dict | None = None
 
 LoincNum: TypeAlias = str
@@ -56,12 +57,13 @@ def _load_data() -> dict:
 def _ensure_indexes() -> dict:
     """Return the analyte data, rebuilding the lookup indexes if stale.
 
-    The indexes are derived caches; they are rebuilt whenever the underlying
+    The indexes (and the :class:`Analyte` records served by
+    :func:`analytes`) are derived caches; they are rebuilt whenever the underlying
     ``_analytes_data`` object changes (so tests can swap the cache and have
     the indexes follow automatically). The data object itself is remembered,
     not its ``id()``: an address can be reused once an object is freed.
     """
-    global _indexed_for, _si_loinc_index, _name_index, _abbrev_index
+    global _indexed_for, _si_loinc_index, _name_index, _abbrev_index, _records
     data = _load_data()
     if _indexed_for is not data:
         # SI-side LOINC -> keys of the records it is the SI side of (other
@@ -80,6 +82,18 @@ def _ensure_indexes() -> dict:
             for loinc, entry in data.items()
             if entry.get("abbreviation")
         }
+        _records = tuple(
+            Analyte(
+                loinc_num=loinc,
+                si_loinc_num=entry["si_loinc_num"],
+                name=entry["name"],
+                specimen=tuple(entry["specimen"]),
+                traditional_unit=entry["traditional_units"],
+                si_unit=entry["si_units"],
+                conversion_factor=float(entry["conversion_factor"]),
+            )
+            for loinc, entry in data.items()
+        )
         _indexed_for = data
     return data
 
@@ -135,19 +149,12 @@ def analytes() -> list[Analyte]:
     This is the supported way to enumerate the data set (e.g. to build a
     picker or to check coverage) without touching ``analytes.json``
     directly. Order follows the data file.
+
+    The (immutable) records are built once and reused; every call returns
+    a fresh list of them, so the caller may sort or filter it freely.
     """
-    return [
-        Analyte(
-            loinc_num=loinc,
-            si_loinc_num=entry["si_loinc_num"],
-            name=entry["name"],
-            specimen=tuple(entry["specimen"]),
-            traditional_unit=entry["traditional_units"],
-            si_unit=entry["si_units"],
-            conversion_factor=float(entry["conversion_factor"]),
-        )
-        for loinc, entry in _load_data().items()
-    ]
+    _ensure_indexes()
+    return list(_records)
 
 
 def si_unit(analyte: LoincNum | str) -> str:

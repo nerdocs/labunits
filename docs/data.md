@@ -117,7 +117,8 @@ one shipped:
 - On first lookup, `_ensure_indexes()` builds three derived dicts —
   `_si_loinc_index` (SI-side LOINC → keys), `_name_index` (name → all
   LOINCs carrying it) and `_abbrev_index` (abbreviation → LOINC) — so
-  that lookups are **O(1)** instead of O(n).
+  that lookups are **O(1)** instead of O(n). The `Analyte` records
+  returned by `analytes()` are built in the same step and reused.
   The indexes are rebuilt automatically when the data dict is
   replaced (detected by object identity), which keeps tests straightforward.
 - Tests can replace the data cache via `monkeypatch.setattr` — see
