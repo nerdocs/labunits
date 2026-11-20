@@ -202,6 +202,9 @@ def _load_loinc(path: str | Path) -> dict[str, dict[str, str]]:
     Order-entry terms (``LABORDERS.*``), ordinal/nominal terms and
     deprecated terms can never be the right key for a numeric conversion,
     so they are dropped here once instead of being filtered per analyte.
+    ``DISCOURAGED`` terms are kept, but only a manual pin can select one:
+    LOINC discourages e.g. the mass-concentration terms of several amino
+    acids, yet results in mg/dL exist and have no other code.
     """
     keep = (
         "LOINC_NUM",
@@ -211,6 +214,7 @@ def _load_loinc(path: str | Path) -> dict[str, dict[str, str]]:
         "SYSTEM",
         "METHOD_TYP",
         "COMMON_TEST_RANK",
+        "STATUS",
     )
     loinc: dict[str, dict[str, str]] = {}
     with Path(path).open("r", encoding="utf-8", newline="") as fh:
@@ -218,7 +222,9 @@ def _load_loinc(path: str | Path) -> dict[str, dict[str, str]]:
         if reader.fieldnames is None or reader.fieldnames[0] != "LOINC_NUM":
             raise ValueError("Invalid LOINC CSV file")
         for row in reader:
-            if row["SCALE_TYP"] != "Qn" or row["STATUS"] != "ACTIVE":
+            if row["SCALE_TYP"] != "Qn":
+                continue
+            if row["STATUS"] not in ("ACTIVE", "DISCOURAGED"):
                 continue
             if row["CLASS"].startswith("LABORDERS"):
                 continue
@@ -295,6 +301,7 @@ issues: dict[str, list] = {
     "pinned_matches": [],  # list[tuple[str, str]]   (analyte, loinc)
     "pinned_no_match": [],  # list[str]               (analyte)
     "pinned_ineligible": [],  # list[tuple[str, str, str]] (analyte, loinc, why)
+    "pinned_discouraged": [],  # list[tuple[str, str]]   (analyte, loinc)
     "unknown_units": [],  # list[tuple[str, str]]   (analyte, unit)
     "unknown_si_units": [],  # list[tuple[str, str]]   (analyte, unit)
     "missing_si_loinc": [],  # list[tuple[str, str, str]] (analyte, loinc, unit)
@@ -554,7 +561,8 @@ def parse_lab_values(
     loinc_data = _load_loinc(loinc_file_path)
     siblings: dict[tuple, list[str]] = {}
     for loinc_num, data in loinc_data.items():
-        siblings.setdefault(_sibling_key(data), []).append(loinc_num)
+        if data["STATUS"] == "ACTIVE":
+            siblings.setdefault(_sibling_key(data), []).append(loinc_num)
 
     # Pre-compute the normalized form of every LOINC COMPONENT once, so the
     # per-analyte match below can do both an O(1) exact lookup and a single
@@ -563,8 +571,8 @@ def parse_lab_values(
     loinc_norm_by_num: dict[str, str] = {}  # loinc_num -> norm
     for loinc_num, data in loinc_data.items():
         norm = _normalize_name(data["COMPONENT"])
-        if not norm:
-            continue
+        if not norm or data["STATUS"] != "ACTIVE":
+            continue  # discouraged terms are never matched, only pinned
         loinc_by_norm.setdefault(norm, []).append(loinc_num)
         loinc_norm_by_num[loinc_num] = norm
 
@@ -700,6 +708,17 @@ def parse_lab_values(
                             si_range_raw = _format_interval(value)
                         else:
                             traditional_range_raw = _format_interval(value)
+                    if field == "specimen":
+                        value = analyte_specimens = [
+                            specimens.setdefault(
+                                id_,
+                                Specimen(
+                                    id=id_, name=id_.replace("_", " ").capitalize()
+                                ),
+                            )
+                            for id_ in value
+                        ]
+                        specimen_id = analyte_specimens[0].id
                     setattr(analyte, field, value)
                 factor = analyte.conversion_factor
                 traditional_range = analyte.traditional_reference_interval
@@ -750,7 +769,7 @@ def parse_lab_values(
                 """Return a reason string if the term is NOT eligible."""
                 row = loinc_data.get(loinc_num)
                 if row is None:
-                    return "not a quantitative, active result term"
+                    return "not a quantitative result term in use"
                 if row["SYSTEM"] not in allowed_systems:
                     return f"SYSTEM {row['SYSTEM']!r} does not fit specimen"
                 if allowed_props is not None and row["PROPERTY"] not in allowed_props:
@@ -789,6 +808,8 @@ def parse_lab_values(
                     why = eligible(pinned)
                     if why:
                         issues["pinned_ineligible"].append((mapping_key, pinned, why))
+                    elif loinc_data[pinned]["STATUS"] != "ACTIVE":
+                        issues["pinned_discouraged"].append((mapping_key, pinned))
             elif exact_hits:
                 # Step 1: normalized exact match (O(1)).
                 exact_hits.sort(key=lambda n: _rank_key(loinc_data[n]))
@@ -1000,6 +1021,11 @@ if __name__ == "__main__":
         "Manually unpinned — no LOINC on purpose (from manual_loinc_mapping.json)",
         issues["pinned_no_match"],
         lambda s: f"- {s}",
+    )
+    _print_section(
+        "Pinned to a DISCOURAGED LOINC term (LOINC has no active term for this unit)",
+        issues["pinned_discouraged"],
+        lambda t: f"- {t[0]}  ->  {t[1]}",
     )
     _print_section(
         "Pinned LOINCs that fail the eligibility filters — verify",

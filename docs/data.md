@@ -109,8 +109,20 @@ one shipped:
   carries one unit pair, so only the `mmol/L` conversion is stored; `g/L`
   is reached by prefix scaling (`convert(14, "718-7", "g/dL", "g/L")`).
 - **Hematology indices** (MCH `28539-5`, MCHC `28540-3`, MCV `30428-7`)
-  are LOINC terms of the red cells (`SYSTEM = RBC`), although the source
-  names whole blood as specimen.
+  are LOINC terms of the red cells (`SYSTEM = RBC`); their specimen is
+  therefore `red_blood_cells`, although the source names whole blood.
+- **Discouraged terms.** For alanine, α-aminobutyric acid, arginine,
+  asparagine, aspartic acid and citrulline in mg/dL, and for lead in
+  whole blood in µg/dL, LOINC's only term is marked *DISCOURAGED* (it
+  prefers amount of substance, or a venous/capillary term). Results in
+  these units exist and have no other code, so the discouraged term is
+  the key; `si_loinc_num` is the active term.
+- **Substance behind the name.** Vitamin B6 is measured as pyridoxal
+  5'-phosphate (`30552-4`), vitamin K as phylloquinone (`9622-2`), and
+  the source's "methsuximide" row is its active metabolite
+  normethsuximide (`10546-0`) — name, code and factor follow the
+  substance. Ammonia converts as NH3 (17.031 g/mol), bupropion as the
+  free base; the source used ammonia nitrogen and the hydrochloride.
 - **Coagulation activities and protein fractions** only exist as
   method-specific terms (clotting or chromogenic assay, electrophoresis).
 
@@ -136,18 +148,14 @@ is a `urine_24_h` record.
 
 ## Rows left out on purpose
 
-33 of the 474 source rows are not shipped:
+15 of the 474 source rows are not shipped:
 
-- **No LOINC term for the traditional unit:** alanine, α-aminobutyric
-  acid, arginine, asparagine, aspartic acid and citrulline exist in LOINC
-  only as amount of substance, not as mass concentration; lead has no
-  whole-blood mass term; no term for vitamin K, β-carotene, arterial pH or
-  thyroxine-binding capacity.
-- **The factor does not belong to the named substance:** ammonia (factor
-  of ammonia nitrogen), bupropion and vitamin B1 (factor of the
-  hydrochloride salt), vitamin B6 (factor of pyridoxal phosphate),
-  methsuximide (factor of normethsuximide), niacin (10 % off nicotinic
-  acid).
+- **No LOINC term fits:** β-carotene (LOINC only has total carotene),
+  arterial pH, thyroxine-binding capacity.
+- **The factor does not belong to one defined substance:** niacin in
+  urine (the source's 7.3 fits neither nicotinic acid, 8.12, nor is the
+  excreted metabolite named) and vitamin B1 (the source's 29.6 is that of
+  thiamine chloride hydrochloride; other tables use thiamine chloride).
 - **Not a conversion of one defined quantity:** creatinine clearance,
   D-dimer (FEU or DDU units), von Willebrand factor (antigen or
   activity), fecal fat, the evening cortisol row (a percentage of the

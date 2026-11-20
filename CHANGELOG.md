@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- 12 more analytes (363): alanine, α-aminobutyric acid, arginine, asparagine, aspartic acid, citrulline, lead,
+  vitamin K1, vitamin B6 (pyridoxal 5'-phosphate), normethsuximide, ammonia, bupropion.
+
+### Changed
+
+- MCH, MCHC and MCV have the specimen `red_blood_cells` (was `whole_blood`), matching their LOINC terms.
+
 ## [0.5.0] - 2026-11-20
 
 ### Added

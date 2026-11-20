@@ -1,12 +1,8 @@
 ## Datenqualität
 
-* [ ] **33 von 474 Quellzeilen werden nicht ausgeliefert** (Problem-Report, Abschnitt *no LOINC match*). Gründe und
-      Liste in `docs/data.md`, Abschnitt *Rows left out on purpose*: kein passender LOINC-Term (mehrere Aminosäuren
-      nur als Stoffmenge, Blei, Vitamin K, β-Carotin, pH), Faktor passt nicht zur genannten Substanz (Ammoniak,
-      Bupropion, Niacin, Vitamin B1/B6, Methsuximid) oder zweite Umrechnung desselben LOINC (Hämoglobin g/L).
-
-* [ ] **MCH, MCHC, MCV** stehen dauerhaft im Report unter *fail the eligibility filters*: ihre LOINC-Terme haben
-      `SYSTEM = RBC`, die Quelle nennt Vollblut.
+* [ ] **15 von 474 Quellzeilen werden nicht ausgeliefert** (Problem-Report, Abschnitt *no LOINC match*). Gründe und
+      Liste in `docs/data.md`, Abschnitt *Rows left out on purpose*. Offen im engeren Sinn sind nur Niacin im Urin und
+      Vitamin B1: dort ist unklar, auf welche Substanz sich der Faktor der Quelle bezieht.
 
 ## Format
 
@@ -21,6 +17,10 @@
 
 * [x] **LOINC-Abdeckung 133 → 351 Einträge** — jede Quellzeile einzeln zugeordnet: kanonische Namen in
       `scripts/analyte_names.json`, Codes in `scripts/manual_loinc_mapping.json`.
+* [x] **18 weitere Quellzeilen zugeordnet** — sechs Aminosäuren und Blei über *discouraged* LOINC-Terme, Vitamin K
+      als Phyllochinon, Vitamin B6 als Pyridoxalphosphat, Normethsuximid; Ammoniak und Bupropion mit korrigiertem
+      Faktor.
+* [x] **MCH, MCHC, MCV nicht mehr im Problemreport** — Specimen per Korrektur auf `red_blood_cells`.
 * [x] **Präfix-Umrechnung** — `labunits.ucum`: `ucum_factor()`, `normalise()`, `display()`; `factor()` und
       `convert()` skalieren Präfix-Varianten automatisch. Damit geht auch Hämoglobin g/dL → g/L.
 * [x] **Enzymfaktor 1/60** — alle 13 Enzyme rechnen U/L → µkat/L mit 0.01667 statt dem gerundeten 0.017 der Quelle.

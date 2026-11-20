@@ -62,6 +62,16 @@
     "conversion_factor": 0.01667,
     "si_units": "ukat/L"
   },
+  "1737-6": {
+    "si_loinc_num": "20636-7",
+    "name": "Alanine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 112.2,
+    "si_units": "umol/L"
+  },
   "1742-6": {
     "si_loinc_num": "1742-6",
     "name": "Alanine aminotransferase (ALT, SGPT)",
@@ -183,6 +193,56 @@
     ],
     "traditional_units": "ug/mL",
     "conversion_factor": 1.71,
+    "si_units": "umol/L"
+  },
+  "1788-9": {
+    "si_loinc_num": "20634-2",
+    "name": "α-Aminobutyric acid",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 97.0,
+    "si_units": "umol/L"
+  },
+  "1893-7": {
+    "si_loinc_num": "20637-5",
+    "name": "Arginine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 57.4,
+    "si_units": "umol/L"
+  },
+  "1908-3": {
+    "si_loinc_num": "20638-3",
+    "name": "Asparagine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 75.7,
+    "si_units": "umol/L"
+  },
+  "1913-3": {
+    "si_loinc_num": "20639-1",
+    "name": "Aspartic acid",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 75.1,
+    "si_units": "umol/L"
+  },
+  "2130-3": {
+    "si_loinc_num": "20640-9",
+    "name": "Citrulline",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 57.1,
     "si_units": "umol/L"
   },
   "2177-4": {
@@ -406,6 +466,16 @@
     "traditional_units": "ng/mL",
     "conversion_factor": 3.61,
     "si_units": "nmol/L"
+  },
+  "22763-7": {
+    "si_loinc_num": "16362-6",
+    "name": "Ammonia",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "ug/dL",
+    "conversion_factor": 0.587,
+    "si_units": "umol/L"
   },
   "3338-1": {
     "si_loinc_num": "25309-6",
@@ -689,6 +759,17 @@
     "traditional_units": "pg/mL",
     "conversion_factor": 1.0,
     "si_units": "pg/mL"
+  },
+  "6706-6": {
+    "si_loinc_num": "55527-6",
+    "name": "Bupropion",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 4.17,
+    "si_units": "nmol/L"
   },
   "4477-6": {
     "si_loinc_num": "4477-6",
@@ -1132,7 +1213,7 @@
     "si_loinc_num": null,
     "name": "Mean corpuscular hemoglobin (MCH)",
     "specimen": [
-      "whole_blood"
+      "red_blood_cells"
     ],
     "traditional_units": "pg",
     "conversion_factor": 0.06206,
@@ -1142,7 +1223,7 @@
     "si_loinc_num": null,
     "name": "Mean corpuscular hemoglobin concentration (MCHC)",
     "specimen": [
-      "whole_blood"
+      "red_blood_cells"
     ],
     "traditional_units": "g/dL",
     "conversion_factor": 0.6206,
@@ -1152,7 +1233,7 @@
     "si_loinc_num": "30428-7",
     "name": "Mean corpuscular volume (MCV)",
     "specimen": [
-      "whole_blood"
+      "red_blood_cells"
     ],
     "traditional_units": "um3",
     "conversion_factor": 1.0,
@@ -2221,6 +2302,16 @@
     "conversion_factor": 3.91,
     "si_units": "umol/L"
   },
+  "5671-3": {
+    "si_loinc_num": "14807-2",
+    "name": "Lead",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "ug/dL",
+    "conversion_factor": 0.0483,
+    "si_units": "umol/L"
+  },
   "30471-7": {
     "si_loinc_num": "48347-9",
     "name": "Levetiracetam",
@@ -2419,6 +2510,17 @@
     "traditional_units": "%",
     "conversion_factor": 0.01,
     "si_units": "1"
+  },
+  "10546-0": {
+    "si_loinc_num": "39483-3",
+    "name": "Normethsuximide",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 5.29,
+    "si_units": "umol/L"
   },
   "3802-6": {
     "si_loinc_num": null,
@@ -3502,6 +3604,16 @@
     "conversion_factor": 4.56,
     "si_units": "umol/L"
   },
+  "30552-4": {
+    "si_loinc_num": "62236-5",
+    "name": "Vitamin B6 (pyridoxal 5'-phosphate)",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 4.046,
+    "si_units": "nmol/L"
+  },
   "2132-9": {
     "si_loinc_num": "14685-2",
     "name": "Vitamin B12 (cobalamin)",
@@ -3555,6 +3667,17 @@
     "traditional_units": "mg/dL",
     "conversion_factor": 23.22,
     "si_units": "umol/L"
+  },
+  "9622-2": {
+    "si_loinc_num": "58793-1",
+    "name": "Vitamin K1 (phylloquinone)",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 2.22,
+    "si_units": "nmol/L"
   },
   "4098-0": {
     "si_loinc_num": "39798-4",

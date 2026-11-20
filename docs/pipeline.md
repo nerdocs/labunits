@@ -22,9 +22,12 @@ repository; `scripts/README.md` says where to download them.
 For each row of the HTML table the pipeline needs to assign a LOINC
 code. `scripts/parse_lab_values.py` does this in stages:
 
-0. **LOINC pre-filter.** Only *active*, *quantitative* (`SCALE_TYP = Qn`)
-   result terms are loaded; order-entry terms (`CLASS = LABORDERS.*`),
+0. **LOINC pre-filter.** Only *quantitative* (`SCALE_TYP = Qn`) result
+   terms are loaded; order-entry terms (`CLASS = LABORDERS.*`),
    ordinal/nominal and deprecated terms are dropped once, up front.
+   Automatic matching uses *active* terms only; a *discouraged* term can
+   be selected by a manual pin where LOINC has no active term for the
+   unit, and is then listed in the problem report.
 1. **Eligibility per row.** A term is eligible only if its `SYSTEM`
    matches one of the row's specimens (`_SPECIMEN_SYSTEMS`), its
    `PROPERTY` can carry the row's traditional unit (`_UNIT_PROPERTIES`,
@@ -84,7 +87,8 @@ shipped row whose unit is missing from the table aborts the run.
 `scripts/source_corrections.json` overrides individual fields of rows
 that are wrong in the AccessMedicine table itself (a factor off by 10×,
 a unit typo). Keys are `Name`, or `Name@specimen` when several rows share
-a name. Every entry documents its evidence in `why`. Corrections
+a name. Besides units, factor and intervals, `specimen` can be set (a list
+of specimen ids). Every entry documents its evidence in `why`. Corrections
 are applied before the consistency check below, so a correction must make
 the row agree with its own reference intervals.
 

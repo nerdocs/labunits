@@ -354,5 +354,55 @@
       "conversion_factor": 0.01667
     },
     "why": "Source prints the rounded 0.017 for U/L -> μKat/L. 1 U = 1 μmol/min = 1/60 μmol/s, so the factor is 1/60 = 0.01667 (0.017 is 2 % too high)."
+  },
+  "MCH, substance concentration, Hb [Fe]": {
+    "set": {
+      "specimen": [
+        "red_blood_cells"
+      ]
+    },
+    "why": "LOINC models the red cell indices as properties of the red cells (SYSTEM = RBC), although they are measured in a whole blood sample, which is what the source names."
+  },
+  "MCHC, substance concentration, Hb [Fe]": {
+    "set": {
+      "specimen": [
+        "red_blood_cells"
+      ]
+    },
+    "why": "LOINC models the red cell indices as properties of the red cells (SYSTEM = RBC), although they are measured in a whole blood sample, which is what the source names."
+  },
+  "Mean cell volume (MCV)": {
+    "set": {
+      "specimen": [
+        "red_blood_cells"
+      ]
+    },
+    "why": "LOINC models the red cell indices as properties of the red cells (SYSTEM = RBC), although they are measured in a whole blood sample, which is what the source names."
+  },
+  "Ammonia (as NH3)": {
+    "set": {
+      "conversion_factor": 0.587,
+      "si_reference_interval": {
+        "lower_limit": 9,
+        "upper_limit": 29
+      }
+    },
+    "why": "Source prints 0.714 = 10/14.007, the factor for ammonia expressed as nitrogen, but labels the row 'as NH3'. Ammonia has 17.031 g/mol: 10/17.031 = 0.587 (15-50 μg/dL = 9-29 μmol/L)."
+  },
+  "Bupropion (Wellbutrin, Zyban)": {
+    "set": {
+      "conversion_factor": 4.17,
+      "si_reference_interval": {
+        "lower_limit": 104,
+        "upper_limit": 417
+      }
+    },
+    "why": "Source prints 3.62 = 1000/276.2, the molar mass of bupropion hydrochloride. A plasma concentration is that of bupropion itself, 239.74 g/mol: 1000/239.74 = 4.17 (25-100 ng/mL = 104-417 nmol/L)."
+  },
+  "Alanine (adult)": {
+    "set": {
+      "si_units": "μmol/L"
+    },
+    "why": "Source prints μmol/day for a plasma concentration; its second alanine row has μmol/L."
   }
 }
