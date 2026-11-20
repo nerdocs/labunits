@@ -13,7 +13,7 @@ This project uses `uv` for environment/runtime management. The package itself ha
 - Run a script: `uv run python scripts/parse_lab_values.py`
 - Lint: `uv run ruff check`
 - Format: `uv run ruff format` (or `uv run black .`)
-- Tests: `uv run --group test pytest` (`pytest` lives in the `test` dependency group).
+- Tests: `uv run pytest` (`pytest` is in the `dev` and in the `test` dependency group; CI uses `--group test`).
 - Build sdist/wheel: `uv run python -m build`
 
 ## Architecture

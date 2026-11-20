@@ -41,6 +41,7 @@ dev = [
     "build",
     "thefuzz",
     "pydantic",
+    "pytest",
     "ruff",
     "black",
     "properdocs>=1.6.7",

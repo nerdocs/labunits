@@ -184,6 +184,7 @@ dev = [
     { name = "properdocs" },
     { name = "properdocs-theme-mkdocs" },
     { name = "pydantic" },
+    { name = "pytest" },
     { name = "ruff" },
     { name = "thefuzz" },
 ]
@@ -202,6 +203,7 @@ dev = [
     { name = "properdocs", specifier = ">=1.6.7" },
     { name = "properdocs-theme-mkdocs", specifier = ">=1.6.7" },
     { name = "pydantic" },
+    { name = "pytest" },
     { name = "ruff" },
     { name = "thefuzz" },
 ]
