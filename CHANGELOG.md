@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - **Breaking:** the reserved abbreviation lookup is gone; identifiers are a LOINC code or a name.
 - **Breaking:** entries of `analytes.json` no longer repeat their key in a `loinc_num` field.
-- **Breaking:** ALT, alkaline phosphatase and LDH convert `U/L` to `ukat/L` like the other enzymes (was `U/L`, factor 1).
+- **Breaking:** ALT, alkaline phosphatase and LDH convert `U/L` to `ukat/L` like the other enzymes (was factor 1).
 - All 13 enzymes convert `U/L` to `ukat/L` with the exact 1/60 = 0.01667 instead of the source's rounded 0.017.
 - Every rate per 24 hours has the specimen `urine_24_h` (was `urine` for all but aldosterone).
 - Sirolimus and tacrolimus resolve by their SI-side LOINC (method-specific term).
