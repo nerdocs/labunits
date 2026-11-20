@@ -1,42 +1,35 @@
 ## Datenqualität
 
-* [ ] **341 von 474 geparsten Analyten bekommen keine LOINC-Zuordnung** und werden nicht ausgeliefert
-      (Problem-Report von `scripts/parse_lab_values.py`, Abschnitt *no LOINC match*). Größte Gruppen:
-      Medikamentenspiegel (`(therapeutic)`-Suffix), Hormone mit Zyklusphasen/Geschlecht als Unterzeilen,
-      Zellzählungen (`μL−1`), Immunglobuline, Vitamine. Weg: Suffixe wie `(therapeutic)` vor dem Matching
-      abstreifen, Unterzeilen-Namen normalisieren, dann gezielt in `manual_loinc_mapping.json` pinnen.
+* [ ] **33 von 474 Quellzeilen werden nicht ausgeliefert** (Problem-Report, Abschnitt *no LOINC match*). Gründe und
+      Liste in `docs/data.md`, Abschnitt *Rows left out on purpose*: kein passender LOINC-Term (mehrere Aminosäuren
+      nur als Stoffmenge, Blei, Vitamin K, β-Carotin, pH), Faktor passt nicht zur genannten Substanz (Ammoniak,
+      Bupropion, Niacin, Vitamin B1/B6, Methsuximid) oder zweite Umrechnung desselben LOINC (Hämoglobin g/L).
 
-* [ ] **37 Zeilen (18 verschiedene traditionelle Einheiten) ohne PROPERTY-Mapping** (`μL−1`, `mm Hg`, `s`, `pg/cell`, `g Hb/dL`,
-      `mL/min/1.73 m2`, …) — für sie greift kein Property-Filter. `_UNIT_PROPERTIES` erweitern, sobald
-      Analyte mit diesen Einheiten ausgeliefert werden sollen.
+* [ ] **Ein LOINC, zwei SI-Einheiten:** Hämoglobin, MCH und MCHC haben in der Quelle je eine Umrechnung in g/L und
+      eine in mmol/L. Ausgeliefert wird nur mmol/L, weil ein Eintrag genau ein Einheitenpaar trägt.
 
-* [ ] **Fuzzy-Matches im Problem-Report einmal komplett gegenprüfen** (aktuell 20, alle ≥ 82 %).
-      Gegengeprüft und dokumentiert: Acetylcholinesterase, LDH, Hb-Fraktionen (siehe `docs/data.md`).
-
-* [ ] **Faktor-Check meldet Methionin und Tyrosin** — Rundung in der Quelle (6.71 → 6, 22.08 → 20),
-      kein Fehler. Ggf. Toleranz für einstellige SI-Werte lockern, damit der Report leer bleibt.
-
-## Code-Qualität
-
-* [ ] **`_resolve_analyte_identifier` in `converters.py`: Abbreviation-Lookup hat noch keine Daten.**
-      Der Reverse-Index `_abbrev_index` bleibt leer, solange `abbreviation`-Felder in `analytes.json`
-      fehlen. Entweder LOINC `SHORTNAME`/`CONSUMER_NAME` einspielen oder den Zweig entfernen.
-
-* [ ] **`loinc_num` ist in jedem Entry und im Outer-Key.** Redundant; beim nächsten Format-Bump raus.
-
-* [ ] **`scripts/models.py`: `subtitle` und `gender` sind ungenutzt.**
+* [ ] **MCH, MCHC, MCV** stehen dauerhaft im Report unter *fail the eligibility filters*: ihre LOINC-Terme haben
+      `SYSTEM = RBC`, die Quelle nennt Vollblut.
 
 ## Format
 
 * [ ] **`analytes.json` mit `indent=2`.** Gut für Diffs; bei > 1000 Einträgen `indent=None` erwägen.
 
-* [ ] **~30 Einträge haben `conversion_factor == 1.0`** (traditionelle Einheit == SI-Einheit). Korrekt,
+* [ ] **15 Einträge haben identische Einheiten auf beiden Seiten** (z. B. Gerinnungszeiten in `s`). Korrekt,
       aber reines Unit-Lookup ohne Umrechnungs-Mehrwert.
 
 ---
 
 ## Erledigt
 
+* [x] **LOINC-Abdeckung 133 → 351 Einträge** — jede Quellzeile einzeln zugeordnet: kanonische Namen in
+      `scripts/analyte_names.json`, Codes in `scripts/manual_loinc_mapping.json`.
+* [x] **Enzymfaktor 1/60** — alle 13 Enzyme rechnen U/L → µkat/L mit 0.01667 statt dem gerundeten 0.017 der Quelle.
+* [x] **Molmassen-Abgleich** — `scripts/molar_masses.json`; die Pipeline rechnet jeden Masse↔Stoffmenge-Faktor nach.
+* [x] **`TIME_ASPCT`-Filter und `urine_24_h`** für alle Raten pro 24 h.
+* [x] **Fuzzy-Treffer gegengeprüft** — alle 19 verbliebenen sind korrekt (siehe `docs/data.md`).
+* [x] **Faktor-Check ohne Rundungs-Fehlalarme** — die Rundung der traditionellen Grenze wird berücksichtigt.
+* [x] **Abbreviation-Lookup entfernt**, **`loinc_num` nicht mehr im Eintrag**, ungenutzte Modellfelder entfernt.
 * [x] **Einheiten als UCUM-Codes** — `scripts/ucum_units.json` übersetzt die Quell-Einheiten; `analytes.json` enthält
       nur noch UCUM (`umol/L`, `g/(24.h)`).
 * [x] **Zweiter LOINC-Code je Analyt** — `si_loinc_num` (Term der SI-Einheit); die API löst beide Codes auf.

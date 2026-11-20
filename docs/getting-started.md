@@ -42,8 +42,6 @@ conversion functions) and resolves it through the same lookup chain:
 2. **Full analyte name** — case-insensitive. Example: `"Acetone"`,
    `"acetone"`, `"ACETONE"`. A name shared by several records is
    rejected rather than guessed (see below).
-3. **Abbreviation** — reserved for future use; the current shipped data
-   set does not contain abbreviations yet, but the API accepts them.
 
 If the identifier can't be resolved, a `ValueError` is raised:
 

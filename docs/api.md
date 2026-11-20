@@ -31,7 +31,7 @@ Convert a concentration from its traditional unit to its SI unit.
 | Parameter | Type                 | Meaning                                              |
 |-----------|----------------------|------------------------------------------------------|
 | `value`   | `float`              | Concentration in the analyte's traditional unit.     |
-| `analyte` | `LoincNum \| str`    | LOINC code (preferred), abbreviation, or full name.  |
+| `analyte` | `LoincNum \| str`    | LOINC code (preferred) or full name.                 |
 
 **Returns** `float` — value in the analyte's SI unit.
 `inf`, `-inf` and `nan` pass through unchanged.
@@ -56,7 +56,7 @@ Convert a concentration from its SI unit to its traditional unit.
 | Parameter | Type                 | Meaning                                              |
 |-----------|----------------------|------------------------------------------------------|
 | `value`   | `float`              | Concentration in the analyte's SI unit.              |
-| `analyte` | `LoincNum \| str`    | LOINC code (preferred), abbreviation, or full name.  |
+| `analyte` | `LoincNum \| str`    | LOINC code (preferred) or full name.                 |
 
 **Returns** `float` — value in the analyte's traditional unit.
 `inf`, `-inf` and `nan` pass through unchanged.

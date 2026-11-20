@@ -7,7 +7,6 @@ from typing import TypeAlias
 _analytes_data: dict[str, dict] = {}
 _si_loinc_index: dict[str, list[str]] = {}
 _name_index: dict[str, list[str]] = {}
-_abbrev_index: dict[str, str] = {}
 _records: tuple["Analyte", ...] = ()
 _indexed_for: dict | None = None
 
@@ -63,7 +62,7 @@ def _ensure_indexes() -> dict:
     the indexes follow automatically). The data object itself is remembered,
     not its ``id()``: an address can be reused once an object is freed.
     """
-    global _indexed_for, _si_loinc_index, _name_index, _abbrev_index, _records
+    global _indexed_for, _si_loinc_index, _name_index, _records
     data = _load_data()
     if _indexed_for is not data:
         # SI-side LOINC -> keys of the records it is the SI side of (other
@@ -77,11 +76,6 @@ def _ensure_indexes() -> dict:
         for loinc, entry in data.items():
             if entry.get("name"):
                 _name_index.setdefault(entry["name"].lower(), []).append(loinc)
-        _abbrev_index = {
-            entry["abbreviation"].lower(): loinc
-            for loinc, entry in data.items()
-            if entry.get("abbreviation")
-        }
         _records = tuple(
             Analyte(
                 loinc_num=loinc,
@@ -99,7 +93,7 @@ def _ensure_indexes() -> dict:
 
 
 def _resolve_analyte_identifier(identifier: str) -> LoincNum:
-    """Resolve a LOINC code, abbreviation or full name to a LOINC code.
+    """Resolve a LOINC code or full name to a LOINC code.
 
     The returned code is always the record's key, i.e. the LOINC of the
     traditional-unit side.
@@ -110,8 +104,6 @@ def _resolve_analyte_identifier(identifier: str) -> LoincNum:
            for serum creatinine in µmol/L. A code that is itself a key
            always means that record (step 1).
         3. Case-insensitive match against ``name``.
-        4. Case-insensitive match against ``abbreviation`` (reserved — the
-           shipped ``analytes.json`` does not carry abbreviations yet).
 
     Raises:
         ValueError: if the identifier cannot be resolved, or if a name
@@ -137,8 +129,6 @@ def _resolve_analyte_identifier(identifier: str) -> LoincNum:
         raise ValueError(
             f"Ambiguous analyte name: {identifier} — use a LOINC code: {candidates}"
         )
-    if needle in _abbrev_index:
-        return _abbrev_index[needle]
 
     raise ValueError(f"Unknown analyte identifier: {identifier}")
 
@@ -184,8 +174,7 @@ def to_si_unit(value: float, analyte: LoincNum | str) -> float:
 
     Args:
         value: Concentration in the analyte's traditional unit.
-        analyte: LOINC code (preferred; of either unit side), abbreviation,
-            or full name.
+        analyte: LOINC code (preferred; of either unit side) or full name.
 
     Returns:
         The value expressed in the analyte's SI unit. ``inf``/``-inf``/``nan``
@@ -202,8 +191,7 @@ def to_traditional_unit(value: float, analyte: LoincNum | str) -> float:
 
     Args:
         value: Concentration in the analyte's SI unit.
-        analyte: LOINC code (preferred; of either unit side), abbreviation,
-            or full name.
+        analyte: LOINC code (preferred; of either unit side) or full name.
 
     Returns:
         The value expressed in the analyte's traditional unit.
@@ -256,7 +244,7 @@ def factor(analyte: LoincNum | str, from_unit: str, to_unit: str) -> float:
     the caller need not know which side is the traditional one.
 
     Args:
-        analyte: LOINC code (of either unit side), abbreviation, or full name.
+        analyte: LOINC code (of either unit side) or full name.
         from_unit: UCUM code of the unit the value is in.
         to_unit: UCUM code of the unit wanted.
 

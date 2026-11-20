@@ -6,10 +6,10 @@ load-bearing or incidental.
 
 ## LOINC as the canonical key
 
-Lab values are identified in practice by all of: full name, common
-abbreviation, in-house code, and LOINC. Of those, **LOINC is the only
+Lab values are identified in practice by all of: full name, in-house
+code, and LOINC. Of those, **LOINC is the only
 globally stable, internationally maintained identifier** — so every
-record is keyed by LOINC number. Names and abbreviations are convenience
+record is keyed by LOINC number. Names are convenience
 aliases at the API boundary; internally everything normalises to LOINC
 first. A name that fits several records raises instead of picking one:
 a silent pick once turned "Creatinine" into the urine record (×8.84

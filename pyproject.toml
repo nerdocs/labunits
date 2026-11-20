@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=77.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -10,14 +10,29 @@ authors = [
     { name="Christian Gonzalez", email="office@nerdocs.at" }
 ]
 readme = "README.md"
+license = "MIT"
 license-files = ["LICENSE.md"]
 requires-python = ">=3.10"
+keywords = ["laboratory", "units", "SI units", "unit conversion", "LOINC", "UCUM"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Typing :: Typed",
+]
 
 [project.urls]
 Homepage = "https://github.com/nerdocs/labunits"
 
 [tool.setuptools.package-data]
-labunits = ["data/*.json"]
+labunits = ["data/*.json", "py.typed"]
 
 [dependency-groups]
 test = ["pytest", "ruff"]

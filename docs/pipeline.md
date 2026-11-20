@@ -26,10 +26,12 @@ code. `scripts/parse_lab_values.py` does this in stages:
    result terms are loaded; order-entry terms (`CLASS = LABORDERS.*`),
    ordinal/nominal and deprecated terms are dropped once, up front.
 1. **Eligibility per row.** A term is eligible only if its `SYSTEM`
-   matches one of the row's specimens (`_SPECIMEN_SYSTEMS`) and its
+   matches one of the row's specimens (`_SPECIMEN_SYSTEMS`), its
    `PROPERTY` can carry the row's traditional unit (`_UNIT_PROPERTIES`,
-   e.g. `mg/dL` → `MCnc`, `mEq/L` → `SCnc`, `U/L` → `CCnc`). This is what
-   keeps serum magnesium from landing on a stool-magnesium term.
+   e.g. `mg/dL` → `MCnc`, `mEq/L` → `SCnc`, `U/L` → `CCnc`) and its
+   `TIME_ASPCT` is `24H` exactly when the row is a 24-hour urine (every
+   unit per `24 h` makes the specimen `urine_24_h`), otherwise `Pt`. This
+   is what keeps serum magnesium from landing on a stool-magnesium term.
 2. **Manual pin** from `scripts/manual_loinc_mapping.json` — wins
    unconditionally, but a pin that fails the eligibility filters is
    listed in the problem report. Keys are `Name`, `Name@specimen` or
@@ -47,15 +49,28 @@ Analytes without a match, and rows without a numeric conversion factor,
 are not written to the output; they are listed in the problem report as
 candidates for manual review.
 
+## Canonical names
+
+`scripts/analyte_names.json` maps a source row name to the analyte name
+that is matched and shipped, dropping reference-population qualifiers
+(`Digoxin (therapeutic)` → `Digoxin`, `Testosterone, female` →
+`Testosterone`). Keys are `Name`, `Name@specimen` or `Name@specimen@unit`
+— needed where the source left a sub-row with a bare label such as
+`Male`. It is applied after the source corrections and before the manual
+pins, so pins are keyed by the canonical name. Rows that end up with the
+same LOINC, name, units and factor are merged into one record whose
+specimens are the union; any other two rows on one LOINC abort the run.
+
 ## SI-side LOINC
 
 The matched term fits the row's *traditional* unit. For the SI unit the
 pipeline derives `si_loinc_num`: if the matched term's `PROPERTY` also
 fits the SI unit, it is the same term; otherwise the sibling term with
-identical `COMPONENT`, `SYSTEM`, `TIME_ASPCT` and `METHOD_TYP` and a
-fitting `PROPERTY` (best `COMMON_TEST_RANK` first). Rows without such a
-term get `null` and are listed in the problem report, as are SI units
-missing from `_UNIT_PROPERTIES`.
+identical `COMPONENT`, `SYSTEM` and `TIME_ASPCT` and a fitting `PROPERTY`
+(best `COMMON_TEST_RANK` first). A sibling of the same method wins; a
+term of another method is taken only if there is none, and is listed in
+the problem report. Rows without any such term get `null` and are listed
+as well, as are SI units missing from `_UNIT_PROPERTIES`.
 
 ## UCUM units
 
@@ -77,9 +92,15 @@ the row agree with its own reference intervals.
 
 - **Factor consistency.** The source prints every reference interval in
   both unit systems, so `traditional × factor` must reproduce the SI
-  interval up to printed rounding. Violations are reported under
-  *FACTOR INCONSISTENT* and must be resolved before shipping — this is
-  how source errors (e.g. a factor off by 10×) surface.
+  interval up to the rounding of both printed numbers. Violations are
+  reported under *FACTOR INCONSISTENT* and must be resolved before
+  shipping — this is how source errors (e.g. a factor off by 10×) surface.
+- **Molar mass.** A factor that is wrong on both sides of a row passes
+  the check above (the source printed calcitriol with 2.6 instead of 2.4
+  and a matching interval). For every mass ↔ amount-of-substance pair the
+  factor is therefore recomputed from `scripts/molar_masses.json`
+  (`mg/dL` → `mmol/L` is `10 / M`); more than 2 % deviation is reported,
+  and so is a pair without a molar mass.
 - **No silent overwrite.** Two *different* rows resolving to the same
   LOINC abort the run. Verbatim repeats (the source lists the amino
   acids twice) are collapsed. Two rows claiming the same SI-side LOINC

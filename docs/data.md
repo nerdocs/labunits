@@ -15,8 +15,8 @@ never written to.
 
 The key is the LOINC number as a string (e.g. `"5568-1"`) — the term for
 results in the **traditional** unit. LOINC codes are the canonical
-identifier throughout the library — names and abbreviations are only
-resolution conveniences.
+identifier throughout the library — names are only resolution
+conveniences.
 
 ## Analyte entry
 
@@ -24,7 +24,6 @@ Example (Acetone):
 
 ```json
 "5568-1": {
-  "loinc_num": "5568-1",
   "si_loinc_num": "14582-1",
   "name": "Acetone",
   "specimen": ["serum", "plasma"],
@@ -38,7 +37,6 @@ Example (Acetone):
 
 | Field                                | Type                       | Notes                                                                            |
 |--------------------------------------|----------------------------|----------------------------------------------------------------------------------|
-| `loinc_num`                          | `str`                      | Duplicate of the outer key; kept for round-trippable records.                    |
 | `name`                               | `str`                      | Full analyte name as found in the AccessMedicine reference table.                |
 | `specimen`                           | `list[str]`                | Specimen IDs — e.g. `serum`, `plasma`, `red_blood_cells`.                        |
 | `si_loinc_num`                       | `str \| null`              | LOINC term for results in the SI unit — see below.                               |
@@ -52,9 +50,9 @@ LOINC has one term per *property*: serum creatinine as a mass
 concentration (mg/dL) is `2160-0`, as a substance concentration (µmol/L)
 it is `14682-9`. Each entry therefore carries both:
 
-- `loinc_num` (the key) — the term matching `traditional_units`.
+- The key — the term matching `traditional_units`.
 - `si_loinc_num` — the term matching `si_units`: the sibling term with the
-  same component, system, time aspect and method. It equals `loinc_num`
+  same component, system, time aspect and method. It equals the key
   when one term covers both units (`g/dL` ↔ `g/L`, `U/L` ↔ `ukat/L`,
   `meq/L` ↔ `mmol/L`) and is `null` when LOINC has no such term.
 
@@ -97,11 +95,67 @@ one shipped:
   matcher rejects. The source's factor `1` for `%` → `Fraction` is
   corrected to `0.01` (see `scripts/source_corrections.json`).
 
+- **Fuzzy matches.** The 19 rows still matched by name similarity (see
+  the problem report) were each checked against the LOINC long name; all
+  are the intended term. Every other row added since is pinned explicitly
+  in `scripts/manual_loinc_mapping.json`.
+- **Enzymes** convert `U/L` → `ukat/L` with `0.01667` (1 U = 1 µmol/min,
+  so the factor is exactly 1/60); the source prints the rounded `0.017`,
+  which is 2 % too high. The source left ALT, alkaline phosphatase and LDH
+  in `U/L`; they are converted like the others.
+- **Hemoglobin, MCH, MCHC** are listed twice in the source, once converted
+  to mass units (`g/L`) and once to amount of substance (`mmol/L`, per
+  iron atom, 16114 g/mol). Both would sit on the same LOINC, and a record
+  carries one unit pair, so only the `mmol/L` conversion ships.
+- **Hematology indices** (MCH `28539-5`, MCHC `28540-3`, MCV `30428-7`)
+  are LOINC terms of the red cells (`SYSTEM = RBC`), although the source
+  names whole blood as specimen.
+- **Coagulation activities and protein fractions** only exist as
+  method-specific terms (clotting or chromogenic assay, electrophoresis).
+
+## Names
+
+`name` is the analyte, not the source's row label. Everything that only
+describes a reference population or situation is dropped — sex, cycle
+phase, age group, smoker, therapeutic/toxic, time of day, risk category,
+panel header — because labunits ships no reference intervals. Rows that
+thereby describe the same record are merged (testosterone male/female,
+the five LDL risk categories). The mapping is
+`scripts/analyte_names.json`.
+
+A name is not unique: creatinine, calcium, glucose and others ship once
+per specimen. Such a name raises `ValueError` listing the LOINC codes.
+
+## Specimens
+
+`specimen` lists the materials the source names for the record: `serum`,
+`plasma`, `whole_blood`, `arterial_blood`, `venous_blood`,
+`red_blood_cells`, `urine`, `urine_24_h`, `csf`. Every rate per 24 hours
+is a `urine_24_h` record.
+
+## Rows left out on purpose
+
+33 of the 474 source rows are not shipped:
+
+- **No LOINC term for the traditional unit:** alanine, α-aminobutyric
+  acid, arginine, asparagine, aspartic acid and citrulline exist in LOINC
+  only as amount of substance, not as mass concentration; lead has no
+  whole-blood mass term; no term for vitamin K, β-carotene, arterial pH or
+  thyroxine-binding capacity.
+- **The factor does not belong to the named substance:** ammonia (factor
+  of ammonia nitrogen), bupropion and vitamin B1 (factor of the
+  hydrochloride salt), vitamin B6 (factor of pyridoxal phosphate),
+  methsuximide (factor of normethsuximide), niacin (10 % off nicotinic
+  acid).
+- **Not a conversion of one defined quantity:** creatinine clearance,
+  D-dimer (FEU or DDU units), von Willebrand factor (antigen or
+  activity), fecal fat, the evening cortisol row (a percentage of the
+  morning value), the HbA1c "diagnosis" row.
+- **Second conversion on the same LOINC:** hemoglobin, MCH and MCHC in
+  mass units (see above).
+
 ## What's *not* in the data
 
-- **No abbreviations** (yet). The API accepts abbreviations as a lookup
-  alias, but the current data set has none. The `_resolve_analyte_identifier`
-  code path is ready for them.
 - **No reference intervals, no flags, no interpretation** — by design.
   The pipeline reads the source's reference intervals only to cross-check
   the conversion factors; they are never shipped. `labunits` converts
@@ -114,9 +168,9 @@ one shipped:
 
 - `_load_data()` reads the file exactly once and caches it in the
   module-level `_analytes_data` dict.
-- On first lookup, `_ensure_indexes()` builds three derived dicts —
-  `_si_loinc_index` (SI-side LOINC → keys), `_name_index` (name → all
-  LOINCs carrying it) and `_abbrev_index` (abbreviation → LOINC) — so
+- On first lookup, `_ensure_indexes()` builds two derived dicts —
+  `_si_loinc_index` (SI-side LOINC → keys) and `_name_index` (name → all
+  LOINCs carrying it) — so
   that lookups are **O(1)** instead of O(n). The `Analyte` records
   returned by `analytes()` are built in the same step and reused.
   The indexes are rebuilt automatically when the data dict is

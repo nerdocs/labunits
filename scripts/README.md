@@ -15,5 +15,6 @@ Then run from the project root:
 uv run python scripts/parse_lab_values.py
 ```
 
-`manual_loinc_mapping.json`, `source_corrections.json` and `ucum_units.json` are part of the repository and document
-every manual decision that goes into the output. See `docs/pipeline.md` for how the matching works.
+`manual_loinc_mapping.json`, `source_corrections.json`, `analyte_names.json`, `ucum_units.json` and
+`molar_masses.json` are part of the repository and document every manual decision that goes into the output. See
+`docs/pipeline.md` for how the matching works.

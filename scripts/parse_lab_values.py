@@ -14,15 +14,35 @@ FUZZY_MATCH_RATIO = 80
 # because NFKD keeps them as separate codepoints (α is not decomposable).
 # Mapping only the letters that actually appear in clinical analyte names.
 _GREEK_TO_LATIN = {
-    "α": "alpha", "β": "beta", "γ": "gamma", "δ": "delta", "ε": "epsilon",
-    "κ": "kappa", "λ": "lambda", "μ": "mu", "π": "pi", "σ": "sigma",
-    "τ": "tau", "ω": "omega",
+    "α": "alpha",
+    "β": "beta",
+    "γ": "gamma",
+    "δ": "delta",
+    "ε": "epsilon",
+    "κ": "kappa",
+    "λ": "lambda",
+    "μ": "mu",
+    "π": "pi",
+    "σ": "sigma",
+    "τ": "tau",
+    "ω": "omega",
 }
 
 # Tokens that must match between two names if present on either side.
 # Roman numerals disambiguate things like coagulation factors (V vs VI vs IX).
 _ROMAN_TOKENS = {
-    "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii",
+    "i",
+    "ii",
+    "iii",
+    "iv",
+    "v",
+    "vi",
+    "vii",
+    "viii",
+    "ix",
+    "x",
+    "xi",
+    "xii",
     "xiii",
 }
 
@@ -30,9 +50,24 @@ _ROMAN_TOKENS = {
 # must never match "testosterone" alone or "testosterone, total", and an
 # antigen ("Ag") or antibody ("Ab") term is not the analyte itself.
 _QUALIFIER_TOKENS = {
-    "male", "female", "free", "total", "ionized", "cardiac", "peak", "trough",
-    "therapeutic", "toxic", "upright", "supine", "unconjugated", "conjugated",
-    "fasting", "postprandial", "ag", "ab",
+    "male",
+    "female",
+    "free",
+    "total",
+    "ionized",
+    "cardiac",
+    "peak",
+    "trough",
+    "therapeutic",
+    "toxic",
+    "upright",
+    "supine",
+    "unconjugated",
+    "conjugated",
+    "fasting",
+    "postprandial",
+    "ag",
+    "ab",
 }
 
 # Specimen id (as produced by this parser) -> LOINC SYSTEM values that
@@ -62,10 +97,23 @@ _UNIT_PROPERTIES: list[tuple[re.Pattern, set[str]]] = [
     (re.compile(r"^(m|μ|n|p)?g/(L|dL|mL)$"), {"MCnc"}),
     (re.compile(r"^(m|μ)?g/24 h$"), {"MRat"}),
     (re.compile(r"^(m|μ|n)?(mol|Eq)/(24 h|day)$"), {"SRat"}),
-    (re.compile(r"^k?U/(L|mL)$"), {"CCnc"}),
+    (re.compile(r"^U/L$"), {"CCnc"}),
     (re.compile(r"^(μ|n)?Kat/L$"), {"CCnc"}),
+    # "U/mL" is an enzyme activity or the arbitrary unit of a tumour marker.
     (re.compile(r"^(m|μ|k)?I?U/(L|mL)$"), {"ACnc", "CCnc"}),
-    (re.compile(r"^(%|Fraction)"), {"MFr", "NFr", "VFr", "SFr", "RelTime", "RelCCnc", "RelACnc", "RelMCnc"}),
+    (re.compile(r"^I?U/(24 h|day)$"), {"ARat"}),
+    (
+        re.compile(r"^(%|Fraction)"),
+        {"MFr", "NFr", "VFr", "SFr", "CFr", "RelTime", "RelCCnc", "RelACnc", "RelMCnc"},
+    ),
+    (re.compile(r"^(10\d+ )?(μL|L)−1$"), {"NCnc"}),
+    (re.compile(r"^(μm3|fL)$"), {"EntVol", "EntMeanVol"}),
+    (re.compile(r"^s$"), {"Time"}),
+    (re.compile(r"^mm Hg$"), {"PPres"}),
+    (re.compile(r"^mm/h$"), {"Vel", "Sedimentation Rate"}),
+    (re.compile(r"^nmol BCE/L$"), {"SCnc"}),
+    (re.compile(r"^nmol/mmol creatinine$"), {"SRto"}),
+    (re.compile(r"^ng/(mL/h|\(mL h\))$"), {"CCnc"}),
     (re.compile(r"^(mOsm|mmol)/kg"), {"Osmol"}),
     (re.compile(r"^U/g of Hb$"), {"CCnt"}),
 ]
@@ -121,6 +169,14 @@ def _structural_match(a_norm: str, b_norm: str) -> bool:
     return True
 
 
+# UCUM mass / amount-of-substance units the molar-mass check understands:
+# prefix -> factor to the base unit, denominator -> factor to "per litre".
+_PREFIX = {"": 1.0, "m": 1e-3, "u": 1e-6, "n": 1e-9, "p": 1e-12, "f": 1e-15}
+_PER = {"L": 1.0, "dL": 10.0, "mL": 1000.0, "(24.h)": 1.0}
+_MASS_UNIT = re.compile(r"^(m|u|n|p)?g/(L|dL|mL|\(24\.h\))$")
+_MOLE_UNIT = re.compile(r"^(m|u|n|p|f)?mol/(L|dL|mL|\(24\.h\))$")
+
+
 def _properties_for_unit(unit: str) -> set[str] | None:
     """Return the LOINC PROPERTY values compatible with a traditional unit."""
     for pattern, props in _UNIT_PROPERTIES:
@@ -148,8 +204,13 @@ def _load_loinc(path: str | Path) -> dict[str, dict[str, str]]:
     so they are dropped here once instead of being filtered per analyte.
     """
     keep = (
-        "LOINC_NUM", "COMPONENT", "PROPERTY", "TIME_ASPCT", "SYSTEM",
-        "METHOD_TYP", "COMMON_TEST_RANK",
+        "LOINC_NUM",
+        "COMPONENT",
+        "PROPERTY",
+        "TIME_ASPCT",
+        "SYSTEM",
+        "METHOD_TYP",
+        "COMMON_TEST_RANK",
     )
     loinc: dict[str, dict[str, str]] = {}
     with Path(path).open("r", encoding="utf-8", newline="") as fh:
@@ -165,9 +226,9 @@ def _load_loinc(path: str | Path) -> dict[str, dict[str, str]]:
     return loinc
 
 
-def _sibling_key(row: dict[str, str]) -> tuple[str, str, str, str]:
-    """Everything that identifies a LOINC term except its PROPERTY."""
-    return (row["COMPONENT"], row["SYSTEM"], row["TIME_ASPCT"], row["METHOD_TYP"])
+def _sibling_key(row: dict[str, str]) -> tuple[str, str, str]:
+    """What identifies a LOINC term apart from its PROPERTY and method."""
+    return (row["COMPONENT"], row["SYSTEM"], row["TIME_ASPCT"])
 
 
 def _find_si_loinc(
@@ -182,9 +243,11 @@ def _find_si_loinc(
     ``2160-0`` (mass concentration), in µmol/L it is ``14682-9`` (substance
     concentration). If the matched term's own PROPERTY already fits the SI
     unit (g/dL -> g/L), that term covers both units and is returned.
-    Otherwise the sibling term — same component, system, time aspect and
-    method — with a fitting PROPERTY is looked up; ``None`` if LOINC has
-    none.
+    Otherwise the sibling term — same component, system and time aspect —
+    with a fitting PROPERTY is looked up; ``None`` if LOINC has none. A
+    sibling of the same method wins; only if there is none, a term of
+    another method is taken (sirolimus in nmol/L exists only as an
+    immunoassay term), which the caller reports.
     """
     row = loinc_data.get(loinc_num)
     if row is None:
@@ -196,7 +259,14 @@ def _find_si_loinc(
         for n in siblings.get(_sibling_key(row), [])
         if loinc_data[n]["PROPERTY"] in si_props
     ]
-    return min(candidates, key=lambda n: _rank_key(loinc_data[n]), default=None)
+    same_method = [
+        n for n in candidates if loinc_data[n]["METHOD_TYP"] == row["METHOD_TYP"]
+    ]
+    return min(
+        same_method or candidates,
+        key=lambda n: _rank_key(loinc_data[n]),
+        default=None,
+    )
 
 
 def _to_ucum(unit: str, loinc_property: str | None, ucum_units: dict[str, str]) -> str:
@@ -218,22 +288,25 @@ analyte_count = 0
 # the run. Each bucket holds items of a stable shape so the report loop can
 # stay dumb.
 issues: dict[str, list] = {
-    "skipped_see_references": [],       # list[str]  (raw cell text)
-    "missing_loinc": [],                # list[str]  (analyte name)
-    "ambiguous_exact_matches": [],      # list[tuple[str, str, list[str]]]
-    "fuzzy_matches": [],                # list[tuple[str, str, int, str]]
-    "pinned_matches": [],               # list[tuple[str, str]]   (analyte, loinc)
-    "pinned_no_match": [],              # list[str]               (analyte)
-    "pinned_ineligible": [],            # list[tuple[str, str, str]] (analyte, loinc, why)
-    "unknown_units": [],                # list[tuple[str, str]]   (analyte, unit)
-    "unknown_si_units": [],             # list[tuple[str, str]]   (analyte, unit)
-    "missing_si_loinc": [],             # list[tuple[str, str, str]] (analyte, loinc, unit)
-    "missing_ucum": [],                 # list[tuple[str, str]]   (analyte, unit)
-    "missing_factors": [],              # list[str]  (analyte name)
-    "unparseable_factors": [],          # list[tuple[str, str]]
-    "unparseable_ranges": [],           # list[tuple[str, str]]
-    "inconsistent_factors": [],         # list[tuple[str, str, float, str]]
-    "corrected_rows": [],               # list[tuple[str, dict]]  (analyte, fields)
+    "skipped_see_references": [],  # list[str]  (raw cell text)
+    "missing_loinc": [],  # list[str]  (analyte name)
+    "ambiguous_exact_matches": [],  # list[tuple[str, str, list[str]]]
+    "fuzzy_matches": [],  # list[tuple[str, str, int, str]]
+    "pinned_matches": [],  # list[tuple[str, str]]   (analyte, loinc)
+    "pinned_no_match": [],  # list[str]               (analyte)
+    "pinned_ineligible": [],  # list[tuple[str, str, str]] (analyte, loinc, why)
+    "unknown_units": [],  # list[tuple[str, str]]   (analyte, unit)
+    "unknown_si_units": [],  # list[tuple[str, str]]   (analyte, unit)
+    "missing_si_loinc": [],  # list[tuple[str, str, str]] (analyte, loinc, unit)
+    "other_method_si_loinc": [],  # list[tuple[str, str, str]] (analyte, si loinc, method)
+    "molar_mass_mismatch": [],  # list[tuple[str, float, float, float]]
+    "missing_molar_mass": [],  # list[str]  (analyte name)
+    "missing_ucum": [],  # list[tuple[str, str]]   (analyte, unit)
+    "missing_factors": [],  # list[str]  (analyte name)
+    "unparseable_factors": [],  # list[tuple[str, str]]
+    "unparseable_ranges": [],  # list[tuple[str, str]]
+    "inconsistent_factors": [],  # list[tuple[str, str, float, str]]
+    "corrected_rows": [],  # list[tuple[str, dict]]  (analyte, fields)
 }
 
 
@@ -263,6 +336,26 @@ def _load_source_corrections(path: Path) -> dict[str, dict]:
     with path.open("r", encoding="utf-8") as fh:
         raw = json.load(fh)
     return {k: v["set"] for k, v in raw.items() if not k.startswith("_")}
+
+
+def _load_analyte_names(path: Path) -> dict[str, str]:
+    """Load the source-name -> canonical-name table from ``analyte_names.json``.
+
+    ``_``-prefixed keys are documentation.
+    """
+    with path.open("r", encoding="utf-8") as fh:
+        raw = json.load(fh)
+    return {k: v for k, v in raw.items() if not k.startswith("_")}
+
+
+def _load_molar_masses(path: Path) -> dict[str, float]:
+    """Load analyte name -> molar mass (g/mol) from ``molar_masses.json``.
+
+    ``_``-prefixed keys are documentation.
+    """
+    with path.open("r", encoding="utf-8") as fh:
+        raw = json.load(fh)
+    return {k: v for k, v in raw.items() if not k.startswith("_")}
 
 
 def _load_ucum_units(path: Path) -> dict[str, str]:
@@ -329,27 +422,45 @@ def parse_interval(range_str: str) -> AnalyteRange:
     return AnalyteRange(text=range_str)
 
 
+def _rounding(raw: str) -> float:
+    """Half a unit of the last printed decimal of the least precise number."""
+    decimals = [
+        len(n.split(".")[1]) if "." in n else 0
+        for n in re.findall(r"\d+(?:\.\d+)?", raw)
+    ]
+    return 0.5 * 10 ** -min(decimals) if decimals else 0.0
+
+
+def _format_interval(interval: AnalyteRange) -> str:
+    """Render a corrected interval the way the source would print it."""
+    return "-".join(
+        f"{limit:g}"
+        for limit in (interval.lower_limit, interval.upper_limit)
+        if limit is not None
+    )
+
+
 def check_factor_consistency(
     name: str,
     traditional: AnalyteRange,
     si: AnalyteRange,
+    traditional_raw: str,
     si_raw: str,
     factor: float,
 ) -> None:
     """Cross-check the factor against the two reference intervals of the row.
 
     The source prints the same interval in both unit systems, so
-    ``traditional * factor`` must reproduce the SI interval up to the
-    rounding of the printed SI numbers (half a unit of the last printed
-    decimal, or 5 %, whichever is larger). A violation almost always means
-    the factor or a unit in the source row is wrong (e.g. BUN 0.0357 instead
-    of 0.357). Findings go to ``issues["inconsistent_factors"]``.
+    ``traditional * factor`` must reproduce the SI interval up to rounding:
+    the printed SI number may be off by half a unit of its last decimal (or
+    5 %, whichever is larger), and so may the printed traditional number,
+    which the factor scales (0.1 mg/dL of methionine is anything from 0.05
+    to 0.15, i.e. 3.4-10 μmol/L). A violation almost always means the
+    factor or a unit in the source row is wrong (e.g. BUN 0.0357 instead of
+    0.357). Findings go to ``issues["inconsistent_factors"]``.
     """
-    decimals = [
-        len(n.split(".")[1]) if "." in n else 0
-        for n in re.findall(r"\d+(?:\.\d+)?", si_raw)
-    ]
-    rounding = 0.5 * 10 ** -min(decimals) if decimals else 0.0
+    si_rounding = _rounding(si_raw)
+    traditional_rounding = _rounding(traditional_raw) * factor
     for trad_limit, si_limit in (
         (traditional.lower_limit, si.lower_limit),
         (traditional.upper_limit, si.upper_limit),
@@ -357,10 +468,49 @@ def check_factor_consistency(
         if trad_limit is None or si_limit is None:
             continue
         expected = trad_limit * factor
-        if abs(expected - si_limit) > max(rounding, 0.05 * abs(si_limit)):
+        tolerance = max(si_rounding, 0.05 * abs(si_limit)) + traditional_rounding
+        if abs(expected - si_limit) > tolerance:
             issues["inconsistent_factors"].append(
-                (name, f"{trad_limit:g} * {factor:g} = {expected:.4g}", si_limit, si_raw)
+                (
+                    name,
+                    f"{trad_limit:g} * {factor:g} = {expected:.4g}",
+                    si_limit,
+                    si_raw,
+                )
             )
+
+
+def check_molar_mass(
+    name: str,
+    traditional_ucum: str,
+    si_ucum: str,
+    factor: float,
+    molar_masses: dict[str, float],
+) -> None:
+    """Cross-check a mass <-> amount-of-substance factor against the molar mass.
+
+    The reference intervals cannot reveal a factor that is wrong on both
+    sides of the row (calcitriol was printed with 2.6 instead of 2.4 and a
+    matching SI interval). For a pair like mg/dL <-> mmol/L the factor
+    follows from the molar mass alone: ``10 / M``. A deviation of more than
+    2 % (the source rounds its factors to about three digits) goes to
+    ``issues["molar_mass_mismatch"]``; a mass/mole pair without an entry
+    in ``molar_masses.json`` to ``issues["missing_molar_mass"]``.
+    """
+    mass = _MASS_UNIT.match(traditional_ucum)
+    mole = _MOLE_UNIT.match(si_ucum)
+    if not mass or not mole:
+        return
+    if name not in molar_masses:
+        issues["missing_molar_mass"].append(name)
+        return
+    mass_scale = _PREFIX[mass.group(1) or ""] * _PER[mass.group(2)]
+    mole_scale = _PREFIX[mole.group(1) or ""] * _PER[mole.group(2)]
+    expected = mass_scale / mole_scale / molar_masses[name]
+    if abs(expected - factor) > 0.02 * expected:
+        issues["molar_mass_mismatch"].append(
+            (name, factor, expected, molar_masses[name])
+        )
 
 
 def parse_lab_values(
@@ -369,6 +519,8 @@ def parse_lab_values(
     manual_mapping: dict[str, str | None] | None = None,
     corrections: dict[str, dict] | None = None,
     ucum_units: dict[str, str] | None = None,
+    analyte_names: dict[str, str] | None = None,
+    molar_masses: dict[str, float] | None = None,
 ) -> list[Analyte]:
     """Parse Clinical Laboratory Reference Values HTML file.
 
@@ -385,6 +537,10 @@ def parse_lab_values(
     ``ucum_units`` translates the source's unit strings to UCUM codes (see
     ``ucum_units.json``); the result lands in ``traditional_ucum`` /
     ``si_ucum`` of every analyte that got a LOINC.
+
+    ``analyte_names`` maps a source name to the canonical analyte name
+    that is matched and shipped (see ``analyte_names.json``); it is applied
+    after ``corrections``. ``molar_masses`` feeds :func:`check_molar_mass`.
     """
     analytes = []
     group_name = ""
@@ -392,6 +548,8 @@ def parse_lab_values(
     manual_mapping = manual_mapping or {}
     corrections = corrections or {}
     ucum_units = ucum_units or {}
+    analyte_names = analyte_names or {}
+    molar_masses = molar_masses or {}
 
     loinc_data = _load_loinc(loinc_file_path)
     siblings: dict[tuple, list[str]] = {}
@@ -401,8 +559,8 @@ def parse_lab_values(
     # Pre-compute the normalized form of every LOINC COMPONENT once, so the
     # per-analyte match below can do both an O(1) exact lookup and a single
     # fuzzy pass over already-normalized strings.
-    loinc_by_norm: dict[str, list[str]] = {}       # norm -> [loinc_num, ...]
-    loinc_norm_by_num: dict[str, str] = {}         # loinc_num -> norm
+    loinc_by_norm: dict[str, list[str]] = {}  # norm -> [loinc_num, ...]
+    loinc_norm_by_num: dict[str, str] = {}  # loinc_num -> norm
     for loinc_num, data in loinc_data.items():
         norm = _normalize_name(data["COMPONENT"])
         if not norm:
@@ -502,7 +660,9 @@ def parse_lab_values(
 
             if factor is None:
                 if raw_factor.strip():
-                    issues["unparseable_factors"].append((full_name, raw_factor.strip()))
+                    issues["unparseable_factors"].append(
+                        (full_name, raw_factor.strip())
+                    )
                 else:
                     issues["missing_factors"].append(full_name)
             if traditional_range.text:
@@ -534,6 +694,12 @@ def parse_lab_values(
                 for field, value in corrections[correction_key].items():
                     if field.endswith("_reference_interval"):
                         value = AnalyteRange(**value)
+                        # The rounding of a corrected interval is the
+                        # correction's own, not the source cell's.
+                        if field.startswith("si_"):
+                            si_range_raw = _format_interval(value)
+                        else:
+                            traditional_range_raw = _format_interval(value)
                     setattr(analyte, field, value)
                 factor = analyte.conversion_factor
                 traditional_range = analyte.traditional_reference_interval
@@ -541,16 +707,42 @@ def parse_lab_values(
                 issues["corrected_rows"].append(
                     (correction_key, corrections[correction_key])
                 )
+            # A rate per 24 h is measured in a 24-hour urine collection,
+            # whether or not the source says so in its specimen column.
+            if analyte.traditional_units.endswith("/24 h"):
+                analyte.specimen = analyte_specimens = [
+                    specimens.setdefault(
+                        "urine_24_h", Specimen(id="urine_24_h", name="Urine 24 h")
+                    )
+                    if s.id == "urine"
+                    else s
+                    for s in analyte_specimens
+                ]
+                specimen_id = analyte_specimens[0].id
+            # ---- canonical name ----
+            # The most specific key wins, as for the manual LOINC mapping.
+            for key in (
+                f"{analyte.name}@{specimen_id}@{analyte.traditional_units}",
+                f"{analyte.name}@{specimen_id}",
+                analyte.name,
+            ):
+                if key in analyte_names:
+                    analyte.name = analyte_names[key]
+                    break
             # ---- LOINC matching ----
             # A LOINC term is *eligible* for this row only if its SYSTEM
-            # matches one of the row's specimens and its PROPERTY can carry
-            # the row's traditional unit. Scale/status/class were already
-            # filtered in _load_loinc. Among eligible terms with the same
+            # matches one of the row's specimens, its PROPERTY can carry
+            # the row's traditional unit and its TIME_ASPCT is a 24-hour
+            # collection exactly when the specimen is. Scale/status/class
+            # were already filtered in _load_loinc. Among eligible terms with the same
             # component name, LOINC's own COMMON_TEST_RANK decides.
             allowed_systems: set[str] = set()
             for s in analyte_specimens:
                 allowed_systems |= _SPECIMEN_SYSTEMS.get(s.id, set())
             allowed_props = _properties_for_unit(analyte.traditional_units)
+            time_aspect = (
+                "24H" if any(s.id == "urine_24_h" for s in analyte_specimens) else "Pt"
+            )
             if allowed_props is None:
                 issues["unknown_units"].append((full_name, analyte.traditional_units))
 
@@ -563,6 +755,8 @@ def parse_lab_values(
                     return f"SYSTEM {row['SYSTEM']!r} does not fit specimen"
                 if allowed_props is not None and row["PROPERTY"] not in allowed_props:
                     return f"PROPERTY {row['PROPERTY']!r} does not fit unit"
+                if row["TIME_ASPCT"] != time_aspect:
+                    return f"TIME_ASPCT {row['TIME_ASPCT']!r} is not {time_aspect!r}"
                 return None
 
             # Step 0: manual override. If the operator has pinned this
@@ -623,7 +817,10 @@ def parse_lab_values(
                     if (
                         best is None
                         or ratio > best[0]
-                        or (ratio == best[0] and _rank_key(data) < _rank_key(loinc_data[best[1]]))
+                        or (
+                            ratio == best[0]
+                            and _rank_key(data) < _rank_key(loinc_data[best[1]])
+                        )
                     ):
                         best = (ratio, loinc_num, data["COMPONENT"])
                 if best:
@@ -640,19 +837,35 @@ def parse_lab_values(
                 # Only rows that will ship are worth a human's attention.
                 if factor is not None:
                     check_factor_consistency(
-                        full_name, traditional_range, si_range, si_range_raw, factor
+                        analyte.name,
+                        traditional_range,
+                        si_range,
+                        traditional_range_raw,
+                        si_range_raw,
+                        factor,
                     )
                 # ---- SI-side LOINC and UCUM units ----
                 si_props = _properties_for_unit(analyte.si_units)
                 if si_props is None:
-                    issues["unknown_si_units"].append((full_name, analyte.si_units))
+                    issues["unknown_si_units"].append((analyte.name, analyte.si_units))
                 else:
                     analyte.si_loinc_num = _find_si_loinc(
                         analyte.loinc_num, si_props, loinc_data, siblings
                     )
                     if analyte.si_loinc_num is None:
                         issues["missing_si_loinc"].append(
-                            (full_name, analyte.loinc_num, analyte.si_units)
+                            (analyte.name, analyte.loinc_num, analyte.si_units)
+                        )
+                    elif (
+                        loinc_data[analyte.si_loinc_num]["METHOD_TYP"]
+                        != loinc_data[analyte.loinc_num]["METHOD_TYP"]
+                    ):
+                        issues["other_method_si_loinc"].append(
+                            (
+                                analyte.name,
+                                analyte.si_loinc_num,
+                                loinc_data[analyte.si_loinc_num]["METHOD_TYP"],
+                            )
                         )
                 analyte.traditional_ucum = _to_ucum(
                     analyte.traditional_units,
@@ -669,7 +882,15 @@ def parse_lab_values(
                     (analyte.si_units, analyte.si_ucum),
                 ):
                     if not ucum:
-                        issues["missing_ucum"].append((full_name, unit))
+                        issues["missing_ucum"].append((analyte.name, unit))
+                if factor is not None:
+                    check_molar_mass(
+                        analyte.name,
+                        analyte.traditional_ucum,
+                        analyte.si_ucum,
+                        factor,
+                        molar_masses,
+                    )
 
             analytes.append(analyte)
 
@@ -682,8 +903,9 @@ def build_output(analytes: list[Analyte]) -> dict[str, dict]:
     A silent "last one wins" here once replaced serum creatinine (×88.4)
     with urine creatinine (×8.84). Two *different* rows on the same LOINC
     always mean a matching bug or a missing manual pin, so this is fatal on
-    purpose; verbatim repeats (the source lists the amino acids twice) are
-    collapsed.
+    purpose; repeats of the same record (the source lists the amino acids
+    twice, and many analytes once per reference population) are collapsed,
+    merging their specimens.
 
     The same holds for the SI-side LOINC, which the runtime accepts as an
     alias: two rows must not claim the same alias. An alias that is itself
@@ -705,8 +927,15 @@ def build_output(analytes: list[Analyte]) -> dict[str, dict]:
             )
         entry = a.to_json()
         if a.loinc_num in out:
-            if out[a.loinc_num] == entry:
-                continue  # the source lists some rows twice, verbatim
+            # The source lists some rows twice (the amino acids), or once
+            # per reference population (testosterone male/female); such
+            # rows differ at most in the specimens they name.
+            known = out[a.loinc_num]
+            if {**known, "specimen": None} == {**entry, "specimen": None}:
+                known["specimen"] += [
+                    s for s in entry["specimen"] if s not in known["specimen"]
+                ]
+                continue
             raise ValueError(
                 f"LOINC {a.loinc_num} assigned twice: "
                 f"{out[a.loinc_num]['name']!r} ({out[a.loinc_num]['traditional_units']}) "
@@ -730,18 +959,16 @@ if __name__ == "__main__":
     # Example usage
     # get current path
     current_path = Path(__file__).parent.resolve()
-    manual_mapping = _load_manual_mapping(
-        current_path / "manual_loinc_mapping.json"
-    )
-    corrections = _load_source_corrections(
-        current_path / "source_corrections.json"
-    )
+    manual_mapping = _load_manual_mapping(current_path / "manual_loinc_mapping.json")
+    corrections = _load_source_corrections(current_path / "source_corrections.json")
     analytes = parse_lab_values(
         current_path / "Loinc.csv",
         current_path / "Clinical Laboratory Reference Values.html",
         manual_mapping=manual_mapping,
         corrections=corrections,
         ucum_units=_load_ucum_units(current_path / "ucum_units.json"),
+        analyte_names=_load_analyte_names(current_path / "analyte_names.json"),
+        molar_masses=_load_molar_masses(current_path / "molar_masses.json"),
     )
 
     # ------------------------------------------------------------------
@@ -770,8 +997,7 @@ if __name__ == "__main__":
         lambda t: f"- {t[0]}  ->  {t[1]}",
     )
     _print_section(
-        "Manually unpinned — no LOINC on purpose "
-        "(from manual_loinc_mapping.json)",
+        "Manually unpinned — no LOINC on purpose (from manual_loinc_mapping.json)",
         issues["pinned_no_match"],
         lambda s: f"- {s}",
     )
@@ -809,6 +1035,21 @@ if __name__ == "__main__":
         "No LOINC term for the SI unit (si_loinc_num is null)",
         issues["missing_si_loinc"],
         lambda t: f"- {t[0]} ({t[1]}): {t[2]!r}",
+    )
+    _print_section(
+        "SI LOINC of another method than the traditional term — verify",
+        issues["other_method_si_loinc"],
+        lambda t: f"- {t[0]}: {t[1]} ({t[2]!r})",
+    )
+    _print_section(
+        "Mass/mole conversions without a molar mass (not cross-checked)",
+        sorted(set(issues["missing_molar_mass"])),
+        lambda s: f"- {s}",
+    )
+    _print_section(
+        "FACTOR INCONSISTENT with the molar mass — fix before shipping",
+        issues["molar_mass_mismatch"],
+        lambda t: f"- {t[0]}: factor {t[1]:g}, but {t[3]:g} g/mol gives {t[2]:.4g}",
     )
     _print_section(
         "UNIT WITHOUT UCUM CODE — add to ucum_units.json",

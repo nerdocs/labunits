@@ -25,8 +25,6 @@ class Analyte(BaseModel):
     # when one term covers both units, ``None`` when LOINC has no such term.
     si_loinc_num: Optional[str] = None
     name: str
-    subtitle: Optional[str] = None
-    gender: str = ""  # ("m","f")
     specimen: list[Specimen]
     traditional_reference_interval: AnalyteRange
     traditional_units: str  # as printed in the source
@@ -46,7 +44,6 @@ class Analyte(BaseModel):
         free-text strings.
         """
         return {
-            "loinc_num": self.loinc_num,
             "si_loinc_num": self.si_loinc_num,
             "name": self.name,
             "specimen": [specimen.id for specimen in self.specimen],

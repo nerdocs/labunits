@@ -91,6 +91,17 @@ def test_creatinine_resolves_by_both_loincs(real_data):
     assert convert(1.2, "2160-0", "mg/dL", "mg/dL") == 1.2
 
 
+def test_si_loinc_alias_belongs_to_one_record(real_data):
+    # An SI-side LOINC that is not itself a key must not be claimed twice.
+    aliases = [
+        entry["si_loinc_num"]
+        for loinc, entry in real_data.items()
+        if entry["si_loinc_num"] not in (None, loinc)
+        and entry["si_loinc_num"] not in real_data
+    ]
+    assert len(aliases) == len(set(aliases))
+
+
 def test_analytes_matches_shipped_data(real_data):
     records = analytes()
     assert len(records) == len(real_data)

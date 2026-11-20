@@ -1,6 +1,27 @@
 {
+  "3298-7": {
+    "si_loinc_num": "14581-3",
+    "name": "Acetaminophen",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 6.62,
+    "si_units": "umol/L"
+  },
+  "1705-3": {
+    "si_loinc_num": "35867-1",
+    "name": "Acetoacetic acid",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.098,
+    "si_units": "mmol/L"
+  },
   "5568-1": {
-    "loinc_num": "5568-1",
     "si_loinc_num": "14582-1",
     "name": "Acetone",
     "specimen": [
@@ -12,7 +33,6 @@
     "si_units": "mmol/L"
   },
   "2099-0": {
-    "loinc_num": "2099-0",
     "si_loinc_num": "2099-0",
     "name": "Acetylcholinesterase",
     "specimen": [
@@ -22,30 +42,37 @@
     "conversion_factor": 1.0,
     "si_units": "kU/L"
   },
+  "3173-2": {
+    "si_loinc_num": "3173-2",
+    "name": "Activated partial thromboplastin time (APTT)",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "s",
+    "conversion_factor": 1.0,
+    "si_units": "s"
+  },
   "47826-3": {
-    "loinc_num": "47826-3",
     "si_loinc_num": "47826-3",
     "name": "Adenosine deaminase",
     "specimen": [
       "serum"
     ],
     "traditional_units": "U/L",
-    "conversion_factor": 0.017,
+    "conversion_factor": 0.01667,
     "si_units": "ukat/L"
   },
   "1742-6": {
-    "loinc_num": "1742-6",
     "si_loinc_num": "1742-6",
     "name": "Alanine aminotransferase (ALT, SGPT)",
     "specimen": [
       "serum"
     ],
     "traditional_units": "U/L",
-    "conversion_factor": 1.0,
-    "si_units": "U/L"
+    "conversion_factor": 0.01667,
+    "si_units": "ukat/L"
   },
   "1751-7": {
-    "loinc_num": "1751-7",
     "si_loinc_num": "1751-7",
     "name": "Albumin",
     "specimen": [
@@ -56,29 +83,26 @@
     "si_units": "g/L"
   },
   "1760-8": {
-    "loinc_num": "1760-8",
     "si_loinc_num": "1760-8",
     "name": "Alcohol dehydrogenase",
     "specimen": [
       "serum"
     ],
     "traditional_units": "U/L",
-    "conversion_factor": 0.017,
+    "conversion_factor": 0.01667,
     "si_units": "ukat/L"
   },
   "1761-6": {
-    "loinc_num": "1761-6",
     "si_loinc_num": "1761-6",
     "name": "Aldolase",
     "specimen": [
       "serum"
     ],
     "traditional_units": "U/L",
-    "conversion_factor": 0.017,
+    "conversion_factor": 0.01667,
     "si_units": "ukat/L"
   },
   "1768-1": {
-    "loinc_num": "1768-1",
     "si_loinc_num": "15012-8",
     "name": "Aldosterone (upright)",
     "specimen": [
@@ -89,7 +113,6 @@
     "si_units": "nmol/L"
   },
   "1765-7": {
-    "loinc_num": "1765-7",
     "si_loinc_num": "14587-0",
     "name": "Aldosterone",
     "specimen": [
@@ -100,18 +123,16 @@
     "si_units": "nmol/(24.h)"
   },
   "6768-6": {
-    "loinc_num": "6768-6",
     "si_loinc_num": "6768-6",
     "name": "Alkaline phosphatase",
     "specimen": [
       "serum"
     ],
     "traditional_units": "U/L",
-    "conversion_factor": 1.0,
-    "si_units": "U/L"
+    "conversion_factor": 0.01667,
+    "si_units": "ukat/L"
   },
   "2685-6": {
-    "loinc_num": "2685-6",
     "si_loinc_num": "2685-6",
     "name": "α1-Acid glycoprotein",
     "specimen": [
@@ -122,7 +143,6 @@
     "si_units": "g/L"
   },
   "1835-8": {
-    "loinc_num": "1835-8",
     "si_loinc_num": "1835-8",
     "name": "α2-Macroglobulin",
     "specimen": [
@@ -132,8 +152,18 @@
     "conversion_factor": 0.01,
     "si_units": "g/L"
   },
+  "3312-6": {
+    "si_loinc_num": "14591-2",
+    "name": "Alprazolam",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.24,
+    "si_units": "nmol/L"
+  },
   "5574-9": {
-    "loinc_num": "5574-9",
     "si_loinc_num": "14593-8",
     "name": "Aluminum",
     "specimen": [
@@ -144,30 +174,280 @@
     "conversion_factor": 37.06,
     "si_units": "nmol/L"
   },
+  "35669-1": {
+    "si_loinc_num": "56628-1",
+    "name": "Amikacin",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 1.71,
+    "si_units": "umol/L"
+  },
+  "2177-4": {
+    "si_loinc_num": "22672-0",
+    "name": "Cystine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 41.6,
+    "si_units": "umol/L"
+  },
+  "2364-8": {
+    "si_loinc_num": "20642-5",
+    "name": "Glutamic acid",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 67.97,
+    "si_units": "umol/L"
+  },
+  "2372-1": {
+    "si_loinc_num": "20643-3",
+    "name": "Glutamine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 68.42,
+    "si_units": "umol/L"
+  },
+  "2391-1": {
+    "si_loinc_num": "20644-1",
+    "name": "Glycine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 133.3,
+    "si_units": "umol/L"
+  },
+  "2420-8": {
+    "si_loinc_num": "20645-8",
+    "name": "Histidine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 64.5,
+    "si_units": "umol/L"
+  },
+  "2446-3": {
+    "si_loinc_num": "20647-4",
+    "name": "Hydroxyproline",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 76.3,
+    "si_units": "umol/L"
+  },
+  "2508-0": {
+    "si_loinc_num": "20648-2",
+    "name": "Isoleucine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 76.24,
+    "si_units": "umol/L"
+  },
+  "2560-1": {
+    "si_loinc_num": "20649-0",
+    "name": "Leucine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 76.3,
+    "si_units": "umol/L"
+  },
+  "2585-8": {
+    "si_loinc_num": "20650-8",
+    "name": "Lysine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 68.5,
+    "si_units": "umol/L"
+  },
+  "2622-9": {
+    "si_loinc_num": "20651-6",
+    "name": "Methionine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 67.1,
+    "si_units": "umol/L"
+  },
+  "2679-9": {
+    "si_loinc_num": "20652-4",
+    "name": "Ornithine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 75.8,
+    "si_units": "umol/L"
+  },
+  "2765-6": {
+    "si_loinc_num": "14875-9",
+    "name": "Phenylalanine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 60.5,
+    "si_units": "umol/L"
+  },
+  "2845-6": {
+    "si_loinc_num": "20655-7",
+    "name": "Proline",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 86.9,
+    "si_units": "umol/L"
+  },
+  "2936-3": {
+    "si_loinc_num": "20656-5",
+    "name": "Serine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 95.2,
+    "si_units": "umol/L"
+  },
+  "2981-9": {
+    "si_loinc_num": "20657-3",
+    "name": "Taurine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 80.0,
+    "si_units": "umol/L"
+  },
+  "3008-0": {
+    "si_loinc_num": "20658-1",
+    "name": "Threonine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 84.0,
+    "si_units": "umol/L"
+  },
+  "3070-0": {
+    "si_loinc_num": "20659-9",
+    "name": "Tryptophan",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 48.97,
+    "si_units": "umol/L"
+  },
+  "3079-1": {
+    "si_loinc_num": "20660-7",
+    "name": "Tyrosine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 55.19,
+    "si_units": "umol/L"
+  },
+  "3118-7": {
+    "si_loinc_num": "20661-5",
+    "name": "Valine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 85.5,
+    "si_units": "umol/L"
+  },
+  "3330-8": {
+    "si_loinc_num": "15099-5",
+    "name": "Amiodarone",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 1.55,
+    "si_units": "umol/L"
+  },
   "2200-4": {
-    "loinc_num": "2200-4",
     "si_loinc_num": "14689-4",
     "name": "δ-Aminolevulinic acid",
     "specimen": [
-      "urine"
+      "urine_24_h"
     ],
     "traditional_units": "mg/(24.h)",
     "conversion_factor": 7.626,
     "si_units": "umol/(24.h)"
   },
+  "3333-2": {
+    "si_loinc_num": "14597-9",
+    "name": "Amitriptyline",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.61,
+    "si_units": "nmol/L"
+  },
+  "3338-1": {
+    "si_loinc_num": "25309-6",
+    "name": "Amobarbital",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.42,
+    "si_units": "umol/L"
+  },
+  "3341-5": {
+    "si_loinc_num": "3341-5",
+    "name": "Amoxapine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ug/L"
+  },
   "1798-8": {
-    "loinc_num": "1798-8",
     "si_loinc_num": "1798-8",
     "name": "Amylase",
     "specimen": [
       "serum"
     ],
     "traditional_units": "U/L",
-    "conversion_factor": 0.017,
+    "conversion_factor": 0.01667,
     "si_units": "ukat/L"
   },
+  "1854-9": {
+    "si_loinc_num": "14603-5",
+    "name": "Androstenedione",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/dL",
+    "conversion_factor": 0.0349,
+    "si_units": "nmol/L"
+  },
   "1858-0": {
-    "loinc_num": "1858-0",
     "si_loinc_num": "1858-0",
     "name": "Angiotensin I",
     "specimen": [
@@ -178,7 +458,6 @@
     "si_units": "ng/L"
   },
   "1860-6": {
-    "loinc_num": "1860-6",
     "si_loinc_num": "1860-6",
     "name": "Angiotensin II",
     "specimen": [
@@ -189,18 +468,67 @@
     "si_units": "ng/L"
   },
   "2742-5": {
-    "loinc_num": "2742-5",
     "si_loinc_num": "2742-5",
     "name": "Angiotensin-converting enzyme (ACE)",
     "specimen": [
       "serum"
     ],
     "traditional_units": "U/L",
-    "conversion_factor": 0.017,
+    "conversion_factor": 0.01667,
     "si_units": "ukat/L"
   },
+  "10466-1": {
+    "si_loinc_num": "10466-1",
+    "name": "Anion gap",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "meq/L",
+    "conversion_factor": 1.0,
+    "si_units": "mmol/L"
+  },
+  "3126-0": {
+    "si_loinc_num": null,
+    "name": "Antidiuretic hormone (ADH, vasopressin)",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 0.926,
+    "si_units": "pmol/L"
+  },
+  "27810-1": {
+    "si_loinc_num": "27810-1",
+    "name": "α2-Antiplasmin",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "1868-9": {
+    "si_loinc_num": "1868-9",
+    "name": "Antithrombin III",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 10.0,
+    "si_units": "mg/L"
+  },
+  "27811-9": {
+    "si_loinc_num": "27811-9",
+    "name": "Antithrombin III activity",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
   "1825-9": {
-    "loinc_num": "1825-9",
     "si_loinc_num": "1825-9",
     "name": "α1-Antitrypsin",
     "specimen": [
@@ -210,8 +538,28 @@
     "conversion_factor": 0.01,
     "si_units": "g/L"
   },
+  "1869-7": {
+    "si_loinc_num": "1869-7",
+    "name": "Apolipoprotein A-I",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.01,
+    "si_units": "g/L"
+  },
+  "1884-6": {
+    "si_loinc_num": "1884-6",
+    "name": "Apolipoprotein B",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.01,
+    "si_units": "g/L"
+  },
   "5583-0": {
-    "loinc_num": "5583-0",
     "si_loinc_num": "15114-2",
     "name": "Arsenic (As)",
     "specimen": [
@@ -222,18 +570,16 @@
     "si_units": "umol/L"
   },
   "1920-8": {
-    "loinc_num": "1920-8",
     "si_loinc_num": "1920-8",
     "name": "Aspartate aminotransferase (AST, SGOT)",
     "specimen": [
       "serum"
     ],
     "traditional_units": "U/L",
-    "conversion_factor": 0.017,
+    "conversion_factor": 0.01667,
     "si_units": "ukat/L"
   },
   "11208-6": {
-    "loinc_num": "11208-6",
     "si_loinc_num": "11208-6",
     "name": "Atrial natriuretic hormone",
     "specimen": [
@@ -243,8 +589,17 @@
     "conversion_factor": 1.0,
     "si_units": "ng/L"
   },
+  "5595-4": {
+    "si_loinc_num": "50821-8",
+    "name": "Beryllium",
+    "specimen": [
+      "urine"
+    ],
+    "traditional_units": "ug/L",
+    "conversion_factor": 0.111,
+    "si_units": "umol/L"
+  },
   "1963-8": {
-    "loinc_num": "1963-8",
     "si_loinc_num": "1963-8",
     "name": "Bicarbonate",
     "specimen": [
@@ -254,8 +609,37 @@
     "conversion_factor": 1.0,
     "si_units": "mmol/L"
   },
+  "1967-9": {
+    "si_loinc_num": null,
+    "name": "Bile acids, total",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 2.448,
+    "si_units": "umol/L"
+  },
+  "1975-2": {
+    "si_loinc_num": "14631-6",
+    "name": "Bilirubin, total",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 17.1,
+    "si_units": "umol/L"
+  },
+  "1968-7": {
+    "si_loinc_num": "14629-0",
+    "name": "Bilirubin, direct (conjugated)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 17.1,
+    "si_units": "umol/L"
+  },
   "1980-2": {
-    "loinc_num": "1980-2",
     "si_loinc_num": "34398-8",
     "name": "Biotin",
     "specimen": [
@@ -267,7 +651,6 @@
     "si_units": "nmol/L"
   },
   "8161-2": {
-    "loinc_num": "8161-2",
     "si_loinc_num": "81429-3",
     "name": "Bismuth",
     "specimen": [
@@ -277,8 +660,128 @@
     "conversion_factor": 4.785,
     "si_units": "nmol/L"
   },
+  "2019-8": {
+    "si_loinc_num": "2019-8",
+    "name": "Carbon dioxide, partial pressure (PCO2)",
+    "specimen": [
+      "arterial_blood"
+    ],
+    "traditional_units": "mm[Hg]",
+    "conversion_factor": 1.0,
+    "si_units": "mm[Hg]"
+  },
+  "2703-7": {
+    "si_loinc_num": "2703-7",
+    "name": "Oxygen, partial pressure (PO2)",
+    "specimen": [
+      "arterial_blood"
+    ],
+    "traditional_units": "mm[Hg]",
+    "conversion_factor": 1.0,
+    "si_units": "mm[Hg]"
+  },
+  "30934-4": {
+    "si_loinc_num": "30934-4",
+    "name": "BNP",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 1.0,
+    "si_units": "pg/mL"
+  },
+  "4477-6": {
+    "si_loinc_num": "4477-6",
+    "name": "C1 esterase inhibitor",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.01,
+    "si_units": "g/L"
+  },
+  "4485-9": {
+    "si_loinc_num": "4485-9",
+    "name": "Complement C3",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 0.001,
+    "si_units": "g/L"
+  },
+  "4498-2": {
+    "si_loinc_num": "4498-2",
+    "name": "Complement C4",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 0.001,
+    "si_units": "g/L"
+  },
+  "10334-1": {
+    "si_loinc_num": "10334-1",
+    "name": "CA125",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "[arb'U]/mL",
+    "conversion_factor": 1.0,
+    "si_units": "k[arb'U]/L"
+  },
+  "24108-3": {
+    "si_loinc_num": "24108-3",
+    "name": "CA19-9",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "[arb'U]/mL",
+    "conversion_factor": 1.0,
+    "si_units": "k[arb'U]/L"
+  },
+  "6875-9": {
+    "si_loinc_num": "6875-9",
+    "name": "CA15-3",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "[arb'U]/mL",
+    "conversion_factor": 1.0,
+    "si_units": "k[arb'U]/L"
+  },
+  "17842-6": {
+    "si_loinc_num": "17842-6",
+    "name": "CA27.29",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "[arb'U]/mL",
+    "conversion_factor": 1.0,
+    "si_units": "k[arb'U]/L"
+  },
+  "5609-3": {
+    "si_loinc_num": "15117-5",
+    "name": "Cadmium",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "ug/L",
+    "conversion_factor": 8.897,
+    "si_units": "nmol/L"
+  },
+  "3422-3": {
+    "si_loinc_num": "25361-7",
+    "name": "Caffeine",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 5.15,
+    "si_units": "umol/L"
+  },
   "1992-7": {
-    "loinc_num": "1992-7",
     "si_loinc_num": "1992-7",
     "name": "Calcitonin",
     "specimen": [
@@ -290,7 +793,6 @@
     "si_units": "ng/L"
   },
   "17864-0": {
-    "loinc_num": "17864-0",
     "si_loinc_num": "12180-6",
     "name": "Calcium, ionized",
     "specimen": [
@@ -300,8 +802,38 @@
     "conversion_factor": 0.25,
     "si_units": "mmol/L"
   },
+  "17861-6": {
+    "si_loinc_num": "2000-8",
+    "name": "Calcium, total",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.25,
+    "si_units": "mmol/L"
+  },
+  "6874-2": {
+    "si_loinc_num": "14637-3",
+    "name": "Calcium, total",
+    "specimen": [
+      "urine_24_h"
+    ],
+    "traditional_units": "mg/(24.h)",
+    "conversion_factor": 0.025,
+    "si_units": "mmol/(24.h)"
+  },
+  "3432-2": {
+    "si_loinc_num": "14639-9",
+    "name": "Carbamazepine",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.23,
+    "si_units": "umol/L"
+  },
   "2028-9": {
-    "loinc_num": "2028-9",
     "si_loinc_num": "2028-9",
     "name": "Carbon dioxide",
     "specimen": [
@@ -313,8 +845,27 @@
     "conversion_factor": 1.0,
     "si_units": "mmol/L"
   },
+  "20563-3": {
+    "si_loinc_num": "20563-3",
+    "name": "Carboxyhemoglobin",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "2039-6": {
+    "si_loinc_num": "2039-6",
+    "name": "CEA",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ug/L"
+  },
   "2064-4": {
-    "loinc_num": "2064-4",
     "si_loinc_num": "2064-4",
     "name": "Ceruloplasmin",
     "specimen": [
@@ -324,8 +875,28 @@
     "conversion_factor": 10.0,
     "si_units": "mg/L"
   },
+  "3455-3": {
+    "si_loinc_num": "15101-9",
+    "name": "Chloramphenicol",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 3.1,
+    "si_units": "umol/L"
+  },
+  "3457-9": {
+    "si_loinc_num": "32059-8",
+    "name": "Chlordiazepoxide",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 3.34,
+    "si_units": "umol/L"
+  },
   "2075-0": {
-    "loinc_num": "2075-0",
     "si_loinc_num": "2075-0",
     "name": "Chloride",
     "specimen": [
@@ -337,7 +908,6 @@
     "si_units": "mmol/L"
   },
   "2070-1": {
-    "loinc_num": "2070-1",
     "si_loinc_num": "2070-1",
     "name": "Chloride",
     "specimen": [
@@ -347,8 +917,58 @@
     "conversion_factor": 1.0,
     "si_units": "mmol/L"
   },
+  "3471-0": {
+    "si_loinc_num": "14645-6",
+    "name": "Chlorpromazine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.14,
+    "si_units": "nmol/L"
+  },
+  "3474-4": {
+    "si_loinc_num": "32062-2",
+    "name": "Chlorpropamide",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/L",
+    "conversion_factor": 3.61,
+    "si_units": "umol/L"
+  },
+  "2085-9": {
+    "si_loinc_num": "14646-4",
+    "name": "Cholesterol, high-density lipoproteins (HDL)",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.02586,
+    "si_units": "mmol/L"
+  },
+  "2089-1": {
+    "si_loinc_num": "22748-8",
+    "name": "Cholesterol, low-density lipoproteins (LDL)",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.02586,
+    "si_units": "mmol/L"
+  },
+  "2093-3": {
+    "si_loinc_num": "14647-2",
+    "name": "Cholesterol, total",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.02586,
+    "si_units": "mmol/L"
+  },
   "5619-2": {
-    "loinc_num": "5619-2",
     "si_loinc_num": "15118-3",
     "name": "Chromium",
     "specimen": [
@@ -359,7 +979,6 @@
     "si_units": "nmol/L"
   },
   "2127-9": {
-    "loinc_num": "2127-9",
     "si_loinc_num": "15038-3",
     "name": "Citrate",
     "specimen": [
@@ -369,8 +988,37 @@
     "conversion_factor": 52.05,
     "si_units": "umol/L"
   },
+  "3494-2": {
+    "si_loinc_num": "14655-5",
+    "name": "Clonazepam",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.17,
+    "si_units": "nmol/L"
+  },
+  "3255-7": {
+    "si_loinc_num": "3255-7",
+    "name": "Fibrinogen",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.01,
+    "si_units": "g/L"
+  },
+  "3289-6": {
+    "si_loinc_num": "3289-6",
+    "name": "Coagulation factor II",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
   "3193-0": {
-    "loinc_num": "3193-0",
     "si_loinc_num": "3193-0",
     "name": "Coagulation factor V",
     "specimen": [
@@ -381,7 +1029,6 @@
     "si_units": "1"
   },
   "3198-9": {
-    "loinc_num": "3198-9",
     "si_loinc_num": "3198-9",
     "name": "Coagulation factor VII",
     "specimen": [
@@ -392,7 +1039,6 @@
     "si_units": "1"
   },
   "3209-4": {
-    "loinc_num": "3209-4",
     "si_loinc_num": "3209-4",
     "name": "Coagulation factor VIII",
     "specimen": [
@@ -403,7 +1049,6 @@
     "si_units": "1"
   },
   "3187-2": {
-    "loinc_num": "3187-2",
     "si_loinc_num": "3187-2",
     "name": "Coagulation factor IX",
     "specimen": [
@@ -414,7 +1059,6 @@
     "si_units": "1"
   },
   "3218-5": {
-    "loinc_num": "3218-5",
     "si_loinc_num": "3218-5",
     "name": "Coagulation factor X",
     "specimen": [
@@ -425,7 +1069,6 @@
     "si_units": "1"
   },
   "3226-8": {
-    "loinc_num": "3226-8",
     "si_loinc_num": "3226-8",
     "name": "Coagulation factor XI",
     "specimen": [
@@ -436,7 +1079,6 @@
     "si_units": "1"
   },
   "3232-6": {
-    "loinc_num": "3232-6",
     "si_loinc_num": "3232-6",
     "name": "Coagulation factor XII",
     "specimen": [
@@ -447,7 +1089,6 @@
     "si_units": "1"
   },
   "5627-5": {
-    "loinc_num": "5627-5",
     "si_loinc_num": "25378-1",
     "name": "Cobalt",
     "specimen": [
@@ -457,8 +1098,237 @@
     "conversion_factor": 16.97,
     "si_units": "nmol/L"
   },
+  "3506-3": {
+    "si_loinc_num": "15102-7",
+    "name": "Codeine",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.34,
+    "si_units": "nmol/L"
+  },
+  "4544-3": {
+    "si_loinc_num": "4544-3",
+    "name": "Hematocrit",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "718-7": {
+    "si_loinc_num": "59260-0",
+    "name": "Hemoglobin",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "g/dL",
+    "conversion_factor": 0.6206,
+    "si_units": "mmol/L"
+  },
+  "28539-5": {
+    "si_loinc_num": null,
+    "name": "Mean corpuscular hemoglobin (MCH)",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "pg",
+    "conversion_factor": 0.06206,
+    "si_units": "fmol"
+  },
+  "28540-3": {
+    "si_loinc_num": null,
+    "name": "Mean corpuscular hemoglobin concentration (MCHC)",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "g/dL",
+    "conversion_factor": 0.6206,
+    "si_units": "mmol/L"
+  },
+  "30428-7": {
+    "si_loinc_num": "30428-7",
+    "name": "Mean corpuscular volume (MCV)",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "um3",
+    "conversion_factor": 1.0,
+    "si_units": "fL"
+  },
+  "26515-7": {
+    "si_loinc_num": "26515-7",
+    "name": "Platelet count",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "10*3/uL",
+    "conversion_factor": 1.0,
+    "si_units": "10*9/L"
+  },
+  "26453-1": {
+    "si_loinc_num": "26453-1",
+    "name": "Red blood cell count",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "10*6/uL",
+    "conversion_factor": 1.0,
+    "si_units": "10*12/L"
+  },
+  "14196-0": {
+    "si_loinc_num": "14196-0",
+    "name": "Reticulocyte count",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "10*3/uL",
+    "conversion_factor": 1.0,
+    "si_units": "10*9/L"
+  },
+  "4679-7": {
+    "si_loinc_num": "4679-7",
+    "name": "Reticulocyte count (fraction)",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "26464-8": {
+    "si_loinc_num": "26464-8",
+    "name": "White blood cell count",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "10*3/uL",
+    "conversion_factor": 1.0,
+    "si_units": "10*9/L"
+  },
+  "26499-4": {
+    "si_loinc_num": "26499-4",
+    "name": "Neutrophils",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "/uL",
+    "conversion_factor": 0.001,
+    "si_units": "10*9/L"
+  },
+  "26507-4": {
+    "si_loinc_num": "26507-4",
+    "name": "Neutrophils, band form",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "/uL",
+    "conversion_factor": 0.001,
+    "si_units": "10*9/L"
+  },
+  "26474-7": {
+    "si_loinc_num": "26474-7",
+    "name": "Lymphocytes",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "/uL",
+    "conversion_factor": 0.001,
+    "si_units": "10*9/L"
+  },
+  "26484-6": {
+    "si_loinc_num": "26484-6",
+    "name": "Monocytes",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "/uL",
+    "conversion_factor": 0.001,
+    "si_units": "10*9/L"
+  },
+  "26449-9": {
+    "si_loinc_num": "26449-9",
+    "name": "Eosinophils",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "/uL",
+    "conversion_factor": 0.001,
+    "si_units": "10*9/L"
+  },
+  "26444-0": {
+    "si_loinc_num": "26444-0",
+    "name": "Basophils",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "/uL",
+    "conversion_factor": 0.001,
+    "si_units": "10*9/L"
+  },
+  "26511-6": {
+    "si_loinc_num": "26511-6",
+    "name": "Neutrophils, fraction of leukocytes",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "26508-2": {
+    "si_loinc_num": "26508-2",
+    "name": "Neutrophils, band form, fraction of leukocytes",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "26478-8": {
+    "si_loinc_num": "26478-8",
+    "name": "Lymphocytes, fraction of leukocytes",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "26485-3": {
+    "si_loinc_num": "26485-3",
+    "name": "Monocytes, fraction of leukocytes",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "26450-7": {
+    "si_loinc_num": "26450-7",
+    "name": "Eosinophils, fraction of leukocytes",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "30180-4": {
+    "si_loinc_num": "30180-4",
+    "name": "Basophils, fraction of leukocytes",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
   "5631-7": {
-    "loinc_num": "5631-7",
     "si_loinc_num": "14665-4",
     "name": "Copper",
     "specimen": [
@@ -469,29 +1339,56 @@
     "si_units": "umol/L"
   },
   "2137-8": {
-    "loinc_num": "2137-8",
     "si_loinc_num": "15041-7",
     "name": "Coproporphyrin",
     "specimen": [
-      "urine"
+      "urine_24_h"
     ],
     "traditional_units": "ug/(24.h)",
     "conversion_factor": 1.527,
     "si_units": "nmol/(24.h)"
   },
+  "2141-0": {
+    "si_loinc_num": "14674-6",
+    "name": "Corticotropin",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 0.22,
+    "si_units": "pmol/L"
+  },
+  "2143-6": {
+    "si_loinc_num": "14675-3",
+    "name": "Cortisol, total",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "ug/dL",
+    "conversion_factor": 27.6,
+    "si_units": "nmol/L"
+  },
   "2147-7": {
-    "loinc_num": "2147-7",
     "si_loinc_num": "14676-1",
     "name": "Cortisol, free",
     "specimen": [
-      "urine"
+      "urine_24_h"
     ],
     "traditional_units": "ug/(24.h)",
     "conversion_factor": 2.76,
     "si_units": "nmol/(24.h)"
   },
+  "10365-5": {
+    "si_loinc_num": "59891-2",
+    "name": "Cotinine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 5.68,
+    "si_units": "nmol/L"
+  },
   "1986-9": {
-    "loinc_num": "1986-9",
     "si_loinc_num": "14633-2",
     "name": "C-peptide",
     "specimen": [
@@ -501,19 +1398,37 @@
     "conversion_factor": 0.333,
     "si_units": "nmol/L"
   },
+  "2148-5": {
+    "si_loinc_num": "15045-8",
+    "name": "Creatine",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 76.3,
+    "si_units": "umol/L"
+  },
   "2157-6": {
-    "loinc_num": "2157-6",
     "si_loinc_num": "2157-6",
     "name": "Creatine kinase (CK)",
     "specimen": [
       "serum"
     ],
     "traditional_units": "U/L",
-    "conversion_factor": 0.017,
+    "conversion_factor": 0.01667,
     "si_units": "ukat/L"
   },
+  "20569-0": {
+    "si_loinc_num": "20569-0",
+    "name": "Creatine kinase MB fraction",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
   "2160-0": {
-    "loinc_num": "2160-0",
     "si_loinc_num": "14682-9",
     "name": "Creatinine",
     "specimen": [
@@ -525,29 +1440,153 @@
     "si_units": "umol/L"
   },
   "2162-6": {
-    "loinc_num": "2162-6",
     "si_loinc_num": "14684-5",
     "name": "Creatinine",
     "specimen": [
-      "urine"
+      "urine_24_h"
     ],
     "traditional_units": "g/(24.h)",
     "conversion_factor": 8.84,
     "si_units": "mmol/(24.h)"
   },
-  "2177-4": {
-    "loinc_num": "2177-4",
-    "si_loinc_num": "22672-0",
-    "name": "Cystine",
+  "41171-0": {
+    "si_loinc_num": "41171-0",
+    "name": "C-telopeptide",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 1.0,
+    "si_units": "pg/mL"
+  },
+  "5634-1": {
+    "si_loinc_num": "59186-7",
+    "name": "Cyanide",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 38.4,
+    "si_units": "umol/L"
+  },
+  "1726-9": {
+    "si_loinc_num": "25498-7",
+    "name": "Cyclic adenosine monophosphate (cAMP)",
     "specimen": [
       "plasma"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 41.6,
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.04,
+    "si_units": "nmol/L"
+  },
+  "3520-4": {
+    "si_loinc_num": "108279-1",
+    "name": "Cyclosporine",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 0.832,
+    "si_units": "nmol/L"
+  },
+  "2193-1": {
+    "si_loinc_num": "15054-0",
+    "name": "Dehydroepiandrosterone (DHEA)",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ng/dL",
+    "conversion_factor": 0.0347,
+    "si_units": "nmol/L"
+  },
+  "2191-5": {
+    "si_loinc_num": "14688-6",
+    "name": "Dehydroepiandrosterone sulfate (DHEA-S)",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ug/dL",
+    "conversion_factor": 0.027,
     "si_units": "umol/L"
   },
+  "3531-1": {
+    "si_loinc_num": "14691-0",
+    "name": "Desipramine",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.75,
+    "si_units": "nmol/L"
+  },
+  "3548-5": {
+    "si_loinc_num": "14697-7",
+    "name": "Diazepam",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 0.00351,
+    "si_units": "umol/L"
+  },
+  "10535-3": {
+    "si_loinc_num": "14698-5",
+    "name": "Digoxin",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 1.281,
+    "si_units": "nmol/L"
+  },
+  "3576-6": {
+    "si_loinc_num": "14702-5",
+    "name": "Disopyramide",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "mg/L",
+    "conversion_factor": 2.95,
+    "si_units": "umol/L"
+  },
+  "3579-0": {
+    "si_loinc_num": "14705-8",
+    "name": "Doxepin",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.58,
+    "si_units": "nmol/L"
+  },
+  "2823-3": {
+    "si_loinc_num": "2823-3",
+    "name": "Potassium",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "meq/L",
+    "conversion_factor": 1.0,
+    "si_units": "mmol/L"
+  },
+  "2951-2": {
+    "si_loinc_num": "2951-2",
+    "name": "Sodium",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "meq/L",
+    "conversion_factor": 1.0,
+    "si_units": "mmol/L"
+  },
   "1465-4": {
-    "loinc_num": "1465-4",
     "si_loinc_num": null,
     "name": "Epinephrine (supine)",
     "specimen": [
@@ -558,18 +1597,26 @@
     "si_units": "pmol/L"
   },
   "2232-7": {
-    "loinc_num": "2232-7",
     "si_loinc_num": "14712-4",
     "name": "Epinephrine",
     "specimen": [
-      "urine"
+      "urine_24_h"
     ],
     "traditional_units": "ug/(24.h)",
     "conversion_factor": 5.46,
     "si_units": "nmol/(24.h)"
   },
+  "30341-2": {
+    "si_loinc_num": "30341-2",
+    "name": "Erythrocyte sedimentation rate (ESR)",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "mm/h",
+    "conversion_factor": 1.0,
+    "si_units": "mm/h"
+  },
   "15061-5": {
-    "loinc_num": "15061-5",
     "si_loinc_num": "15061-5",
     "name": "Erythropoietin",
     "specimen": [
@@ -579,8 +1626,59 @@
     "conversion_factor": 1.0,
     "si_units": "[IU]/L"
   },
+  "2243-4": {
+    "si_loinc_num": "14715-7",
+    "name": "Estradiol",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 3.67,
+    "si_units": "pmol/L"
+  },
+  "2250-9": {
+    "si_loinc_num": "15064-9",
+    "name": "Estriol, unconjugated",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.47,
+    "si_units": "nmol/L"
+  },
+  "2254-1": {
+    "si_loinc_num": "2254-1",
+    "name": "Estrogens, total",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ng/L"
+  },
+  "2258-2": {
+    "si_loinc_num": "22663-9",
+    "name": "Estrone",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 3.69,
+    "si_units": "pmol/L"
+  },
+  "5643-2": {
+    "si_loinc_num": "14719-9",
+    "name": "Ethanol",
+    "specimen": [
+      "serum",
+      "whole_blood"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.2171,
+    "si_units": "mmol/L"
+  },
   "3616-0": {
-    "loinc_num": "3616-0",
     "si_loinc_num": "14720-7",
     "name": "Ethosuximide",
     "specimen": [
@@ -591,8 +1689,18 @@
     "conversion_factor": 7.08,
     "si_units": "umol/L"
   },
+  "5646-5": {
+    "si_loinc_num": null,
+    "name": "Ethylene glycol",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.1611,
+    "si_units": "mmol/L"
+  },
   "50544-6": {
-    "loinc_num": "50544-6",
     "si_loinc_num": null,
     "name": "Everolimus",
     "specimen": [
@@ -603,7 +1711,6 @@
     "si_units": "nmol/L"
   },
   "1769-9": {
-    "loinc_num": "1769-9",
     "si_loinc_num": "15066-4",
     "name": "Fatty acids (nonesterified)",
     "specimen": [
@@ -614,7 +1721,6 @@
     "si_units": "mmol/L"
   },
   "6899-9": {
-    "loinc_num": "6899-9",
     "si_loinc_num": null,
     "name": "Felbamate",
     "specimen": [
@@ -626,7 +1732,6 @@
     "si_units": "umol/L"
   },
   "2276-4": {
-    "loinc_num": "2276-4",
     "si_loinc_num": "2276-4",
     "name": "Ferritin",
     "specimen": [
@@ -636,19 +1741,67 @@
     "conversion_factor": 1.0,
     "si_units": "ug/L"
   },
-  "3255-7": {
-    "loinc_num": "3255-7",
-    "si_loinc_num": "3255-7",
-    "name": "Fibrinogen",
+  "1834-1": {
+    "si_loinc_num": "1834-1",
+    "name": "α-Fetoprotein",
     "specimen": [
-      "plasma"
+      "serum"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 0.01,
-    "si_units": "g/L"
+    "traditional_units": "ng/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ug/L"
+  },
+  "30009-5": {
+    "si_loinc_num": "30009-5",
+    "name": "Fibrin degradation products",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 1.0,
+    "si_units": "mg/L"
+  },
+  "2283-0": {
+    "si_loinc_num": "14731-4",
+    "name": "Folate",
+    "specimen": [
+      "red_blood_cells"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 2.266,
+    "si_units": "nmol/L"
+  },
+  "2284-8": {
+    "si_loinc_num": "14732-2",
+    "name": "Folate",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 2.266,
+    "si_units": "nmol/L"
+  },
+  "15067-2": {
+    "si_loinc_num": "15067-2",
+    "name": "Follicle-stimulating hormone (FSH)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "m[IU]/mL",
+    "conversion_factor": 1.0,
+    "si_units": "[IU]/L"
+  },
+  "15068-0": {
+    "si_loinc_num": "15068-0",
+    "name": "Follicle-stimulating hormone (FSH)",
+    "specimen": [
+      "urine_24_h"
+    ],
+    "traditional_units": "[IU]/(24.h)",
+    "conversion_factor": 1.0,
+    "si_units": "[IU]/(24.h)"
   },
   "15069-8": {
-    "loinc_num": "15069-8",
     "si_loinc_num": "15069-8",
     "name": "Fructosamine",
     "specimen": [
@@ -659,7 +1812,6 @@
     "si_units": "mmol/L"
   },
   "9738-6": {
-    "loinc_num": "9738-6",
     "si_loinc_num": null,
     "name": "Gabapentin",
     "specimen": [
@@ -670,8 +1822,27 @@
     "conversion_factor": 5.84,
     "si_units": "umol/L"
   },
+  "2333-3": {
+    "si_loinc_num": "2333-3",
+    "name": "Gastrin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ng/L"
+  },
+  "35668-3": {
+    "si_loinc_num": "47109-4",
+    "name": "Gentamicin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 2.1,
+    "si_units": "umol/L"
+  },
   "2338-2": {
-    "loinc_num": "2338-2",
     "si_loinc_num": "2338-2",
     "name": "Glucagon",
     "specimen": [
@@ -682,7 +1853,6 @@
     "si_units": "ng/L"
   },
   "2345-7": {
-    "loinc_num": "2345-7",
     "si_loinc_num": "14749-6",
     "name": "Glucose",
     "specimen": [
@@ -694,7 +1864,6 @@
     "si_units": "mmol/L"
   },
   "2342-4": {
-    "loinc_num": "2342-4",
     "si_loinc_num": "14744-7",
     "name": "Glucose",
     "specimen": [
@@ -705,7 +1874,6 @@
     "si_units": "mmol/L"
   },
   "32546-4": {
-    "loinc_num": "32546-4",
     "si_loinc_num": null,
     "name": "Glucose-6-phosphate dehydrogenase",
     "specimen": [
@@ -715,30 +1883,27 @@
     "conversion_factor": 0.0645,
     "si_units": "MU/mol{Hb}"
   },
-  "2372-1": {
-    "loinc_num": "2372-1",
-    "si_loinc_num": "20643-3",
-    "name": "Glutamine",
+  "2324-2": {
+    "si_loinc_num": "2324-2",
+    "name": "γ-Glutamyltransferase (GGT)",
     "specimen": [
-      "plasma"
+      "serum"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 68.42,
-    "si_units": "umol/L"
+    "traditional_units": "U/L",
+    "conversion_factor": 0.01667,
+    "si_units": "ukat/L"
   },
-  "2391-1": {
-    "loinc_num": "2391-1",
-    "si_loinc_num": "20644-1",
-    "name": "Glycine",
+  "2387-9": {
+    "si_loinc_num": "45300-1",
+    "name": "Glycerol (free)",
     "specimen": [
-      "plasma"
+      "serum"
     ],
     "traditional_units": "mg/dL",
-    "conversion_factor": 133.3,
-    "si_units": "umol/L"
+    "conversion_factor": 0.1086,
+    "si_units": "mmol/L"
   },
   "4548-4": {
-    "loinc_num": "4548-4",
     "si_loinc_num": "4548-4",
     "name": "Glycated hemoglobin (HbA1c)",
     "specimen": [
@@ -748,8 +1913,39 @@
     "conversion_factor": 0.01,
     "si_units": "1"
   },
+  "5659-8": {
+    "si_loinc_num": "14772-8",
+    "name": "Gold",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ug/dL",
+    "conversion_factor": 0.05077,
+    "si_units": "umol/L"
+  },
+  "2963-7": {
+    "si_loinc_num": "2963-7",
+    "name": "Growth hormone (GH)",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ug/L"
+  },
+  "3669-9": {
+    "si_loinc_num": "14774-4",
+    "name": "Haloperidol",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 2.66,
+    "si_units": "nmol/L"
+  },
   "4542-7": {
-    "loinc_num": "4542-7",
     "si_loinc_num": "4542-7",
     "name": "Haptoglobin",
     "specimen": [
@@ -760,7 +1956,6 @@
     "si_units": "g/L"
   },
   "4551-8": {
-    "loinc_num": "4551-8",
     "si_loinc_num": "4551-8",
     "name": "Hemoglobin A2",
     "specimen": [
@@ -771,7 +1966,6 @@
     "si_units": "1"
   },
   "4576-5": {
-    "loinc_num": "4576-5",
     "si_loinc_num": "4576-5",
     "name": "Hemoglobin F (fetal hemoglobin in adult)",
     "specimen": [
@@ -781,19 +1975,38 @@
     "conversion_factor": 0.01,
     "si_units": "1"
   },
-  "2420-8": {
-    "loinc_num": "2420-8",
-    "si_loinc_num": "20645-8",
-    "name": "Histidine",
+  "13965-9": {
+    "si_loinc_num": "13965-9",
+    "name": "Homocysteine (total)",
     "specimen": [
-      "plasma"
+      "plasma",
+      "serum"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 64.5,
+    "traditional_units": "umol/L",
+    "conversion_factor": 1.0,
     "si_units": "umol/L"
   },
+  "2436-4": {
+    "si_loinc_num": "14783-5",
+    "name": "Homovanillic acid",
+    "specimen": [
+      "urine_24_h"
+    ],
+    "traditional_units": "mg/(24.h)",
+    "conversion_factor": 5.489,
+    "si_units": "umol/(24.h)"
+  },
+  "19080-1": {
+    "si_loinc_num": "19080-1",
+    "name": "Human chorionic gonadotropin (hCG)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "m[IU]/mL",
+    "conversion_factor": 1.0,
+    "si_units": "[IU]/L"
+  },
   "29512-1": {
-    "loinc_num": "29512-1",
     "si_loinc_num": "6873-4",
     "name": "β-Hydroxybutyric acid",
     "specimen": [
@@ -803,19 +2016,99 @@
     "conversion_factor": 96.05,
     "si_units": "umol/L"
   },
-  "2446-3": {
-    "loinc_num": "2446-3",
-    "si_loinc_num": "20647-4",
-    "name": "Hydroxyproline",
+  "1695-6": {
+    "si_loinc_num": "14573-0",
+    "name": "5-Hydroxyindoleacetic acid (5-HIAA)",
     "specimen": [
+      "urine_24_h"
+    ],
+    "traditional_units": "mg/(24.h)",
+    "conversion_factor": 5.23,
+    "si_units": "umol/(24.h)"
+  },
+  "1668-3": {
+    "si_loinc_num": "14569-8",
+    "name": "17α-Hydroxyprogesterone",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/dL",
+    "conversion_factor": 0.03,
+    "si_units": "nmol/L"
+  },
+  "3687-1": {
+    "si_loinc_num": "32082-0",
+    "name": "Ibuprofen",
+    "specimen": [
+      "serum",
       "plasma"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 76.3,
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.85,
     "si_units": "umol/L"
   },
+  "3690-5": {
+    "si_loinc_num": "15107-6",
+    "name": "Imipramine",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.57,
+    "si_units": "nmol/L"
+  },
+  "2458-8": {
+    "si_loinc_num": "2458-8",
+    "name": "Immunoglobulin A (IgA)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.01,
+    "si_units": "g/L"
+  },
+  "2460-4": {
+    "si_loinc_num": "2460-4",
+    "name": "Immunoglobulin D (IgD)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 10.0,
+    "si_units": "mg/L"
+  },
+  "19113-0": {
+    "si_loinc_num": "76488-6",
+    "name": "Immunoglobulin E (IgE)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "[IU]/mL",
+    "conversion_factor": 2.4,
+    "si_units": "ug/L"
+  },
+  "2465-3": {
+    "si_loinc_num": "2465-3",
+    "name": "Immunoglobulin G (IgG)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.01,
+    "si_units": "g/L"
+  },
+  "2472-9": {
+    "si_loinc_num": "2472-9",
+    "name": "Immunoglobulin M (IgM)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.01,
+    "si_units": "g/L"
+  },
   "20448-7": {
-    "loinc_num": "20448-7",
     "si_loinc_num": "14796-7",
     "name": "Insulin",
     "specimen": [
@@ -825,8 +2118,37 @@
     "conversion_factor": 6.945,
     "si_units": "pmol/L"
   },
+  "23883-2": {
+    "si_loinc_num": "23883-2",
+    "name": "Inhibin A",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ng/L"
+  },
+  "2484-4": {
+    "si_loinc_num": "2484-4",
+    "name": "Insulin-like growth factor I (IGF-1)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ug/L"
+  },
+  "2498-4": {
+    "si_loinc_num": "14798-3",
+    "name": "Iron (total)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ug/dL",
+    "conversion_factor": 0.179,
+    "si_units": "umol/L"
+  },
   "2500-7": {
-    "loinc_num": "2500-7",
     "si_loinc_num": "14800-7",
     "name": "Iron-binding capacity",
     "specimen": [
@@ -836,30 +2158,59 @@
     "conversion_factor": 0.179,
     "si_units": "umol/L"
   },
-  "2508-0": {
-    "loinc_num": "2508-0",
-    "si_loinc_num": "20648-2",
-    "name": "Isoleucine",
+  "3697-0": {
+    "si_loinc_num": "25451-6",
+    "name": "Isoniazid",
     "specimen": [
-      "plasma"
+      "plasma",
+      "serum"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 76.24,
+    "traditional_units": "ug/mL",
+    "conversion_factor": 7.29,
     "si_units": "umol/L"
   },
+  "5669-7": {
+    "si_loinc_num": "14802-3",
+    "name": "Isopropanol",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "mg/L",
+    "conversion_factor": 0.0166,
+    "si_units": "mmol/L"
+  },
+  "30242-2": {
+    "si_loinc_num": "2518-9",
+    "name": "Lactate",
+    "specimen": [
+      "arterial_blood"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.111,
+    "si_units": "mmol/L"
+  },
+  "30241-4": {
+    "si_loinc_num": "2519-7",
+    "name": "Lactate",
+    "specimen": [
+      "venous_blood"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.111,
+    "si_units": "mmol/L"
+  },
   "14805-6": {
-    "loinc_num": "14805-6",
     "si_loinc_num": "14805-6",
     "name": "Lactate dehydrogenase (LDH)",
     "specimen": [
       "serum"
     ],
     "traditional_units": "U/L",
-    "conversion_factor": 1.0,
-    "si_units": "U/L"
+    "conversion_factor": 0.01667,
+    "si_units": "ukat/L"
   },
   "6948-4": {
-    "loinc_num": "6948-4",
     "si_loinc_num": "25458-1",
     "name": "Lamotrigine",
     "specimen": [
@@ -870,19 +2221,7 @@
     "conversion_factor": 3.91,
     "si_units": "umol/L"
   },
-  "2560-1": {
-    "loinc_num": "2560-1",
-    "si_loinc_num": "20649-0",
-    "name": "Leucine",
-    "specimen": [
-      "plasma"
-    ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 76.3,
-    "si_units": "umol/L"
-  },
   "30471-7": {
-    "loinc_num": "30471-7",
     "si_loinc_num": "48347-9",
     "name": "Levetiracetam",
     "specimen": [
@@ -893,8 +2232,28 @@
     "conversion_factor": 5.88,
     "si_units": "umol/L"
   },
+  "3714-3": {
+    "si_loinc_num": "14812-2",
+    "name": "Lidocaine",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.27,
+    "si_units": "umol/L"
+  },
+  "3040-3": {
+    "si_loinc_num": "3040-3",
+    "name": "Lipase",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "U/L",
+    "conversion_factor": 0.01667,
+    "si_units": "ukat/L"
+  },
   "2573-4": {
-    "loinc_num": "2573-4",
     "si_loinc_num": "2573-4",
     "name": "Lipoprotein(a) (Lp(a))",
     "specimen": [
@@ -905,19 +2264,49 @@
     "conversion_factor": 0.01,
     "si_units": "g/L"
   },
-  "2585-8": {
-    "loinc_num": "2585-8",
-    "si_loinc_num": "20650-8",
-    "name": "Lysine",
+  "14334-7": {
+    "si_loinc_num": "14334-7",
+    "name": "Lithium",
     "specimen": [
+      "serum",
       "plasma"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 68.5,
-    "si_units": "umol/L"
+    "traditional_units": "meq/L",
+    "conversion_factor": 1.0,
+    "si_units": "mmol/L"
+  },
+  "3724-2": {
+    "si_loinc_num": "14817-1",
+    "name": "Lorazepam",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.11,
+    "si_units": "nmol/L"
+  },
+  "10501-5": {
+    "si_loinc_num": "10501-5",
+    "name": "Luteinizing hormone (LH)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "m[IU]/mL",
+    "conversion_factor": 1.0,
+    "si_units": "[IU]/L"
+  },
+  "2589-0": {
+    "si_loinc_num": "2589-0",
+    "name": "Lysozyme",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/L",
+    "conversion_factor": 1.0,
+    "si_units": "mg/L"
   },
   "19123-9": {
-    "loinc_num": "19123-9",
     "si_loinc_num": "2601-3",
     "name": "Magnesium",
     "specimen": [
@@ -928,7 +2317,6 @@
     "si_units": "mmol/L"
   },
   "2601-3": {
-    "loinc_num": "2601-3",
     "si_loinc_num": "2601-3",
     "name": "Magnesium",
     "specimen": [
@@ -939,7 +2327,6 @@
     "si_units": "mmol/L"
   },
   "5681-2": {
-    "loinc_num": "5681-2",
     "si_loinc_num": "25466-4",
     "name": "Manganese",
     "specimen": [
@@ -949,8 +2336,29 @@
     "conversion_factor": 18.2,
     "si_units": "nmol/L"
   },
+  "3735-8": {
+    "si_loinc_num": "3735-8",
+    "name": "Maprotiline",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ug/L"
+  },
+  "3745-7": {
+    "si_loinc_num": "59924-1",
+    "name": "Meperidine",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.04,
+    "si_units": "umol/L"
+  },
   "5685-3": {
-    "loinc_num": "5685-3",
     "si_loinc_num": "25170-2",
     "name": "Mercury",
     "specimen": [
@@ -960,8 +2368,28 @@
     "conversion_factor": 4.99,
     "si_units": "nmol/L"
   },
+  "2609-6": {
+    "si_loinc_num": "14833-8",
+    "name": "Metanephrines (total)",
+    "specimen": [
+      "urine_24_h"
+    ],
+    "traditional_units": "mg/(24.h)",
+    "conversion_factor": 5.07,
+    "si_units": "umol/(24.h)"
+  },
+  "3772-1": {
+    "si_loinc_num": "15108-4",
+    "name": "Methadone",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 0.00323,
+    "si_units": "umol/L"
+  },
   "5693-7": {
-    "loinc_num": "5693-7",
     "si_loinc_num": "14835-3",
     "name": "Methanol",
     "specimen": [
@@ -973,7 +2401,6 @@
     "si_units": "mmol/L"
   },
   "15082-1": {
-    "loinc_num": "15082-1",
     "si_loinc_num": "56040-9",
     "name": "Methemoglobin",
     "specimen": [
@@ -984,7 +2411,6 @@
     "si_units": "umol/L"
   },
   "2614-6": {
-    "loinc_num": "2614-6",
     "si_loinc_num": "2614-6",
     "name": "Methemoglobin",
     "specimen": [
@@ -994,19 +2420,40 @@
     "conversion_factor": 0.01,
     "si_units": "1"
   },
-  "2622-9": {
-    "loinc_num": "2622-9",
-    "si_loinc_num": "20651-6",
-    "name": "Methionine",
+  "3802-6": {
+    "si_loinc_num": null,
+    "name": "Methyldopa",
     "specimen": [
+      "serum",
       "plasma"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 67.1,
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.73,
+    "si_units": "umol/L"
+  },
+  "3815-8": {
+    "si_loinc_num": "55553-2",
+    "name": "Metoprolol",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.74,
+    "si_units": "nmol/L"
+  },
+  "14836-1": {
+    "si_loinc_num": "14836-1",
+    "name": "Methotrexate",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "umol/L",
+    "conversion_factor": 1.0,
     "si_units": "umol/L"
   },
   "1952-1": {
-    "loinc_num": "1952-1",
     "si_loinc_num": "76484-5",
     "name": "β2-Microglobulin",
     "specimen": [
@@ -1016,8 +2463,40 @@
     "conversion_factor": 85.0,
     "si_units": "nmol/L"
   },
+  "3827-3": {
+    "si_loinc_num": "15110-0",
+    "name": "Morphine",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.5,
+    "si_units": "nmol/L"
+  },
+  "23905-3": {
+    "si_loinc_num": "70211-8",
+    "name": "Mycophenolic acid",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 3.12,
+    "si_units": "umol/L"
+  },
+  "3846-3": {
+    "si_loinc_num": "50885-3",
+    "name": "Naproxen",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.34,
+    "si_units": "umol/L"
+  },
   "5700-0": {
-    "loinc_num": "5700-0",
     "si_loinc_num": "25169-4",
     "name": "Nickel",
     "specimen": [
@@ -1027,8 +2506,17 @@
     "conversion_factor": 17.0,
     "si_units": "nmol/L"
   },
+  "3853-9": {
+    "si_loinc_num": "55557-3",
+    "name": "Nicotine",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/L",
+    "conversion_factor": 6.16,
+    "si_units": "umol/L"
+  },
   "2666-6": {
-    "loinc_num": "2666-6",
     "si_loinc_num": "14852-8",
     "name": "Norepinephrine",
     "specimen": [
@@ -1039,29 +2527,37 @@
     "si_units": "pmol/L"
   },
   "2668-2": {
-    "loinc_num": "2668-2",
     "si_loinc_num": "14854-4",
     "name": "Norepinephrine",
     "specimen": [
-      "urine"
+      "urine_24_h"
     ],
     "traditional_units": "ug/(24.h)",
     "conversion_factor": 5.91,
     "si_units": "nmol/(24.h)"
   },
-  "2679-9": {
-    "loinc_num": "2679-9",
-    "si_loinc_num": "20652-4",
-    "name": "Ornithine",
+  "3872-9": {
+    "si_loinc_num": "14856-9",
+    "name": "Nortriptyline",
     "specimen": [
+      "serum",
       "plasma"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 75.8,
-    "si_units": "umol/L"
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.8,
+    "si_units": "nmol/L"
+  },
+  "21215-9": {
+    "si_loinc_num": "21215-9",
+    "name": "N-telopeptide (NTx)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "nmol{BCE}/L",
+    "conversion_factor": 1.0,
+    "si_units": "nmol{BCE}/L"
   },
   "2692-2": {
-    "loinc_num": "2692-2",
     "si_loinc_num": "2692-2",
     "name": "Osmolality",
     "specimen": [
@@ -1072,7 +2568,6 @@
     "si_units": "mmol/kg"
   },
   "2695-5": {
-    "loinc_num": "2695-5",
     "si_loinc_num": "2695-5",
     "name": "Osmolality",
     "specimen": [
@@ -1083,7 +2578,6 @@
     "si_units": "mmol/kg"
   },
   "2697-1": {
-    "loinc_num": "2697-1",
     "si_loinc_num": "2697-1",
     "name": "Osteocalcin",
     "specimen": [
@@ -1094,7 +2588,6 @@
     "si_units": "ug/L"
   },
   "2699-7": {
-    "loinc_num": "2699-7",
     "si_loinc_num": "15085-4",
     "name": "Oxalate",
     "specimen": [
@@ -1104,8 +2597,70 @@
     "conversion_factor": 11.4,
     "si_units": "umol/L"
   },
+  "3886-9": {
+    "si_loinc_num": "29655-8",
+    "name": "Oxazepam",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 3.49,
+    "si_units": "umol/L"
+  },
+  "3893-5": {
+    "si_loinc_num": null,
+    "name": "Oxycodone",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.17,
+    "si_units": "nmol/L"
+  },
+  "2731-8": {
+    "si_loinc_num": "2731-8",
+    "name": "Parathyroid hormone, intact",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ng/L"
+  },
+  "2733-4": {
+    "si_loinc_num": "2733-4",
+    "name": "Parathyroid hormone, N-terminal",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ng/L"
+  },
+  "2730-0": {
+    "si_loinc_num": "2730-0",
+    "name": "Parathyroid hormone, C-terminal",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ng/L"
+  },
+  "3924-8": {
+    "si_loinc_num": "32103-4",
+    "name": "Pentobarbital",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.42,
+    "si_units": "umol/L"
+  },
   "2736-7": {
-    "loinc_num": "2736-7",
     "si_loinc_num": "2736-7",
     "name": "Pepsinogen I",
     "specimen": [
@@ -1115,30 +2670,89 @@
     "conversion_factor": 1.0,
     "si_units": "ug/L"
   },
-  "2765-6": {
-    "loinc_num": "2765-6",
-    "si_loinc_num": "14875-9",
-    "name": "Phenylalanine",
+  "3948-7": {
+    "si_loinc_num": "14874-2",
+    "name": "Phenobarbital",
     "specimen": [
+      "serum",
       "plasma"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 60.5,
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.31,
+    "si_units": "umol/L"
+  },
+  "3968-5": {
+    "si_loinc_num": "14877-5",
+    "name": "Phenytoin",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 3.96,
     "si_units": "umol/L"
   },
   "17837-6": {
-    "loinc_num": "17837-6",
     "si_loinc_num": "17837-6",
     "name": "Phosphatase, tartrate-resistant acid",
     "specimen": [
       "serum"
     ],
     "traditional_units": "U/L",
-    "conversion_factor": 0.017,
+    "conversion_factor": 0.01667,
     "si_units": "ukat/L"
   },
+  "2777-1": {
+    "si_loinc_num": "14879-1",
+    "name": "Phosphorus, inorganic",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.3229,
+    "si_units": "mmol/L"
+  },
+  "2779-7": {
+    "si_loinc_num": "14881-7",
+    "name": "Phosphorus, inorganic",
+    "specimen": [
+      "urine_24_h"
+    ],
+    "traditional_units": "g/(24.h)",
+    "conversion_factor": 32.29,
+    "si_units": "mmol/(24.h)"
+  },
+  "4668-0": {
+    "si_loinc_num": "4668-0",
+    "name": "Plasminogen",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 10.0,
+    "si_units": "mg/L"
+  },
+  "28660-9": {
+    "si_loinc_num": "28660-9",
+    "name": "Plasminogen activity",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "5974-1": {
+    "si_loinc_num": "5974-1",
+    "name": "Plasminogen activator inhibitor",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "[IU]/mL",
+    "conversion_factor": 1.0,
+    "si_units": "k[IU]/L"
+  },
   "2812-6": {
-    "loinc_num": "2812-6",
     "si_loinc_num": null,
     "name": "Porphobilinogen deaminase",
     "specimen": [
@@ -1148,41 +2762,111 @@
     "conversion_factor": 1.0,
     "si_units": "nmol/(s.L)"
   },
-  "2823-3": {
-    "loinc_num": "2823-3",
-    "si_loinc_num": "2823-3",
-    "name": "Potassium",
+  "14338-8": {
+    "si_loinc_num": "14338-8",
+    "name": "Prealbumin",
     "specimen": [
+      "serum",
       "plasma"
     ],
-    "traditional_units": "meq/L",
-    "conversion_factor": 1.0,
-    "si_units": "mmol/L"
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.01,
+    "si_units": "g/L"
+  },
+  "2834-0": {
+    "si_loinc_num": "14885-8",
+    "name": "Pregnanediol",
+    "specimen": [
+      "urine_24_h"
+    ],
+    "traditional_units": "mg/(24.h)",
+    "conversion_factor": 3.12,
+    "si_units": "umol/(24.h)"
   },
   "2836-5": {
-    "loinc_num": "2836-5",
     "si_loinc_num": "14886-6",
     "name": "Pregnanetriol",
     "specimen": [
-      "urine"
+      "urine_24_h"
     ],
     "traditional_units": "mg/(24.h)",
     "conversion_factor": 2.97,
     "si_units": "umol/(24.h)"
   },
-  "2845-6": {
-    "loinc_num": "2845-6",
-    "si_loinc_num": "20655-7",
-    "name": "Proline",
+  "3978-4": {
+    "si_loinc_num": "14887-4",
+    "name": "Primidone",
     "specimen": [
+      "serum",
       "plasma"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 86.9,
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.58,
     "si_units": "umol/L"
   },
+  "3982-6": {
+    "si_loinc_num": "14888-2",
+    "name": "Procainamide",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.23,
+    "si_units": "umol/L"
+  },
+  "2839-9": {
+    "si_loinc_num": "14890-8",
+    "name": "Progesterone",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.18,
+    "si_units": "nmol/L"
+  },
+  "2842-3": {
+    "si_loinc_num": "2842-3",
+    "name": "Prolactin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ug/L"
+  },
+  "3543-6": {
+    "si_loinc_num": "32125-7",
+    "name": "Propoxyphene",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 2.946,
+    "si_units": "umol/L"
+  },
+  "3992-5": {
+    "si_loinc_num": "14891-6",
+    "name": "Propranolol",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.86,
+    "si_units": "nmol/L"
+  },
+  "2885-2": {
+    "si_loinc_num": "2885-2",
+    "name": "Protein, total",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "g/dL",
+    "conversion_factor": 10.0,
+    "si_units": "g/L"
+  },
   "27818-4": {
-    "loinc_num": "27818-4",
     "si_loinc_num": "27818-4",
     "name": "Protein C",
     "specimen": [
@@ -1192,8 +2876,117 @@
     "conversion_factor": 0.01,
     "si_units": "1"
   },
+  "13980-8": {
+    "si_loinc_num": "13980-8",
+    "name": "Albumin, fraction of total protein",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "13978-2": {
+    "si_loinc_num": "13978-2",
+    "name": "α1-Globulin, fraction of total protein",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "13981-6": {
+    "si_loinc_num": "13981-6",
+    "name": "α2-Globulin, fraction of total protein",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "13982-4": {
+    "si_loinc_num": "13982-4",
+    "name": "β-Globulin, fraction of total protein",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "13983-2": {
+    "si_loinc_num": "13983-2",
+    "name": "γ-Globulin, fraction of total protein",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "2865-4": {
+    "si_loinc_num": "2865-4",
+    "name": "α1-Globulin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "g/dL",
+    "conversion_factor": 10.0,
+    "si_units": "g/L"
+  },
+  "2868-8": {
+    "si_loinc_num": "2868-8",
+    "name": "α2-Globulin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "g/dL",
+    "conversion_factor": 10.0,
+    "si_units": "g/L"
+  },
+  "2871-2": {
+    "si_loinc_num": "2871-2",
+    "name": "β-Globulin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "g/dL",
+    "conversion_factor": 10.0,
+    "si_units": "g/L"
+  },
+  "2874-6": {
+    "si_loinc_num": "2874-6",
+    "name": "γ-Globulin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "g/dL",
+    "conversion_factor": 10.0,
+    "si_units": "g/L"
+  },
+  "27822-6": {
+    "si_loinc_num": "27822-6",
+    "name": "Protein S",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "5902-2": {
+    "si_loinc_num": "5902-2",
+    "name": "Prothrombin time (PT)",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "s",
+    "conversion_factor": 1.0,
+    "si_units": "s"
+  },
   "2898-5": {
-    "loinc_num": "2898-5",
     "si_loinc_num": "41017-5",
     "name": "Protoporphyrin",
     "specimen": [
@@ -1203,8 +2996,58 @@
     "conversion_factor": 0.0177,
     "si_units": "umol/L"
   },
+  "2857-1": {
+    "si_loinc_num": "2857-1",
+    "name": "Prostate-specific antigen (PSA)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 1.0,
+    "si_units": "ug/L"
+  },
+  "25095-1": {
+    "si_loinc_num": "25095-1",
+    "name": "Deoxypyridinoline",
+    "specimen": [
+      "urine"
+    ],
+    "traditional_units": "nmol/mmol{creat}",
+    "conversion_factor": 1.0,
+    "si_units": "nmol/mmol{creat}"
+  },
+  "2905-8": {
+    "si_loinc_num": "14121-8",
+    "name": "Pyruvate",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 113.6,
+    "si_units": "umol/L"
+  },
+  "6694-4": {
+    "si_loinc_num": "14899-9",
+    "name": "Quinidine",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 3.08,
+    "si_units": "umol/L"
+  },
+  "2915-7": {
+    "si_loinc_num": "2915-7",
+    "name": "Renin activity",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "ng/mL/h",
+    "conversion_factor": 1.0,
+    "si_units": "ng/(mL.h)"
+  },
   "11572-5": {
-    "loinc_num": "11572-5",
     "si_loinc_num": "11572-5",
     "name": "Rheumatoid factor",
     "specimen": [
@@ -1214,8 +3057,18 @@
     "conversion_factor": 1.0,
     "si_units": "k[IU]/L"
   },
+  "4024-6": {
+    "si_loinc_num": "14909-6",
+    "name": "Salicylates",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.0724,
+    "si_units": "mmol/L"
+  },
   "5722-4": {
-    "loinc_num": "5722-4",
     "si_loinc_num": "78696-2",
     "name": "Selenium",
     "specimen": [
@@ -1225,19 +3078,28 @@
     "conversion_factor": 0.0127,
     "si_units": "umol/L"
   },
-  "2936-3": {
-    "loinc_num": "2936-3",
-    "si_loinc_num": "20656-5",
-    "name": "Serine",
+  "2939-7": {
+    "si_loinc_num": "25524-0",
+    "name": "Serotonin",
     "specimen": [
-      "plasma"
+      "whole_blood"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 95.2,
+    "traditional_units": "ng/mL",
+    "conversion_factor": 0.00568,
     "si_units": "umol/L"
   },
+  "6906-2": {
+    "si_loinc_num": "14911-2",
+    "name": "Sertraline",
+    "specimen": [
+      "serum",
+      "plasma"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 3.27,
+    "si_units": "nmol/L"
+  },
   "2942-1": {
-    "loinc_num": "2942-1",
     "si_loinc_num": "13967-5",
     "name": "Sex hormone-binding globulin",
     "specimen": [
@@ -1248,8 +3110,7 @@
     "si_units": "nmol/L"
   },
   "29247-4": {
-    "loinc_num": "29247-4",
-    "si_loinc_num": null,
+    "si_loinc_num": "96462-7",
     "name": "Sirolimus",
     "specimen": [
       "whole_blood"
@@ -1258,19 +3119,7 @@
     "conversion_factor": 1.1,
     "si_units": "nmol/L"
   },
-  "2951-2": {
-    "loinc_num": "2951-2",
-    "si_loinc_num": "2951-2",
-    "name": "Sodium",
-    "specimen": [
-      "plasma"
-    ],
-    "traditional_units": "meq/L",
-    "conversion_factor": 1.0,
-    "si_units": "mmol/L"
-  },
   "2961-1": {
-    "loinc_num": "2961-1",
     "si_loinc_num": "2961-1",
     "name": "Somatostatin",
     "specimen": [
@@ -1280,8 +3129,17 @@
     "conversion_factor": 1.0,
     "si_units": "ng/L"
   },
+  "14102-8": {
+    "si_loinc_num": null,
+    "name": "Strychnine",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "mg/L",
+    "conversion_factor": 2.99,
+    "si_units": "umol/L"
+  },
   "2971-0": {
-    "loinc_num": "2971-0",
     "si_loinc_num": "2971-0",
     "name": "Substance P",
     "specimen": [
@@ -1292,7 +3150,6 @@
     "si_units": "ng/L"
   },
   "4685-4": {
-    "loinc_num": "4685-4",
     "si_loinc_num": "4685-4",
     "name": "Sulfhemoglobin",
     "specimen": [
@@ -1303,8 +3160,7 @@
     "si_units": "1"
   },
   "11253-2": {
-    "loinc_num": "11253-2",
-    "si_loinc_num": null,
+    "si_loinc_num": "76494-4",
     "name": "Tacrolimus",
     "specimen": [
       "whole_blood"
@@ -1313,30 +3169,72 @@
     "conversion_factor": 1.24,
     "si_units": "nmol/L"
   },
-  "2981-9": {
-    "loinc_num": "2981-9",
-    "si_loinc_num": "20657-3",
-    "name": "Taurine",
+  "2986-8": {
+    "si_loinc_num": "14913-8",
+    "name": "Testosterone",
     "specimen": [
-      "plasma"
+      "plasma",
+      "serum"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 80.0,
+    "traditional_units": "ng/dL",
+    "conversion_factor": 0.0347,
+    "si_units": "nmol/L"
+  },
+  "4049-3": {
+    "si_loinc_num": "14915-3",
+    "name": "Theophylline",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 5.55,
     "si_units": "umol/L"
   },
-  "3008-0": {
-    "loinc_num": "3008-0",
-    "si_loinc_num": "20658-1",
-    "name": "Threonine",
+  "3002-3": {
+    "si_loinc_num": "14916-1",
+    "name": "Thiocyanate",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "mg/L",
+    "conversion_factor": 17.2,
+    "si_units": "umol/L"
+  },
+  "4050-1": {
+    "si_loinc_num": "32117-4",
+    "name": "Thiopental",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.13,
+    "si_units": "umol/L"
+  },
+  "4052-7": {
+    "si_loinc_num": "14917-9",
+    "name": "Thioridazine",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 2.7,
+    "si_units": "umol/L"
+  },
+  "3243-3": {
+    "si_loinc_num": "3243-3",
+    "name": "Thrombin time",
     "specimen": [
       "plasma"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 84.0,
-    "si_units": "umol/L"
+    "traditional_units": "s",
+    "conversion_factor": 1.0,
+    "si_units": "s"
   },
   "3013-0": {
-    "loinc_num": "3013-0",
     "si_loinc_num": "3013-0",
     "name": "Thyroglobulin",
     "specimen": [
@@ -1346,8 +3244,69 @@
     "conversion_factor": 1.0,
     "si_units": "ug/L"
   },
+  "3016-3": {
+    "si_loinc_num": "3016-3",
+    "name": "Thyrotropin (TSH)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "u[IU]/mL",
+    "conversion_factor": 1.0,
+    "si_units": "m[IU]/L"
+  },
+  "3024-7": {
+    "si_loinc_num": "14920-3",
+    "name": "Thyroxine, free (FT4)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/dL",
+    "conversion_factor": 12.87,
+    "si_units": "pmol/L"
+  },
+  "3026-2": {
+    "si_loinc_num": "14921-1",
+    "name": "Thyroxine, total (T4)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ug/dL",
+    "conversion_factor": 12.87,
+    "si_units": "nmol/L"
+  },
+  "5986-5": {
+    "si_loinc_num": "5986-5",
+    "name": "Tissue plasminogen activator",
+    "specimen": [
+      "plasma"
+    ],
+    "traditional_units": "[IU]/mL",
+    "conversion_factor": 1000.0,
+    "si_units": "[IU]/L"
+  },
+  "35670-9": {
+    "si_loinc_num": "50927-3",
+    "name": "Tobramycin",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 2.14,
+    "si_units": "umol/L"
+  },
+  "4060-0": {
+    "si_loinc_num": "39794-3",
+    "name": "Tocainide",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 5.2,
+    "si_units": "umol/L"
+  },
   "17713-9": {
-    "loinc_num": "17713-9",
     "si_loinc_num": "25541-4",
     "name": "Topiramate",
     "specimen": [
@@ -1358,8 +3317,17 @@
     "conversion_factor": 2.95,
     "si_units": "umol/L"
   },
+  "3034-6": {
+    "si_loinc_num": "3034-6",
+    "name": "Transferrin",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.01,
+    "si_units": "g/L"
+  },
   "2571-8": {
-    "loinc_num": "2571-8",
     "si_loinc_num": "14927-8",
     "name": "Triglycerides",
     "specimen": [
@@ -1370,8 +3338,37 @@
     "conversion_factor": 0.01129,
     "si_units": "mmol/L"
   },
+  "3051-0": {
+    "si_loinc_num": "14928-6",
+    "name": "Triiodothyronine, free (FT3)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "pg/dL",
+    "conversion_factor": 0.0154,
+    "si_units": "pmol/L"
+  },
+  "3050-2": {
+    "si_loinc_num": "3050-2",
+    "name": "Triiodothyronine resin uptake",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "%",
+    "conversion_factor": 0.01,
+    "si_units": "1"
+  },
+  "3053-6": {
+    "si_loinc_num": "14930-2",
+    "name": "Triiodothyronine, total (T3)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ng/dL",
+    "conversion_factor": 0.0154,
+    "si_units": "nmol/L"
+  },
   "10839-9": {
-    "loinc_num": "10839-9",
     "si_loinc_num": "10839-9",
     "name": "Troponin I (cardiac)",
     "specimen": [
@@ -1382,7 +3379,6 @@
     "si_units": "ug/L"
   },
   "6598-7": {
-    "loinc_num": "6598-7",
     "si_loinc_num": "6598-7",
     "name": "Troponin T (cardiac)",
     "specimen": [
@@ -1392,30 +3388,7 @@
     "conversion_factor": 1.0,
     "si_units": "ug/L"
   },
-  "3070-0": {
-    "loinc_num": "3070-0",
-    "si_loinc_num": "20659-9",
-    "name": "Tryptophan",
-    "specimen": [
-      "plasma"
-    ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 48.97,
-    "si_units": "umol/L"
-  },
-  "3079-1": {
-    "loinc_num": "3079-1",
-    "si_loinc_num": "20660-7",
-    "name": "Tyrosine",
-    "specimen": [
-      "plasma"
-    ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 55.19,
-    "si_units": "umol/L"
-  },
   "3094-0": {
-    "loinc_num": "3094-0",
     "si_loinc_num": "14937-7",
     "name": "Urea nitrogen (BUN)",
     "specimen": [
@@ -1425,30 +3398,59 @@
     "conversion_factor": 0.357,
     "si_units": "mmol/L"
   },
+  "3084-1": {
+    "si_loinc_num": "14933-6",
+    "name": "Uric acid",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.0595,
+    "si_units": "mmol/L"
+  },
   "3108-8": {
-    "loinc_num": "3108-8",
     "si_loinc_num": null,
     "name": "Urobilinogen",
     "specimen": [
-      "urine"
+      "urine_24_h"
     ],
     "traditional_units": "mg/(24.h)",
     "conversion_factor": 1.693,
     "si_units": "umol/(24.h)"
   },
-  "3118-7": {
-    "loinc_num": "3118-7",
-    "si_loinc_num": "20661-5",
-    "name": "Valine",
+  "4086-5": {
+    "si_loinc_num": "14946-8",
+    "name": "Valproic acid",
     "specimen": [
-      "plasma"
+      "plasma",
+      "serum"
     ],
-    "traditional_units": "mg/dL",
-    "conversion_factor": 85.5,
+    "traditional_units": "ug/mL",
+    "conversion_factor": 6.93,
     "si_units": "umol/L"
   },
+  "20578-1": {
+    "si_loinc_num": "31012-8",
+    "name": "Vancomycin",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 0.69,
+    "si_units": "umol/L"
+  },
+  "3122-9": {
+    "si_loinc_num": "14947-6",
+    "name": "Vanillylmandelic acid (VMA)",
+    "specimen": [
+      "urine_24_h"
+    ],
+    "traditional_units": "mg/(24.h)",
+    "conversion_factor": 5.046,
+    "si_units": "umol/(24.h)"
+  },
   "3125-2": {
-    "loinc_num": "3125-2",
     "si_loinc_num": "3125-2",
     "name": "Vasoactive intestinal polypeptide",
     "specimen": [
@@ -1458,8 +3460,70 @@
     "conversion_factor": 1.0,
     "si_units": "ng/L"
   },
+  "4094-9": {
+    "si_loinc_num": "55586-2",
+    "name": "Verapamil",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 2.2,
+    "si_units": "nmol/L"
+  },
+  "2923-1": {
+    "si_loinc_num": "14905-4",
+    "name": "Vitamin A (retinol)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "ug/dL",
+    "conversion_factor": 0.0349,
+    "si_units": "umol/L"
+  },
+  "2924-9": {
+    "si_loinc_num": "49038-3",
+    "name": "Vitamin B2 (riboflavin)",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ug/dL",
+    "conversion_factor": 26.6,
+    "si_units": "nmol/L"
+  },
+  "2722-7": {
+    "si_loinc_num": null,
+    "name": "Vitamin B5 (pantothenic acid)",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 4.56,
+    "si_units": "umol/L"
+  },
+  "2132-9": {
+    "si_loinc_num": "14685-2",
+    "name": "Vitamin B12 (cobalamin)",
+    "specimen": [
+      "serum"
+    ],
+    "traditional_units": "pg/mL",
+    "conversion_factor": 0.7378,
+    "si_units": "pmol/L"
+  },
+  "1903-4": {
+    "si_loinc_num": "14622-5",
+    "name": "Vitamin C (ascorbic acid)",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 56.78,
+    "si_units": "umol/L"
+  },
   "62290-2": {
-    "loinc_num": "62290-2",
     "si_loinc_num": null,
     "name": "Vitamin D, 1,25-dihydroxyvitamin D",
     "specimen": [
@@ -1470,8 +3534,61 @@
     "conversion_factor": 2.4,
     "si_units": "pmol/L"
   },
+  "62292-8": {
+    "si_loinc_num": "68438-1",
+    "name": "Vitamin D, 25-hydroxyvitamin D",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ng/mL",
+    "conversion_factor": 2.496,
+    "si_units": "nmol/L"
+  },
+  "1823-4": {
+    "si_loinc_num": "14590-4",
+    "name": "Vitamin E (α-tocopherol)",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 23.22,
+    "si_units": "umol/L"
+  },
+  "4098-0": {
+    "si_loinc_num": "39798-4",
+    "name": "Warfarin",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 3.24,
+    "si_units": "umol/L"
+  },
+  "3134-4": {
+    "si_loinc_num": null,
+    "name": "Xylose",
+    "specimen": [
+      "whole_blood"
+    ],
+    "traditional_units": "mg/dL",
+    "conversion_factor": 0.06661,
+    "si_units": "mmol/L"
+  },
+  "6894-0": {
+    "si_loinc_num": null,
+    "name": "Zidovudine",
+    "specimen": [
+      "plasma",
+      "serum"
+    ],
+    "traditional_units": "ug/mL",
+    "conversion_factor": 3.74,
+    "si_units": "umol/L"
+  },
   "5763-8": {
-    "loinc_num": "5763-8",
     "si_loinc_num": "14955-9",
     "name": "Zinc",
     "specimen": [

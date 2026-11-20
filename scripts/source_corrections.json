@@ -38,6 +38,39 @@
     },
     "why": "Source prints 2.6 (16-65 pg/mL = 42-169 pmol/L), which is 1000/384.6 g/mol, the molar mass of vitamin D3 without hydroxyl groups. Calcitriol has 416.64 g/mol: 1000/416.64 = 2.40 (16-65 pg/mL = 38-156 pmol/L)."
   },
+  "Alanine aminotransferase (ALT, SGPT)": {
+    "set": {
+      "conversion_factor": 0.01667,
+      "si_units": "μKat/L",
+      "si_reference_interval": {
+        "lower_limit": 0.17,
+        "upper_limit": 0.67
+      }
+    },
+    "why": "Source leaves this enzyme in U/L (factor 1) while it converts aspartate aminotransferase, creatine kinase, amylase and the other enzymes to μKat/L. Same conversion applied, with the exact factor 1/60 = 0.01667: 10-40 U/L = 0.17-0.67 μKat/L."
+  },
+  "Alkaline phosphatase": {
+    "set": {
+      "conversion_factor": 0.01667,
+      "si_units": "μKat/L",
+      "si_reference_interval": {
+        "lower_limit": 0.83,
+        "upper_limit": 2.0
+      }
+    },
+    "why": "As for alanine aminotransferase: the source leaves it in U/L. 50-120 U/L = 0.83-2.0 μKat/L."
+  },
+  "Lactate dehydrogenase (LDH)": {
+    "set": {
+      "conversion_factor": 0.01667,
+      "si_units": "μKat/L",
+      "si_reference_interval": {
+        "lower_limit": 0.83,
+        "upper_limit": 3.33
+      }
+    },
+    "why": "As for alanine aminotransferase: the source leaves it in U/L. 50-200 U/L = 0.83-3.33 μKat/L."
+  },
   "Lamotrigine": {
     "set": {
       "traditional_units": "μg/mL"
@@ -79,5 +112,247 @@
       }
     },
     "why": "Source prints the SI interval as '<2' although the unit is 'Fraction of total Hb' and the factor 0.01 is correct: <2 % is <0.02."
+  },
+  "Amino acid fractionation, Cystine": {
+    "set": {
+      "conversion_factor": 41.6,
+      "si_reference_interval": {
+        "lower_limit": 17,
+        "upper_limit": 58
+      }
+    },
+    "why": "Second listing of cystine; same correction as 'Cystine' (dimer, 240.30 g/mol)."
+  },
+  "Anion gap (Na+)−(Cl− + HCO3−)": {
+    "set": {
+      "si_units": "mmol/L"
+    },
+    "why": "Source prints nmol/L, but 8-16 mEq/L with factor 1 is 8-16 mmol/L."
+  },
+  "Differential count (absolute), Neutrophils": {
+    "set": {
+      "conversion_factor": 0.001
+    },
+    "why": "Source prints factor 1 for μL−1 -> 10^9 L−1, but 1/μL is 10^6/L = 0.001 x 10^9/L, as its own intervals show (e.g. neutrophils 1800-7800 /μL = 1.8-7.8 x 10^9/L)."
+  },
+  "Differential count (absolute), Bands": {
+    "set": {
+      "conversion_factor": 0.001
+    },
+    "why": "Source prints factor 1 for μL−1 -> 10^9 L−1, but 1/μL is 10^6/L = 0.001 x 10^9/L, as its own intervals show (e.g. neutrophils 1800-7800 /μL = 1.8-7.8 x 10^9/L)."
+  },
+  "Differential count (absolute), Lymphocytes": {
+    "set": {
+      "conversion_factor": 0.001
+    },
+    "why": "Source prints factor 1 for μL−1 -> 10^9 L−1, but 1/μL is 10^6/L = 0.001 x 10^9/L, as its own intervals show (e.g. neutrophils 1800-7800 /μL = 1.8-7.8 x 10^9/L)."
+  },
+  "Differential count (absolute), Monocytes": {
+    "set": {
+      "conversion_factor": 0.001
+    },
+    "why": "Source prints factor 1 for μL−1 -> 10^9 L−1, but 1/μL is 10^6/L = 0.001 x 10^9/L, as its own intervals show (e.g. neutrophils 1800-7800 /μL = 1.8-7.8 x 10^9/L)."
+  },
+  "Differential count (absolute), Eosinophils": {
+    "set": {
+      "conversion_factor": 0.001
+    },
+    "why": "Source prints factor 1 for μL−1 -> 10^9 L−1, but 1/μL is 10^6/L = 0.001 x 10^9/L, as its own intervals show (e.g. neutrophils 1800-7800 /μL = 1.8-7.8 x 10^9/L)."
+  },
+  "Differential count (absolute), Basophils": {
+    "set": {
+      "conversion_factor": 0.001
+    },
+    "why": "Source prints factor 1 for μL−1 -> 10^9 L−1, but 1/μL is 10^6/L = 0.001 x 10^9/L, as its own intervals show (e.g. neutrophils 1800-7800 /μL = 1.8-7.8 x 10^9/L)."
+  },
+  "Estradiol (E2, unconjugated), female, Follicular phase": {
+    "set": {
+      "conversion_factor": 3.67
+    },
+    "why": "Source prints 3.69 for the female rows and 3.67 for the male row of the same analyte. Estradiol has 272.38 g/mol: 1000/272.38 = 3.671."
+  },
+  "Estradiol (E2, unconjugated), female, Midcycle peak": {
+    "set": {
+      "conversion_factor": 3.67
+    },
+    "why": "Source prints 3.69 for the female rows and 3.67 for the male row of the same analyte. Estradiol has 272.38 g/mol: 1000/272.38 = 3.671."
+  },
+  "Estradiol (E2, unconjugated), female, Luteal phase": {
+    "set": {
+      "conversion_factor": 3.67
+    },
+    "why": "Source prints 3.69 for the female rows and 3.67 for the male row of the same analyte. Estradiol has 272.38 g/mol: 1000/272.38 = 3.671."
+  },
+  "Estradiol (E2, unconjugated), female, Postmenopausal": {
+    "set": {
+      "conversion_factor": 3.67
+    },
+    "why": "Source prints 3.69 for the female rows and 3.67 for the male row of the same analyte. Estradiol has 272.38 g/mol: 1000/272.38 = 3.671."
+  },
+  "Haloperidol (therapeutic)": {
+    "set": {
+      "conversion_factor": 2.66,
+      "si_reference_interval": {
+        "lower_limit": 13,
+        "upper_limit": 53
+      }
+    },
+    "why": "Source prints 2.6, but haloperidol has 375.86 g/mol: 1000/375.86 = 2.66 (5-20 ng/mL = 13-53 nmol/L)."
+  },
+  "Lidocaine (therapeutic)": {
+    "set": {
+      "traditional_units": "μg/mL"
+    },
+    "why": "Source prints the garbled unit 'μmL g/mL'; factor 4.27 = 1000/234.34 g/mol converts μg/mL to μmol/L."
+  },
+  "Luteinizing hormone (LH), female, Follicular phase": {
+    "set": {
+      "traditional_units": "mIU/mL"
+    },
+    "why": "Source prints mIU/L -> IU/L with factor 1 and identical intervals; that only holds for mIU/mL (as the source itself uses for FSH)."
+  },
+  "Luteinizing hormone (LH), female, Ovulatory peak": {
+    "set": {
+      "traditional_units": "mIU/mL"
+    },
+    "why": "Source prints mIU/L -> IU/L with factor 1 and identical intervals; that only holds for mIU/mL (as the source itself uses for FSH)."
+  },
+  "Luteinizing hormone (LH), female, Luteal phase": {
+    "set": {
+      "traditional_units": "mIU/mL"
+    },
+    "why": "Source prints mIU/L -> IU/L with factor 1 and identical intervals; that only holds for mIU/mL (as the source itself uses for FSH)."
+  },
+  "Luteinizing hormone (LH), female, Postmenopausal": {
+    "set": {
+      "traditional_units": "mIU/mL"
+    },
+    "why": "Source prints mIU/L -> IU/L with factor 1 and identical intervals; that only holds for mIU/mL (as the source itself uses for FSH)."
+  },
+  "LH, male": {
+    "set": {
+      "traditional_units": "mIU/mL"
+    },
+    "why": "Source prints mIU/L -> IU/L with factor 1 and identical intervals; that only holds for mIU/mL (as the source itself uses for FSH)."
+  },
+  "Oxazepam (therapeutic)": {
+    "set": {
+      "si_reference_interval": {
+        "lower_limit": 0.7,
+        "upper_limit": 4.9
+      }
+    },
+    "why": "Source prints the SI interval as 0.7-54.9, but 1.4 μg/mL x 3.49 = 4.9 μmol/L."
+  },
+  "Protein electrophoresis (SPEP), concentration, α1-Globulin": {
+    "set": {
+      "si_reference_interval": {
+        "lower_limit": 1,
+        "upper_limit": 4
+      }
+    },
+    "why": "Source prints the SI interval as 1-10, but 0.1-0.4 g/dL x 10 = 1-4 g/L."
+  },
+  "Bilirubin, Total": {
+    "set": {
+      "si_reference_interval": {
+        "lower_limit": 5,
+        "upper_limit": 21
+      }
+    },
+    "why": "Source prints the SI interval as 2-18, but 0.3-1.2 mg/dL x 17.1 = 5-21 μmol/L. The factor is right: bilirubin has 584.66 g/mol, 10000/584.66 = 17.1."
+  },
+  "Desipramine (therapeutic)": {
+    "set": {
+      "si_reference_interval": {
+        "lower_limit": 188,
+        "upper_limit": 750
+      }
+    },
+    "why": "Source prints the SI interval as 170-700, but 50-200 ng/mL x 3.75 = 188-750 nmol/L. The factor is right: desipramine has 266.38 g/mol, 1000/266.38 = 3.75."
+  },
+  "Estradiol (unconjugated), male": {
+    "set": {
+      "si_reference_interval": {
+        "lower_limit": null,
+        "upper_limit": 73
+      }
+    },
+    "why": "Source prints the SI interval as <184, but <20 pg/mL x 3.67 = <73 pmol/L."
+  },
+  "Pregnanediol, female, Luteal phase": {
+    "set": {
+      "si_reference_interval": {
+        "lower_limit": 7.2,
+        "upper_limit": 33
+      }
+    },
+    "why": "Source prints the SI interval as 8-33, but 2.3 mg/24 h x 3.12 = 7.2 μmol/day. The factor is right: pregnanediol has 320.51 g/mol, 1000/320.51 = 3.12."
+  },
+  "Adenosine deaminase": {
+    "set": {
+      "conversion_factor": 0.01667
+    },
+    "why": "Source prints the rounded 0.017 for U/L -> μKat/L. 1 U = 1 μmol/min = 1/60 μmol/s, so the factor is 1/60 = 0.01667 (0.017 is 2 % too high)."
+  },
+  "Alcohol dehydrogenase": {
+    "set": {
+      "conversion_factor": 0.01667
+    },
+    "why": "Source prints the rounded 0.017 for U/L -> μKat/L. 1 U = 1 μmol/min = 1/60 μmol/s, so the factor is 1/60 = 0.01667 (0.017 is 2 % too high)."
+  },
+  "Aldolase": {
+    "set": {
+      "conversion_factor": 0.01667
+    },
+    "why": "Source prints the rounded 0.017 for U/L -> μKat/L. 1 U = 1 μmol/min = 1/60 μmol/s, so the factor is 1/60 = 0.01667 (0.017 is 2 % too high)."
+  },
+  "Amylase": {
+    "set": {
+      "conversion_factor": 0.01667
+    },
+    "why": "Source prints the rounded 0.017 for U/L -> μKat/L. 1 U = 1 μmol/min = 1/60 μmol/s, so the factor is 1/60 = 0.01667 (0.017 is 2 % too high)."
+  },
+  "Angiotensin-converting enzyme (ACE)": {
+    "set": {
+      "conversion_factor": 0.01667
+    },
+    "why": "Source prints the rounded 0.017 for U/L -> μKat/L. 1 U = 1 μmol/min = 1/60 μmol/s, so the factor is 1/60 = 0.01667 (0.017 is 2 % too high)."
+  },
+  "Aspartate aminotransferase (AST, SGOT)": {
+    "set": {
+      "conversion_factor": 0.01667
+    },
+    "why": "Source prints the rounded 0.017 for U/L -> μKat/L. 1 U = 1 μmol/min = 1/60 μmol/s, so the factor is 1/60 = 0.01667 (0.017 is 2 % too high)."
+  },
+  "Creatine kinase (CK)": {
+    "set": {
+      "conversion_factor": 0.01667
+    },
+    "why": "Source prints the rounded 0.017 for U/L -> μKat/L. 1 U = 1 μmol/min = 1/60 μmol/s, so the factor is 1/60 = 0.01667 (0.017 is 2 % too high)."
+  },
+  "Female": {
+    "set": {
+      "conversion_factor": 0.01667
+    },
+    "why": "Source prints the rounded 0.017 for U/L -> μKat/L. 1 U = 1 μmol/min = 1/60 μmol/s, so the factor is 1/60 = 0.01667 (0.017 is 2 % too high)."
+  },
+  "Male@serum": {
+    "set": {
+      "conversion_factor": 0.01667
+    },
+    "why": "Source prints the rounded 0.017 for U/L -> μKat/L. 1 U = 1 μmol/min = 1/60 μmol/s, so the factor is 1/60 = 0.01667 (0.017 is 2 % too high)."
+  },
+  "Lipase": {
+    "set": {
+      "conversion_factor": 0.01667
+    },
+    "why": "Source prints the rounded 0.017 for U/L -> μKat/L. 1 U = 1 μmol/min = 1/60 μmol/s, so the factor is 1/60 = 0.01667 (0.017 is 2 % too high)."
+  },
+  "Phosphatase, tartrate-resistant acid": {
+    "set": {
+      "conversion_factor": 0.01667
+    },
+    "why": "Source prints the rounded 0.017 for U/L -> μKat/L. 1 U = 1 μmol/min = 1/60 μmol/s, so the factor is 1/60 = 0.01667 (0.017 is 2 % too high)."
   }
 }
