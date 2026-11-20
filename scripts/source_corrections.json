@@ -102,7 +102,7 @@
         "upper_limit": 0.035
       }
     },
-    "why": "Factor 1 for '% total Hb' -> 'Fraction of 1.0' is wrong: 2.0-3.5 % is 0.020-0.035 as a fraction, so the factor is 0.01."
+    "why": "The source prints no factor for '% total Hb' -> 'Fraction of 1.0' and repeats the interval unchanged (the locally saved copy carries 1): 2.0-3.5 % is 0.020-0.035 as a fraction, so the factor is 0.01."
   },
   "Hemoglobin F (fetal hemoglobin in adult)": {
     "set": {
