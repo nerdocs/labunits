@@ -16,6 +16,10 @@ from labunits.converters import (
 The type alias `LoincNum` is a plain `str`; it signals at boundaries
 that a string is expected to be a LOINC code.
 
+Every `analyte` argument accepts the LOINC code of either unit side, or a
+unique name — see
+[Identifying an analyte](getting-started.md#identifying-an-analyte).
+
 ---
 
 ## `to_si_unit(value, analyte) -> float`
@@ -30,13 +34,15 @@ Convert a concentration from its traditional unit to its SI unit.
 **Returns** `float` — value in the analyte's SI unit.
 `inf`, `-inf` and `nan` pass through unchanged.
 
-**Raises** `ValueError` — if the identifier cannot be resolved.
+**Raises** `ValueError` — if the identifier cannot be resolved or a name is ambiguous.
 
 ```python
 >>> to_si_unit(1.0, "5568-1")   # Acetone, 1 mg/dL
 0.172
 >>> to_si_unit(4.0, "Albumin")    # 4 g/dL -> 40 g/L
 40.0
+>>> to_si_unit(1.0, "14582-1")  # same record via the SI-side LOINC
+0.172
 ```
 
 ---
@@ -53,7 +59,7 @@ Convert a concentration from its SI unit to its traditional unit.
 **Returns** `float` — value in the analyte's traditional unit.
 `inf`, `-inf` and `nan` pass through unchanged.
 
-**Raises** `ValueError` — if the identifier cannot be resolved.
+**Raises** `ValueError` — if the identifier cannot be resolved or a name is ambiguous.
 
 ```python
 >>> to_traditional_unit(0.172, "5568-1")   # mmol/L -> mg/dL
@@ -66,7 +72,7 @@ Convert a concentration from its SI unit to its traditional unit.
 
 ## `si_unit(analyte) -> str`
 
-Return the SI unit string for the given analyte.
+Return the SI unit of the given analyte as a [UCUM](https://ucum.org) code.
 
 ```python
 >>> si_unit("Acetone")
@@ -79,13 +85,17 @@ Return the SI unit string for the given analyte.
 
 ## `traditional_unit(analyte) -> str`
 
-Return the traditional unit string for the given analyte.
+Return the traditional unit of the given analyte as a UCUM code.
 
 ```python
 >>> traditional_unit("Acetone")
 'mg/dL'
 >>> traditional_unit("1751-7")
 'g/dL'
+>>> si_unit("2160-0")              # Creatinine: UCUM writes µ as "u"
+'umol/L'
+>>> traditional_unit("2162-6")     # Creatinine, 24 h urine
+'g/(24.h)'
 ```
 
 ---
@@ -122,11 +132,18 @@ coverage, or export a mapping — without touching `analytes.json`.
 | Field                | Type              | Example                |
 |----------------------|-------------------|------------------------|
 | `loinc_num`          | `LoincNum`        | `"5568-1"`             |
+| `si_loinc_num`       | `LoincNum \| None` | `"14582-1"`            |
 | `name`               | `str`             | `"Acetone"`            |
 | `specimen`           | `tuple[str, ...]` | `("serum", "plasma")`  |
-| `traditional_unit`   | `str`             | `"mg/dL"`              |
-| `si_unit`            | `str`             | `"mmol/L"`             |
+| `traditional_unit`   | `str` (UCUM)      | `"mg/dL"`              |
+| `si_unit`            | `str` (UCUM)      | `"mmol/L"`             |
 | `conversion_factor`  | `float`           | `0.172`                |
+
+`loinc_num` is the LOINC term for results in the traditional unit,
+`si_loinc_num` the term for results in the SI unit. Both are equal when
+one term covers both units (`g/dL` and `g/L` are both mass
+concentrations); `si_loinc_num` is `None` when LOINC has no term for the
+SI side.
 
 There are deliberately **no reference intervals** on the record — see
 [Design decisions](design.md#no-reference-intervals).
@@ -145,6 +162,7 @@ There are deliberately **no reference intervals** on the record — see
 | Situation                          | Behaviour                                       |
 |------------------------------------|-------------------------------------------------|
 | Unknown identifier                 | `ValueError("Unknown analyte identifier: ...")` |
+| Name matching several records      | `ValueError("Ambiguous analyte name: ...")`, listing the candidate LOINC codes |
 | `value` is `nan` / `±inf`          | Returned unchanged                              |
 | `value` is any other float         | Converted                                       |
 | `value` is non-numeric             | `TypeError` (raised by the `*` / `/` operator)  |

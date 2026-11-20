@@ -52,18 +52,21 @@ _SPECIMEN_SYSTEMS = {
     "stool": {"Stool"},
 }
 
-# Traditional unit -> LOINC PROPERTY values that can carry such a unit.
-# Mass per volume is MCnc, moles per volume SCnc, enzyme activity CCnc, …
+# Unit (as printed in the source) -> LOINC PROPERTY values that can carry
+# such a unit. Mass per volume is MCnc, moles per volume SCnc, enzyme
+# activity CCnc, … Used for the traditional unit (eligibility filter) and
+# for the SI unit (finding the SI-side LOINC term).
 # Unknown units yield ``None`` (= no property filter) and are reported.
 _UNIT_PROPERTIES: list[tuple[re.Pattern, set[str]]] = [
     (re.compile(r"^(m|μ|n|p)?(mol|Eq)/(L|dL|mL)$"), {"SCnc"}),
     (re.compile(r"^(m|μ|n|p)?g/(L|dL|mL)$"), {"MCnc"}),
     (re.compile(r"^(m|μ)?g/24 h$"), {"MRat"}),
-    (re.compile(r"^(m|μ|n)?(mol|Eq)/24 h$"), {"SRat"}),
-    (re.compile(r"^U/(L|mL)$"), {"CCnc"}),
-    (re.compile(r"^(m|μ)?I?U/(L|mL)$"), {"ACnc", "CCnc"}),
-    (re.compile(r"^%"), {"MFr", "NFr", "VFr", "SFr", "RelTime", "RelCCnc", "RelACnc", "RelMCnc"}),
-    (re.compile(r"^mOsm/kg"), {"Osmol"}),
+    (re.compile(r"^(m|μ|n)?(mol|Eq)/(24 h|day)$"), {"SRat"}),
+    (re.compile(r"^k?U/(L|mL)$"), {"CCnc"}),
+    (re.compile(r"^(μ|n)?Kat/L$"), {"CCnc"}),
+    (re.compile(r"^(m|μ|k)?I?U/(L|mL)$"), {"ACnc", "CCnc"}),
+    (re.compile(r"^(%|Fraction)"), {"MFr", "NFr", "VFr", "SFr", "RelTime", "RelCCnc", "RelACnc", "RelMCnc"}),
+    (re.compile(r"^(mOsm|mmol)/kg"), {"Osmol"}),
     (re.compile(r"^U/g of Hb$"), {"CCnt"}),
 ]
 
@@ -145,8 +148,8 @@ def _load_loinc(path: str | Path) -> dict[str, dict[str, str]]:
     so they are dropped here once instead of being filtered per analyte.
     """
     keep = (
-        "LOINC_NUM", "COMPONENT", "PROPERTY", "SYSTEM", "METHOD_TYP",
-        "COMMON_TEST_RANK",
+        "LOINC_NUM", "COMPONENT", "PROPERTY", "TIME_ASPCT", "SYSTEM",
+        "METHOD_TYP", "COMMON_TEST_RANK",
     )
     loinc: dict[str, dict[str, str]] = {}
     with Path(path).open("r", encoding="utf-8", newline="") as fh:
@@ -160,6 +163,48 @@ def _load_loinc(path: str | Path) -> dict[str, dict[str, str]]:
                 continue
             loinc[row["LOINC_NUM"]] = {k: row[k] for k in keep}
     return loinc
+
+
+def _sibling_key(row: dict[str, str]) -> tuple[str, str, str, str]:
+    """Everything that identifies a LOINC term except its PROPERTY."""
+    return (row["COMPONENT"], row["SYSTEM"], row["TIME_ASPCT"], row["METHOD_TYP"])
+
+
+def _find_si_loinc(
+    loinc_num: str,
+    si_props: set[str],
+    loinc_data: dict[str, dict[str, str]],
+    siblings: dict[tuple, list[str]],
+) -> str | None:
+    """Return the LOINC term that carries this analyte in its SI unit.
+
+    LOINC has one term per PROPERTY: serum creatinine in mg/dL is
+    ``2160-0`` (mass concentration), in µmol/L it is ``14682-9`` (substance
+    concentration). If the matched term's own PROPERTY already fits the SI
+    unit (g/dL -> g/L), that term covers both units and is returned.
+    Otherwise the sibling term — same component, system, time aspect and
+    method — with a fitting PROPERTY is looked up; ``None`` if LOINC has
+    none.
+    """
+    row = loinc_data.get(loinc_num)
+    if row is None:
+        return None
+    if row["PROPERTY"] in si_props:
+        return loinc_num
+    candidates = [
+        n
+        for n in siblings.get(_sibling_key(row), [])
+        if loinc_data[n]["PROPERTY"] in si_props
+    ]
+    return min(candidates, key=lambda n: _rank_key(loinc_data[n]), default=None)
+
+
+def _to_ucum(unit: str, loinc_property: str | None, ucum_units: dict[str, str]) -> str:
+    """Translate a source unit string to UCUM, ``""`` if it is not mapped.
+
+    ``unit@PROPERTY`` wins over the bare unit (see ``ucum_units.json``).
+    """
+    return ucum_units.get(f"{unit}@{loinc_property}") or ucum_units.get(unit, "")
 
 
 # TODO: AnalyteGroups
@@ -181,6 +226,9 @@ issues: dict[str, list] = {
     "pinned_no_match": [],              # list[str]               (analyte)
     "pinned_ineligible": [],            # list[tuple[str, str, str]] (analyte, loinc, why)
     "unknown_units": [],                # list[tuple[str, str]]   (analyte, unit)
+    "unknown_si_units": [],             # list[tuple[str, str]]   (analyte, unit)
+    "missing_si_loinc": [],             # list[tuple[str, str, str]] (analyte, loinc, unit)
+    "missing_ucum": [],                 # list[tuple[str, str]]   (analyte, unit)
     "missing_factors": [],              # list[str]  (analyte name)
     "unparseable_factors": [],          # list[tuple[str, str]]
     "unparseable_ranges": [],           # list[tuple[str, str]]
@@ -215,6 +263,16 @@ def _load_source_corrections(path: Path) -> dict[str, dict]:
     with path.open("r", encoding="utf-8") as fh:
         raw = json.load(fh)
     return {k: v["set"] for k, v in raw.items() if not k.startswith("_")}
+
+
+def _load_ucum_units(path: Path) -> dict[str, str]:
+    """Load the source-unit -> UCUM table from ``ucum_units.json``.
+
+    ``_``-prefixed keys are documentation.
+    """
+    with path.open("r", encoding="utf-8") as fh:
+        raw = json.load(fh)
+    return {k: v for k, v in raw.items() if not k.startswith("_")}
 
 
 def parse_conversion_factor(raw: str) -> float | None:
@@ -305,6 +363,7 @@ def parse_lab_values(
     html_file_path: str | Path,
     manual_mapping: dict[str, str | None] | None = None,
     corrections: dict[str, dict] | None = None,
+    ucum_units: dict[str, str] | None = None,
 ) -> list[Analyte]:
     """Parse Clinical Laboratory Reference Values HTML file.
 
@@ -317,14 +376,22 @@ def parse_lab_values(
     ``source_corrections.json``); a ``name@specimen`` key corrects only the
     row with that (first) specimen. They are applied before the factor
     consistency check.
+
+    ``ucum_units`` translates the source's unit strings to UCUM codes (see
+    ``ucum_units.json``); the result lands in ``traditional_ucum`` /
+    ``si_ucum`` of every analyte that got a LOINC.
     """
     analytes = []
     group_name = ""
     global specimens, no_loinc_count, analyte_count, issues
     manual_mapping = manual_mapping or {}
     corrections = corrections or {}
+    ucum_units = ucum_units or {}
 
     loinc_data = _load_loinc(loinc_file_path)
+    siblings: dict[tuple, list[str]] = {}
+    for loinc_num, data in loinc_data.items():
+        siblings.setdefault(_sibling_key(data), []).append(loinc_num)
 
     # Pre-compute the normalized form of every LOINC COMPONENT once, so the
     # per-analyte match below can do both an O(1) exact lookup and a single
@@ -564,11 +631,40 @@ def parse_lab_values(
             if not analyte.loinc_num:
                 no_loinc_count += 1
                 issues["missing_loinc"].append(analyte.name)
-            elif factor is not None:
+            else:
                 # Only rows that will ship are worth a human's attention.
-                check_factor_consistency(
-                    full_name, traditional_range, si_range, si_range_raw, factor
+                if factor is not None:
+                    check_factor_consistency(
+                        full_name, traditional_range, si_range, si_range_raw, factor
+                    )
+                # ---- SI-side LOINC and UCUM units ----
+                si_props = _properties_for_unit(analyte.si_units)
+                if si_props is None:
+                    issues["unknown_si_units"].append((full_name, analyte.si_units))
+                else:
+                    analyte.si_loinc_num = _find_si_loinc(
+                        analyte.loinc_num, si_props, loinc_data, siblings
+                    )
+                    if analyte.si_loinc_num is None:
+                        issues["missing_si_loinc"].append(
+                            (full_name, analyte.loinc_num, analyte.si_units)
+                        )
+                analyte.traditional_ucum = _to_ucum(
+                    analyte.traditional_units,
+                    loinc_data.get(analyte.loinc_num, {}).get("PROPERTY"),
+                    ucum_units,
                 )
+                analyte.si_ucum = _to_ucum(
+                    analyte.si_units,
+                    loinc_data.get(analyte.si_loinc_num or "", {}).get("PROPERTY"),
+                    ucum_units,
+                )
+                for unit, ucum in (
+                    (analyte.traditional_units, analyte.traditional_ucum),
+                    (analyte.si_units, analyte.si_ucum),
+                ):
+                    if not ucum:
+                        issues["missing_ucum"].append((full_name, unit))
 
             analytes.append(analyte)
 
@@ -583,11 +679,22 @@ def build_output(analytes: list[Analyte]) -> dict[str, dict]:
     always mean a matching bug or a missing manual pin, so this is fatal on
     purpose; verbatim repeats (the source lists the amino acids twice) are
     collapsed.
+
+    The same holds for the SI-side LOINC, which the runtime accepts as an
+    alias: two rows must not claim the same alias. An alias that is itself
+    the key of another row is fine — the runtime resolves the code to that
+    row (magnesium ``2601-3`` is the mEq/L row, not the SI side of the
+    mg/dL row). A shipped row without UCUM units is fatal as well.
     """
     out: dict[str, dict] = {}
     for a in analytes:
         if not a.loinc_num:
             continue
+        if not a.traditional_ucum or not a.si_ucum:
+            raise ValueError(
+                f"No UCUM unit for {a.name!r} ({a.traditional_units} -> {a.si_units}); "
+                "add it to ucum_units.json"
+            )
         entry = a.to_json()
         if a.loinc_num in out:
             if out[a.loinc_num] == entry:
@@ -598,6 +705,16 @@ def build_output(analytes: list[Analyte]) -> dict[str, dict]:
                 f"and {a.name!r} ({a.traditional_units})"
             )
         out[a.loinc_num] = entry
+    aliases: dict[str, str] = {}  # si_loinc_num -> loinc_num
+    for loinc_num, entry in out.items():
+        alias = entry["si_loinc_num"]
+        if alias is None or alias in out:
+            continue
+        if alias in aliases:
+            raise ValueError(
+                f"SI LOINC {alias} claimed twice: by {aliases[alias]} and {loinc_num}"
+            )
+        aliases[alias] = loinc_num
     return out
 
 
@@ -616,6 +733,7 @@ if __name__ == "__main__":
         current_path / "Clinical Laboratory Reference Values.html",
         manual_mapping=manual_mapping,
         corrections=corrections,
+        ucum_units=_load_ucum_units(current_path / "ucum_units.json"),
     )
 
     # ------------------------------------------------------------------
@@ -672,6 +790,21 @@ if __name__ == "__main__":
     _print_section(
         "Traditional units without a PROPERTY mapping (no property filter applied)",
         issues["unknown_units"],
+        lambda t: f"- {t[0]}: {t[1]!r}",
+    )
+    _print_section(
+        "SI units without a PROPERTY mapping (no SI LOINC determined)",
+        issues["unknown_si_units"],
+        lambda t: f"- {t[0]}: {t[1]!r}",
+    )
+    _print_section(
+        "No LOINC term for the SI unit (si_loinc_num is null)",
+        issues["missing_si_loinc"],
+        lambda t: f"- {t[0]} ({t[1]}): {t[2]!r}",
+    )
+    _print_section(
+        "UNIT WITHOUT UCUM CODE — add to ucum_units.json",
+        issues["missing_ucum"],
         lambda t: f"- {t[0]}: {t[1]!r}",
     )
     _print_section(

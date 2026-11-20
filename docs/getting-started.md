@@ -35,9 +35,13 @@ Every public function accepts an analyte identifier (as the first
 argument for lookup helpers, or as the second argument for the
 conversion functions) and resolves it through the same lookup chain:
 
-1. **LOINC code** — preferred, unambiguous. Example: `"5568-1"`.
+1. **LOINC code** — preferred, unambiguous. Example: `"5568-1"`. Both the
+   code of the traditional-unit term and the code of the SI-unit term
+   work: `"2160-0"` (creatinine, mg/dL) and `"14682-9"` (creatinine,
+   µmol/L) resolve to the same record.
 2. **Full analyte name** — case-insensitive. Example: `"Acetone"`,
-   `"acetone"`, `"ACETONE"`.
+   `"acetone"`, `"ACETONE"`. A name shared by several records is
+   rejected rather than guessed (see below).
 3. **Abbreviation** — reserved for future use; the current shipped data
    set does not contain abbreviations yet, but the API accepts them.
 
@@ -47,6 +51,24 @@ If the identifier can't be resolved, a `ValueError` is raised:
 >>> si_unit("definitely-not-a-real-analyte")
 ValueError: Unknown analyte identifier: definitely-not-a-real-analyte
 ```
+
+The same happens for a name that is not unique — the message lists the
+LOINC codes to choose from:
+
+```python
+>>> conversion_factor("Creatinine")
+ValueError: Ambiguous analyte name: Creatinine — use a LOINC code: 2160-0 (serum/plasma, mg/dL); 2162-6 (urine, g/(24.h))
+```
+
+Whichever identifier you pass, the direction of a conversion is set by
+the function, never by the code: `to_si_unit()` always expects a value in
+the traditional unit, `to_traditional_unit()` a value in the SI unit.
+
+## Units
+
+`si_unit()` and `traditional_unit()` return [UCUM](https://ucum.org)
+codes (`"umol/L"`, `"g/(24.h)"`, `"meq/L"`), so they can be compared with
+the units of your own data. See [Data model](data.md#units-are-ucum-codes).
 
 **Recommendation:** use LOINC codes in production code. Names are
 convenient for interactive use but are not stable identifiers —

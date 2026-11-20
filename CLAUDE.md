@@ -23,9 +23,9 @@ The repo has two cleanly separated halves:
 ### 1. `src/labunits/` — the published library (runtime)
 
 - `converters.py` exposes the public API: `to_si_unit()`, `to_traditional_unit()`, `si_unit()`, `traditional_unit()`, `conversion_factor()`, and `analytes()` (enumerates all shipped records as frozen `Analyte` dataclasses).
-- All functions accept a LOINC code (preferred), an abbreviation, or a full analyte name; `_resolve_analyte_identifier()` normalizes any of these to a LOINC code before lookup.
+- All functions accept a LOINC code (preferred; of the traditional-unit or of the SI-unit term), an abbreviation, or a full analyte name; `_resolve_analyte_identifier()` normalizes any of these to the record's key before lookup. A name matching several records raises `ValueError` listing the candidates.
 - The data source is `src/labunits/data/analytes.json`, lazily loaded once into a module-level `_analytes_data` cache via `_load_data()`. The JSON is shipped with the package; the library does no network or filesystem I/O beyond this single read.
-- `analytes.json` is keyed by LOINC number; each entry stores `name`, `specimen`, `traditional_units`, `si_units` and `conversion_factor`. **No reference intervals, no interpretation** — labunits is a unit converter, not a medical device; never add features that flag or interpret values.
+- `analytes.json` is keyed by LOINC number; each entry stores `si_loinc_num`, `name`, `specimen`, `traditional_units`, `si_units` (both **UCUM codes**, never display strings) and `conversion_factor`. **No reference intervals, no interpretation** — labunits is a unit converter, not a medical device; never add features that flag or interpret values.
 
 ### 2. `scripts/` — the offline data-generation pipeline (NOT runtime)
 
@@ -36,7 +36,7 @@ This is a one-shot pipeline that produces `src/labunits/data/analytes.json` from
 
 Both are licensed third-party content and **not tracked in git** (gitignored); `scripts/README.md` says where to get them.
 
-`scripts/parse_lab_values.py` parses the HTML table with BeautifulSoup, then matches each analyte name against the LOINC `COMPONENT` column — manual pin (`manual_loinc_mapping.json`), then exact match, then `thefuzz` fuzzy ratio (threshold `FUZZY_MATCH_RATIO = 80`). Only active quantitative result terms whose `SYSTEM` fits the specimen and whose `PROPERTY` fits the unit are eligible; ties are broken by `COMMON_TEST_RANK`. Two different rows on one LOINC abort the run; factors are cross-checked against the source's own reference intervals. Known source errors are overridden via `scripts/source_corrections.json` (keyed by name or `Name@specimen`). Pydantic models live in `scripts/models.py` (`Analyte`, `AnalyteRange`, `Specimen`).
+`scripts/parse_lab_values.py` parses the HTML table with BeautifulSoup, then matches each analyte name against the LOINC `COMPONENT` column — manual pin (`manual_loinc_mapping.json`), then exact match, then `thefuzz` fuzzy ratio (threshold `FUZZY_MATCH_RATIO = 80`). Only active quantitative result terms whose `SYSTEM` fits the specimen and whose `PROPERTY` fits the unit are eligible; ties are broken by `COMMON_TEST_RANK`. Two different rows on one LOINC abort the run; factors are cross-checked against the source's own reference intervals. Known source errors are overridden via `scripts/source_corrections.json` (keyed by name or `Name@specimen`). Source unit strings are translated to UCUM via `scripts/ucum_units.json`; the SI-side LOINC (`si_loinc_num`) is the sibling term with a `PROPERTY` fitting the SI unit. Pydantic models live in `scripts/models.py` (`Analyte`, `AnalyteRange`, `Specimen`).
 
 When run as `__main__`, it writes the output to `src/labunits/data/analytes.json`. Re-run this script whenever upstream data changes; do not hand-edit `analytes.json`.
 

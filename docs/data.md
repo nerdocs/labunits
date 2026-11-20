@@ -13,9 +13,10 @@ never written to.
 }
 ```
 
-The key is the LOINC number as a string (e.g. `"5568-1"`). LOINC codes
-are the canonical identifier throughout the library — names and
-abbreviations are only resolution conveniences.
+The key is the LOINC number as a string (e.g. `"5568-1"`) — the term for
+results in the **traditional** unit. LOINC codes are the canonical
+identifier throughout the library — names and abbreviations are only
+resolution conveniences.
 
 ## Analyte entry
 
@@ -24,6 +25,7 @@ Example (Acetone):
 ```json
 "5568-1": {
   "loinc_num": "5568-1",
+  "si_loinc_num": "14582-1",
   "name": "Acetone",
   "specimen": ["serum", "plasma"],
   "traditional_units": "mg/dL",
@@ -39,9 +41,41 @@ Example (Acetone):
 | `loinc_num`                          | `str`                      | Duplicate of the outer key; kept for round-trippable records.                    |
 | `name`                               | `str`                      | Full analyte name as found in the AccessMedicine reference table.                |
 | `specimen`                           | `list[str]`                | Specimen IDs — e.g. `serum`, `plasma`, `red_blood_cells`.                        |
-| `traditional_units`                  | `str`                      | e.g. `mg/dL`, `g/dL`, `U/L`.                                                     |
-| `si_units`                           | `str`                      | e.g. `mmol/L`, `g/L`, `μKat/L`.                                                  |
+| `si_loinc_num`                       | `str \| null`              | LOINC term for results in the SI unit — see below.                               |
+| `traditional_units`                  | `str`                      | UCUM code, e.g. `mg/dL`, `ug/(24.h)`, `meq/L`.                                   |
+| `si_units`                           | `str`                      | UCUM code, e.g. `mmol/L`, `umol/L`, `ukat/L`.                                    |
 | `conversion_factor`                  | `float`                    | Numeric traditional↔SI factor. `1.0` when the units are identical.               |
+
+## Two LOINC codes per analyte
+
+LOINC has one term per *property*: serum creatinine as a mass
+concentration (mg/dL) is `2160-0`, as a substance concentration (µmol/L)
+it is `14682-9`. Each entry therefore carries both:
+
+- `loinc_num` (the key) — the term matching `traditional_units`.
+- `si_loinc_num` — the term matching `si_units`: the sibling term with the
+  same component, system, time aspect and method. It equals `loinc_num`
+  when one term covers both units (`g/dL` ↔ `g/L`, `U/L` ↔ `ukat/L`,
+  `meq/L` ↔ `mmol/L`) and is `null` when LOINC has no such term.
+
+The API resolves either code to the same record. A code that is itself a
+key always means that record: magnesium ships as `19123-9` (mg/dL ↔
+mmol/L) and as `2601-3` (meq/L ↔ mmol/L); `2601-3` is also the SI side of
+the first, but resolves to the second.
+
+## Units are UCUM codes
+
+`traditional_units` and `si_units` are [UCUM](https://ucum.org) codes,
+not the display strings of the source table — plain ASCII, machine
+comparable. The translation lives in `scripts/ucum_units.json`.
+Conventions:
+
+- `µ` is written `u` (`umol/L`, `ug/dL`, `ukat/L`).
+- Per-day rates are written `/(24.h)` on both sides (`g/(24.h)` ↔
+  `mmol/(24.h)`), as LOINC does.
+- Percentages are `%`, fractions of 1 are the UCUM unity `1`.
+- International units are `[IU]` (`u[IU]/mL`, `k[IU]/L`).
+- "of hemoglobin" on a content is an annotation: `U/g{Hb}`.
 
 ## Notes on individual codes
 
@@ -55,7 +89,7 @@ one shipped:
 - **Lactate dehydrogenase → `14805-6`** (method *pyruvate → lactate*).
   The methodless serum term `2532-0` is marked *DISCOURAGED* by LOINC;
   among the method-specific terms, LOINC's own usage ranking picks
-  `14805-6`. The factor (U/L → µkat/L) is identical for every method.
+  `14805-6`.
 - **Hemoglobin fractions** (HbA1c `4548-4`, HbA2 `4551-8`, HbF `4576-5`,
   methemoglobin `2614-6`, sulfhemoglobin `4685-4`) are pinned manually:
   their LOINC components are named `X/Hemoglobin.total`, which the fuzzy
@@ -71,17 +105,18 @@ one shipped:
   The pipeline reads the source's reference intervals only to cross-check
   the conversion factors; they are never shipped. `labunits` converts
   units, nothing more (see [Intended use](index.md#intended-use)).
-- **No units grammar.** Units are opaque strings — the library never
-  parses them.
+- **No units grammar.** Units are UCUM codes, but the library treats them
+  as opaque strings — it never parses or validates them.
 - **No uncertainty or precision metadata.**
 
 ## Loading behaviour
 
 - `_load_data()` reads the file exactly once and caches it in the
   module-level `_analytes_data` dict.
-- On first lookup, `_ensure_indexes()` builds two derived dicts —
-  `_name_index` (name → LOINC) and `_abbrev_index` (abbreviation →
-  LOINC) — so that name-based lookups are **O(1)** instead of O(n).
+- On first lookup, `_ensure_indexes()` builds three derived dicts —
+  `_si_loinc_index` (SI-side LOINC → key), `_name_index` (name → all
+  LOINCs carrying it) and `_abbrev_index` (abbreviation → LOINC) — so
+  that lookups are **O(1)** instead of O(n).
   The indexes are rebuilt automatically when the data dict is
   replaced (detected via `id()`), which keeps tests straightforward.
 - Tests can replace the data cache via `monkeypatch.setattr` — see

@@ -45,6 +45,24 @@ def test_lookup_by_uppercase_name():
     assert si_unit("ACETONE") == "mmol/L"
 
 
+def test_lookup_by_si_loinc():
+    # 14582-1 is acetone as substance concentration (mmol/L).
+    assert traditional_unit("14582-1") == "mg/dL"
+    assert to_traditional_unit(0.172, "14582-1") == pytest.approx(1.0)
+
+
+def test_si_loinc_that_is_a_key_means_that_record():
+    assert traditional_unit("2601-3") == "meq/L"
+    assert conversion_factor("2601-3") == pytest.approx(0.5)
+
+
+def test_ambiguous_name_raises_with_candidates():
+    with pytest.raises(ValueError, match="Ambiguous analyte name") as exc:
+        si_unit("magnesium")
+    assert "19123-9 (serum, mg/dL)" in str(exc.value)
+    assert "2601-3 (serum, meq/L)" in str(exc.value)
+
+
 def test_unknown_identifier_raises_value_error():
     with pytest.raises(ValueError, match="Unknown analyte identifier"):
         si_unit("definitely-not-a-real-analyte")
@@ -132,10 +150,11 @@ def test_nan_passes_through():
 
 def test_analytes_enumerates_fixture():
     records = analytes()
-    assert [r.loinc_num for r in records] == ["5568-1", "1751-7"]
+    assert [r.loinc_num for r in records] == ["5568-1", "1751-7", "19123-9", "2601-3"]
     acetone = records[0]
     assert acetone == Analyte(
         loinc_num="5568-1",
+        si_loinc_num="14582-1",
         name="Acetone",
         specimen=("serum", "plasma"),
         traditional_unit="mg/dL",

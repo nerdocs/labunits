@@ -46,6 +46,23 @@ code. `scripts/parse_lab_values.py` does this in stages:
 Analytes without a match are not written to the output; they are listed
 in the problem report as candidates for manual review.
 
+## SI-side LOINC
+
+The matched term fits the row's *traditional* unit. For the SI unit the
+pipeline derives `si_loinc_num`: if the matched term's `PROPERTY` also
+fits the SI unit, it is the same term; otherwise the sibling term with
+identical `COMPONENT`, `SYSTEM`, `TIME_ASPCT` and `METHOD_TYP` and a
+fitting `PROPERTY` (best `COMMON_TEST_RANK` first). Rows without such a
+term get `null` and are listed in the problem report, as are SI units
+missing from `_UNIT_PROPERTIES`.
+
+## UCUM units
+
+`scripts/ucum_units.json` maps every unit string of the source to its
+UCUM code; `Unit@PROPERTY` overrides the bare unit where the source is
+ambiguous (`mU/mL` meaning international units for an `ACnc` term). A
+shipped row whose unit is missing from the table aborts the run.
+
 ## Source corrections
 
 `scripts/source_corrections.json` overrides individual fields of rows
@@ -64,7 +81,8 @@ the row agree with its own reference intervals.
   how source errors (e.g. a factor off by 10×) surface.
 - **No silent overwrite.** Two *different* rows resolving to the same
   LOINC abort the run. Verbatim repeats (the source lists the amino
-  acids twice) are collapsed.
+  acids twice) are collapsed. Two rows claiming the same SI-side LOINC
+  abort the run as well.
 
 ## Output
 

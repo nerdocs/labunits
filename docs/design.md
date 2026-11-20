@@ -11,7 +11,21 @@ abbreviation, in-house code, and LOINC. Of those, **LOINC is the only
 globally stable, internationally maintained identifier** — so every
 record is keyed by LOINC number. Names and abbreviations are convenience
 aliases at the API boundary; internally everything normalises to LOINC
-first.
+first. A name that fits several records raises instead of picking one:
+a silent pick once turned "Creatinine" into the urine record (×8.84
+instead of ×88.4).
+
+LOINC assigns separate terms to one analyte measured as mass and as
+substance concentration, so every record knows both codes and resolves by
+either (see [Data model](data.md#two-loinc-codes-per-analyte)).
+
+## Units as UCUM codes
+
+Units are shipped as [UCUM](https://ucum.org) codes rather than as the
+source's display strings (`μmol/L`, `g/24 h`, `Fraction of 1.0`).
+Consumers store and compare units as UCUM; free text would force each of
+them to write the same normalisation. The library still does no unit
+algebra — the codes are data, not parsed.
 
 ## A single conversion factor per analyte
 

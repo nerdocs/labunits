@@ -36,7 +36,14 @@ def test_shipped_json_is_valid():
 
 
 def test_shipped_entries_have_required_keys(real_data):
-    required = {"name", "traditional_units", "si_units", "conversion_factor"}
+    required = {
+        "si_loinc_num",
+        "name",
+        "specimen",
+        "traditional_units",
+        "si_units",
+        "conversion_factor",
+    }
     missing = [
         loinc for loinc, entry in real_data.items() if not required <= entry.keys()
     ]
@@ -60,6 +67,24 @@ def test_acetone_round_trip_against_real_data(real_data):
     assert conversion_factor("5568-1") == pytest.approx(0.172)
     assert to_si_unit(1.0, "5568-1") == pytest.approx(0.172)
     assert to_traditional_unit(0.172, "5568-1") == pytest.approx(1.0)
+
+
+def test_shipped_units_are_ascii(real_data):
+    # UCUM codes are plain ASCII ("umol/L", never "μmol/L").
+    bad = [
+        loinc
+        for loinc, entry in real_data.items()
+        if not (entry["traditional_units"] + entry["si_units"]).isascii()
+    ]
+    assert bad == []
+
+
+def test_creatinine_resolves_by_both_loincs(real_data):
+    # 2160-0: mass concentration (mg/dL); 14682-9: substance concentration.
+    assert si_unit("2160-0") == si_unit("14682-9") == "umol/L"
+    assert conversion_factor("14682-9") == pytest.approx(88.4)
+    with pytest.raises(ValueError, match="2160-0.*2162-6"):
+        conversion_factor("Creatinine")
 
 
 def test_analytes_matches_shipped_data(real_data):

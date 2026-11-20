@@ -37,6 +37,10 @@
 
 ## Erledigt
 
+* [x] **Einheiten als UCUM-Codes** — `scripts/ucum_units.json` übersetzt die Quell-Einheiten; `analytes.json` enthält
+      nur noch UCUM (`umol/L`, `g/(24.h)`).
+* [x] **Zweiter LOINC-Code je Analyt** — `si_loinc_num` (Term der SI-Einheit); die API löst beide Codes auf.
+* [x] **Mehrdeutige Namen** — `ValueError` mit Kandidatenliste statt stillem „letzter gewinnt“.
 * [x] **Öffentliche Iteration über alle Analyte** — `analytes()` in `converters.py`, liefert `Analyte`-Records
       (LOINC, Name, Specimen, Einheiten, Faktor); siehe `docs/api.md`.
 * [x] **SI-Referenzintervall für Konsumenten** — Entscheidung: bleibt draußen (MDR); Konsumenten beziehen
