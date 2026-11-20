@@ -314,7 +314,8 @@ def parse_lab_values(
 
     ``corrections`` maps analyte names to ``Analyte`` field overrides for
     rows that are wrong in the source itself (see
-    ``source_corrections.json``). They are applied before the factor
+    ``source_corrections.json``); a ``name@specimen`` key corrects only the
+    row with that (first) specimen. They are applied before the factor
     consistency check.
     """
     analytes = []
@@ -446,14 +447,28 @@ def parse_lab_values(
                 si_reference_interval=si_range,
                 si_units=cells[6].get_text().strip(),
             )
-            if full_name in corrections:
-                for field, value in corrections[full_name].items():
+            # ``name@specimen`` corrects one of several rows sharing a name
+            # (Norepinephrine in plasma vs urine) and wins over the bare name.
+            specimen_id = analyte_specimens[0].id
+            correction_key = next(
+                (
+                    key
+                    for key in (f"{full_name}@{specimen_id}", full_name)
+                    if key in corrections
+                ),
+                None,
+            )
+            if correction_key is not None:
+                for field, value in corrections[correction_key].items():
                     if field.endswith("_reference_interval"):
                         value = AnalyteRange(**value)
                     setattr(analyte, field, value)
                 factor = analyte.conversion_factor
+                traditional_range = analyte.traditional_reference_interval
                 si_range = analyte.si_reference_interval
-                issues["corrected_rows"].append((full_name, corrections[full_name]))
+                issues["corrected_rows"].append(
+                    (correction_key, corrections[correction_key])
+                )
             # ---- LOINC matching ----
             # A LOINC term is *eligible* for this row only if its SYSTEM
             # matches one of the row's specimens and its PROPERTY can carry
@@ -485,7 +500,6 @@ def parse_lab_values(
             # and specimen, different unit — Methemoglobin in g/dL vs %),
             # then ``name@specimen`` (Osmolality in serum vs urine), then
             # the bare ``name``.
-            specimen_id = analyte_specimens[0].id
             mapping_key = None
             for key in (
                 f"{analyte.name}@{specimen_id}@{analyte.traditional_units}",

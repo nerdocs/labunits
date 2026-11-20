@@ -39,7 +39,7 @@ code. `scripts/parse_lab_values.py` does this in stages:
    `COMMON_TEST_RANK`, so the commonly used term wins over method-specific
    variants.
 4. **Fuzzy match** via [`thefuzz`](https://github.com/seatgeek/thefuzz)
-   with a threshold of `FUZZY_MATCH_RATIO = 80`, guarded by structural
+   with a ratio above `FUZZY_MATCH_RATIO = 80`, guarded by structural
    checks (roman numerals, digits, meaning-flipping qualifiers such as
    `free`, `total`, `Ag`).
 
@@ -50,7 +50,8 @@ in the problem report as candidates for manual review.
 
 `scripts/source_corrections.json` overrides individual fields of rows
 that are wrong in the AccessMedicine table itself (a factor off by 10×,
-a unit typo). Every entry documents its evidence in `why`. Corrections
+a unit typo). Keys are `Name`, or `Name@specimen` when several rows share
+a name. Every entry documents its evidence in `why`. Corrections
 are applied before the consistency check below, so a correction must make
 the row agree with its own reference intervals.
 

@@ -39,7 +39,7 @@ def _load_data() -> dict:
         return _analytes_data
 
     data_dir = Path(__file__).parent / "data"
-    with Path.open(data_dir / "analytes.json", "r") as file:
+    with Path.open(data_dir / "analytes.json", "r", encoding="utf-8") as file:
         _analytes_data = json.load(file)
 
     return _analytes_data

@@ -1,12 +1,12 @@
 ## Datenqualität
 
-* [ ] **346 von 474 geparsten Analyten bekommen keine LOINC-Zuordnung** und werden nicht ausgeliefert
+* [ ] **341 von 474 geparsten Analyten bekommen keine LOINC-Zuordnung** und werden nicht ausgeliefert
       (Problem-Report von `scripts/parse_lab_values.py`, Abschnitt *no LOINC match*). Größte Gruppen:
       Medikamentenspiegel (`(therapeutic)`-Suffix), Hormone mit Zyklusphasen/Geschlecht als Unterzeilen,
       Zellzählungen (`μL−1`), Immunglobuline, Vitamine. Weg: Suffixe wie `(therapeutic)` vor dem Matching
       abstreifen, Unterzeilen-Namen normalisieren, dann gezielt in `manual_loinc_mapping.json` pinnen.
 
-* [ ] **37 traditionelle Einheiten ohne PROPERTY-Mapping** (`μL−1`, `mm Hg`, `s`, `pg/cell`, `g Hb/dL`,
+* [ ] **37 Zeilen (18 verschiedene traditionelle Einheiten) ohne PROPERTY-Mapping** (`μL−1`, `mm Hg`, `s`, `pg/cell`, `g Hb/dL`,
       `mL/min/1.73 m2`, …) — für sie greift kein Property-Filter. `_UNIT_PROPERTIES` erweitern, sobald
       Analyte mit diesen Einheiten ausgeliefert werden sollen.
 
@@ -25,9 +25,6 @@
 * [ ] **`loinc_num` ist in jedem Entry und im Outer-Key.** Redundant; beim nächsten Format-Bump raus.
 
 * [ ] **`scripts/models.py`: `subtitle` und `gender` sind ungenutzt.**
-
-* [ ] **`docs/design.md`, Abschnitt „conversion_factor stored as string“ ist veraltet** — der Faktor ist
-      seit `Remove support for null conversion_factor` ein `float`.
 
 ## Format
 

@@ -46,7 +46,7 @@ should take them from their own laboratory's data.
 
 ## Lazy, cached data load
 
-The JSON file is several hundred kilobytes. We load it:
+The JSON file is a few dozen kilobytes. We load it:
 
 - **Lazily** — on first call to any public function. Importing the
   library does not touch the disk.
@@ -73,13 +73,6 @@ return value * factor   # or / factor
 
 The sentinel propagates; the caller decides what to do with it.
 
-## `conversion_factor` stored as string
-
-The upstream source occasionally uses non-numeric tokens. Rather than
-lossy-normalise at pipeline time, the value is stored verbatim and
-parsed with `float(...)` when needed. This also means a regenerated
-JSON file is more easily diffable against the upstream.
-
 ## No runtime dependencies
 
 The library deliberately has **zero** runtime dependencies. This is a
@@ -87,7 +80,7 @@ strong constraint — it means:
 
 - No `pydantic` at runtime, even though the build pipeline uses it.
 - No `beautifulsoup4` or `thefuzz` in end-user installs.
-- The entire runtime is ≈ 100 lines of standard-library Python.
+- The entire runtime is one small module of standard-library Python.
 
 This keeps `labunits` safe to depend on from very different projects
 (EMR backends, bioinformatics scripts, Jupyter notebooks) without

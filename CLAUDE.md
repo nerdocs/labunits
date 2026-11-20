@@ -13,7 +13,7 @@ This project uses `uv` for environment/runtime management. The package itself ha
 - Run a script: `uv run python scripts/parse_lab_values.py`
 - Lint: `uv run ruff check`
 - Format: `uv run ruff format` (or `uv run black .`)
-- Tests: `uv run pytest` — note: no test suite exists yet despite `pytest` being a declared dev dependency.
+- Tests: `uv run --group test pytest` (`pytest` lives in the `test` dependency group).
 - Build sdist/wheel: `uv run python -m build`
 
 ## Architecture
@@ -36,7 +36,7 @@ This is a one-shot pipeline that produces `src/labunits/data/analytes.json` from
 
 Both are licensed third-party content and **not tracked in git** (gitignored); `scripts/README.md` says where to get them.
 
-`scripts/parse_lab_values.py` parses the HTML table with BeautifulSoup, then matches each analyte name against the LOINC `COMPONENT` column — manual pin (`manual_loinc_mapping.json`), then exact match, then `thefuzz` fuzzy ratio (threshold `FUZZY_MATCH_RATIO = 80`). Only active quantitative result terms whose `SYSTEM` fits the specimen and whose `PROPERTY` fits the unit are eligible; ties are broken by `COMMON_TEST_RANK`. Two different rows on one LOINC abort the run; factors are cross-checked against the source's own reference intervals. Known source errors are overridden via `scripts/source_corrections.json`. Pydantic models live in `scripts/models.py` (`Analyte`, `AnalyteRange`, `Specimen`).
+`scripts/parse_lab_values.py` parses the HTML table with BeautifulSoup, then matches each analyte name against the LOINC `COMPONENT` column — manual pin (`manual_loinc_mapping.json`), then exact match, then `thefuzz` fuzzy ratio (threshold `FUZZY_MATCH_RATIO = 80`). Only active quantitative result terms whose `SYSTEM` fits the specimen and whose `PROPERTY` fits the unit are eligible; ties are broken by `COMMON_TEST_RANK`. Two different rows on one LOINC abort the run; factors are cross-checked against the source's own reference intervals. Known source errors are overridden via `scripts/source_corrections.json` (keyed by name or `Name@specimen`). Pydantic models live in `scripts/models.py` (`Analyte`, `AnalyteRange`, `Specimen`).
 
 When run as `__main__`, it writes the output to `src/labunits/data/analytes.json`. Re-run this script whenever upstream data changes; do not hand-edit `analytes.json`.
 

@@ -22,11 +22,11 @@ uv add labunits
 ```python
 from labunits.converters import to_si_unit, to_traditional_unit
 
-# Serum glucose reported as 90 mg/dL -> mmol/L
-si_value = to_si_unit(90.0, "Glucose")
+# Serum glucose (LOINC 2345-7) reported as 90 mg/dL -> mmol/L
+si_value = to_si_unit(90.0, "2345-7")
 
 # And back
-trad_value = to_traditional_unit(si_value, "Glucose")
+trad_value = to_traditional_unit(si_value, "2345-7")
 ```
 
 ## Identifying an analyte

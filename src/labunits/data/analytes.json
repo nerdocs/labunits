@@ -18,7 +18,7 @@
     ],
     "traditional_units": "U/mL",
     "conversion_factor": 1.0,
-    "si_units": "U/L"
+    "si_units": "kU/L"
   },
   "47826-3": {
     "loinc_num": "47826-3",
@@ -943,7 +943,7 @@
     ],
     "traditional_units": "pg/mL",
     "conversion_factor": 5.91,
-    "si_units": "nmol/L"
+    "si_units": "pmol/L"
   },
   "2668-2": {
     "loinc_num": "2668-2",
