@@ -43,8 +43,9 @@ code. `scripts/parse_lab_values.py` does this in stages:
    checks (roman numerals, digits, meaning-flipping qualifiers such as
    `free`, `total`, `Ag`).
 
-Analytes without a match are not written to the output; they are listed
-in the problem report as candidates for manual review.
+Analytes without a match, and rows without a numeric conversion factor,
+are not written to the output; they are listed in the problem report as
+candidates for manual review.
 
 ## SI-side LOINC
 

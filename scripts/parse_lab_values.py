@@ -685,10 +685,13 @@ def build_output(analytes: list[Analyte]) -> dict[str, dict]:
     the key of another row is fine — the runtime resolves the code to that
     row (magnesium ``2601-3`` is the mEq/L row, not the SI side of the
     mg/dL row). A shipped row without UCUM units is fatal as well.
+
+    Rows without a LOINC or without a numeric conversion factor are not
+    shipped; both are listed in the problem report.
     """
     out: dict[str, dict] = {}
     for a in analytes:
-        if not a.loinc_num:
+        if not a.loinc_num or a.conversion_factor is None:
             continue
         if not a.traditional_ucum or not a.si_ucum:
             raise ValueError(
@@ -813,7 +816,7 @@ if __name__ == "__main__":
         lambda s: f"- {s}",
     )
     _print_section(
-        "Unparseable conversion-factor cells",
+        "Unparseable conversion-factor cells (dropped from analytes.json)",
         issues["unparseable_factors"],
         lambda t: f"- {t[0]}: {t[1]!r}",
     )

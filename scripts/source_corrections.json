@@ -18,6 +18,26 @@
     },
     "why": "Source prints nmol/L, but factor 5.91 = 1000/169.18 g/mol converts pg/mL to pmol/L, and its own interval (110-410 pg/mL = 650-2423) only fits pmol/L (as the source itself uses for epinephrine)."
   },
+  "Cystine": {
+    "set": {
+      "conversion_factor": 41.6,
+      "si_reference_interval": {
+        "lower_limit": 17,
+        "upper_limit": 58
+      }
+    },
+    "why": "Source prints 83.3 (0.40-1.40 mg/dL = 33-117 μmol/L), which is 10000/120.15 g/mol and counts half-cystine residues. The matched LOINC terms (2177-4, 22672-0) are cystine, the dimer of 240.30 g/mol: 10000/240.30 = 41.6, i.e. half the molar amount (17-58 μmol/L)."
+  },
+  "Vitamin D, 1,25-dihydroxyvitamin D": {
+    "set": {
+      "conversion_factor": 2.4,
+      "si_reference_interval": {
+        "lower_limit": 38,
+        "upper_limit": 156
+      }
+    },
+    "why": "Source prints 2.6 (16-65 pg/mL = 42-169 pmol/L), which is 1000/384.6 g/mol, the molar mass of vitamin D3 without hydroxyl groups. Calcitriol has 416.64 g/mol: 1000/416.64 = 2.40 (16-65 pg/mL = 38-156 pmol/L)."
+  },
   "Lamotrigine": {
     "set": {
       "traditional_units": "μg/mL"

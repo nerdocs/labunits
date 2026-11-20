@@ -61,3 +61,9 @@ unit pairs and conversion factors keyed by LOINC, plus one multiplication.
 ## License
 
 [MIT](https://github.com/nerdocs/labunits/blob/main/LICENSE.md). Attribution appreciated.
+
+The MIT license covers the code. The shipped analyte table contains LOINC codes, which come with their own notice:
+
+This material contains content from LOINC (<http://loinc.org>). LOINC is copyright © 1995-2025, Regenstrief Institute,
+Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee and is available at no cost under the
+license at <http://loinc.org/license>. LOINC® is a registered United States trademark of Regenstrief Institute, Inc.

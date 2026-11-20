@@ -21,3 +21,9 @@ Oh - just because - there IS NONE. I couldn't believe that.
 ### License
 
 MIT. Just use it in your project and give credits.
+
+The MIT license covers the code. The shipped analyte table contains LOINC codes, which come with their own notice:
+
+This material contains content from LOINC (<http://loinc.org>). LOINC is copyright © 1995-2025, Regenstrief Institute,
+Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee and is available at no cost under the
+license at <http://loinc.org/license>. LOINC® is a registered United States trademark of Regenstrief Institute, Inc.

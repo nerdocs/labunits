@@ -543,7 +543,7 @@
       "plasma"
     ],
     "traditional_units": "mg/dL",
-    "conversion_factor": 83.3,
+    "conversion_factor": 41.6,
     "si_units": "umol/L"
   },
   "1465-4": {
@@ -1467,7 +1467,7 @@
       "serum"
     ],
     "traditional_units": "pg/mL",
-    "conversion_factor": 2.6,
+    "conversion_factor": 2.4,
     "si_units": "pmol/L"
   },
   "5763-8": {
