@@ -5,9 +5,6 @@
       nur als Stoffmenge, Blei, Vitamin K, β-Carotin, pH), Faktor passt nicht zur genannten Substanz (Ammoniak,
       Bupropion, Niacin, Vitamin B1/B6, Methsuximid) oder zweite Umrechnung desselben LOINC (Hämoglobin g/L).
 
-* [ ] **Ein LOINC, zwei SI-Einheiten:** Hämoglobin, MCH und MCHC haben in der Quelle je eine Umrechnung in g/L und
-      eine in mmol/L. Ausgeliefert wird nur mmol/L, weil ein Eintrag genau ein Einheitenpaar trägt.
-
 * [ ] **MCH, MCHC, MCV** stehen dauerhaft im Report unter *fail the eligibility filters*: ihre LOINC-Terme haben
       `SYSTEM = RBC`, die Quelle nennt Vollblut.
 
@@ -24,6 +21,8 @@
 
 * [x] **LOINC-Abdeckung 133 → 351 Einträge** — jede Quellzeile einzeln zugeordnet: kanonische Namen in
       `scripts/analyte_names.json`, Codes in `scripts/manual_loinc_mapping.json`.
+* [x] **Präfix-Umrechnung** — `labunits.ucum`: `ucum_factor()`, `normalise()`, `display()`; `factor()` und
+      `convert()` skalieren Präfix-Varianten automatisch. Damit geht auch Hämoglobin g/dL → g/L.
 * [x] **Enzymfaktor 1/60** — alle 13 Enzyme rechnen U/L → µkat/L mit 0.01667 statt dem gerundeten 0.017 der Quelle.
 * [x] **Molmassen-Abgleich** — `scripts/molar_masses.json`; die Pipeline rechnet jeden Masse↔Stoffmenge-Faktor nach.
 * [x] **`TIME_ASPCT`-Filter und `urine_24_h`** für alle Raten pro 24 h.

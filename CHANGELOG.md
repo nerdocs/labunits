@@ -7,6 +7,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-11-20
+
+### Added
+
+- `labunits.ucum.ucum_factor(from_unit, to_unit)`: scaling between UCUM units of the same kind of quantity.
+- `labunits.ucum.normalise(unit_text)`: suggests the UCUM code for a unit as laboratories write it.
+- `labunits.ucum.display(unit)`: readable form of a UCUM code (`10*3/uL` -> `10³/µL`).
+
+### Changed
+
+- `factor()` and `convert()` accept prefix variants of an analyte's units (`mg/L` for an analyte kept in `mg/dL`).
+
 ## [0.4.0] - 2026-11-20
 
 ### Added
@@ -100,7 +112,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   `conversion_factor()`, accepting a LOINC code, abbreviation or name.
 - Analyte table generated from a clinical reference values table, matched to LOINC codes.
 
-[Unreleased]: https://github.com/nerdocs/labunits/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/nerdocs/labunits/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/nerdocs/labunits/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/nerdocs/labunits/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/nerdocs/labunits/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/nerdocs/labunits/compare/v0.2.1...v0.3.0

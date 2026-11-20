@@ -165,9 +165,22 @@ one — useful when results arrive in whatever unit the laboratory used.
 ValueError: Cannot convert 2160-0 from g/L to umol/L; known units: mg/dL <-> umol/L
 ```
 
-Units are compared as exact strings — there is no UCUM algebra. Use the
-spellings returned by `traditional_unit()` / `si_unit()` (per-day rates
-are `/(24.h)`, not `/d`).
+A unit may also be a prefix variant of one of the analyte's units; the
+scaling is then included, on either side of the record's factor:
+
+```python
+>>> factor("2160-0", "mg/dL", "mg/L")       # same side: pure scaling
+10.0
+>>> factor("2160-0", "g/L", "umol/L")       # g/L -> mg/dL (x100) -> umol/L (x88.4)
+8840.0
+>>> convert(14.0, "718-7", "g/dL", "g/L")   # hemoglobin is stored as g/dL <-> mmol/L
+140.0
+```
+
+Only prefixes, powers of ten and denominators are scaled (see
+[`ucum_factor()`](#ucum_factorfrom_unit-to_unit-float)). A unit of
+another kind — `meq/L` for an analyte kept in `mg/dL`, `U/L` for one
+kept in `mg/dL` — raises `ValueError`.
 
 Where one LOINC code belongs to two records, the units decide: magnesium
 `2601-3` converts `meq/L` ↔ `mmol/L` as well as `mg/dL` ↔ `mmol/L`.
@@ -184,6 +197,87 @@ for `factor()`. `inf`, `-inf` and `nan` pass through unchanged.
 106.08
 >>> convert(106.08, "14682-9", "umol/L", "mg/dL")
 1.2
+```
+
+---
+
+## Units: `labunits.ucum`
+
+Three helpers that work on unit codes alone, without an analyte:
+
+```python
+from labunits.ucum import ucum_factor, normalise, display
+```
+
+### `ucum_factor(from_unit, to_unit) -> float`
+
+Factor between two UCUM units of the same kind of quantity:
+`value_in_to_unit = value_in_from_unit * factor`.
+
+```python
+>>> ucum_factor("mg/dL", "g/L")
+0.01
+>>> ucum_factor("umol/L", "mmol/L")
+0.001
+>>> ucum_factor("10*3/uL", "10*9/L")
+1.0
+>>> ucum_factor("mg/dL", "mmol/L")
+ValueError: Cannot convert mg/dL to mmol/L: different kinds of quantity
+```
+
+| Converts                                                  | Refuses (`ValueError`)                         |
+|-----------------------------------------------------------|------------------------------------------------|
+| metric prefixes: `mg` ↔ `g`, `umol` ↔ `mmol`              | mass ↔ amount of substance: `mg/dL` ↔ `mmol/L` |
+| volumes: `/dL` ↔ `/L` ↔ `/mL`, `um3` ↔ `fL`               | `meq` ↔ `mmol`, `mosm` ↔ `mmol`                |
+| powers of ten: `10*3/uL` ↔ `10*9/L`, `%` ↔ `1`            | `U` ↔ `kat` ↔ `[IU]` ↔ `[arb'U]`               |
+| time: `/min` ↔ `/s`, `/(24.h)` ↔ `/d`                     | annotated ↔ plain: `g{Hb}` ↔ `g`               |
+
+The refused conversions need the analyte; use `factor()` for them. Only
+the subset of UCUM that laboratory results use is understood; anything
+else raises `ValueError("Not a UCUM unit labunits understands: ...")`.
+
+### `normalise(unit_text) -> str | None`
+
+Suggest the UCUM code for a unit as a laboratory writes it. Returns
+`None` when the text is not recognised or is ambiguous.
+
+```python
+>>> normalise("mg/dl")
+'mg/dL'
+>>> normalise("µmol/l")
+'umol/L'
+>>> normalise("G/l")          # 10^9 per litre
+'10*9/L'
+>>> normalise("IE/l")
+'[IU]/L'
+>>> normalise("g/24h")
+'g/(24.h)'
+>>> normalise("u/l")          # units or micro?
+None
+```
+
+It covers spelling variants and abbreviations of units — litre as `l`,
+`µ`, `mcg`, powers of ten (`10^9`, `10³`), count shorthands (`G/l`,
+`T/l`, `Tsd/µl`, `Mio/µl`), `IE`/`IU`, `mval`, `mmHg`, `sec`, `24h` —
+not written-out words. A code that is already UCUM comes back unchanged.
+
+**The result is a suggestion.** Show it to a person to confirm; never
+store it unseen. Laboratory spellings are not a defined language.
+
+### `display(unit) -> str`
+
+Render a UCUM code for people to read. Cosmetic only — the result is
+not a UCUM code and must not be stored or compared as one.
+
+```python
+>>> display("10*3/uL")
+'10³/µL'
+>>> display("umol/L")
+'µmol/L'
+>>> display("mg/(24.h)")
+'mg/24 h'
+>>> display("U/g{Hb}")
+'U/g Hb'
 ```
 
 ---
@@ -229,7 +323,7 @@ There are deliberately **no reference intervals** on the record — see
 | Situation                          | Behaviour                                       |
 |------------------------------------|-------------------------------------------------|
 | Unknown identifier                 | `ValueError("Unknown analyte identifier: ...")` |
-| Units that are not the analyte's pair (`factor`, `convert`) | `ValueError("Cannot convert ...")`, naming the known units |
+| Units of another kind than the analyte's (`factor`, `convert`) | `ValueError("Cannot convert ...")`, naming the known units |
 | Name matching several records      | `ValueError("Ambiguous analyte name: ...")`, listing the candidate LOINC codes |
 | `value` is `nan` / `±inf`          | Returned unchanged                              |
 | `value` is any other float         | Converted                                       |

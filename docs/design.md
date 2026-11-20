@@ -35,11 +35,28 @@ The math is:
 si_value = traditional_value * conversion_factor
 ```
 
-This works because each analyte ships with matching pairs of units
-(e.g. `mg/dL` ↔ `mmol/L`). There is **no generic unit algebra**; the
-library is a lookup table, not a units library. If an analyte is
-reported in a unit not covered by its pair, `labunits` cannot help —
-that's by design.
+This works because each analyte ships with a matching pair of units
+(e.g. `mg/dL` ↔ `mmol/L`). The step that needs knowledge — mass into
+amount of substance, activity into katal — always comes from that table.
+
+## Prefix scaling, but no unit algebra
+
+Laboratories report the same analyte in `mg/dL`, `mg/L` or `g/L`. A
+consumer that scaled such units itself got factor-of-ten errors, so the
+scaling lives here: `labunits.ucum.ucum_factor()` converts between units
+of the same kind of quantity, and `factor()` / `convert()` combine it
+with the analyte's own factor.
+
+It is deliberately not a units library. It understands the subset of
+UCUM that laboratory results use and refuses everything that would need
+a judgement: gram ↔ mole, mole ↔ equivalent (valence), enzyme unit ↔
+katal, international units, annotated units such as `g{Hb}`. A wrong
+"conversion" is worse than a `ValueError`.
+
+The same module turns laboratory spellings into UCUM (`normalise()`) and
+UCUM into a readable form (`display()`). `normalise()` only suggests: a
+unit as typed by a laboratory is ambiguous often enough that a human has
+to confirm it.
 
 ## No reference intervals
 

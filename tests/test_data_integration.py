@@ -10,6 +10,7 @@ from pathlib import Path
 import pytest
 
 from labunits import converters
+from labunits.ucum import ucum_factor
 from labunits.converters import (
     analytes,
     conversion_factor,
@@ -89,6 +90,33 @@ def test_creatinine_resolves_by_both_loincs(real_data):
     # Whatever unit a result arrives in, by either code.
     assert convert(106.08, "14682-9", "umol/L", "mg/dL") == pytest.approx(1.2)
     assert convert(1.2, "2160-0", "mg/dL", "mg/dL") == 1.2
+
+
+def test_shipped_units_are_understood(real_data):
+    # Every shipped unit must parse, or factor() could not scale to it.
+    for entry in real_data.values():
+        for unit in (entry["traditional_units"], entry["si_units"]):
+            assert ucum_factor(unit, unit) == 1.0
+
+
+def test_shipped_factor_agrees_with_pure_scaling(real_data):
+    # Where a record's two units differ only in prefixes (mg/dL -> g/L),
+    # its factor must be exactly that scaling.
+    wrong = {}
+    for loinc, entry in real_data.items():
+        try:
+            scaling = ucum_factor(entry["traditional_units"], entry["si_units"])
+        except ValueError:
+            continue  # a real conversion, e.g. mass -> amount of substance
+        if entry["conversion_factor"] != pytest.approx(scaling, rel=1e-9):
+            wrong[loinc] = (entry["conversion_factor"], scaling)
+    assert wrong == {}
+
+
+def test_hemoglobin_converts_to_both_si_units(real_data):
+    # The record holds g/dL <-> mmol/L; g/L is reached by scaling.
+    assert convert(14.0, "718-7", "g/dL", "g/L") == pytest.approx(140.0)
+    assert convert(140.0, "718-7", "g/L", "mmol/L") == pytest.approx(8.6884)
 
 
 def test_si_loinc_alias_belongs_to_one_record(real_data):

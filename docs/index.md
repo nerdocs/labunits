@@ -27,6 +27,7 @@ to_traditional_unit(0.172, "5568-1")   # 1.0
 | ------------------------------------------------------ | ----------------------------------------- |
 | Convert a numeric value between traditional and SI    | Interpret free-text lab reports          |
 | Look up UCUM units and conversion factor by LOINC/name | Fetch LOINC data at runtime               |
+| Scale between prefixes of a unit (`mg/dL` ↔ `g/L`)     | Convert between kinds of quantity without the analyte |
 | Enumerate all shipped analytes via `analytes()`      | Ship reference intervals (see [Design](design.md#no-reference-intervals)) |
 | Ship with a curated analyte table (see [Data](data.md))| Validate physiological plausibility       |
 | Return `inf`/`-inf`/`nan` unchanged                   | Flag or interpret values                  |

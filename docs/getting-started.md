@@ -76,6 +76,12 @@ convert(106.08, "14682-9", "umol/L", "mg/dL")   # 1.2
 codes (`"umol/L"`, `"g/(24.h)"`, `"meq/L"`), so they can be compared with
 the units of your own data. See [Data model](data.md#units-are-ucum-codes).
 
+Your data need not use exactly those two units: `convert()` and `factor()`
+also accept prefix variants (`mg/L`, `g/L`, `mmol/L` for creatinine), and
+`labunits.ucum` offers the scaling on its own, a spelling normaliser for
+units as laboratories write them, and a readable form — see
+[API](api.md#units-labunitsucum).
+
 **Recommendation:** use LOINC codes in production code. Names are
 convenient for interactive use but are not stable identifiers —
 spelling, capitalisation, or renaming in the upstream reference table

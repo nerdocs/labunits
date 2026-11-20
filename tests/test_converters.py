@@ -197,9 +197,32 @@ def test_factor_same_unit_is_one():
 
 def test_factor_foreign_unit_raises_naming_known_units():
     with pytest.raises(ValueError, match="known units: mg/dL <-> mmol/L"):
-        factor("5568-1", "g/L", "mmol/L")
+        factor("5568-1", "U/L", "mmol/L")
     with pytest.raises(ValueError, match="Cannot convert"):
-        factor("5568-1", "g/L", "g/L")
+        factor("5568-1", "s", "s")
+    with pytest.raises(ValueError, match="Cannot convert"):
+        factor("5568-1", "not a unit", "mmol/L")
+
+
+def test_factor_scales_prefix_variants_of_the_same_side():
+    assert factor("5568-1", "mg/dL", "mg/L") == pytest.approx(10)
+    assert factor("5568-1", "mmol/L", "umol/L") == pytest.approx(1000)
+    assert factor("5568-1", "g/L", "g/L") == 1.0
+
+
+def test_factor_combines_scaling_with_the_record_factor():
+    # g/L -> mg/dL (x100) -> mmol/L (x0.172) -> umol/L (x1000)
+    assert factor("5568-1", "g/L", "umol/L") == pytest.approx(17200)
+    assert factor("5568-1", "umol/L", "g/L") == pytest.approx(1 / 17200)
+    assert convert(2.0, "1751-7", "g/dL", "mg/dL") == pytest.approx(2000)
+
+
+def test_factor_never_scales_between_kinds_of_quantity():
+    # meq/L is not mmol/L without the analyte's valence: only the
+    # magnesium record that holds this pair may answer.
+    assert factor("2601-3", "meq/L", "umol/L") == pytest.approx(500)
+    with pytest.raises(ValueError, match="Cannot convert"):
+        factor("19123-9", "meq/L", "mmol/L")
 
 
 def test_factor_unknown_analyte_raises():

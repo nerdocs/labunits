@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import TypeAlias
 
+from labunits.ucum import ucum_factor
+
 _analytes_data: dict[str, dict] = {}
 _si_loinc_index: dict[str, list[str]] = {}
 _name_index: dict[str, list[str]] = {}
@@ -203,6 +205,14 @@ def to_traditional_unit(value: float, analyte: LoincNum | str) -> float:
     return value / factor
 
 
+def _scale(from_unit: str, to_unit: str) -> float | None:
+    """Prefix scaling between two units, ``None`` if they are not commensurable."""
+    try:
+        return ucum_factor(from_unit, to_unit)
+    except ValueError:
+        return None
+
+
 def _unit_factor(
     analyte: LoincNum | str, from_unit: str, to_unit: str
 ) -> tuple[float, bool]:
@@ -213,6 +223,12 @@ def _unit_factor(
     two records — magnesium ``2601-3`` is the meq/L record and the SI side
     of the mg/dL record — so every record the code belongs to is tried and
     the units decide.
+
+    The record's own unit pair is tried first. Otherwise each given unit
+    may be a prefix variant of one of the record's units (see
+    :func:`labunits.ucum.ucum_factor`): it is scaled to that unit, crossed
+    over with the record's factor if the other unit is on the other side,
+    and scaled again.
     """
     data = _ensure_indexes()
     loinc = _resolve_analyte_identifier(analyte)
@@ -228,6 +244,20 @@ def _unit_factor(
             return float(entry["conversion_factor"]), False
         if (from_unit, to_unit) == (si, traditional):
             return float(entry["conversion_factor"]), True
+    for candidate in candidates:
+        entry = data[candidate]
+        traditional, si = entry["traditional_units"], entry["si_units"]
+        record_factor = float(entry["conversion_factor"])
+        for source, target, cross in (
+            (traditional, traditional, 1.0),
+            (si, si, 1.0),
+            (traditional, si, record_factor),
+            (si, traditional, 1 / record_factor),
+        ):
+            before = _scale(from_unit, source)
+            after = _scale(target, to_unit)
+            if before is not None and after is not None:
+                return before * cross * after, False
     known = "; ".join(
         f"{data[c]['traditional_units']} <-> {data[c]['si_units']}" for c in candidates
     )
@@ -251,12 +281,14 @@ def factor(analyte: LoincNum | str, from_unit: str, to_unit: str) -> float:
     Returns:
         ``1.0`` if both units are the same unit of the analyte, the
         conversion factor for traditional -> SI, its reciprocal for
-        SI -> traditional.
+        SI -> traditional. A unit may also be a prefix variant of one of
+        the analyte's units (``mg/L`` for an analyte kept in ``mg/dL``);
+        the scaling is then included.
 
     Raises:
-        ValueError: if the analyte is unknown, or if the units are not the
-            analyte's unit pair; the message names the known units. Units
-            are compared as exact UCUM strings.
+        ValueError: if the analyte is unknown, or if a unit is neither one
+            of the analyte's units nor a prefix variant of one; the message
+            names the known units.
     """
     value, divide = _unit_factor(analyte, from_unit, to_unit)
     return 1 / value if divide else value

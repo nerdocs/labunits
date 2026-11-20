@@ -106,7 +106,8 @@ one shipped:
 - **Hemoglobin, MCH, MCHC** are listed twice in the source, once converted
   to mass units (`g/L`) and once to amount of substance (`mmol/L`, per
   iron atom, 16114 g/mol). Both would sit on the same LOINC, and a record
-  carries one unit pair, so only the `mmol/L` conversion ships.
+  carries one unit pair, so only the `mmol/L` conversion is stored; `g/L`
+  is reached by prefix scaling (`convert(14, "718-7", "g/dL", "g/L")`).
 - **Hematology indices** (MCH `28539-5`, MCHC `28540-3`, MCV `30428-7`)
   are LOINC terms of the red cells (`SYSTEM = RBC`), although the source
   names whole blood as specimen.
@@ -152,7 +153,7 @@ is a `urine_24_h` record.
   activity), fecal fat, the evening cortisol row (a percentage of the
   morning value), the HbA1c "diagnosis" row.
 - **Second conversion on the same LOINC:** hemoglobin, MCH and MCHC in
-  mass units (see above).
+  mass units (see above; available through prefix scaling).
 
 ## What's *not* in the data
 
@@ -160,8 +161,9 @@ is a `urine_24_h` record.
   The pipeline reads the source's reference intervals only to cross-check
   the conversion factors; they are never shipped. `labunits` converts
   units, nothing more (see [Intended use](index.md#intended-use)).
-- **No units grammar.** Units are UCUM codes, but the library treats them
-  as opaque strings — it never parses or validates them.
+- **No full units grammar.** Units are UCUM codes; the library parses
+  only the subset laboratory results use, to scale between prefixes (see
+  [API](api.md#units-labunitsucum)).
 - **No uncertainty or precision metadata.**
 
 ## Loading behaviour
