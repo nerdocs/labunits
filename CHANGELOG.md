@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-11-20
+
 ### Added
 
 - 12 more analytes (363): alanine, α-aminobutyric acid, arginine, asparagine, aspartic acid, citrulline, lead,
@@ -122,7 +124,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   `conversion_factor()`, accepting a LOINC code, abbreviation or name.
 - Analyte table generated from a clinical reference values table, matched to LOINC codes.
 
-[Unreleased]: https://github.com/nerdocs/labunits/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/nerdocs/labunits/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/nerdocs/labunits/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/nerdocs/labunits/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/nerdocs/labunits/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/nerdocs/labunits/compare/v0.3.0...v0.3.1
