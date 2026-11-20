@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Total metanephrines convert with 5.264 (mean of metanephrine and normetanephrine) instead of 5.07.
 - MCH, MCHC and MCV have the specimen `red_blood_cells` (was `whole_blood`), matching their LOINC terms.
 
 ## [0.5.0] - 2026-11-20

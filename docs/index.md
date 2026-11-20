@@ -47,7 +47,8 @@ unit pairs and conversion factors keyed by LOINC, plus one multiplication.
   treatment decisions or any other medical purpose.
 - Verify unit pairs and factors against your own laboratory's data before
   relying on them. The shipped table is derived from a published reference
-  and may contain errors.
+  (the *Clinical Laboratory Reference Values* of Laposata's *Laboratory
+  Medicine*; full citation in `scripts/README.md`) and may contain errors.
 
 ## Documentation
 

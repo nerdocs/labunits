@@ -404,5 +404,15 @@
       "si_units": "μmol/L"
     },
     "why": "Source prints μmol/day for a plasma concentration; its second alanine row has μmol/L."
+  },
+  "Metanephrines (total)": {
+    "set": {
+      "conversion_factor": 5.264,
+      "si_reference_interval": {
+        "lower_limit": null,
+        "upper_limit": 5.3
+      }
+    },
+    "why": "Source prints 5.07 = 1000/197.23, the factor of metanephrine alone. Total metanephrines are metanephrine plus normetanephrine (183.20 g/mol, factor 5.458); a mixture has no molar mass of its own, and the mean of the two factors, 5.264, is what Mayo Clinic Laboratories uses for the total (<1.0 mg/24 h = <5.3 μmol/day)."
   }
 }

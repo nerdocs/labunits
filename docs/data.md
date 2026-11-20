@@ -37,7 +37,7 @@ Example (Acetone):
 
 | Field                                | Type                       | Notes                                                                            |
 |--------------------------------------|----------------------------|----------------------------------------------------------------------------------|
-| `name`                               | `str`                      | Full analyte name as found in the AccessMedicine reference table.                |
+| `name`                               | `str`                      | Analyte name, derived from the source table (see [Names](#names)).               |
 | `specimen`                           | `list[str]`                | Specimen IDs — e.g. `serum`, `plasma`, `red_blood_cells`.                        |
 | `si_loinc_num`                       | `str \| null`              | LOINC term for results in the SI unit — see below.                               |
 | `traditional_units`                  | `str`                      | UCUM code, e.g. `mg/dL`, `ug/(24.h)`, `meq/L`.                                   |

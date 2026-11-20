@@ -1,5 +1,5 @@
 {
-  "_comment": "Analyte name (as shipped) -> molar mass in g/mol, for rows that convert a mass unit into an amount-of-substance unit. The pipeline recomputes the factor from it (e.g. mg/dL -> mmol/L is 10/M) and reports a deviation of more than 2 % from the source's factor. A few entries are the mass the source's convention is based on, not the analyte's own: triglycerides as triolein, nonesterified fatty acids as oleic acid, iron-binding capacity as iron, urea nitrogen as the two nitrogen atoms of urea, sex hormone-binding globulin as bound dihydrotestosterone, methemoglobin as the hemoglobin tetramer.",
+  "_comment": "Analyte name (as shipped) -> molar mass in g/mol, for rows that convert a mass unit into an amount-of-substance unit. The pipeline recomputes the factor from it (e.g. mg/dL -> mmol/L is 10/M) and reports a deviation of more than 2 % from the source's factor. A few entries are the mass the source's convention is based on, not the analyte's own: triglycerides as triolein, nonesterified fatty acids as oleic acid, iron-binding capacity as iron, urea nitrogen as the two nitrogen atoms of urea, sex hormone-binding globulin as bound dihydrotestosterone, methemoglobin as the hemoglobin tetramer. Total metanephrines are a mixture; 190.2 is the mean of metanephrine (197.23) and normetanephrine (183.20).",
   "Acetone": 58.08,
   "Aldosterone (upright)": 360.44,
   "Aldosterone": 360.44,
@@ -143,7 +143,7 @@
   "Lidocaine": 234.34,
   "Lorazepam": 321.16,
   "Meperidine": 247.33,
-  "Metanephrines (total)": 197.23,
+  "Metanephrines (total)": 190.2,
   "Methadone": 309.45,
   "Normethsuximide": 189.21,
   "Methyldopa": 211.21,

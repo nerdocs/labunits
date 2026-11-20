@@ -105,6 +105,9 @@ the row agree with its own reference intervals.
   factor is therefore recomputed from `scripts/molar_masses.json`
   (`mg/dL` → `mmol/L` is `10 / M`); more than 2 % deviation is reported,
   and so is a pair without a molar mass.
+- **Second source.** The factors were compared by hand with Mayo Clinic
+  Laboratories' SI conversion table wherever both list the analyte (see
+  `scripts/README.md`).
 - **No silent overwrite.** Two *different* rows resolving to the same
   LOINC abort the run. Verbatim repeats (the source lists the amino
   acids twice) are collapsed. Two rows claiming the same SI-side LOINC
